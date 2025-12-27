@@ -1,0 +1,115 @@
+[
+  {
+    "id": 182,
+    "question": "The meeting point of the three Yin meridians on the leg is:",
+    "options": {
+      "a": "CV-6",
+      "b": "ST-36",
+      "c": "SP-6",
+      "d": "KI-8"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 183,
+    "question": "If you feel a lump on your client and you're not sure if it's muscular, what do you do?",
+    "options": {
+      "a": "friction the lump",
+      "b": "continue the massage and don't mention it to the client, and look for changes during the next session",
+      "c": "work around the lump, mention it to the client, and suggest the lump, mention it to the client, and suggest the client get it checked out"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. work around the"
+  },
+  {
+    "id": 184,
+    "question": "Which of these can you say about massage?",
+    "options": {
+      "a": "reduces cellulite, promotes weight loss",
+      "b": "increases muscle power and strength",
+      "c": "helps promote improved circulation helps promote improved circulation"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "helps promote improved circulation"
+  },
+  {
+    "id": 185,
+    "question": "In which abdominal quadrant is the Liver located?",
+    "options": {
+      "a": "upper right",
+      "b": "lower right",
+      "c": "upper left",
+      "d": "lower left"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 186,
+    "question": "Which gland is associated with Diabetes?",
+    "options": {
+      "a": "pancreas",
+      "b": "thyroid",
+      "c": "pituitary"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 187,
+    "question": "Where are the Adrenals located in reference to the Kidneys?",
+    "options": {
+      "a": "medial",
+      "b": "lateral",
+      "c": "superior",
+      "d": "inferior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 188,
+    "question": "The point on the lateral big toe corresponds to which meridian?",
+    "options": {
+      "a": "LR",
+      "b": "SP",
+      "c": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 189,
+    "question": "Which of the following is an act of professional misconduct?",
+    "options": {
+      "a": "not keeping client records",
+      "b": "keeping client records confidential keeping client records"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 190,
+    "question": "Which describes the client's input on an intake form?",
+    "options": {
+      "a": "subjective",
+      "b": "objective",
+      "c": "assessment"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 191,
+    "question": "Abdominal vibration administered for constipation is meant to do all of the following except:",
+    "options": {
+      "a": "fatigue nerves",
+      "b": "stimulate nerves",
+      "c": "promote tissue fluid movement",
+      "d": "induce peristaltic action"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

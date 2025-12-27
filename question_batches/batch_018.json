@@ -1,0 +1,116 @@
+[
+  {
+    "id": 172,
+    "question": "Which structure is located inferior to the clavicle where Pec Major and Anterior Deltoid meet?",
+    "options": {
+      "a": "coracoid process",
+      "b": "acromion process",
+      "c": "coranoid process"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 173,
+    "question": "Dryness is associated with which Yin organ?",
+    "options": {
+      "a": "LU",
+      "b": "KI",
+      "c": "SP",
+      "d": "LR"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 174,
+    "question": "Which is NOT a rotator cuff muscle?",
+    "options": {
+      "a": "infraspinatus",
+      "b": "supraspinatus",
+      "c": "subscapularis",
+      "d": "teres major (the other rotator is teres minor) d. teres major (the other rotator is teres minor)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 175,
+    "question": "The actions of the wrist include flexion, extension, and which?",
+    "options": {
+      "a": "supination/ pronation",
+      "b": "abduction/adduction",
+      "c": "medial rotation / lateral rotation abduction/adduction"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 176,
+    "question": "Which muscle attaches to the ITB?",
+    "options": {
+      "a": "TFL",
+      "b": "gluteus medius",
+      "c": "iliopsoas"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 177,
+    "question": "If the Sciatic nerve is impinged, which muscle is probably indicated?",
+    "options": {
+      "a": "piriformis",
+      "b": "gluteus maximus",
+      "c": "gluteus medius"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 178,
+    "question": "Which of these best describes petrissage?",
+    "options": {
+      "a": "a gliding stroke",
+      "b": "a deep circular stroke",
+      "c": "vertical lifting stroke stroke"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "vertical lifting stroke"
+  },
+  {
+    "id": 179,
+    "question": "Best stroke for warming tissue for more specific work:",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "friction",
+      "d": "tapotement"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 180,
+    "question": "Tapotement is good for pre-event treatment because:",
+    "options": {
+      "a": "breaks down adhesions",
+      "b": "stimulates nerves",
+      "c": "brings nutrition to tissue and relieves fatigue b. stimulates nerves"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 181,
+    "question": "A runner has a cramp in her Gastrocnemius. The best method to relieve the cramp is:",
+    "options": {
+      "a": "compression",
+      "b": "aggressive stretching",
+      "c": "trigger point work",
+      "d": "friction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

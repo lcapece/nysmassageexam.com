@@ -1,0 +1,111 @@
+[
+  {
+    "id": 212,
+    "question": "Working on the Linea Alba one week after abdominal surgery should involve which?",
+    "options": {
+      "a": "friction",
+      "b": "relaxation massage and proximal lymphatic drainage - b. relaxation massage and proximal lymphatic drainage"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 213,
+    "question": "The most abundant tissue in the human body is:",
+    "options": {
+      "a": "muscle",
+      "b": "connective",
+      "c": "nervous",
+      "d": "epithelial"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 214,
+    "question": "Massage can best be described as enhancing/improving which systems?",
+    "options": {
+      "a": "digestive and respiratory",
+      "b": "lymphatic and respiratory",
+      "c": "urinary and digestive",
+      "d": "lymphatic and cardiovascular and cardiovascular"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "lymphatic and cardiovascular"
+  },
+  {
+    "id": 215,
+    "question": "When treating Edema in leg work in the following direction:",
+    "options": {
+      "a": "proximal - distal - proximal",
+      "b": "distal - proximal - distal - proximal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 216,
+    "question": "Where does the blood go after it leaves the digestive organs?",
+    "options": {
+      "a": "liver",
+      "b": "spleen",
+      "c": "kidneys",
+      "d": "heart"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 218,
+    "question": "Which is in the PNS?",
+    "options": {
+      "a": "cranial nerves",
+      "b": "white matter",
+      "c": "medulla",
+      "d": "brain stem"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 219,
+    "question": "A crescent-shaped ring of cartilage on the lateral or fibular side of the knee is:",
+    "options": {
+      "a": "medial meniscus",
+      "b": "lateral meniscus",
+      "c": "ACL",
+      "d": "PCL"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 220,
+    "question": "The best stroke to do over the spine is:",
+    "options": {
+      "a": "skin rolling",
+      "b": "petrissage",
+      "c": "friction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 221,
+    "question": "Which bony landmark can be used to find the upper burner Shu points? The medial tip of the spine of the scapula (upper burner is LU, so scapula (upper burner is LU, so BL-13)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "The medial tip of the spine of the"
+  },
+  {
+    "id": 222,
+    "question": "What is the best treatment for Dupuytren's Contracture?",
+    "options": {
+      "a": "friction to palmar fascia",
+      "b": "passive ROM to the wrist",
+      "c": "active ROM of fingers fascia"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

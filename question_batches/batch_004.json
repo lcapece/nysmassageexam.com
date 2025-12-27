@@ -1,0 +1,114 @@
+[
+  {
+    "id": 31,
+    "question": "Which would be the least effective muscle to address for Plantarfascitis?",
+    "options": {
+      "a": "hamstrings",
+      "b": "gastrocnemius",
+      "c": "tibialis anterior",
+      "d": "tibialis posterior"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 32,
+    "question": "A major Lymph Plexus is found where?",
+    "options": {
+      "a": "foot",
+      "b": "eyes",
+      "c": "brainstem",
+      "d": "spinal cord"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 33,
+    "question": "The conception vessel rules which?",
+    "options": {
+      "a": "yin organs",
+      "b": "the yang organs",
+      "c": "neither"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 34,
+    "question": "Which muscle does not assist with respiration?",
+    "options": {
+      "a": "scalenes",
+      "b": "external intercostals",
+      "c": "rhomboids"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "rhomboids"
+  },
+  {
+    "id": 35,
+    "question": "Which is a phasic muscle?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "scalenes",
+      "c": "levator scapula"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 36,
+    "question": "The Vagus nerve does which to the heart rate?",
+    "options": {
+      "a": "increases the heart rate",
+      "b": "decreases the heart rate",
+      "c": "no effect on heart rate heart rate"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 37,
+    "question": "Where are Erythrocytes formed?",
+    "options": {
+      "a": "red bone marrow",
+      "b": "liver",
+      "c": "yellow bone marrow A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 38,
+    "question": "Which meridians would you address first in treating him?",
+    "options": {
+      "a": "HT/SI",
+      "b": "LU/LI",
+      "c": "ST/SP A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 39,
+    "question": "Which is the mother of the involved element?",
+    "options": {
+      "a": "earth",
+      "b": "metal",
+      "c": "wood",
+      "d": "fire A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 40,
+    "question": "What other symptoms might he have?",
+    "options": {
+      "a": "premature balding",
+      "b": "adult acne"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "adult acne"
+  }
+]

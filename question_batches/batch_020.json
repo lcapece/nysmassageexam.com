@@ -1,0 +1,111 @@
+[
+  {
+    "id": 192,
+    "question": "A client's Chiropractor wants your progress notes on the client. What do you do?",
+    "options": {
+      "a": "give them directly to the chiropractor",
+      "b": "don't give them at all",
+      "c": "get client's consent before releasing the notes c. get client's consent before releasing the notes"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 193,
+    "question": "Which is a common endangerment site?",
+    "options": {
+      "a": "sternal notch",
+      "b": "calcaneous",
+      "c": "patella"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 194,
+    "question": "During the refractory period, which of the following is true?",
+    "options": {
+      "a": "impulses are firing constantly",
+      "b": "impulses can be sent through the neuron",
+      "c": "impulses cannot be sent through the neuron c. impulses cannot be sent through the neuron"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 195,
+    "question": "A client has Migraines. Which meridians should you work?",
+    "options": {
+      "a": "LR/GB",
+      "b": "ST/SP",
+      "c": "BL/KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 196,
+    "question": "Which of these muscles is the easiest to palpate?",
+    "options": {
+      "a": "tibialis anterior",
+      "b": "tibialis posterior",
+      "c": "plantaris",
+      "d": "flexor digitorum longus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 197,
+    "question": "Which organ opens to the tip of the tongue?",
+    "options": {
+      "a": "HT",
+      "b": "ST",
+      "c": "SP",
+      "d": "LU"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 198,
+    "question": "Yin is best described as which?",
+    "options": {
+      "a": "hollow and dorsal",
+      "b": "scattered",
+      "c": "solid and ventral"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "solid and ventral"
+  },
+  {
+    "id": 199,
+    "question": "Which organ/meridian would be indicated with Eczema and Asthma?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Lung"
+  },
+  {
+    "id": 200,
+    "question": "For which condition would passive ROM not be effective or indicated?",
+    "options": {
+      "a": "piriformis syndrome",
+      "b": "simple sprain",
+      "c": "tendonitis",
+      "d": "acute rheumatoid arthritis rheumatoid arthritis"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "acute rheumatoid arthritis"
+  },
+  {
+    "id": 201,
+    "question": "A client has been diagnosed with whiplash in the last 24 hours (the injury happened then) an MD has prescribed massage. How would you work on them?",
+    "options": {
+      "a": "work the anterior neck with friction and ice",
+      "b": "start the treatment with traction",
+      "c": "wait until the acute phase is over before beginning neck work - beginning neck work"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "wait until the acute phase is over before beginning neck work -"
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "id": 142,
+    "question": "Muscles of quiet respiration are:",
+    "options": {
+      "a": "external intercostals (plus diaphragm)",
+      "b": "external intercostals and scalenes",
+      "c": "external intercostals, scalenes, rhomboids",
+      "d": "external intercostals, scalenes, rhomboids and SCM - a. external intercostals (plus diaphragm)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 143,
+    "question": "The diaphragm is responsible for active respiration during which?",
+    "options": {
+      "a": "inhalation",
+      "b": "exhalation",
+      "c": "neither"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 144,
+    "question": "When the head or neck is flexed, which muscle is most involved in extension of head/neck?",
+    "options": {
+      "a": "trapezius",
+      "b": "SCM",
+      "c": "Rhomboids"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 145,
+    "question": "What is the best position to palpate the right SCM?",
+    "options": {
+      "a": "rotation of head to left side",
+      "b": "rotation of head to right side",
+      "c": "flexion of the neck",
+      "d": "extension of the neck to left side"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 146,
+    "question": "Which is not considered professional practice of a licensed massage therapist in attracting clients?",
+    "options": {
+      "a": "holding a raffle for a ski trip",
+      "b": "passing business cards out in line at the supermarket",
+      "c": "advertising on TV",
+      "d": "giving gift certificates to regular clients passing business cards out in line at the supermarket"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 147,
+    "question": "Which of the following is not a type of membrane?",
+    "options": {
+      "a": "fibrous",
+      "b": "serrous",
+      "c": "synovial",
+      "d": "mucus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 148,
+    "question": "The body's immediate reaction to joint dislocation is:",
+    "options": {
+      "a": "muscle spasm",
+      "b": "white blood cell proliferation",
+      "c": "fascial restriction proliferation"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 149,
+    "question": "The least important function of skin is:",
+    "options": {
+      "a": "absorption",
+      "b": "protection",
+      "c": "heat regulation",
+      "d": "sensation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 150,
+    "question": "Which of the following is an inappropriate treatment for a Migraine?",
+    "options": {
+      "a": "heat packs to the head",
+      "b": "cold packs to the head",
+      "c": "foot and hand work head"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 151,
+    "question": "A client has numbness in their foot. What is the best stroke to use?",
+    "options": {
+      "a": "trigger point",
+      "b": "tapotement",
+      "c": "friction",
+      "d": "effleurage"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "effleurage"
+  }
+]

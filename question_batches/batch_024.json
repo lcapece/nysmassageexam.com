@@ -1,0 +1,113 @@
+[
+  {
+    "id": 233,
+    "question": "Mrs. Jones was referred to you months ago by her MD. She comes in for the first time with foul smelling, Decubitus Ulcers oozing puss. What do you do?",
+    "options": {
+      "a": "ask her for consent to call her doctor",
+      "b": "proceed with the massage",
+      "c": "refer her back to her MD to her MD"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "refer her back to her MD"
+  },
+  {
+    "id": 234,
+    "question": "In which condition is friction most indicated?",
+    "options": {
+      "a": "recent trauma",
+      "b": "bursitis",
+      "c": "ankylosing spondylitis",
+      "d": "lateral epicondylitis"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "lateral epicondylitis"
+  },
+  {
+    "id": 235,
+    "question": "A client has a chronically contracted muscle. What is the best approach to treat them?",
+    "options": {
+      "a": "friction to the tendon of the muscle",
+      "b": "kneading of the tendon",
+      "c": "friction to the belly of the muscle to the tendon of the muscle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 236,
+    "question": "If you massage the medial thigh, which meridians are you affecting?",
+    "options": {
+      "a": "BL, ST, GB",
+      "b": "KI, SP, LR",
+      "c": "LU, ST, LR"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 237,
+    "question": "Which muscles are innervated by the Axillary Nerve?",
+    "options": {
+      "a": "deltoid and teres minor",
+      "b": "extensor digitorum longus teres minor"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 238,
+    "question": "According to NY State law, you could be charged with professional misconduct if:",
+    "options": {
+      "a": "you drink socially",
+      "b": "are charged with a misdemeanor",
+      "c": "you refuse or fail to furnish client records to the client upon records to the client upon request"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. you refuse or fail to furnish client"
+  },
+  {
+    "id": 239,
+    "question": "What's the best way to treat Tendonitis in a client?",
+    "options": {
+      "a": "friction the tendon",
+      "b": "friction the adhesions",
+      "c": "don't work",
+      "d": "strip the muscle belly in a direction away from the tendon -"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "friction the adhesions"
+  },
+  {
+    "id": 240,
+    "question": "A court reporter has Frozen Shoulder. How do you treat this?",
+    "options": {
+      "a": "don't work the area in the acute stage",
+      "b": "work distal to the area for several sessions until the surrounding muscles have improved",
+      "c": "friction and gentle ROM on the shoulder work distal to the area for several sessions until the surrounding muscles have improved"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 241,
+    "question": "A client has a fever, nausea, and they want a half-hour massage. What do you do?",
+    "options": {
+      "a": "surround yourself with healing lights and proceed",
+      "b": "do 15 minutes of light effleurage",
+      "c": "cancel the appointment until they're better c. cancel the appointment until they're better"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 242,
+    "question": "The Tibial Nerve innervates which muscle?",
+    "options": {
+      "a": "tibialis anterior",
+      "b": "peroneus longus",
+      "c": "tibialis posterior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "tibialis posterior"
+  }
+]

@@ -1,0 +1,111 @@
+[
+  {
+    "id": 41,
+    "question": "What controls the Lungs?",
+    "options": {
+      "a": "the heart",
+      "b": "the spleen",
+      "c": "the kidney"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 42,
+    "question": "A muscle is contracted and has constricted blood flow. How might the skin feel in that area?",
+    "options": {
+      "a": "cool",
+      "b": "flaccid",
+      "c": "warm"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 43,
+    "question": "What type or category does tapping and hacking fall into?",
+    "options": {
+      "a": "petrissage",
+      "b": "friction",
+      "c": "tapotement"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "tapotement"
+  },
+  {
+    "id": 44,
+    "question": "Which neurotransmitter is released at the neuromuscular junction?",
+    "options": {
+      "a": "acetylcholine",
+      "b": "seratonin",
+      "c": "epiniphrin"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 46,
+    "question": "How do you put the hamstrings on the slack?",
+    "options": {
+      "a": "client prone with bolster under the ankles",
+      "b": "client prone with bolster under the hips",
+      "c": "client supine with bolster under the ankles a. client prone with bolster under the ankles"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 47,
+    "question": "A client has low back pain. What do you do?",
+    "options": {
+      "a": "give them aspirin",
+      "b": "position them prone with a bolster under the hips",
+      "c": "position them prone with a bolster under the chest - b. position them prone with a bolster under the hips"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 48,
+    "question": "Which is a saddle joint?",
+    "options": {
+      "a": "acromioclavicular joint",
+      "b": "first carpometacarpal joint carpometacarpal joint"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "first carpometacarpal joint"
+  },
+  {
+    "id": 49,
+    "question": "If there is pain with active movement, but not with passive movement, what does this probably indicate?",
+    "options": {
+      "a": "a joint/ligament issue",
+      "b": "a muscle/tendon issue issue"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "a muscle/tendon issue"
+  },
+  {
+    "id": 50,
+    "question": "Which of these does NOT adduct?",
+    "options": {
+      "a": "gracilis",
+      "b": "pec major",
+      "c": "latissimus dorsi",
+      "d": "soleus"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "soleus"
+  },
+  {
+    "id": 51,
+    "question": "A carpenter has pain around his olecranon process. Which muscle is involved?",
+    "options": {
+      "a": "biceps brachii",
+      "b": "deltoid",
+      "c": "triceps brachii"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "triceps brachii"
+  }
+]

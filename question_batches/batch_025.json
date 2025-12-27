@@ -1,0 +1,88 @@
+[
+  {
+    "id": 244,
+    "question": "Which elements have meridians in the arm?",
+    "options": {
+      "a": "earth and water",
+      "b": "wood and fire",
+      "c": "fire and metal"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "fire and metal"
+  },
+  {
+    "id": 245,
+    "question": "The atlas is a specialized bone of which?",
+    "options": {
+      "a": "carpal",
+      "b": "cervical vertebral column vertebral column"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "cervical vertebral column"
+  },
+  {
+    "id": 246,
+    "question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side as the Mastectomy. This is probably due to what? Surgical removal of Axillary Lymph Nodes",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": ""
+  },
+  {
+    "id": 247,
+    "question": "Vibration is a stroke which uses force from primarily:",
+    "options": {
+      "a": "muscles of the forearm",
+      "b": "muscles of the fingers",
+      "c": "muscles of the legs forearm"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 248,
+    "question": "Which is considered a form of massage therapy by New York State?",
+    "options": {
+      "a": "reiki",
+      "b": "rolfing",
+      "c": "homeopathy",
+      "d": "chiropractic"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 249,
+    "question": "Massage can best duplicate the effects of:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Regular excercise"
+  },
+  {
+    "id": 250,
+    "question": "Pre-event tapotement is done to: Contract muscles, stimulate nerves and increase local blood and increase local blood supply",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Contract muscles, stimulate nerves"
+  },
+  {
+    "id": 251,
+    "question": "Client has Neuralgia and can't tolerate effleurage: and vibration",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Nerve tapping"
+  },
+  {
+    "id": 252,
+    "question": "The ability to know where your body is in space is called:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Proprioception"
+  },
+  {
+    "id": 253,
+    "question": "Which is the \"Sea of Qi?\"",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "CV-6"
+  }
+]

@@ -1,0 +1,111 @@
+[
+  {
+    "id": 62,
+    "question": "Which stroke would be best to find subepidermal adhesions?",
+    "options": {
+      "a": "skin rolling",
+      "b": "tapotement",
+      "c": "cupping"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 63,
+    "question": "Heavy tapotement or prolonged stimulation will cause which to be released?",
+    "options": {
+      "a": "epinephrin",
+      "b": "cortisols",
+      "c": "endorphins (because it says prolonged - A would be short-term) would be short-term)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. endorphins (because it says prolonged - A"
+  },
+  {
+    "id": 64,
+    "question": "An athlete injured his Gracilis muscle. What would be the best exercise to strengthen it?",
+    "options": {
+      "a": "working with weights",
+      "b": "running",
+      "c": "squeezing a pillow between the knees and thighs - c. squeezing a pillow between the knees and thighs"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 65,
+    "question": "During the healing process, deep massage will tend to do which?",
+    "options": {
+      "a": "reverse the healing process",
+      "b": "eliminate scar tissue",
+      "c": "aid the healing process tissue"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 66,
+    "question": "The Linea Alba is found where?",
+    "options": {
+      "a": "abdomen",
+      "b": "spine",
+      "c": "cell membrane"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 67,
+    "question": "Oxygenated blood is found where?",
+    "options": {
+      "a": "capillaries",
+      "b": "left ventricle of the heart",
+      "c": "right ventricle of the heart of the heart"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 68,
+    "question": "Which stroke is best used for warming tissue and preparing it for deeper work?",
+    "options": {
+      "a": "tapotement",
+      "b": "effleurage",
+      "c": "petrissage"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 69,
+    "question": "Sebum is a fluid of which system?",
+    "options": {
+      "a": "reproductive",
+      "b": "digestive",
+      "c": "integumentary"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "integumentary"
+  },
+  {
+    "id": 70,
+    "question": "A massage therapist is at greatest risk by not doing which?",
+    "options": {
+      "a": "following universal precautions",
+      "b": "washing their hands precautions"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 71,
+    "question": "To evaluate the range of motion of a joint, what would you have the client do?",
+    "options": {
+      "a": "therapist performs passive range of motion",
+      "b": "instruct the client to do it actively",
+      "c": "resisted exercise it actively"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  }
+]

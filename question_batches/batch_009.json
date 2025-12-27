@@ -1,0 +1,109 @@
+[
+  {
+    "id": 82,
+    "question": "A first-time client says they have Diabetes Mellitus. What would you have them do?",
+    "options": {
+      "a": "ask permission to contact their doctor",
+      "b": "refer them elsewhere",
+      "c": "have them get a prescription for massage a. ask permission to contact their doctor"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 83,
+    "question": "A client has a Grande Mal Seizure during the massage. What do you do?",
+    "options": {
+      "a": "restrain or protect the client with pillows and time the length of the seizure",
+      "b": "get them a glass of water",
+      "c": "call 911 with pillows and time the length of the seizure"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 84,
+    "question": "Massage therapists are not legally allowed to do which?",
+    "options": {
+      "a": "use battery-operated vibrators on clients",
+      "b": "use electrical stimulation on clients",
+      "c": "recommend exercises stimulation on clients"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 85,
+    "question": "In the 5-element theory, which meridian is associated with 3- 5am?",
+    "options": {
+      "a": "LU",
+      "b": "HT",
+      "c": "LR",
+      "d": "SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 86,
+    "question": "Which meridian is associated with Tensor Fascia Latae?",
+    "options": {
+      "a": "LR",
+      "b": "GB",
+      "c": "ST"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 87,
+    "question": "Where would you find the Small Intestine meridian? epicondyle of the humerus",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Medial"
+  },
+  {
+    "id": 88,
+    "question": "If you're palpating the vertebral border of the scapula, which muscle would you tend to work?",
+    "options": {
+      "a": "rhomboids",
+      "b": "teres minor",
+      "c": "infraspinatous"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 89,
+    "question": "When is deep abdominal work good for a client?",
+    "options": {
+      "a": "client is trying to lose weight",
+      "b": "stomach cramps",
+      "c": "client has an anterior pelvic tilt an anterior pelvic tilt"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "client has an anterior pelvic tilt"
+  },
+  {
+    "id": 90,
+    "question": "A woman on a treadmill at an 8% incline has pain in the buttocks. Which muscle is most likely affected?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "quadratus lumborum",
+      "c": "tensor fascia latae"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 91,
+    "question": "Which meridian is associated with Autumn?",
+    "options": {
+      "a": "ST",
+      "b": "LU",
+      "c": "HT"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  }
+]

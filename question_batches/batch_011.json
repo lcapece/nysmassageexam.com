@@ -1,0 +1,113 @@
+[
+  {
+    "id": 102,
+    "question": "Client records should be kept for how long?",
+    "options": {
+      "a": "six years",
+      "b": "ten years",
+      "c": "one year",
+      "d": "not at all"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 103,
+    "question": "Which of these does the greatest amount of absorption during the digestive process?",
+    "options": {
+      "a": "stomach",
+      "b": "small intestine",
+      "c": "large intestine"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 104,
+    "question": "A client's shoulder has restricted medial rotation. Which muscle is probably the cause?",
+    "options": {
+      "a": "infraspinatous",
+      "b": "supraspinatous",
+      "c": "pec major"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 105,
+    "question": "Which muscle causes foot drop?",
+    "options": {
+      "a": "tib anterior",
+      "b": "tib posterior",
+      "c": "gastrocnemius"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 106,
+    "question": "What is the point 1.5 cun below the navel?",
+    "options": {
+      "a": "CV 6",
+      "b": "CV 4",
+      "c": "CV 8"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 107,
+    "question": "A client has an injury in the subacute phase. He says he can handle deep work. What is the best treatment to increase the joint mobility?",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "friction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "friction"
+  },
+  {
+    "id": 108,
+    "question": "Which meridian is located on the midsagital plane of the body?",
+    "options": {
+      "a": "GB",
+      "b": "governing vessel",
+      "c": "BL"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 109,
+    "question": "When standing, what causes the venous system to flow properly, considering the effects of gravity?",
+    "options": {
+      "a": "skeletal contractions",
+      "b": "valves",
+      "c": "poop"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 110,
+    "question": "When frictioning the medial epicondyle of the humerus, which muscle group will be affected most?",
+    "options": {
+      "a": "wrist flexors",
+      "b": "wrist extensors",
+      "c": "the intrinsic flexors of the hand flexors"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 111,
+    "question": "With which condition would you exercise the most caution?",
+    "options": {
+      "a": "constipation",
+      "b": "recovering from a sprain",
+      "c": "client is on blood thinners (circulatory problem, prone to (circulatory problem, prone to clotting)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. client is on blood thinners"
+  }
+]

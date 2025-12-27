@@ -1,0 +1,113 @@
+[
+  {
+    "id": 162,
+    "question": "Which is the best treatment for chronic inflammation of a tendon?",
+    "options": {
+      "a": "friction followed by ice",
+      "b": "friction",
+      "c": "passive range of motion by ice"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 163,
+    "question": "A client's medial elbow is damaged in a motorcycle accident. Which meridians are affected?",
+    "options": {
+      "a": "HT/ SI",
+      "b": "TE/ PC",
+      "c": "LU/ LI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 164,
+    "question": "The best technique for treating or massaging the tendon of a contracted muscle is:",
+    "options": {
+      "a": "effleurage and ROM",
+      "b": "friction",
+      "c": "kneading"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 165,
+    "question": "What is the best or optimal time for TE function?",
+    "options": {
+      "a": "9-11pm",
+      "b": "7-9am"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 166,
+    "question": "Which organ controls Spleen?",
+    "options": {
+      "a": "LR",
+      "b": "HT",
+      "c": "KI"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 167,
+    "question": "Which direction does Yin energy flow in eastern anatomical position?",
+    "options": {
+      "a": "inferior to superior",
+      "b": "superior to inferior",
+      "c": "medial to lateral"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 168,
+    "question": "What element feeds Earth?",
+    "options": {
+      "a": "fire",
+      "b": "wood",
+      "c": "water",
+      "d": "metal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 169,
+    "question": "A client presents with one lower limb entirely swollen. This would indicate pathology of which organ? (Western)",
+    "options": {
+      "a": "LR",
+      "b": "HT",
+      "c": "KI",
+      "d": "occluded blood vessel (all others are systemic) - d. occluded blood vessel (all others are systemic)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 170,
+    "question": "A client has edema. How do you work their limb?",
+    "options": {
+      "a": "distal to proximal",
+      "b": "work over the edema centripetally",
+      "c": "proximal to distal, centripetally proximal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 171,
+    "question": "Pain in the lateral leg indicates which meridian?",
+    "options": {
+      "a": "GB",
+      "b": "BL",
+      "c": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

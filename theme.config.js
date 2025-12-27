@@ -1,14 +1,16 @@
 /** @type {const} */
 const themeColors = {
-  primary: { light: '#0a7ea4', dark: '#0a7ea4' },
-  background: { light: '#ffffff', dark: '#151718' },
-  surface: { light: '#f5f5f5', dark: '#1e2022' },
-  foreground: { light: '#11181C', dark: '#ECEDEE' },
-  muted: { light: '#687076', dark: '#9BA1A6' },
-  border: { light: '#E5E7EB', dark: '#334155' },
-  success: { light: '#22C55E', dark: '#4ADE80' },
-  warning: { light: '#F59E0B', dark: '#FBBF24' },
-  error: { light: '#EF4444', dark: '#F87171' },
+  primary: { light: '#2E7D6B', dark: '#4A9D8C' },      // Teal Green - healing, wellness
+  secondary: { light: '#5C6BC0', dark: '#7986CB' },    // Indigo - trust, professionalism
+  accent: { light: '#FF7043', dark: '#FF8A65' },       // Coral - energy, attention for mnemonics
+  background: { light: '#FAFAFA', dark: '#121212' },
+  surface: { light: '#FFFFFF', dark: '#1E1E1E' },
+  foreground: { light: '#212121', dark: '#ECEDEE' },
+  muted: { light: '#757575', dark: '#9E9E9E' },
+  border: { light: '#E0E0E0', dark: '#333333' },
+  success: { light: '#43A047', dark: '#66BB6A' },      // Correct answers
+  warning: { light: '#FB8C00', dark: '#FFA726' },      // Needs review
+  error: { light: '#E53935', dark: '#EF5350' },        // Incorrect answers
 };
 
 module.exports = { themeColors };

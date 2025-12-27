@@ -1,0 +1,76 @@
+[
+  {
+    "id": 254,
+    "question": "How many points are there on the LU meridian?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "11"
+  },
+  {
+    "id": 255,
+    "question": "Which of these movements is controlled by the Autonomic Nervous System?",
+    "options": {
+      "a": "pupil",
+      "b": "finger",
+      "c": "eye"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "eye"
+  },
+  {
+    "id": 256,
+    "question": "Lateral movement of the wrist when standing in anatomical position is called:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Radial deviation"
+  },
+  {
+    "id": 257,
+    "question": "Which meridians are most involved in immunodeficiency disorders? energizer",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Lung and Triple"
+  },
+  {
+    "id": 258,
+    "question": "Myelinated fibers conduct impulses in which way? Salutatory (as opposed to continuos)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": ""
+  },
+  {
+    "id": 259,
+    "question": "A term for one motor neuron and all the muscle fibers it innervates is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "A motor unit"
+  },
+  {
+    "id": 260,
+    "question": "Which are Adductors of the humerus?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Pec Major and Lats"
+  },
+  {
+    "id": 261,
+    "question": "Flaccidity or flaccid muscle is due to which? Pathology or damage to anterior horn motor neuron (lower motor",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "..."
+  },
+  {
+    "id": 262,
+    "question": "What is the location of Ankylosing Spondylitis",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Vertebral column"
+  },
+  {
+    "id": 263,
+    "question": "The origin of Rectus Femoris is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "AIIS"
+  }
+]

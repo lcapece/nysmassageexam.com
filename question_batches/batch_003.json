@@ -1,0 +1,114 @@
+[
+  {
+    "id": 21,
+    "question": "Which muscle supinates?",
+    "options": {
+      "a": "biceps brachii",
+      "b": "brachialis",
+      "c": "triceps brachii"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 22,
+    "question": "Which muscle is most superior on the axilary border of the scapula?",
+    "options": {
+      "a": "teres major",
+      "b": "teres minor",
+      "c": "serratus anterior"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 23,
+    "question": "Which muscle best counteracts posturally round shoulders?",
+    "options": {
+      "a": "pec minor",
+      "b": "rhomboids",
+      "c": "ant. deltoid",
+      "d": "infraspinatus"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 24,
+    "question": "Where do fight or flight impulses come from in the vertebral column?",
+    "options": {
+      "a": "thoracolumbar",
+      "b": "craniosacral",
+      "c": "cervical"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 25,
+    "question": "Stimulation of the musculocutaneous nerve causes which action?",
+    "options": {
+      "a": "flexion of elbow",
+      "b": "extension of elbow",
+      "c": "dorsiflexion of ankle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 26,
+    "question": "A runner has pain in his hip and knee when flexing and extending the thigh (when running). Which muscle is involved?",
+    "options": {
+      "a": "rectus femoris",
+      "b": "gastrocnemius",
+      "c": "vastus medialis",
+      "d": "vastus lateralis"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 27,
+    "question": "How would you treat Fibrous Ankylosis?",
+    "options": {
+      "a": "friction",
+      "b": "vibration",
+      "c": "effleurage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 28,
+    "question": "Which connects muscles to bones?",
+    "options": {
+      "a": "ligaments",
+      "b": "tendons",
+      "c": "fascia"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 29,
+    "question": "Which of the following is part of the Pes Anserine?",
+    "options": {
+      "a": "rectus femoris",
+      "b": "gracilis",
+      "c": "semimembranosis"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 30,
+    "question": "Which would be the best treatment for acute Plantarfascitis?",
+    "options": {
+      "a": "friction",
+      "b": "heat",
+      "c": "ice and rest (because its acute) rest (because its acute)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "ice and rest (because its acute)"
+  }
+]

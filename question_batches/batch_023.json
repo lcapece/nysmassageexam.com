@@ -1,0 +1,96 @@
+[
+  {
+    "id": 223,
+    "question": "The meridians along the Adductor muscles are:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Liver, Kidney"
+  },
+  {
+    "id": 224,
+    "question": "The muscle that extends the elbow is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Triceps Brachii"
+  },
+  {
+    "id": 225,
+    "question": "Lymph vessels travel alongside which other vessels to get back to the heart?",
+    "options": {
+      "a": "arteries",
+      "b": "veins"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "veins"
+  },
+  {
+    "id": 226,
+    "question": "A muscle that raises a bone from neutral position would be considered which?",
+    "options": {
+      "a": "depressor",
+      "b": "flexor",
+      "c": "levator",
+      "d": "tensor"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 227,
+    "question": "Passive ROM should be performed how?",
+    "options": {
+      "a": "quickly and vigorously",
+      "b": "slowly and rhythmical with ongoing communication with client with ongoing communication with client re: comfort level"
+    },
+    "correct_option": null,
+    "correct_answer_text": "b. slowly and rhythmical"
+  },
+  {
+    "id": 228,
+    "question": "You have an appointment with an immune-supressed client and wake up with a sore throat. What do you do?",
+    "options": {
+      "a": "keep appt, take lots of vitamin C",
+      "b": "cancel appt, reschedule once you're well cancel appt, reschedule once you're well"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "cancel appt, reschedule once you're well"
+  },
+  {
+    "id": 229,
+    "question": "According to NY State law, all of the following are inappropriate features of an ad except:",
+    "options": {
+      "a": "guarantee results",
+      "b": "guarantee weight loss",
+      "c": "a properly-draped client"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "a properly-draped client"
+  },
+  {
+    "id": 230,
+    "question": "Nerves innervating the hand are which?",
+    "options": {
+      "a": "axillary and musculocutaneus",
+      "b": "ulnar and median"
+    },
+    "correct_option": null,
+    "correct_answer_text": "b. ulnar and median"
+  },
+  {
+    "id": 231,
+    "question": "Which strokes are done with postural drainage?",
+    "options": {
+      "a": "vibration and effleurage",
+      "b": "vibration and tapotement tapotement"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "vibration and tapotement"
+  },
+  {
+    "id": 232,
+    "question": "The lymph nodes that are found anterior to the tragus of the joint of the ear are:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Parotid"
+  }
+]

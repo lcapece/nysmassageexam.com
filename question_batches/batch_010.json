@@ -1,0 +1,106 @@
+[
+  {
+    "id": 92,
+    "question": "Which muscle, when in spasm, will raise the iliac crest? Lumborun (hip hiker)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Quadratus"
+  },
+  {
+    "id": 93,
+    "question": "Compression is least effective for producing which of the following?",
+    "options": {
+      "a": "relaxation",
+      "b": "an effective immune response",
+      "c": "assessing clients' muscle tone effective immune response"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 94,
+    "question": "Which muscles make up the Pes Anserine? Gracilis, Semitendinosis",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Sartorius,"
+  },
+  {
+    "id": 95,
+    "question": "If you massage Tibialis Anterior, which meridian are you working?",
+    "options": {
+      "a": "GB",
+      "b": "SP",
+      "c": "ST",
+      "d": "KI"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 96,
+    "question": "Which meridian is associated with Adductor Magnus?",
+    "options": {
+      "a": "LR",
+      "b": "KI",
+      "c": "ST",
+      "d": "SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 97,
+    "question": "After applying friction to a muscle, the area may become red and puffy because of which?",
+    "options": {
+      "a": "release of acetylcholine",
+      "b": "release of histamines histamines"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "release of histamines"
+  },
+  {
+    "id": 98,
+    "question": "How many hours of continuing education are required for registration of your license?",
+    "options": {
+      "a": "30 hours",
+      "b": "15 hours",
+      "c": "six hours",
+      "d": "none"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "none"
+  },
+  {
+    "id": 99,
+    "question": "Shin splints would involve which muscle?",
+    "options": {
+      "a": "soleus",
+      "b": "tibialis anterior",
+      "c": "peroneus longus"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 100,
+    "question": "Friction is best used on which of these?",
+    "options": {
+      "a": "muscle belly",
+      "b": "ligaments"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "ligaments"
+  },
+  {
+    "id": 101,
+    "question": "According to the generation cycle, which element should be tonified to support the deficiency? (for the 55-yr-old man with the metal problem)",
+    "options": {
+      "a": "earth (tonify the mother to support the deficiency)",
+      "b": "fire",
+      "c": "water",
+      "d": "wood support the deficiency)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

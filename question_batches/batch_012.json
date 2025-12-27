@@ -1,0 +1,113 @@
+[
+  {
+    "id": 112,
+    "question": "A female client in the late stages of cancer has edema in both legs. How should you perform the massage?",
+    "options": {
+      "a": "proximal to distal (strategy, not direction of stroke)",
+      "b": "distal to proximal",
+      "c": "it doesn't matter (strategy, not direction of stroke)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 113,
+    "question": "In Reflexology, the big toe represents which?",
+    "options": {
+      "a": "the eyes",
+      "b": "the heart",
+      "c": "the head"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "the head"
+  },
+  {
+    "id": 114,
+    "question": "What does the \"I\" in \"RICE\" stand for?",
+    "options": {
+      "a": "irritation",
+      "b": "ice",
+      "c": "inflammation"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 115,
+    "question": "Where does protein absorption start?",
+    "options": {
+      "a": "stomach",
+      "b": "mouth",
+      "c": "small intestine (because ST only digests, doesn't absorb digests, doesn't absorb proteins)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. small intestine (because ST only"
+  },
+  {
+    "id": 116,
+    "question": "A client you've been seeing regularly is diagnosed with Lupus in the subacute stage, and their doctor says massage is indicated. What would you do?",
+    "options": {
+      "a": "massage as usual",
+      "b": "massage only the head and the feet",
+      "c": "don't massage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 117,
+    "question": "What's the best description of energy, as opposed to physical mass?",
+    "options": {
+      "a": "jing",
+      "b": "yin",
+      "c": "yang"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "yang"
+  },
+  {
+    "id": 118,
+    "question": "A woman steps forward with her right foot and her left hip drops upon this movement. Which muscle is weak?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "gluteus medius (stabilizer)",
+      "c": "iliopsoas",
+      "d": "rectus femoris (stabilizer)"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 119,
+    "question": "You have a new client that is a sufferer of Type I Diabetes. What do you need to look out for?",
+    "options": {
+      "a": "retinopathy sites",
+      "b": "general integrity of the skin",
+      "c": "condition of skin/hair of the skin"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 120,
+    "question": "What do you tell a client with Type II Diabetes to do after a massage?",
+    "options": {
+      "a": "use a hot pack",
+      "b": "use a cold pack",
+      "c": "look out for signs of hypoglycemia out for signs of hypoglycemia"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "look out for signs of hypoglycemia"
+  },
+  {
+    "id": 121,
+    "question": "A client has jaw clicking and pain with chewing. Which muscles do you work?",
+    "options": {
+      "a": "buccinator and orbicularis orris",
+      "b": "SCM and scalenes",
+      "c": "masseter and temporalis temporalis"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "masseter and temporalis"
+  }
+]

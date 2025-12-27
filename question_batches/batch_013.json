@@ -1,0 +1,117 @@
+[
+  {
+    "id": 122,
+    "question": "What is the name of the lymph node located in front of the ear?",
+    "options": {
+      "a": "facial",
+      "b": "parotid",
+      "c": "occipital"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 123,
+    "question": "Where does the thoracic duct empty into?",
+    "options": {
+      "a": "lymph nodes in the armpit",
+      "b": "inferior vena cava",
+      "c": "subclavian vein (left side drains \u00be of the lymph to the subclavian vein)",
+      "d": "hapatic duct drains \u00be of the lymph to the subclavian vein)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 124,
+    "question": "What is the correct path of blood flow through the arteries?",
+    "options": {
+      "a": "axillary, subclavian, brachial",
+      "b": "axillary, brachial, subclavian",
+      "c": "subclavian, axillary, brachial axillary, brachial"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "subclavian, axillary, brachial"
+  },
+  {
+    "id": 125,
+    "question": "If the Ulnar Nerve is weak, which action would be difficult?",
+    "options": {
+      "a": "spreading the fingers",
+      "b": "opposing the thumb",
+      "c": "extending the wrist fingers"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 126,
+    "question": "Which muscle flexes the hand?",
+    "options": {
+      "a": "extensor carpi radialis brevis",
+      "b": "pronator quadratus",
+      "c": "palmaris longus (they really meant, which muscle flexes the which muscle flexes the wrist)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. palmaris longus (they really meant,"
+  },
+  {
+    "id": 127,
+    "question": "Where do arteries and veins meet?",
+    "options": {
+      "a": "venules",
+      "b": "capillaries",
+      "c": "arterioles"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 128,
+    "question": "What is the state of a muscle in normal posture?",
+    "options": {
+      "a": "tonic",
+      "b": "isometric",
+      "c": "isotonic",
+      "d": "eccentric"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 129,
+    "question": "Which of these muscles has the most fast-twitch fibers?",
+    "options": {
+      "a": "quadriceps",
+      "b": "iliopsoas",
+      "c": "erector spinae",
+      "d": "quadratus lumborum"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 130,
+    "question": "In a left hemiplegic with a waddling gate, what is the state of the right side?",
+    "options": {
+      "a": "spastic",
+      "b": "spasm",
+      "c": "flaccid",
+      "d": "normal muscle tone tone"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "normal muscle tone"
+  },
+  {
+    "id": 131,
+    "question": "Demyelination of white matter in the CNS is characteristic of which disorder?",
+    "options": {
+      "a": "muscular distrophy",
+      "b": "multiple sclerosis",
+      "c": "parkinson's disease",
+      "d": "stroke"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  }
+]

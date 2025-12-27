@@ -1,0 +1,117 @@
+[
+  {
+    "id": 11,
+    "question": "According to New York State law, where do you keep your advertising records?",
+    "options": {
+      "a": "in your files (for a year)",
+      "b": "at the New York State Board of Massage",
+      "c": "there's no reason to keep advertising records a. in your files (for a year)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 12,
+    "question": "What can you legally do as far as limiting your practice is concerned?",
+    "options": {
+      "a": "massage only children",
+      "b": "massage only women",
+      "c": "massage only the elderly",
+      "d": "all of the above (as long as you are consistent) - d. all of the above (as long as you are consistent)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 13,
+    "question": "Which is deep to Gastrocnemius, and a stronger plantarflexor?",
+    "options": {
+      "a": "popliteus",
+      "b": "soleus",
+      "c": "tibialis anterior",
+      "d": "plantaris"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 14,
+    "question": "What is the lid of the Yin organs?",
+    "options": {
+      "a": "liver",
+      "b": "lung",
+      "c": "spleen",
+      "d": "kidney"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 15,
+    "question": "Which controls Wei Qi?",
+    "options": {
+      "a": "lung",
+      "b": "spleen",
+      "c": "bladder",
+      "d": "triple energizer"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 16,
+    "question": "Which best describes Yin organs?",
+    "options": {
+      "a": "solid and storing",
+      "b": "solid and excreting",
+      "c": "hollow and storing",
+      "d": "hollow and excreting"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 17,
+    "question": "Which meridian goes through the anterior portion of Vastus Medialis?",
+    "options": {
+      "a": "liver",
+      "b": "spleen",
+      "c": "kidney",
+      "d": "stomach"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 18,
+    "question": "The retinaculum and the ITB are examples of which?",
+    "options": {
+      "a": "muscles",
+      "b": "tendons",
+      "c": "fascia"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "fascia"
+  },
+  {
+    "id": 19,
+    "question": "Which muscles does the Lung meridian run through?",
+    "options": {
+      "a": "triceps and brachioradialis",
+      "b": "pectoralis major and biceps brachii pectoralis major and biceps brachii"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "pectoralis major and biceps brachii"
+  },
+  {
+    "id": 20,
+    "question": "If you friction the lateral epicondyle of the humerus, which muscle would you be addressing?",
+    "options": {
+      "a": "pronator teres",
+      "b": "flexor carpi ulnaris",
+      "c": "extensor carpi radialis brevis carpi radialis brevis"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "extensor carpi radialis brevis"
+  }
+]

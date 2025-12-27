@@ -1,0 +1,115 @@
+[
+  {
+    "id": 202,
+    "question": "Rocking your client stimulates which?",
+    "options": {
+      "a": "parasympathetic nervous system",
+      "b": "sympathetic nervous system parasympathetic nervous system"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 203,
+    "question": "Which action would be impossible to do with a completely severed Achilles Tendon?",
+    "options": {
+      "a": "dorsiflexion of foot",
+      "b": "plantarflexion",
+      "c": "inversion",
+      "d": "eversion"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 204,
+    "question": "Which meridian is a problem if the client has varicose veins?",
+    "options": {
+      "a": "SP",
+      "b": "HT",
+      "c": "LR",
+      "d": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 205,
+    "question": "While working the superior angle of the scapula, the client feels pain. Which muscle is indicated?",
+    "options": {
+      "a": "rhomboids",
+      "b": "levator scapula",
+      "c": "serratus anterior"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 206,
+    "question": "Which is true about effleurage strokes?",
+    "options": {
+      "a": "slow, superficial strokes are sedating and fast superficial strokes are stimulating",
+      "b": "slow superficial strokes are stimulating and fast superficial strokes are sedating and fast superficial strokes are stimulating"
+    },
+    "correct_option": null,
+    "correct_answer_text": "a. slow, superficial"
+  },
+  {
+    "id": 207,
+    "question": "A client has a healed laceration on their posterior thigh and they complain of tightness in the area. What is the best treatment?",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "cross fiber friction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "cross fiber friction"
+  },
+  {
+    "id": 208,
+    "question": "What is the most superficial muscle of the upper back?",
+    "options": {
+      "a": "trapezius",
+      "b": "latissimus dorsi",
+      "c": "rhomboids"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 209,
+    "question": "Which bone is part of the appendicular skeleton?",
+    "options": {
+      "a": "sacrum",
+      "b": "humerus",
+      "c": "skull",
+      "d": "Occiput"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 210,
+    "question": "What is the best way to stretch Gastrocnemius?",
+    "options": {
+      "a": "flexion of knee",
+      "b": "plantarflex foot, extend knee",
+      "c": "dorsiflex foot and extend knee (to stretch, always do opposite of the action)",
+      "d": "flex knee, dorsiflex foot and extend knee (to stretch, always do opposite of the action)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 211,
+    "question": "A client has a knotting sensation in the Upper Traps and shoulders. There is also hypertonicity in the middle to upper thoracic region. The best treatment would be:",
+    "options": {
+      "a": "moxibustion",
+      "b": "tapotement",
+      "c": "trigger point therapy",
+      "d": "passive range of motion therapy"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  }
+]

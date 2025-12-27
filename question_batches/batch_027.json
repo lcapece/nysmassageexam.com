@@ -1,0 +1,97 @@
+[
+  {
+    "id": 264,
+    "question": "Sweat is the fluid secretion for which element?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Fire"
+  },
+  {
+    "id": 265,
+    "question": "Which is not part of the Sternum / breast plate?",
+    "options": {
+      "a": "gladiolus",
+      "b": "manubrium",
+      "c": "xyphoid",
+      "d": "styloid process"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "styloid process"
+  },
+  {
+    "id": 266,
+    "question": "The three major nerves of the Lumbosacral Plexus are: Obturator and Sciatic",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Femoral,"
+  },
+  {
+    "id": 267,
+    "question": "Fibrosis and contracture of muscle tissue is usually caused by: Loss of muscle balance between antagonistic muscles - Loss of muscle balance between antagonistic muscles",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 268,
+    "question": "A 14-year-old client tells you in a session that the doctor has diagnosed him with Tourrettes Syndrome. What is the best way to proceed?",
+    "options": {
+      "a": "ask parents for consent to talk to MD",
+      "b": "ask consent to talk to MD for consent to talk to MD"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 269,
+    "question": "A massage therapist must fully explain the procedure and get informed consent when undraping for breast massage from:",
+    "options": {
+      "a": "male and female clients",
+      "b": "male clients only",
+      "c": "female clients only"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "female clients only"
+  },
+  {
+    "id": 270,
+    "question": "When massaging the anterior leg, it is okay for the knee to be:",
+    "options": {
+      "a": "flexed",
+      "b": "raised",
+      "c": "supported"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "supported"
+  },
+  {
+    "id": 271,
+    "question": "When palmar kneading posterior thigh while client prone, what is best position for knee?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Slightly flexed"
+  },
+  {
+    "id": 272,
+    "question": "According to NY State law the limit of time for a temporary license is:",
+    "options": {
+      "a": "three years",
+      "b": "up to three months",
+      "c": "up to 12 months"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "up to 12 months"
+  },
+  {
+    "id": 273,
+    "question": "Lymphatic Plexuses exist in all of these places except",
+    "options": {
+      "a": "brain",
+      "b": "breast",
+      "c": "hands",
+      "d": "feet"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

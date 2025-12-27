@@ -1,0 +1,115 @@
+[
+  {
+    "id": 1,
+    "question": "Which stroke is best for Spastic Paralysis?",
+    "options": {
+      "a": "tapotement",
+      "b": "friction",
+      "c": "effleurage"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "effleurage"
+  },
+  {
+    "id": 2,
+    "question": "Which carpal is palpated at the medial end of the wrist crease?",
+    "options": {
+      "a": "scaphoid",
+      "b": "pisiform",
+      "c": "trapezium"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 3,
+    "question": "What action does Psoas Major, Biceps Femoris, and Popliteus have in common?",
+    "options": {
+      "a": "flexion",
+      "b": "extension",
+      "c": "abduction",
+      "d": "adduction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 4,
+    "question": "Where does the short head of Biceps Brachii attach?",
+    "options": {
+      "a": "coracoid process",
+      "b": "coronoid process",
+      "c": "acromion process"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 5,
+    "question": "To treat Edema in the lower extremity, one would work in which direction? (NOT direction of stroke) which segment do you work first? (when they talk about direction they use the word centripetal)",
+    "options": {
+      "a": "distal to proximal",
+      "b": "proximal to distal",
+      "c": "medial to lateral",
+      "d": "lateral to medial"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 6,
+    "question": "What is the best stroke for treating Varicose Ulcers?",
+    "options": {
+      "a": "deep effleurage",
+      "b": "finger kneading from the edge of the wound towards the periphery",
+      "c": "finger kneading from the periphery in towards the edge of the in towards the edge of the wound"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. finger kneading from the periphery"
+  },
+  {
+    "id": 7,
+    "question": "If you contract Tibialis Anterior and Tibialis Posterior together, what would be the action?",
+    "options": {
+      "a": "inversion",
+      "b": "eversion",
+      "c": "plantarflexion",
+      "d": "dorsiflexion"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 8,
+    "question": "Which route does the bolus follow?",
+    "options": {
+      "a": "pyloric sphicnter/ iliocecal valve / anus",
+      "b": "esophagus / stomach / pyloric valve esophagus / stomach / pyloric valve"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "esophagus / stomach / pyloric valve"
+  },
+  {
+    "id": 9,
+    "question": "What does bile break down?",
+    "options": {
+      "a": "fats",
+      "b": "proteins",
+      "c": "carbohydrates"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 10,
+    "question": "Which initiates the sliding of the filaments in muscle contraction?",
+    "options": {
+      "a": "amino acids",
+      "b": "sodium ions",
+      "c": "potassium ions",
+      "d": "calcium ions"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "calcium ions"
+  }
+]

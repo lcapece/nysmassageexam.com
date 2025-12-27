@@ -1,0 +1,112 @@
+[
+  {
+    "id": 152,
+    "question": "For an HIV-positive client that bruises easily, has Neuralgia in the legs, and is concerned about circulation to the legs, which is the most appropriate treatment?",
+    "options": {
+      "a": "effleurage",
+      "b": "polarity therapy",
+      "c": "friction",
+      "d": "tapotement"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 153,
+    "question": "Conjunctivitis is associated with which organ? (eastern)",
+    "options": {
+      "a": "heart",
+      "b": "lung",
+      "c": "liver",
+      "d": "spleen"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 154,
+    "question": "A client has pain radiating down the back of the leg, and numbness. What could be the cause?",
+    "options": {
+      "a": "herniated annulus fibrosis",
+      "b": "Osgoode-Schlatter's disease",
+      "c": "chondromalacia patella annulus fibrosis"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 155,
+    "question": "Which is the best technique to find trigger points?",
+    "options": {
+      "a": "short gliding strokes",
+      "b": "deep petrissage",
+      "c": "effleurage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 156,
+    "question": "Client has dark circles under the eyes and low back ache. Which meridians would you work and how?",
+    "options": {
+      "a": "BL/KI tonify",
+      "b": "ST/SP dispersal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 157,
+    "question": "Hearing loss in both ears would indicate a problem with which Yin meridian?",
+    "options": {
+      "a": "KI",
+      "b": "LR",
+      "c": "SP",
+      "d": "HT"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 158,
+    "question": "A shortened Iliopsoas is usually associated with which condition?",
+    "options": {
+      "a": "lordosis with anterior pelvic tilt",
+      "b": "lordosis with posterior pelvic tilt",
+      "c": "decreased lumbar curve with posterior pelvic tilt - a. lordosis with anterior pelvic tilt"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 159,
+    "question": "The biggest concern with a hypertensive client during treatment is:",
+    "options": {
+      "a": "keep limbs elevated",
+      "b": "avoid or be careful with deep abdominal massage - b. avoid or be careful with deep abdominal massage"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 160,
+    "question": "If a client has pain with both passive and active movement, this might indicate pathology in which?",
+    "options": {
+      "a": "ligament or joint",
+      "b": "superficial fascia",
+      "c": "muscle and tendon"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 161,
+    "question": "The best treatment for Chronic Achilles Tendonitis is:",
+    "options": {
+      "a": "dorsiflex the foot and apply friction",
+      "c": "plantarflex the foot and apply effleurage and petrissage -"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "dorsiflex the foot and apply friction"
+  }
+]

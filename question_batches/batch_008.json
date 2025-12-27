@@ -1,0 +1,112 @@
+[
+  {
+    "id": 72,
+    "question": "Which is not considered unprofessional behavior by a massage therapist?",
+    "options": {
+      "a": "not wearing a nametag during massage",
+      "b": "poor or improper draping",
+      "c": "talking to the client"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "talking to the client"
+  },
+  {
+    "id": 73,
+    "question": "According to 5-element theory, the energy cycle begins with which meridian?",
+    "options": {
+      "a": "lung",
+      "b": "SI",
+      "c": "bladder",
+      "d": "kidney"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 74,
+    "question": "Yin is best described as which?",
+    "options": {
+      "a": "cold and soft",
+      "b": "deep and penetrating"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 75,
+    "question": "A client is recovering from Colle's Fracture. What is the best treatment after the cast is removed?",
+    "options": {
+      "a": "kneading of the hand and fingers",
+      "b": "gentle range of motion to the shoulder kneading of the hand and fingers"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 76,
+    "question": "A 48-year-old woman is suffering from irritability, irregular menses, insomnia, and night sweats a Western assessment could be:",
+    "options": {
+      "a": "pregnancy",
+      "b": "menopause",
+      "c": "high blood pressure"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 77,
+    "question": "Which meridian is probably most affected?",
+    "options": {
+      "a": "KI/LR/HT",
+      "b": "SP/ST/BL",
+      "c": "PC/KI/SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 78,
+    "question": "What other symptoms might be present in this client?",
+    "options": {
+      "a": "water retention",
+      "b": "bruising",
+      "c": "hot flashes"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "hot flashes"
+  },
+  {
+    "id": 79,
+    "question": "In Reflexology, the Large Intestine would be found where?",
+    "options": {
+      "a": "left foot only",
+      "b": "right foot only",
+      "c": "both feet",
+      "d": "only on the dorsal side of the foot feet"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 80,
+    "question": "Acid is important in the breakdown of which?",
+    "options": {
+      "a": "proteins",
+      "b": "fats",
+      "c": "carbohydrates"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 81,
+    "question": "What happens in Depolarization?",
+    "options": {
+      "a": "sodium ions rush in",
+      "b": "potassium ions rush in",
+      "c": "changes a positive to negative charge sodium ions rush in"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  }
+]

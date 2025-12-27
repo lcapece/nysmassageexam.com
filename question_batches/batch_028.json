@@ -1,0 +1,88 @@
+[
+  {
+    "id": 274,
+    "question": "The importance of draping a client is for all of these except",
+    "options": {
+      "a": "foster client comfort",
+      "b": "help keep client warm",
+      "c": "modesty and privacy of client",
+      "d": "support client"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "support client"
+  },
+  {
+    "id": 275,
+    "question": "The action of Serratus Anterior is:",
+    "options": {
+      "a": "adduction",
+      "b": "retraction",
+      "c": "abduction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "abduction"
+  },
+  {
+    "id": 276,
+    "question": "What is the end point on the bladder channel? lateral pinky toe",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "BL-67 on the"
+  },
+  {
+    "id": 277,
+    "question": "What is the beginning point for the meridian dealing with elimination? index finger (LI-1)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Radial side of"
+  },
+  {
+    "id": 278,
+    "question": "Meridian involved with separating the impure for the pure?",
+    "options": {
+      "a": "radial side of little finger",
+      "b": "ulnar side of little finger little finger"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "ulnar side of little finger"
+  },
+  {
+    "id": 279,
+    "question": "In order to practice Shiatsu in New York State, what is required?",
+    "options": {
+      "a": "graduate from a shiatsu institute",
+      "b": "get shiatsu training",
+      "c": "get NY state massage license state massage license"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "get NY state massage license"
+  },
+  {
+    "id": 280,
+    "question": "Which muscle laterally rotates and abducts?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Piriformis"
+  },
+  {
+    "id": 281,
+    "question": "Client is a right Hemiplegic and right foot is inverted. What condition is the client's foot in?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Spasticity"
+  },
+  {
+    "id": 282,
+    "question": "What is the best position for the client with Bronchiectasis? Prone, feet elevated, head lower than chest (for drainage) - (for drainage)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 283,
+    "question": "A cyclist's foot is dorsiflexed and inverted. Which muscle is contracted?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Tibialis anterior"
+  }
+]

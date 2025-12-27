@@ -1,0 +1,3043 @@
+[
+  {
+    "id": 1,
+    "question": "Which stroke is best for Spastic Paralysis?",
+    "options": {
+      "a": "tapotement",
+      "b": "friction",
+      "c": "effleurage"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "effleurage"
+  },
+  {
+    "id": 2,
+    "question": "Which carpal is palpated at the medial end of the wrist crease?",
+    "options": {
+      "a": "scaphoid",
+      "b": "pisiform",
+      "c": "trapezium"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 3,
+    "question": "What action does Psoas Major, Biceps Femoris, and Popliteus have in common?",
+    "options": {
+      "a": "flexion",
+      "b": "extension",
+      "c": "abduction",
+      "d": "adduction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 4,
+    "question": "Where does the short head of Biceps Brachii attach?",
+    "options": {
+      "a": "coracoid process",
+      "b": "coronoid process",
+      "c": "acromion process"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 5,
+    "question": "To treat Edema in the lower extremity, one would work in which direction? (NOT direction of stroke) which segment do you work first? (when they talk about direction they use the word centripetal)",
+    "options": {
+      "a": "distal to proximal",
+      "b": "proximal to distal",
+      "c": "medial to lateral",
+      "d": "lateral to medial"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 6,
+    "question": "What is the best stroke for treating Varicose Ulcers?",
+    "options": {
+      "a": "deep effleurage",
+      "b": "finger kneading from the edge of the wound towards the periphery",
+      "c": "finger kneading from the periphery in towards the edge of the in towards the edge of the wound"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. finger kneading from the periphery"
+  },
+  {
+    "id": 7,
+    "question": "If you contract Tibialis Anterior and Tibialis Posterior together, what would be the action?",
+    "options": {
+      "a": "inversion",
+      "b": "eversion",
+      "c": "plantarflexion",
+      "d": "dorsiflexion"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 8,
+    "question": "Which route does the bolus follow?",
+    "options": {
+      "a": "pyloric sphicnter/ iliocecal valve / anus",
+      "b": "esophagus / stomach / pyloric valve esophagus / stomach / pyloric valve"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "esophagus / stomach / pyloric valve"
+  },
+  {
+    "id": 9,
+    "question": "What does bile break down?",
+    "options": {
+      "a": "fats",
+      "b": "proteins",
+      "c": "carbohydrates"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 10,
+    "question": "Which initiates the sliding of the filaments in muscle contraction?",
+    "options": {
+      "a": "amino acids",
+      "b": "sodium ions",
+      "c": "potassium ions",
+      "d": "calcium ions"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "calcium ions"
+  },
+  {
+    "id": 11,
+    "question": "According to New York State law, where do you keep your advertising records?",
+    "options": {
+      "a": "in your files (for a year)",
+      "b": "at the New York State Board of Massage",
+      "c": "there's no reason to keep advertising records a. in your files (for a year)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 12,
+    "question": "What can you legally do as far as limiting your practice is concerned?",
+    "options": {
+      "a": "massage only children",
+      "b": "massage only women",
+      "c": "massage only the elderly",
+      "d": "all of the above (as long as you are consistent) - d. all of the above (as long as you are consistent)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 13,
+    "question": "Which is deep to Gastrocnemius, and a stronger plantarflexor?",
+    "options": {
+      "a": "popliteus",
+      "b": "soleus",
+      "c": "tibialis anterior",
+      "d": "plantaris"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 14,
+    "question": "What is the lid of the Yin organs?",
+    "options": {
+      "a": "liver",
+      "b": "lung",
+      "c": "spleen",
+      "d": "kidney"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 15,
+    "question": "Which controls Wei Qi?",
+    "options": {
+      "a": "lung",
+      "b": "spleen",
+      "c": "bladder",
+      "d": "triple energizer"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 16,
+    "question": "Which best describes Yin organs?",
+    "options": {
+      "a": "solid and storing",
+      "b": "solid and excreting",
+      "c": "hollow and storing",
+      "d": "hollow and excreting"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 17,
+    "question": "Which meridian goes through the anterior portion of Vastus Medialis?",
+    "options": {
+      "a": "liver",
+      "b": "spleen",
+      "c": "kidney",
+      "d": "stomach"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 18,
+    "question": "The retinaculum and the ITB are examples of which?",
+    "options": {
+      "a": "muscles",
+      "b": "tendons",
+      "c": "fascia"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "fascia"
+  },
+  {
+    "id": 19,
+    "question": "Which muscles does the Lung meridian run through?",
+    "options": {
+      "a": "triceps and brachioradialis",
+      "b": "pectoralis major and biceps brachii pectoralis major and biceps brachii"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "pectoralis major and biceps brachii"
+  },
+  {
+    "id": 20,
+    "question": "If you friction the lateral epicondyle of the humerus, which muscle would you be addressing?",
+    "options": {
+      "a": "pronator teres",
+      "b": "flexor carpi ulnaris",
+      "c": "extensor carpi radialis brevis carpi radialis brevis"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "extensor carpi radialis brevis"
+  },
+  {
+    "id": 21,
+    "question": "Which muscle supinates?",
+    "options": {
+      "a": "biceps brachii",
+      "b": "brachialis",
+      "c": "triceps brachii"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 22,
+    "question": "Which muscle is most superior on the axilary border of the scapula?",
+    "options": {
+      "a": "teres major",
+      "b": "teres minor",
+      "c": "serratus anterior"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 23,
+    "question": "Which muscle best counteracts posturally round shoulders?",
+    "options": {
+      "a": "pec minor",
+      "b": "rhomboids",
+      "c": "ant. deltoid",
+      "d": "infraspinatus"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 24,
+    "question": "Where do fight or flight impulses come from in the vertebral column?",
+    "options": {
+      "a": "thoracolumbar",
+      "b": "craniosacral",
+      "c": "cervical"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 25,
+    "question": "Stimulation of the musculocutaneous nerve causes which action?",
+    "options": {
+      "a": "flexion of elbow",
+      "b": "extension of elbow",
+      "c": "dorsiflexion of ankle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 26,
+    "question": "A runner has pain in his hip and knee when flexing and extending the thigh (when running). Which muscle is involved?",
+    "options": {
+      "a": "rectus femoris",
+      "b": "gastrocnemius",
+      "c": "vastus medialis",
+      "d": "vastus lateralis"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 27,
+    "question": "How would you treat Fibrous Ankylosis?",
+    "options": {
+      "a": "friction",
+      "b": "vibration",
+      "c": "effleurage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 28,
+    "question": "Which connects muscles to bones?",
+    "options": {
+      "a": "ligaments",
+      "b": "tendons",
+      "c": "fascia"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 29,
+    "question": "Which of the following is part of the Pes Anserine?",
+    "options": {
+      "a": "rectus femoris",
+      "b": "gracilis",
+      "c": "semimembranosis"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 30,
+    "question": "Which would be the best treatment for acute Plantarfascitis?",
+    "options": {
+      "a": "friction",
+      "b": "heat",
+      "c": "ice and rest (because its acute) rest (because its acute)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "ice and rest (because its acute)"
+  },
+  {
+    "id": 31,
+    "question": "Which would be the least effective muscle to address for Plantarfascitis?",
+    "options": {
+      "a": "hamstrings",
+      "b": "gastrocnemius",
+      "c": "tibialis anterior",
+      "d": "tibialis posterior"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 32,
+    "question": "A major Lymph Plexus is found where?",
+    "options": {
+      "a": "foot",
+      "b": "eyes",
+      "c": "brainstem",
+      "d": "spinal cord"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 33,
+    "question": "The conception vessel rules which?",
+    "options": {
+      "a": "yin organs",
+      "b": "the yang organs",
+      "c": "neither"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 34,
+    "question": "Which muscle does not assist with respiration?",
+    "options": {
+      "a": "scalenes",
+      "b": "external intercostals",
+      "c": "rhomboids"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "rhomboids"
+  },
+  {
+    "id": 35,
+    "question": "Which is a phasic muscle?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "scalenes",
+      "c": "levator scapula"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 36,
+    "question": "The Vagus nerve does which to the heart rate?",
+    "options": {
+      "a": "increases the heart rate",
+      "b": "decreases the heart rate",
+      "c": "no effect on heart rate heart rate"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 37,
+    "question": "Where are Erythrocytes formed?",
+    "options": {
+      "a": "red bone marrow",
+      "b": "liver",
+      "c": "yellow bone marrow A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 38,
+    "question": "Which meridians would you address first in treating him?",
+    "options": {
+      "a": "HT/SI",
+      "b": "LU/LI",
+      "c": "ST/SP A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 39,
+    "question": "Which is the mother of the involved element?",
+    "options": {
+      "a": "earth",
+      "b": "metal",
+      "c": "wood",
+      "d": "fire A man has been smoking for 30 years. He wakes up repeatedly at 3am. He wants to stop taking laxatives and he has a heavy chest cough."
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 40,
+    "question": "What other symptoms might he have?",
+    "options": {
+      "a": "premature balding",
+      "b": "adult acne"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "adult acne"
+  },
+  {
+    "id": 41,
+    "question": "What controls the Lungs?",
+    "options": {
+      "a": "the heart",
+      "b": "the spleen",
+      "c": "the kidney"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 42,
+    "question": "A muscle is contracted and has constricted blood flow. How might the skin feel in that area?",
+    "options": {
+      "a": "cool",
+      "b": "flaccid",
+      "c": "warm"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 43,
+    "question": "What type or category does tapping and hacking fall into?",
+    "options": {
+      "a": "petrissage",
+      "b": "friction",
+      "c": "tapotement"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "tapotement"
+  },
+  {
+    "id": 44,
+    "question": "Which neurotransmitter is released at the neuromuscular junction?",
+    "options": {
+      "a": "acetylcholine",
+      "b": "seratonin",
+      "c": "epiniphrin"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 46,
+    "question": "How do you put the hamstrings on the slack?",
+    "options": {
+      "a": "client prone with bolster under the ankles",
+      "b": "client prone with bolster under the hips",
+      "c": "client supine with bolster under the ankles a. client prone with bolster under the ankles"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 47,
+    "question": "A client has low back pain. What do you do?",
+    "options": {
+      "a": "give them aspirin",
+      "b": "position them prone with a bolster under the hips",
+      "c": "position them prone with a bolster under the chest - b. position them prone with a bolster under the hips"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 48,
+    "question": "Which is a saddle joint?",
+    "options": {
+      "a": "acromioclavicular joint",
+      "b": "first carpometacarpal joint carpometacarpal joint"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "first carpometacarpal joint"
+  },
+  {
+    "id": 49,
+    "question": "If there is pain with active movement, but not with passive movement, what does this probably indicate?",
+    "options": {
+      "a": "a joint/ligament issue",
+      "b": "a muscle/tendon issue issue"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "a muscle/tendon issue"
+  },
+  {
+    "id": 50,
+    "question": "Which of these does NOT adduct?",
+    "options": {
+      "a": "gracilis",
+      "b": "pec major",
+      "c": "latissimus dorsi",
+      "d": "soleus"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "soleus"
+  },
+  {
+    "id": 51,
+    "question": "A carpenter has pain around his olecranon process. Which muscle is involved?",
+    "options": {
+      "a": "biceps brachii",
+      "b": "deltoid",
+      "c": "triceps brachii"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "triceps brachii"
+  },
+  {
+    "id": 52,
+    "question": "What is required by New York State law?",
+    "options": {
+      "a": "to renew your massage license registration every three years",
+      "b": "to renew your license every ten years",
+      "c": "there is no need to renew massage license registration every three years"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 53,
+    "question": "In the third trimester of pregnancy, which is the best position for massage?",
+    "options": {
+      "a": "supine",
+      "b": "prone",
+      "c": "left lateral",
+      "d": "right lateral"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 54,
+    "question": "The PNS (Peripheral Nervous System) can be divided into which groups?",
+    "options": {
+      "a": "afferent/efferent",
+      "b": "somatic/autonomic"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 55,
+    "question": "Which attaches to the greater trochanter?",
+    "options": {
+      "a": "gluteus medius",
+      "b": "TFL",
+      "c": "gluteus maximus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 56,
+    "question": "If client had Subdeltoid Bursitis, which movement would cause the most pain?",
+    "options": {
+      "a": "abduction",
+      "b": "adduction",
+      "c": "extension d. lateral rotation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 57,
+    "question": "It's your first time treating a client who has Fibromyalgia. What should you avoid?",
+    "options": {
+      "a": "deep work",
+      "b": "light work",
+      "c": "abdominal work"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 58,
+    "question": "What does light effleurage do?",
+    "options": {
+      "a": "reduces arterial flow",
+      "b": "reduces venous return",
+      "c": "increase flow in superficial capillaries increase flow in superficial capillaries"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "increase flow in superficial capillaries"
+  },
+  {
+    "id": 59,
+    "question": "What are the four types of tissue? Connective, Epithelial, Muscle and Nerve",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "-"
+  },
+  {
+    "id": 60,
+    "question": "Which tissue is Avascular and has no nerve endings?",
+    "options": {
+      "a": "adipose",
+      "b": "bone",
+      "c": "cartilage",
+      "d": "muscle"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 61,
+    "question": "Which muscle depresses the ribs to help in respiration?",
+    "options": {
+      "a": "diaphragm",
+      "b": "serratus posterior superior",
+      "c": "serratus posterior inferior posterior inferior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "serratus posterior inferior"
+  },
+  {
+    "id": 62,
+    "question": "Which stroke would be best to find subepidermal adhesions?",
+    "options": {
+      "a": "skin rolling",
+      "b": "tapotement",
+      "c": "cupping"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 63,
+    "question": "Heavy tapotement or prolonged stimulation will cause which to be released?",
+    "options": {
+      "a": "epinephrin",
+      "b": "cortisols",
+      "c": "endorphins (because it says prolonged - A would be short-term) would be short-term)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. endorphins (because it says prolonged - A"
+  },
+  {
+    "id": 64,
+    "question": "An athlete injured his Gracilis muscle. What would be the best exercise to strengthen it?",
+    "options": {
+      "a": "working with weights",
+      "b": "running",
+      "c": "squeezing a pillow between the knees and thighs - c. squeezing a pillow between the knees and thighs"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 65,
+    "question": "During the healing process, deep massage will tend to do which?",
+    "options": {
+      "a": "reverse the healing process",
+      "b": "eliminate scar tissue",
+      "c": "aid the healing process tissue"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 66,
+    "question": "The Linea Alba is found where?",
+    "options": {
+      "a": "abdomen",
+      "b": "spine",
+      "c": "cell membrane"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 67,
+    "question": "Oxygenated blood is found where?",
+    "options": {
+      "a": "capillaries",
+      "b": "left ventricle of the heart",
+      "c": "right ventricle of the heart of the heart"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 68,
+    "question": "Which stroke is best used for warming tissue and preparing it for deeper work?",
+    "options": {
+      "a": "tapotement",
+      "b": "effleurage",
+      "c": "petrissage"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 69,
+    "question": "Sebum is a fluid of which system?",
+    "options": {
+      "a": "reproductive",
+      "b": "digestive",
+      "c": "integumentary"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "integumentary"
+  },
+  {
+    "id": 70,
+    "question": "A massage therapist is at greatest risk by not doing which?",
+    "options": {
+      "a": "following universal precautions",
+      "b": "washing their hands precautions"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 71,
+    "question": "To evaluate the range of motion of a joint, what would you have the client do?",
+    "options": {
+      "a": "therapist performs passive range of motion",
+      "b": "instruct the client to do it actively",
+      "c": "resisted exercise it actively"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 72,
+    "question": "Which is not considered unprofessional behavior by a massage therapist?",
+    "options": {
+      "a": "not wearing a nametag during massage",
+      "b": "poor or improper draping",
+      "c": "talking to the client"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "talking to the client"
+  },
+  {
+    "id": 73,
+    "question": "According to 5-element theory, the energy cycle begins with which meridian?",
+    "options": {
+      "a": "lung",
+      "b": "SI",
+      "c": "bladder",
+      "d": "kidney"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 74,
+    "question": "Yin is best described as which?",
+    "options": {
+      "a": "cold and soft",
+      "b": "deep and penetrating"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 75,
+    "question": "A client is recovering from Colle's Fracture. What is the best treatment after the cast is removed?",
+    "options": {
+      "a": "kneading of the hand and fingers",
+      "b": "gentle range of motion to the shoulder kneading of the hand and fingers"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 76,
+    "question": "A 48-year-old woman is suffering from irritability, irregular menses, insomnia, and night sweats a Western assessment could be:",
+    "options": {
+      "a": "pregnancy",
+      "b": "menopause",
+      "c": "high blood pressure"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 77,
+    "question": "Which meridian is probably most affected?",
+    "options": {
+      "a": "KI/LR/HT",
+      "b": "SP/ST/BL",
+      "c": "PC/KI/SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 78,
+    "question": "What other symptoms might be present in this client?",
+    "options": {
+      "a": "water retention",
+      "b": "bruising",
+      "c": "hot flashes"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "hot flashes"
+  },
+  {
+    "id": 79,
+    "question": "In Reflexology, the Large Intestine would be found where?",
+    "options": {
+      "a": "left foot only",
+      "b": "right foot only",
+      "c": "both feet",
+      "d": "only on the dorsal side of the foot feet"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 80,
+    "question": "Acid is important in the breakdown of which?",
+    "options": {
+      "a": "proteins",
+      "b": "fats",
+      "c": "carbohydrates"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 81,
+    "question": "What happens in Depolarization?",
+    "options": {
+      "a": "sodium ions rush in",
+      "b": "potassium ions rush in",
+      "c": "changes a positive to negative charge sodium ions rush in"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 82,
+    "question": "A first-time client says they have Diabetes Mellitus. What would you have them do?",
+    "options": {
+      "a": "ask permission to contact their doctor",
+      "b": "refer them elsewhere",
+      "c": "have them get a prescription for massage a. ask permission to contact their doctor"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 83,
+    "question": "A client has a Grande Mal Seizure during the massage. What do you do?",
+    "options": {
+      "a": "restrain or protect the client with pillows and time the length of the seizure",
+      "b": "get them a glass of water",
+      "c": "call 911 with pillows and time the length of the seizure"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 84,
+    "question": "Massage therapists are not legally allowed to do which?",
+    "options": {
+      "a": "use battery-operated vibrators on clients",
+      "b": "use electrical stimulation on clients",
+      "c": "recommend exercises stimulation on clients"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 85,
+    "question": "In the 5-element theory, which meridian is associated with 3- 5am?",
+    "options": {
+      "a": "LU",
+      "b": "HT",
+      "c": "LR",
+      "d": "SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 86,
+    "question": "Which meridian is associated with Tensor Fascia Latae?",
+    "options": {
+      "a": "LR",
+      "b": "GB",
+      "c": "ST"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 87,
+    "question": "Where would you find the Small Intestine meridian? epicondyle of the humerus",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Medial"
+  },
+  {
+    "id": 88,
+    "question": "If you're palpating the vertebral border of the scapula, which muscle would you tend to work?",
+    "options": {
+      "a": "rhomboids",
+      "b": "teres minor",
+      "c": "infraspinatous"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 89,
+    "question": "When is deep abdominal work good for a client?",
+    "options": {
+      "a": "client is trying to lose weight",
+      "b": "stomach cramps",
+      "c": "client has an anterior pelvic tilt an anterior pelvic tilt"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "client has an anterior pelvic tilt"
+  },
+  {
+    "id": 90,
+    "question": "A woman on a treadmill at an 8% incline has pain in the buttocks. Which muscle is most likely affected?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "quadratus lumborum",
+      "c": "tensor fascia latae"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 91,
+    "question": "Which meridian is associated with Autumn?",
+    "options": {
+      "a": "ST",
+      "b": "LU",
+      "c": "HT"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 92,
+    "question": "Which muscle, when in spasm, will raise the iliac crest? Lumborun (hip hiker)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Quadratus"
+  },
+  {
+    "id": 93,
+    "question": "Compression is least effective for producing which of the following?",
+    "options": {
+      "a": "relaxation",
+      "b": "an effective immune response",
+      "c": "assessing clients' muscle tone effective immune response"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 94,
+    "question": "Which muscles make up the Pes Anserine? Gracilis, Semitendinosis",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Sartorius,"
+  },
+  {
+    "id": 95,
+    "question": "If you massage Tibialis Anterior, which meridian are you working?",
+    "options": {
+      "a": "GB",
+      "b": "SP",
+      "c": "ST",
+      "d": "KI"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 96,
+    "question": "Which meridian is associated with Adductor Magnus?",
+    "options": {
+      "a": "LR",
+      "b": "KI",
+      "c": "ST",
+      "d": "SP"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 97,
+    "question": "After applying friction to a muscle, the area may become red and puffy because of which?",
+    "options": {
+      "a": "release of acetylcholine",
+      "b": "release of histamines histamines"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "release of histamines"
+  },
+  {
+    "id": 98,
+    "question": "How many hours of continuing education are required for registration of your license?",
+    "options": {
+      "a": "30 hours",
+      "b": "15 hours",
+      "c": "six hours",
+      "d": "none"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "none"
+  },
+  {
+    "id": 99,
+    "question": "Shin splints would involve which muscle?",
+    "options": {
+      "a": "soleus",
+      "b": "tibialis anterior",
+      "c": "peroneus longus"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 100,
+    "question": "Friction is best used on which of these?",
+    "options": {
+      "a": "muscle belly",
+      "b": "ligaments"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "ligaments"
+  },
+  {
+    "id": 101,
+    "question": "According to the generation cycle, which element should be tonified to support the deficiency? (for the 55-yr-old man with the metal problem)",
+    "options": {
+      "a": "earth (tonify the mother to support the deficiency)",
+      "b": "fire",
+      "c": "water",
+      "d": "wood support the deficiency)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 102,
+    "question": "Client records should be kept for how long?",
+    "options": {
+      "a": "six years",
+      "b": "ten years",
+      "c": "one year",
+      "d": "not at all"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 103,
+    "question": "Which of these does the greatest amount of absorption during the digestive process?",
+    "options": {
+      "a": "stomach",
+      "b": "small intestine",
+      "c": "large intestine"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 104,
+    "question": "A client's shoulder has restricted medial rotation. Which muscle is probably the cause?",
+    "options": {
+      "a": "infraspinatous",
+      "b": "supraspinatous",
+      "c": "pec major"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 105,
+    "question": "Which muscle causes foot drop?",
+    "options": {
+      "a": "tib anterior",
+      "b": "tib posterior",
+      "c": "gastrocnemius"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 106,
+    "question": "What is the point 1.5 cun below the navel?",
+    "options": {
+      "a": "CV 6",
+      "b": "CV 4",
+      "c": "CV 8"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 107,
+    "question": "A client has an injury in the subacute phase. He says he can handle deep work. What is the best treatment to increase the joint mobility?",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "friction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "friction"
+  },
+  {
+    "id": 108,
+    "question": "Which meridian is located on the midsagital plane of the body?",
+    "options": {
+      "a": "GB",
+      "b": "governing vessel",
+      "c": "BL"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 109,
+    "question": "When standing, what causes the venous system to flow properly, considering the effects of gravity?",
+    "options": {
+      "a": "skeletal contractions",
+      "b": "valves",
+      "c": "poop"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 110,
+    "question": "When frictioning the medial epicondyle of the humerus, which muscle group will be affected most?",
+    "options": {
+      "a": "wrist flexors",
+      "b": "wrist extensors",
+      "c": "the intrinsic flexors of the hand flexors"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 111,
+    "question": "With which condition would you exercise the most caution?",
+    "options": {
+      "a": "constipation",
+      "b": "recovering from a sprain",
+      "c": "client is on blood thinners (circulatory problem, prone to (circulatory problem, prone to clotting)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. client is on blood thinners"
+  },
+  {
+    "id": 112,
+    "question": "A female client in the late stages of cancer has edema in both legs. How should you perform the massage?",
+    "options": {
+      "a": "proximal to distal (strategy, not direction of stroke)",
+      "b": "distal to proximal",
+      "c": "it doesn't matter (strategy, not direction of stroke)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 113,
+    "question": "In Reflexology, the big toe represents which?",
+    "options": {
+      "a": "the eyes",
+      "b": "the heart",
+      "c": "the head"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "the head"
+  },
+  {
+    "id": 114,
+    "question": "What does the \"I\" in \"RICE\" stand for?",
+    "options": {
+      "a": "irritation",
+      "b": "ice",
+      "c": "inflammation"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 115,
+    "question": "Where does protein absorption start?",
+    "options": {
+      "a": "stomach",
+      "b": "mouth",
+      "c": "small intestine (because ST only digests, doesn't absorb digests, doesn't absorb proteins)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. small intestine (because ST only"
+  },
+  {
+    "id": 116,
+    "question": "A client you've been seeing regularly is diagnosed with Lupus in the subacute stage, and their doctor says massage is indicated. What would you do?",
+    "options": {
+      "a": "massage as usual",
+      "b": "massage only the head and the feet",
+      "c": "don't massage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 117,
+    "question": "What's the best description of energy, as opposed to physical mass?",
+    "options": {
+      "a": "jing",
+      "b": "yin",
+      "c": "yang"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "yang"
+  },
+  {
+    "id": 118,
+    "question": "A woman steps forward with her right foot and her left hip drops upon this movement. Which muscle is weak?",
+    "options": {
+      "a": "gluteus maximus",
+      "b": "gluteus medius (stabilizer)",
+      "c": "iliopsoas",
+      "d": "rectus femoris (stabilizer)"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 119,
+    "question": "You have a new client that is a sufferer of Type I Diabetes. What do you need to look out for?",
+    "options": {
+      "a": "retinopathy sites",
+      "b": "general integrity of the skin",
+      "c": "condition of skin/hair of the skin"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 120,
+    "question": "What do you tell a client with Type II Diabetes to do after a massage?",
+    "options": {
+      "a": "use a hot pack",
+      "b": "use a cold pack",
+      "c": "look out for signs of hypoglycemia out for signs of hypoglycemia"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "look out for signs of hypoglycemia"
+  },
+  {
+    "id": 121,
+    "question": "A client has jaw clicking and pain with chewing. Which muscles do you work?",
+    "options": {
+      "a": "buccinator and orbicularis orris",
+      "b": "SCM and scalenes",
+      "c": "masseter and temporalis temporalis"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "masseter and temporalis"
+  },
+  {
+    "id": 122,
+    "question": "What is the name of the lymph node located in front of the ear?",
+    "options": {
+      "a": "facial",
+      "b": "parotid",
+      "c": "occipital"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 123,
+    "question": "Where does the thoracic duct empty into?",
+    "options": {
+      "a": "lymph nodes in the armpit",
+      "b": "inferior vena cava",
+      "c": "subclavian vein (left side drains ¾ of the lymph to the subclavian vein)",
+      "d": "hapatic duct drains ¾ of the lymph to the subclavian vein)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 124,
+    "question": "What is the correct path of blood flow through the arteries?",
+    "options": {
+      "a": "axillary, subclavian, brachial",
+      "b": "axillary, brachial, subclavian",
+      "c": "subclavian, axillary, brachial axillary, brachial"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "subclavian, axillary, brachial"
+  },
+  {
+    "id": 125,
+    "question": "If the Ulnar Nerve is weak, which action would be difficult?",
+    "options": {
+      "a": "spreading the fingers",
+      "b": "opposing the thumb",
+      "c": "extending the wrist fingers"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 126,
+    "question": "Which muscle flexes the hand?",
+    "options": {
+      "a": "extensor carpi radialis brevis",
+      "b": "pronator quadratus",
+      "c": "palmaris longus (they really meant, which muscle flexes the which muscle flexes the wrist)"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. palmaris longus (they really meant,"
+  },
+  {
+    "id": 127,
+    "question": "Where do arteries and veins meet?",
+    "options": {
+      "a": "venules",
+      "b": "capillaries",
+      "c": "arterioles"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 128,
+    "question": "What is the state of a muscle in normal posture?",
+    "options": {
+      "a": "tonic",
+      "b": "isometric",
+      "c": "isotonic",
+      "d": "eccentric"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 129,
+    "question": "Which of these muscles has the most fast-twitch fibers?",
+    "options": {
+      "a": "quadriceps",
+      "b": "iliopsoas",
+      "c": "erector spinae",
+      "d": "quadratus lumborum"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 130,
+    "question": "In a left hemiplegic with a waddling gate, what is the state of the right side?",
+    "options": {
+      "a": "spastic",
+      "b": "spasm",
+      "c": "flaccid",
+      "d": "normal muscle tone tone"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "normal muscle tone"
+  },
+  {
+    "id": 131,
+    "question": "Demyelination of white matter in the CNS is characteristic of which disorder?",
+    "options": {
+      "a": "muscular distrophy",
+      "b": "multiple sclerosis",
+      "c": "parkinson's disease",
+      "d": "stroke"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 132,
+    "question": "Which of the following is characteristic of Parkinson's Disease?",
+    "options": {
+      "a": "fine tremors and rigidity",
+      "b": "fine tremors and flaccidity",
+      "c": "coarse tremors and rigidity",
+      "d": "coarse tremors and flaccidity tremors and rigidity"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 133,
+    "question": "Which disease is due to a significant loss of neurotransmitter in the brain?",
+    "options": {
+      "a": "Parkinson's disease",
+      "b": "muscular distrophy"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 134,
+    "question": "Which structure passes through the intervertebral foramina of the thoracic vertebrae?",
+    "options": {
+      "a": "vertebral arteries",
+      "b": "spinal nerves",
+      "c": "spinal cord"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 135,
+    "question": "How many pairs of spinal nerves do we have?",
+    "options": {
+      "a": "12",
+      "b": "24",
+      "c": "31",
+      "d": "62"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 136,
+    "question": "Which of these is a proximal carpal?",
+    "options": {
+      "a": "lunate",
+      "b": "hamate",
+      "c": "trapezoid",
+      "d": "capitate"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 137,
+    "question": "What is the shaft of a long bone called?",
+    "options": {
+      "a": "epiphesis",
+      "b": "diaphesis",
+      "c": "medullary cavity"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 138,
+    "question": "Which kind of bones are the phalanges of the feet?",
+    "options": {
+      "a": "long bones",
+      "b": "short bones",
+      "c": "sesamoid",
+      "d": "cuboid"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 139,
+    "question": "Which articulates with the occipital condyles?",
+    "options": {
+      "a": "axis",
+      "b": "occipital protuberance",
+      "c": "mastoid",
+      "d": "atlas"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "atlas"
+  },
+  {
+    "id": 140,
+    "question": "What is the action of Latissimus Dorsi?",
+    "options": {
+      "a": "lateral rotation of the shoulder",
+      "b": "flexion of the shoulder",
+      "c": "extension of the neck",
+      "d": "depression of the shoulder girdle depression of the shoulder girdle"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "depression of the shoulder girdle"
+  },
+  {
+    "id": 141,
+    "question": "Which of these muscles are least involved in respiration?",
+    "options": {
+      "a": "pelvic floor muscles",
+      "b": "deltoids",
+      "c": "intercostals",
+      "d": "abdominals"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 142,
+    "question": "Muscles of quiet respiration are:",
+    "options": {
+      "a": "external intercostals (plus diaphragm)",
+      "b": "external intercostals and scalenes",
+      "c": "external intercostals, scalenes, rhomboids",
+      "d": "external intercostals, scalenes, rhomboids and SCM - a. external intercostals (plus diaphragm)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 143,
+    "question": "The diaphragm is responsible for active respiration during which?",
+    "options": {
+      "a": "inhalation",
+      "b": "exhalation",
+      "c": "neither"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 144,
+    "question": "When the head or neck is flexed, which muscle is most involved in extension of head/neck?",
+    "options": {
+      "a": "trapezius",
+      "b": "SCM",
+      "c": "Rhomboids"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 145,
+    "question": "What is the best position to palpate the right SCM?",
+    "options": {
+      "a": "rotation of head to left side",
+      "b": "rotation of head to right side",
+      "c": "flexion of the neck",
+      "d": "extension of the neck to left side"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 146,
+    "question": "Which is not considered professional practice of a licensed massage therapist in attracting clients?",
+    "options": {
+      "a": "holding a raffle for a ski trip",
+      "b": "passing business cards out in line at the supermarket",
+      "c": "advertising on TV",
+      "d": "giving gift certificates to regular clients passing business cards out in line at the supermarket"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 147,
+    "question": "Which of the following is not a type of membrane?",
+    "options": {
+      "a": "fibrous",
+      "b": "serrous",
+      "c": "synovial",
+      "d": "mucus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 148,
+    "question": "The body's immediate reaction to joint dislocation is:",
+    "options": {
+      "a": "muscle spasm",
+      "b": "white blood cell proliferation",
+      "c": "fascial restriction proliferation"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 149,
+    "question": "The least important function of skin is:",
+    "options": {
+      "a": "absorption",
+      "b": "protection",
+      "c": "heat regulation",
+      "d": "sensation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 150,
+    "question": "Which of the following is an inappropriate treatment for a Migraine?",
+    "options": {
+      "a": "heat packs to the head",
+      "b": "cold packs to the head",
+      "c": "foot and hand work head"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 151,
+    "question": "A client has numbness in their foot. What is the best stroke to use?",
+    "options": {
+      "a": "trigger point",
+      "b": "tapotement",
+      "c": "friction",
+      "d": "effleurage"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "effleurage"
+  },
+  {
+    "id": 152,
+    "question": "For an HIV-positive client that bruises easily, has Neuralgia in the legs, and is concerned about circulation to the legs, which is the most appropriate treatment?",
+    "options": {
+      "a": "effleurage",
+      "b": "polarity therapy",
+      "c": "friction",
+      "d": "tapotement"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 153,
+    "question": "Conjunctivitis is associated with which organ? (eastern)",
+    "options": {
+      "a": "heart",
+      "b": "lung",
+      "c": "liver",
+      "d": "spleen"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 154,
+    "question": "A client has pain radiating down the back of the leg, and numbness. What could be the cause?",
+    "options": {
+      "a": "herniated annulus fibrosis",
+      "b": "Osgoode-Schlatter's disease",
+      "c": "chondromalacia patella annulus fibrosis"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 155,
+    "question": "Which is the best technique to find trigger points?",
+    "options": {
+      "a": "short gliding strokes",
+      "b": "deep petrissage",
+      "c": "effleurage"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 156,
+    "question": "Client has dark circles under the eyes and low back ache. Which meridians would you work and how?",
+    "options": {
+      "a": "BL/KI tonify",
+      "b": "ST/SP dispersal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 157,
+    "question": "Hearing loss in both ears would indicate a problem with which Yin meridian?",
+    "options": {
+      "a": "KI",
+      "b": "LR",
+      "c": "SP",
+      "d": "HT"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 158,
+    "question": "A shortened Iliopsoas is usually associated with which condition?",
+    "options": {
+      "a": "lordosis with anterior pelvic tilt",
+      "b": "lordosis with posterior pelvic tilt",
+      "c": "decreased lumbar curve with posterior pelvic tilt - a. lordosis with anterior pelvic tilt"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 159,
+    "question": "The biggest concern with a hypertensive client during treatment is:",
+    "options": {
+      "a": "keep limbs elevated",
+      "b": "avoid or be careful with deep abdominal massage - b. avoid or be careful with deep abdominal massage"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 160,
+    "question": "If a client has pain with both passive and active movement, this might indicate pathology in which?",
+    "options": {
+      "a": "ligament or joint",
+      "b": "superficial fascia",
+      "c": "muscle and tendon"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 161,
+    "question": "The best treatment for Chronic Achilles Tendonitis is:",
+    "options": {
+      "a": "dorsiflex the foot and apply friction",
+      "c": "plantarflex the foot and apply effleurage and petrissage -"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "dorsiflex the foot and apply friction"
+  },
+  {
+    "id": 162,
+    "question": "Which is the best treatment for chronic inflammation of a tendon?",
+    "options": {
+      "a": "friction followed by ice",
+      "b": "friction",
+      "c": "passive range of motion by ice"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 163,
+    "question": "A client's medial elbow is damaged in a motorcycle accident. Which meridians are affected?",
+    "options": {
+      "a": "HT/ SI",
+      "b": "TE/ PC",
+      "c": "LU/ LI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 164,
+    "question": "The best technique for treating or massaging the tendon of a contracted muscle is:",
+    "options": {
+      "a": "effleurage and ROM",
+      "b": "friction",
+      "c": "kneading"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 165,
+    "question": "What is the best or optimal time for TE function?",
+    "options": {
+      "a": "9-11pm",
+      "b": "7-9am"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 166,
+    "question": "Which organ controls Spleen?",
+    "options": {
+      "a": "LR",
+      "b": "HT",
+      "c": "KI"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 167,
+    "question": "Which direction does Yin energy flow in eastern anatomical position?",
+    "options": {
+      "a": "inferior to superior",
+      "b": "superior to inferior",
+      "c": "medial to lateral"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 168,
+    "question": "What element feeds Earth?",
+    "options": {
+      "a": "fire",
+      "b": "wood",
+      "c": "water",
+      "d": "metal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 169,
+    "question": "A client presents with one lower limb entirely swollen. This would indicate pathology of which organ? (Western)",
+    "options": {
+      "a": "LR",
+      "b": "HT",
+      "c": "KI",
+      "d": "occluded blood vessel (all others are systemic) - d. occluded blood vessel (all others are systemic)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 170,
+    "question": "A client has edema. How do you work their limb?",
+    "options": {
+      "a": "distal to proximal",
+      "b": "work over the edema centripetally",
+      "c": "proximal to distal, centripetally proximal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 171,
+    "question": "Pain in the lateral leg indicates which meridian?",
+    "options": {
+      "a": "GB",
+      "b": "BL",
+      "c": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 172,
+    "question": "Which structure is located inferior to the clavicle where Pec Major and Anterior Deltoid meet?",
+    "options": {
+      "a": "coracoid process",
+      "b": "acromion process",
+      "c": "coranoid process"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 173,
+    "question": "Dryness is associated with which Yin organ?",
+    "options": {
+      "a": "LU",
+      "b": "KI",
+      "c": "SP",
+      "d": "LR"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 174,
+    "question": "Which is NOT a rotator cuff muscle?",
+    "options": {
+      "a": "infraspinatus",
+      "b": "supraspinatus",
+      "c": "subscapularis",
+      "d": "teres major (the other rotator is teres minor) d. teres major (the other rotator is teres minor)"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 175,
+    "question": "The actions of the wrist include flexion, extension, and which?",
+    "options": {
+      "a": "supination/ pronation",
+      "b": "abduction/adduction",
+      "c": "medial rotation / lateral rotation abduction/adduction"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 176,
+    "question": "Which muscle attaches to the ITB?",
+    "options": {
+      "a": "TFL",
+      "b": "gluteus medius",
+      "c": "iliopsoas"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 177,
+    "question": "If the Sciatic nerve is impinged, which muscle is probably indicated?",
+    "options": {
+      "a": "piriformis",
+      "b": "gluteus maximus",
+      "c": "gluteus medius"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 178,
+    "question": "Which of these best describes petrissage?",
+    "options": {
+      "a": "a gliding stroke",
+      "b": "a deep circular stroke",
+      "c": "vertical lifting stroke stroke"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "vertical lifting stroke"
+  },
+  {
+    "id": 179,
+    "question": "Best stroke for warming tissue for more specific work:",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "friction",
+      "d": "tapotement"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 180,
+    "question": "Tapotement is good for pre-event treatment because:",
+    "options": {
+      "a": "breaks down adhesions",
+      "b": "stimulates nerves",
+      "c": "brings nutrition to tissue and relieves fatigue b. stimulates nerves"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 181,
+    "question": "A runner has a cramp in her Gastrocnemius. The best method to relieve the cramp is:",
+    "options": {
+      "a": "compression",
+      "b": "aggressive stretching",
+      "c": "trigger point work",
+      "d": "friction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 182,
+    "question": "The meeting point of the three Yin meridians on the leg is:",
+    "options": {
+      "a": "CV-6",
+      "b": "ST-36",
+      "c": "SP-6",
+      "d": "KI-8"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 183,
+    "question": "If you feel a lump on your client and you're not sure if it's muscular, what do you do?",
+    "options": {
+      "a": "friction the lump",
+      "b": "continue the massage and don't mention it to the client, and look for changes during the next session",
+      "c": "work around the lump, mention it to the client, and suggest the lump, mention it to the client, and suggest the client get it checked out"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. work around the"
+  },
+  {
+    "id": 184,
+    "question": "Which of these can you say about massage?",
+    "options": {
+      "a": "reduces cellulite, promotes weight loss",
+      "b": "increases muscle power and strength",
+      "c": "helps promote improved circulation helps promote improved circulation"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "helps promote improved circulation"
+  },
+  {
+    "id": 185,
+    "question": "In which abdominal quadrant is the Liver located?",
+    "options": {
+      "a": "upper right",
+      "b": "lower right",
+      "c": "upper left",
+      "d": "lower left"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 186,
+    "question": "Which gland is associated with Diabetes?",
+    "options": {
+      "a": "pancreas",
+      "b": "thyroid",
+      "c": "pituitary"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 187,
+    "question": "Where are the Adrenals located in reference to the Kidneys?",
+    "options": {
+      "a": "medial",
+      "b": "lateral",
+      "c": "superior",
+      "d": "inferior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 188,
+    "question": "The point on the lateral big toe corresponds to which meridian?",
+    "options": {
+      "a": "LR",
+      "b": "SP",
+      "c": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 189,
+    "question": "Which of the following is an act of professional misconduct?",
+    "options": {
+      "a": "not keeping client records",
+      "b": "keeping client records confidential keeping client records"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 190,
+    "question": "Which describes the client's input on an intake form?",
+    "options": {
+      "a": "subjective",
+      "b": "objective",
+      "c": "assessment"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 191,
+    "question": "Abdominal vibration administered for constipation is meant to do all of the following except:",
+    "options": {
+      "a": "fatigue nerves",
+      "b": "stimulate nerves",
+      "c": "promote tissue fluid movement",
+      "d": "induce peristaltic action"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 192,
+    "question": "A client's Chiropractor wants your progress notes on the client. What do you do?",
+    "options": {
+      "a": "give them directly to the chiropractor",
+      "b": "don't give them at all",
+      "c": "get client's consent before releasing the notes c. get client's consent before releasing the notes"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 193,
+    "question": "Which is a common endangerment site?",
+    "options": {
+      "a": "sternal notch",
+      "b": "calcaneous",
+      "c": "patella"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 194,
+    "question": "During the refractory period, which of the following is true?",
+    "options": {
+      "a": "impulses are firing constantly",
+      "b": "impulses can be sent through the neuron",
+      "c": "impulses cannot be sent through the neuron c. impulses cannot be sent through the neuron"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 195,
+    "question": "A client has Migraines. Which meridians should you work?",
+    "options": {
+      "a": "LR/GB",
+      "b": "ST/SP",
+      "c": "BL/KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 196,
+    "question": "Which of these muscles is the easiest to palpate?",
+    "options": {
+      "a": "tibialis anterior",
+      "b": "tibialis posterior",
+      "c": "plantaris",
+      "d": "flexor digitorum longus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 197,
+    "question": "Which organ opens to the tip of the tongue?",
+    "options": {
+      "a": "HT",
+      "b": "ST",
+      "c": "SP",
+      "d": "LU"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 198,
+    "question": "Yin is best described as which?",
+    "options": {
+      "a": "hollow and dorsal",
+      "b": "scattered",
+      "c": "solid and ventral"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "solid and ventral"
+  },
+  {
+    "id": 199,
+    "question": "Which organ/meridian would be indicated with Eczema and Asthma?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Lung"
+  },
+  {
+    "id": 200,
+    "question": "For which condition would passive ROM not be effective or indicated?",
+    "options": {
+      "a": "piriformis syndrome",
+      "b": "simple sprain",
+      "c": "tendonitis",
+      "d": "acute rheumatoid arthritis rheumatoid arthritis"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "acute rheumatoid arthritis"
+  },
+  {
+    "id": 201,
+    "question": "A client has been diagnosed with whiplash in the last 24 hours (the injury happened then) an MD has prescribed massage. How would you work on them?",
+    "options": {
+      "a": "work the anterior neck with friction and ice",
+      "b": "start the treatment with traction",
+      "c": "wait until the acute phase is over before beginning neck work - beginning neck work"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "wait until the acute phase is over before beginning neck work -"
+  },
+  {
+    "id": 202,
+    "question": "Rocking your client stimulates which?",
+    "options": {
+      "a": "parasympathetic nervous system",
+      "b": "sympathetic nervous system parasympathetic nervous system"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 203,
+    "question": "Which action would be impossible to do with a completely severed Achilles Tendon?",
+    "options": {
+      "a": "dorsiflexion of foot",
+      "b": "plantarflexion",
+      "c": "inversion",
+      "d": "eversion"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 204,
+    "question": "Which meridian is a problem if the client has varicose veins?",
+    "options": {
+      "a": "SP",
+      "b": "HT",
+      "c": "LR",
+      "d": "KI"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 205,
+    "question": "While working the superior angle of the scapula, the client feels pain. Which muscle is indicated?",
+    "options": {
+      "a": "rhomboids",
+      "b": "levator scapula",
+      "c": "serratus anterior"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 206,
+    "question": "Which is true about effleurage strokes?",
+    "options": {
+      "a": "slow, superficial strokes are sedating and fast superficial strokes are stimulating",
+      "b": "slow superficial strokes are stimulating and fast superficial strokes are sedating and fast superficial strokes are stimulating"
+    },
+    "correct_option": null,
+    "correct_answer_text": "a. slow, superficial"
+  },
+  {
+    "id": 207,
+    "question": "A client has a healed laceration on their posterior thigh and they complain of tightness in the area. What is the best treatment?",
+    "options": {
+      "a": "effleurage",
+      "b": "petrissage",
+      "c": "cross fiber friction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "cross fiber friction"
+  },
+  {
+    "id": 208,
+    "question": "What is the most superficial muscle of the upper back?",
+    "options": {
+      "a": "trapezius",
+      "b": "latissimus dorsi",
+      "c": "rhomboids"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 209,
+    "question": "Which bone is part of the appendicular skeleton?",
+    "options": {
+      "a": "sacrum",
+      "b": "humerus",
+      "c": "skull",
+      "d": "Occiput"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 210,
+    "question": "What is the best way to stretch Gastrocnemius?",
+    "options": {
+      "a": "flexion of knee",
+      "b": "plantarflex foot, extend knee",
+      "c": "dorsiflex foot and extend knee (to stretch, always do opposite of the action)",
+      "d": "flex knee, dorsiflex foot and extend knee (to stretch, always do opposite of the action)"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 211,
+    "question": "A client has a knotting sensation in the Upper Traps and shoulders. There is also hypertonicity in the middle to upper thoracic region. The best treatment would be:",
+    "options": {
+      "a": "moxibustion",
+      "b": "tapotement",
+      "c": "trigger point therapy",
+      "d": "passive range of motion therapy"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 212,
+    "question": "Working on the Linea Alba one week after abdominal surgery should involve which?",
+    "options": {
+      "a": "friction",
+      "b": "relaxation massage and proximal lymphatic drainage - b. relaxation massage and proximal lymphatic drainage"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 213,
+    "question": "The most abundant tissue in the human body is:",
+    "options": {
+      "a": "muscle",
+      "b": "connective",
+      "c": "nervous",
+      "d": "epithelial"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 214,
+    "question": "Massage can best be described as enhancing/improving which systems?",
+    "options": {
+      "a": "digestive and respiratory",
+      "b": "lymphatic and respiratory",
+      "c": "urinary and digestive",
+      "d": "lymphatic and cardiovascular and cardiovascular"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "lymphatic and cardiovascular"
+  },
+  {
+    "id": 215,
+    "question": "When treating Edema in leg work in the following direction:",
+    "options": {
+      "a": "proximal - distal - proximal",
+      "b": "distal - proximal - distal - proximal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 216,
+    "question": "Where does the blood go after it leaves the digestive organs?",
+    "options": {
+      "a": "liver",
+      "b": "spleen",
+      "c": "kidneys",
+      "d": "heart"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 218,
+    "question": "Which is in the PNS?",
+    "options": {
+      "a": "cranial nerves",
+      "b": "white matter",
+      "c": "medulla",
+      "d": "brain stem"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 219,
+    "question": "A crescent-shaped ring of cartilage on the lateral or fibular side of the knee is:",
+    "options": {
+      "a": "medial meniscus",
+      "b": "lateral meniscus",
+      "c": "ACL",
+      "d": "PCL"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 220,
+    "question": "The best stroke to do over the spine is:",
+    "options": {
+      "a": "skin rolling",
+      "b": "petrissage",
+      "c": "friction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 221,
+    "question": "Which bony landmark can be used to find the upper burner Shu points? The medial tip of the spine of the scapula (upper burner is LU, so scapula (upper burner is LU, so BL-13)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "The medial tip of the spine of the"
+  },
+  {
+    "id": 222,
+    "question": "What is the best treatment for Dupuytren's Contracture?",
+    "options": {
+      "a": "friction to palmar fascia",
+      "b": "passive ROM to the wrist",
+      "c": "active ROM of fingers fascia"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 223,
+    "question": "The meridians along the Adductor muscles are:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Liver, Kidney"
+  },
+  {
+    "id": 224,
+    "question": "The muscle that extends the elbow is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Triceps Brachii"
+  },
+  {
+    "id": 225,
+    "question": "Lymph vessels travel alongside which other vessels to get back to the heart?",
+    "options": {
+      "a": "arteries",
+      "b": "veins"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "veins"
+  },
+  {
+    "id": 226,
+    "question": "A muscle that raises a bone from neutral position would be considered which?",
+    "options": {
+      "a": "depressor",
+      "b": "flexor",
+      "c": "levator",
+      "d": "tensor"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 227,
+    "question": "Passive ROM should be performed how?",
+    "options": {
+      "a": "quickly and vigorously",
+      "b": "slowly and rhythmical with ongoing communication with client with ongoing communication with client re: comfort level"
+    },
+    "correct_option": null,
+    "correct_answer_text": "b. slowly and rhythmical"
+  },
+  {
+    "id": 228,
+    "question": "You have an appointment with an immune-supressed client and wake up with a sore throat. What do you do?",
+    "options": {
+      "a": "keep appt, take lots of vitamin C",
+      "b": "cancel appt, reschedule once you're well cancel appt, reschedule once you're well"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "cancel appt, reschedule once you're well"
+  },
+  {
+    "id": 229,
+    "question": "According to NY State law, all of the following are inappropriate features of an ad except:",
+    "options": {
+      "a": "guarantee results",
+      "b": "guarantee weight loss",
+      "c": "a properly-draped client"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "a properly-draped client"
+  },
+  {
+    "id": 230,
+    "question": "Nerves innervating the hand are which?",
+    "options": {
+      "a": "axillary and musculocutaneus",
+      "b": "ulnar and median"
+    },
+    "correct_option": null,
+    "correct_answer_text": "b. ulnar and median"
+  },
+  {
+    "id": 231,
+    "question": "Which strokes are done with postural drainage?",
+    "options": {
+      "a": "vibration and effleurage",
+      "b": "vibration and tapotement tapotement"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "vibration and tapotement"
+  },
+  {
+    "id": 232,
+    "question": "The lymph nodes that are found anterior to the tragus of the joint of the ear are:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Parotid"
+  },
+  {
+    "id": 233,
+    "question": "Mrs. Jones was referred to you months ago by her MD. She comes in for the first time with foul smelling, Decubitus Ulcers oozing puss. What do you do?",
+    "options": {
+      "a": "ask her for consent to call her doctor",
+      "b": "proceed with the massage",
+      "c": "refer her back to her MD to her MD"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "refer her back to her MD"
+  },
+  {
+    "id": 234,
+    "question": "In which condition is friction most indicated?",
+    "options": {
+      "a": "recent trauma",
+      "b": "bursitis",
+      "c": "ankylosing spondylitis",
+      "d": "lateral epicondylitis"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "lateral epicondylitis"
+  },
+  {
+    "id": 235,
+    "question": "A client has a chronically contracted muscle. What is the best approach to treat them?",
+    "options": {
+      "a": "friction to the tendon of the muscle",
+      "b": "kneading of the tendon",
+      "c": "friction to the belly of the muscle to the tendon of the muscle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 236,
+    "question": "If you massage the medial thigh, which meridians are you affecting?",
+    "options": {
+      "a": "BL, ST, GB",
+      "b": "KI, SP, LR",
+      "c": "LU, ST, LR"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 237,
+    "question": "Which muscles are innervated by the Axillary Nerve?",
+    "options": {
+      "a": "deltoid and teres minor",
+      "b": "extensor digitorum longus teres minor"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 238,
+    "question": "According to NY State law, you could be charged with professional misconduct if:",
+    "options": {
+      "a": "you drink socially",
+      "b": "are charged with a misdemeanor",
+      "c": "you refuse or fail to furnish client records to the client upon records to the client upon request"
+    },
+    "correct_option": null,
+    "correct_answer_text": "c. you refuse or fail to furnish client"
+  },
+  {
+    "id": 239,
+    "question": "What's the best way to treat Tendonitis in a client?",
+    "options": {
+      "a": "friction the tendon",
+      "b": "friction the adhesions",
+      "c": "don't work",
+      "d": "strip the muscle belly in a direction away from the tendon -"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "friction the adhesions"
+  },
+  {
+    "id": 240,
+    "question": "A court reporter has Frozen Shoulder. How do you treat this?",
+    "options": {
+      "a": "don't work the area in the acute stage",
+      "b": "work distal to the area for several sessions until the surrounding muscles have improved",
+      "c": "friction and gentle ROM on the shoulder work distal to the area for several sessions until the surrounding muscles have improved"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 241,
+    "question": "A client has a fever, nausea, and they want a half-hour massage. What do you do?",
+    "options": {
+      "a": "surround yourself with healing lights and proceed",
+      "b": "do 15 minutes of light effleurage",
+      "c": "cancel the appointment until they're better c. cancel the appointment until they're better"
+    },
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 242,
+    "question": "The Tibial Nerve innervates which muscle?",
+    "options": {
+      "a": "tibialis anterior",
+      "b": "peroneus longus",
+      "c": "tibialis posterior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "tibialis posterior"
+  },
+  {
+    "id": 244,
+    "question": "Which elements have meridians in the arm?",
+    "options": {
+      "a": "earth and water",
+      "b": "wood and fire",
+      "c": "fire and metal"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "fire and metal"
+  },
+  {
+    "id": 245,
+    "question": "The atlas is a specialized bone of which?",
+    "options": {
+      "a": "carpal",
+      "b": "cervical vertebral column vertebral column"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "cervical vertebral column"
+  },
+  {
+    "id": 246,
+    "question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side as the Mastectomy. This is probably due to what? Surgical removal of Axillary Lymph Nodes",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": ""
+  },
+  {
+    "id": 247,
+    "question": "Vibration is a stroke which uses force from primarily:",
+    "options": {
+      "a": "muscles of the forearm",
+      "b": "muscles of the fingers",
+      "c": "muscles of the legs forearm"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 248,
+    "question": "Which is considered a form of massage therapy by New York State?",
+    "options": {
+      "a": "reiki",
+      "b": "rolfing",
+      "c": "homeopathy",
+      "d": "chiropractic"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 249,
+    "question": "Massage can best duplicate the effects of:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Regular excercise"
+  },
+  {
+    "id": 250,
+    "question": "Pre-event tapotement is done to: Contract muscles, stimulate nerves and increase local blood and increase local blood supply",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Contract muscles, stimulate nerves"
+  },
+  {
+    "id": 251,
+    "question": "Client has Neuralgia and can't tolerate effleurage: and vibration",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Nerve tapping"
+  },
+  {
+    "id": 252,
+    "question": "The ability to know where your body is in space is called:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Proprioception"
+  },
+  {
+    "id": 253,
+    "question": "Which is the \"Sea of Qi?\"",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "CV-6"
+  },
+  {
+    "id": 254,
+    "question": "How many points are there on the LU meridian?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "11"
+  },
+  {
+    "id": 255,
+    "question": "Which of these movements is controlled by the Autonomic Nervous System?",
+    "options": {
+      "a": "pupil",
+      "b": "finger",
+      "c": "eye"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "eye"
+  },
+  {
+    "id": 256,
+    "question": "Lateral movement of the wrist when standing in anatomical position is called:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Radial deviation"
+  },
+  {
+    "id": 257,
+    "question": "Which meridians are most involved in immunodeficiency disorders? energizer",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Lung and Triple"
+  },
+  {
+    "id": 258,
+    "question": "Myelinated fibers conduct impulses in which way? Salutatory (as opposed to continuos)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": ""
+  },
+  {
+    "id": 259,
+    "question": "A term for one motor neuron and all the muscle fibers it innervates is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "A motor unit"
+  },
+  {
+    "id": 260,
+    "question": "Which are Adductors of the humerus?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Pec Major and Lats"
+  },
+  {
+    "id": 261,
+    "question": "Flaccidity or flaccid muscle is due to which? Pathology or damage to anterior horn motor neuron (lower motor",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "..."
+  },
+  {
+    "id": 262,
+    "question": "What is the location of Ankylosing Spondylitis",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Vertebral column"
+  },
+  {
+    "id": 263,
+    "question": "The origin of Rectus Femoris is:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "AIIS"
+  },
+  {
+    "id": 264,
+    "question": "Sweat is the fluid secretion for which element?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Fire"
+  },
+  {
+    "id": 265,
+    "question": "Which is not part of the Sternum / breast plate?",
+    "options": {
+      "a": "gladiolus",
+      "b": "manubrium",
+      "c": "xyphoid",
+      "d": "styloid process"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "styloid process"
+  },
+  {
+    "id": 266,
+    "question": "The three major nerves of the Lumbosacral Plexus are: Obturator and Sciatic",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Femoral,"
+  },
+  {
+    "id": 267,
+    "question": "Fibrosis and contracture of muscle tissue is usually caused by: Loss of muscle balance between antagonistic muscles - Loss of muscle balance between antagonistic muscles",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 268,
+    "question": "A 14-year-old client tells you in a session that the doctor has diagnosed him with Tourrettes Syndrome. What is the best way to proceed?",
+    "options": {
+      "a": "ask parents for consent to talk to MD",
+      "b": "ask consent to talk to MD for consent to talk to MD"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 269,
+    "question": "A massage therapist must fully explain the procedure and get informed consent when undraping for breast massage from:",
+    "options": {
+      "a": "male and female clients",
+      "b": "male clients only",
+      "c": "female clients only"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "female clients only"
+  },
+  {
+    "id": 270,
+    "question": "When massaging the anterior leg, it is okay for the knee to be:",
+    "options": {
+      "a": "flexed",
+      "b": "raised",
+      "c": "supported"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "supported"
+  },
+  {
+    "id": 271,
+    "question": "When palmar kneading posterior thigh while client prone, what is best position for knee?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Slightly flexed"
+  },
+  {
+    "id": 272,
+    "question": "According to NY State law the limit of time for a temporary license is:",
+    "options": {
+      "a": "three years",
+      "b": "up to three months",
+      "c": "up to 12 months"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "up to 12 months"
+  },
+  {
+    "id": 273,
+    "question": "Lymphatic Plexuses exist in all of these places except",
+    "options": {
+      "a": "brain",
+      "b": "breast",
+      "c": "hands",
+      "d": "feet"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 274,
+    "question": "The importance of draping a client is for all of these except",
+    "options": {
+      "a": "foster client comfort",
+      "b": "help keep client warm",
+      "c": "modesty and privacy of client",
+      "d": "support client"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "support client"
+  },
+  {
+    "id": 275,
+    "question": "The action of Serratus Anterior is:",
+    "options": {
+      "a": "adduction",
+      "b": "retraction",
+      "c": "abduction"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "abduction"
+  },
+  {
+    "id": 276,
+    "question": "What is the end point on the bladder channel? lateral pinky toe",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "BL-67 on the"
+  },
+  {
+    "id": 277,
+    "question": "What is the beginning point for the meridian dealing with elimination? index finger (LI-1)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Radial side of"
+  },
+  {
+    "id": 278,
+    "question": "Meridian involved with separating the impure for the pure?",
+    "options": {
+      "a": "radial side of little finger",
+      "b": "ulnar side of little finger little finger"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "ulnar side of little finger"
+  },
+  {
+    "id": 279,
+    "question": "In order to practice Shiatsu in New York State, what is required?",
+    "options": {
+      "a": "graduate from a shiatsu institute",
+      "b": "get shiatsu training",
+      "c": "get NY state massage license state massage license"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "get NY state massage license"
+  },
+  {
+    "id": 280,
+    "question": "Which muscle laterally rotates and abducts?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Piriformis"
+  },
+  {
+    "id": 281,
+    "question": "Client is a right Hemiplegic and right foot is inverted. What condition is the client's foot in?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Spasticity"
+  },
+  {
+    "id": 282,
+    "question": "What is the best position for the client with Bronchiectasis? Prone, feet elevated, head lower than chest (for drainage) - (for drainage)",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 283,
+    "question": "A cyclist's foot is dorsiflexed and inverted. Which muscle is contracted?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Tibialis anterior"
+  },
+  {
+    "id": 284,
+    "question": "Which techniques are under the category of: tapotement? drumming and pounding",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Clapping,"
+  },
+  {
+    "id": 285,
+    "question": "Hemophilia is a genetic deficiency causing problems with:",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Clotting"
+  },
+  {
+    "id": 286,
+    "question": "What direction is appropriate when working on a client with Venostasis with no obstruction? (really a disguised edema question) Proximal to affected area and distal to affected area - Proximal to affected area and distal to affected area",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": null
+  },
+  {
+    "id": 287,
+    "question": "When standing in anatomical position, which direction do Yang meridians flow?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Downward"
+  },
+  {
+    "id": 288,
+    "question": "Which points are good for general tonification?",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "ST-36, SP-6 and LI-4"
+  },
+  {
+    "id": 289,
+    "question": "According to NY State law, an individual is considered disabled with HIV+ or AIDS at what point? When they are diagnosed with either one",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": ""
+  },
+  {
+    "id": 290,
+    "question": "Which meridians begin at the chest and end on the hand? meridians: LU, PC and HT",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "Yin arm"
+  }
+]

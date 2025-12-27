@@ -1,0 +1,118 @@
+[
+  {
+    "id": 132,
+    "question": "Which of the following is characteristic of Parkinson's Disease?",
+    "options": {
+      "a": "fine tremors and rigidity",
+      "b": "fine tremors and flaccidity",
+      "c": "coarse tremors and rigidity",
+      "d": "coarse tremors and flaccidity tremors and rigidity"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 133,
+    "question": "Which disease is due to a significant loss of neurotransmitter in the brain?",
+    "options": {
+      "a": "Parkinson's disease",
+      "b": "muscular distrophy"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 134,
+    "question": "Which structure passes through the intervertebral foramina of the thoracic vertebrae?",
+    "options": {
+      "a": "vertebral arteries",
+      "b": "spinal nerves",
+      "c": "spinal cord"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 135,
+    "question": "How many pairs of spinal nerves do we have?",
+    "options": {
+      "a": "12",
+      "b": "24",
+      "c": "31",
+      "d": "62"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 136,
+    "question": "Which of these is a proximal carpal?",
+    "options": {
+      "a": "lunate",
+      "b": "hamate",
+      "c": "trapezoid",
+      "d": "capitate"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 137,
+    "question": "What is the shaft of a long bone called?",
+    "options": {
+      "a": "epiphesis",
+      "b": "diaphesis",
+      "c": "medullary cavity"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  },
+  {
+    "id": 138,
+    "question": "Which kind of bones are the phalanges of the feet?",
+    "options": {
+      "a": "long bones",
+      "b": "short bones",
+      "c": "sesamoid",
+      "d": "cuboid"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 139,
+    "question": "Which articulates with the occipital condyles?",
+    "options": {
+      "a": "axis",
+      "b": "occipital protuberance",
+      "c": "mastoid",
+      "d": "atlas"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "atlas"
+  },
+  {
+    "id": 140,
+    "question": "What is the action of Latissimus Dorsi?",
+    "options": {
+      "a": "lateral rotation of the shoulder",
+      "b": "flexion of the shoulder",
+      "c": "extension of the neck",
+      "d": "depression of the shoulder girdle depression of the shoulder girdle"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "depression of the shoulder girdle"
+  },
+  {
+    "id": 141,
+    "question": "Which of these muscles are least involved in respiration?",
+    "options": {
+      "a": "pelvic floor muscles",
+      "b": "deltoids",
+      "c": "intercostals",
+      "d": "abdominals"
+    },
+    "correct_option": "b",
+    "correct_answer_text": null
+  }
+]

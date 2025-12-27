@@ -1,0 +1,109 @@
+[
+  {
+    "id": 52,
+    "question": "What is required by New York State law?",
+    "options": {
+      "a": "to renew your massage license registration every three years",
+      "b": "to renew your license every ten years",
+      "c": "there is no need to renew massage license registration every three years"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 53,
+    "question": "In the third trimester of pregnancy, which is the best position for massage?",
+    "options": {
+      "a": "supine",
+      "b": "prone",
+      "c": "left lateral",
+      "d": "right lateral"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 54,
+    "question": "The PNS (Peripheral Nervous System) can be divided into which groups?",
+    "options": {
+      "a": "afferent/efferent",
+      "b": "somatic/autonomic"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 55,
+    "question": "Which attaches to the greater trochanter?",
+    "options": {
+      "a": "gluteus medius",
+      "b": "TFL",
+      "c": "gluteus maximus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 56,
+    "question": "If client had Subdeltoid Bursitis, which movement would cause the most pain?",
+    "options": {
+      "a": "abduction",
+      "b": "adduction",
+      "c": "extension d. lateral rotation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 57,
+    "question": "It's your first time treating a client who has Fibromyalgia. What should you avoid?",
+    "options": {
+      "a": "deep work",
+      "b": "light work",
+      "c": "abdominal work"
+    },
+    "correct_option": "a",
+    "correct_answer_text": null
+  },
+  {
+    "id": 58,
+    "question": "What does light effleurage do?",
+    "options": {
+      "a": "reduces arterial flow",
+      "b": "reduces venous return",
+      "c": "increase flow in superficial capillaries increase flow in superficial capillaries"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "increase flow in superficial capillaries"
+  },
+  {
+    "id": 59,
+    "question": "What are the four types of tissue? Connective, Epithelial, Muscle and Nerve",
+    "options": {},
+    "correct_option": null,
+    "correct_answer_text": "-"
+  },
+  {
+    "id": 60,
+    "question": "Which tissue is Avascular and has no nerve endings?",
+    "options": {
+      "a": "adipose",
+      "b": "bone",
+      "c": "cartilage",
+      "d": "muscle"
+    },
+    "correct_option": "c",
+    "correct_answer_text": null
+  },
+  {
+    "id": 61,
+    "question": "Which muscle depresses the ribs to help in respiration?",
+    "options": {
+      "a": "diaphragm",
+      "b": "serratus posterior superior",
+      "c": "serratus posterior inferior posterior inferior"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "serratus posterior inferior"
+  }
+]

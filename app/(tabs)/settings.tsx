@@ -1,0 +1,450 @@
+import { useEffect, useState, useCallback } from "react";
+import { ScrollView, Text, View, Pressable, Alert, Switch, Linking } from "react-native";
+import { useRouter } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import * as Haptics from "expo-haptics";
+import { Platform } from "react-native";
+
+import { ScreenContainer } from "@/components/screen-container";
+import { useColors } from "@/hooks/use-colors";
+import {
+  getSettings,
+  saveSettings,
+  getSelectedExamDate,
+  setSelectedExamDate,
+  resetProgress,
+  Settings,
+  EXAM_DATES,
+} from "@/lib/study-store";
+
+export default function SettingsScreen() {
+  const router = useRouter();
+  const colors = useColors();
+  
+  const [settings, setSettings] = useState<Settings | null>(null);
+  const [examDate, setExamDate] = useState<string | null>(null);
+  const [showExamPicker, setShowExamPicker] = useState(false);
+  const [showSubscription, setShowSubscription] = useState(false);
+
+  const loadData = useCallback(async () => {
+    const [s, exam] = await Promise.all([
+      getSettings(),
+      getSelectedExamDate(),
+    ]);
+    setSettings(s);
+    setExamDate(exam);
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      loadData();
+    }, [loadData])
+  );
+
+  const updateSetting = async (key: keyof Settings, value: any) => {
+    if (!settings) return;
+    const newSettings = { ...settings, [key]: value };
+    setSettings(newSettings);
+    await saveSettings(newSettings);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  };
+
+  const handleExamDateSelect = async (date: string) => {
+    await setSelectedExamDate(date);
+    setExamDate(date);
+    setShowExamPicker(false);
+    if (Platform.OS !== "web") {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    }
+  };
+
+  const handleResetProgress = () => {
+    Alert.alert(
+      "Reset Progress",
+      "Are you sure you want to reset all your progress? This cannot be undone.",
+      [
+        { text: "Cancel", style: "cancel" },
+        { 
+          text: "Reset", 
+          style: "destructive",
+          onPress: async () => {
+            await resetProgress();
+            loadData();
+            if (Platform.OS !== "web") {
+              Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+            }
+          }
+        },
+      ]
+    );
+  };
+
+  // Subscription Modal
+  if (showSubscription) {
+    return (
+      <ScreenContainer>
+        <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 100 }}>
+          {/* Header */}
+          <View className="px-5 pt-4 flex-row items-center">
+            <Pressable onPress={() => setShowSubscription(false)}>
+              <MaterialIcons name="close" size={28} color={colors.foreground} />
+            </Pressable>
+          </View>
+
+          {/* Premium Banner */}
+          <View className="items-center px-5 mt-4">
+            <View 
+              className="w-20 h-20 rounded-full items-center justify-center"
+              style={{ backgroundColor: colors.primary + '20' }}
+            >
+              <MaterialIcons name="star" size={40} color={colors.primary} />
+            </View>
+            <Text className="text-2xl font-bold text-foreground mt-4">
+              NYS Massage Exam Pro
+            </Text>
+            <Text className="text-base text-muted text-center mt-2">
+              Unlock all features and maximize your exam preparation
+            </Text>
+          </View>
+
+          {/* Pricing */}
+          <View className="mx-5 mt-6 bg-surface rounded-2xl p-5 border-2" style={{ borderColor: colors.primary }}>
+            <View className="flex-row items-center justify-between">
+              <View>
+                <Text className="text-lg font-semibold text-foreground">Weekly Access</Text>
+                <Text className="text-sm text-muted">Cancel anytime</Text>
+              </View>
+              <View className="items-end">
+                <Text className="text-3xl font-bold" style={{ color: colors.primary }}>$4.99</Text>
+                <Text className="text-sm text-muted">/week</Text>
+              </View>
+            </View>
+            
+            <View 
+              className="mt-4 px-3 py-2 rounded-lg self-start"
+              style={{ backgroundColor: colors.success + '20' }}
+            >
+              <Text className="text-sm font-medium" style={{ color: colors.success }}>
+                7-day free trial included
+              </Text>
+            </View>
+          </View>
+
+          {/* Features */}
+          <View className="mx-5 mt-6">
+            <Text className="text-lg font-semibold text-foreground mb-4">What's Included</Text>
+            
+            {[
+              { icon: "check-circle", text: "All 287 exam questions" },
+              { icon: "lightbulb", text: "Clever mnemonics for every question" },
+              { icon: "school", text: "Detailed explanations" },
+              { icon: "bar-chart", text: "Progress tracking & analytics" },
+              { icon: "schedule", text: "Exam countdown & timeline" },
+              { icon: "bookmark", text: "Bookmark & review system" },
+              { icon: "offline-bolt", text: "Offline access" },
+              { icon: "update", text: "Regular content updates" },
+            ].map((feature, index) => (
+              <View key={index} className="flex-row items-center mb-3">
+                <MaterialIcons name={feature.icon as any} size={24} color={colors.success} />
+                <Text className="text-base text-foreground ml-3">{feature.text}</Text>
+              </View>
+            ))}
+          </View>
+
+          {/* CTA Button */}
+          <View className="px-5 mt-6">
+            <Pressable
+              onPress={() => {
+                Alert.alert(
+                  "Demo Mode",
+                  "This is a demo subscription screen. In the production app, this would connect to Apple's StoreKit for in-app purchases.",
+                  [{ text: "OK" }]
+                );
+              }}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: colors.primary,
+                  opacity: pressed ? 0.9 : 1,
+                },
+              ]}
+              className="rounded-xl p-4 items-center"
+            >
+              <Text className="text-lg font-semibold" style={{ color: colors.background }}>
+                Start Free Trial
+              </Text>
+            </Pressable>
+            
+            <Text className="text-xs text-muted text-center mt-3">
+              After your 7-day free trial, you'll be charged $4.99/week. Cancel anytime in Settings.
+            </Text>
+          </View>
+
+          {/* Comparison */}
+          <View className="mx-5 mt-8 bg-surface rounded-2xl p-5 border border-border">
+            <Text className="text-lg font-semibold text-foreground mb-4">Free vs Pro</Text>
+            
+            <View className="flex-row mb-3">
+              <View className="flex-1" />
+              <Text className="w-16 text-center text-sm font-medium text-muted">Free</Text>
+              <Text className="w-16 text-center text-sm font-medium" style={{ color: colors.primary }}>Pro</Text>
+            </View>
+            
+            {[
+              { feature: "Sample Questions", free: "20", pro: "287" },
+              { feature: "Mnemonics", free: false, pro: true },
+              { feature: "Explanations", free: false, pro: true },
+              { feature: "Progress Tracking", free: "Basic", pro: "Full" },
+              { feature: "Exam Timeline", free: false, pro: true },
+              { feature: "Offline Access", free: false, pro: true },
+            ].map((row, index) => (
+              <View 
+                key={index} 
+                className="flex-row items-center py-2"
+                style={{ borderTopWidth: 1, borderTopColor: colors.border }}
+              >
+                <Text className="flex-1 text-sm text-foreground">{row.feature}</Text>
+                <View className="w-16 items-center">
+                  {typeof row.free === 'boolean' ? (
+                    <MaterialIcons 
+                      name={row.free ? "check" : "close"} 
+                      size={20} 
+                      color={row.free ? colors.success : colors.muted} 
+                    />
+                  ) : (
+                    <Text className="text-sm text-muted">{row.free}</Text>
+                  )}
+                </View>
+                <View className="w-16 items-center">
+                  {typeof row.pro === 'boolean' ? (
+                    <MaterialIcons 
+                      name={row.pro ? "check" : "close"} 
+                      size={20} 
+                      color={row.pro ? colors.success : colors.muted} 
+                    />
+                  ) : (
+                    <Text className="text-sm" style={{ color: colors.primary }}>{row.pro}</Text>
+                  )}
+                </View>
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      </ScreenContainer>
+    );
+  }
+
+  return (
+    <ScreenContainer>
+      <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 100 }}>
+        <View className="px-5 pt-4 pb-2">
+          <Text className="text-3xl font-bold text-foreground">More</Text>
+        </View>
+
+        {/* Premium Banner */}
+        <Pressable
+onPress={() => setShowSubscription(true)}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.9 : 1,
+                backgroundColor: colors.primary,
+                marginHorizontal: 20,
+                marginTop: 16,
+                borderRadius: 16,
+                padding: 20,
+                flexDirection: 'row',
+                alignItems: 'center',
+              },
+            ]}
+        >
+          <View 
+            className="w-12 h-12 rounded-full items-center justify-center"
+            style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
+          >
+            <MaterialIcons name="star" size={24} color={colors.background} />
+          </View>
+          <View className="flex-1 ml-4">
+            <Text className="text-lg font-semibold" style={{ color: colors.background }}>
+              Upgrade to Pro
+            </Text>
+            <Text className="text-sm opacity-80" style={{ color: colors.background }}>
+              7-day free trial • $4.99/week
+            </Text>
+          </View>
+          <MaterialIcons name="chevron-right" size={24} color={colors.background} />
+        </Pressable>
+
+        {/* Exam Date Selection */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Exam Date</Text>
+          
+          <Pressable
+            onPress={() => setShowExamPicker(!showExamPicker)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-row items-center">
+              <MaterialIcons name="event" size={24} color={colors.primary} />
+              <Text className="text-base text-foreground ml-3">
+                {examDate 
+                  ? EXAM_DATES.find(e => e.date === examDate)?.label || examDate
+                  : "Select your exam date"
+                }
+              </Text>
+            </View>
+            <MaterialIcons 
+              name={showExamPicker ? "expand-less" : "expand-more"} 
+              size={24} 
+              color={colors.muted} 
+            />
+          </Pressable>
+
+          {showExamPicker && (
+            <View className="mt-2 bg-surface rounded-xl border border-border overflow-hidden">
+              {EXAM_DATES.map((exam, index) => (
+                <Pressable
+                  key={exam.date}
+                  onPress={() => handleExamDateSelect(exam.date)}
+                  style={({ pressed }) => [
+                    {
+                      backgroundColor: examDate === exam.date ? colors.primary + '20' : 'transparent',
+                      opacity: pressed ? 0.8 : 1,
+                      borderTopWidth: index > 0 ? 1 : 0,
+                      borderTopColor: colors.border,
+                    },
+                  ]}
+                  className="p-4 flex-row items-center justify-between"
+                >
+                  <View>
+                    <Text className="text-base text-foreground">{exam.label}</Text>
+                    <Text className="text-sm text-muted">
+                      Apply by: {new Date(exam.applicationDeadline).toLocaleDateString()}
+                    </Text>
+                  </View>
+                  {examDate === exam.date && (
+                    <MaterialIcons name="check" size={24} color={colors.primary} />
+                  )}
+                </Pressable>
+              ))}
+            </View>
+          )}
+        </View>
+
+        {/* Quick Links */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Resources</Text>
+          
+          <Pressable
+            onPress={() => router.push("/exam-info" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center">
+              <MaterialIcons name="info" size={24} color={colors.primary} />
+              <Text className="text-base text-foreground ml-3">About the NYS Exam</Text>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
+          <Pressable
+            onPress={() => Linking.openURL('https://www.op.nysed.gov/professions/massage-therapy')}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-row items-center">
+              <MaterialIcons name="open-in-new" size={24} color={colors.primary} />
+              <Text className="text-base text-foreground ml-3">Official NYS Website</Text>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+        </View>
+
+        {/* Settings */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Settings</Text>
+          
+          <View className="bg-surface rounded-xl border border-border overflow-hidden">
+            <View className="p-4 flex-row items-center justify-between">
+              <View className="flex-row items-center">
+                <MaterialIcons name="vibration" size={24} color={colors.muted} />
+                <Text className="text-base text-foreground ml-3">Haptic Feedback</Text>
+              </View>
+              <Switch
+                value={settings?.hapticFeedback ?? true}
+                onValueChange={(value) => updateSetting('hapticFeedback', value)}
+                trackColor={{ false: colors.border, true: colors.primary }}
+              />
+            </View>
+            
+            <View 
+              className="p-4 flex-row items-center justify-between"
+              style={{ borderTopWidth: 1, borderTopColor: colors.border }}
+            >
+              <View className="flex-row items-center">
+                <MaterialIcons name="lightbulb" size={24} color={colors.muted} />
+                <Text className="text-base text-foreground ml-3">Show Mnemonics</Text>
+              </View>
+              <Switch
+                value={settings?.showMnemonics ?? true}
+                onValueChange={(value) => updateSetting('showMnemonics', value)}
+                trackColor={{ false: colors.border, true: colors.primary }}
+              />
+            </View>
+          </View>
+        </View>
+
+        {/* Danger Zone */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Data</Text>
+          
+          <Pressable
+            onPress={handleResetProgress}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.error,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-row items-center">
+              <MaterialIcons name="delete-outline" size={24} color={colors.error} />
+              <Text className="text-base ml-3" style={{ color: colors.error }}>Reset Progress</Text>
+            </View>
+          </Pressable>
+        </View>
+
+        {/* App Info */}
+        <View className="mx-5 mt-6 items-center">
+          <Text className="text-sm text-muted">NYS Massage Exam Study</Text>
+          <Text className="text-xs text-muted mt-1">Version 1.0.0</Text>
+        </View>
+      </ScrollView>
+    </ScreenContainer>
+  );
+}

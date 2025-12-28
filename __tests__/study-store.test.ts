@@ -31,8 +31,8 @@ import {
   getCategoryStats,
   EXAM_DATES,
   CATEGORIES,
-  questions,
 } from '../lib/study-store';
+import { questions } from '../data/questions';
 
 describe('Study Store', () => {
   beforeEach(() => {

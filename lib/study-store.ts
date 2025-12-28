@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { questions, Question } from '@/data/questions';
+import { questions } from '@/data/questions';
+import { Question } from '@/data/types';
 
 // Storage keys
 const STORAGE_KEYS = {

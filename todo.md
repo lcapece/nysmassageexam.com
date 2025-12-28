@@ -45,3 +45,6 @@
 - [x] Weekly subscription price display ($4.99)
 - [x] Feature comparison (Free vs Premium)
 - [x] "Subscribe" button (non-functional, for demo purposes)
+
+## Bug Fixes
+- [x] Fix missing answer options in some quiz questions (34 questions fixed)

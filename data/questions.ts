@@ -1,15 +1,4 @@
-// Auto-generated question data
-export interface Question {
-  id: number;
-  original_question: string;
-  paraphrased_question: string;
-  options: Record<string, string>;
-  correct_option: string | null;
-  correct_answer_text: string | null;
-  category: string;
-  explanation: string;
-  mnemonic: string;
-}
+import { Question } from "./types";
 
 export const questions: Question[] = [
   {
@@ -882,9 +871,14 @@ export const questions: Question[] = [
     "id": 59,
     "original_question": "What are the four types of tissue? Connective, Epithelial, Muscle and Nerve",
     "paraphrased_question": "What are the four fundamental types of tissue in the human body?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Connective, Epithelial, Muscle, and Nerve",
+    "options": {
+      "a": "Psoas Major",
+      "b": "Iliacus",
+      "c": "-",
+      "d": "Quadratus Lumborum"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "-",
     "category": "Anatomy",
     "explanation": "The human body is composed of four basic types of tissue: connective tissue supports and binds other tissues, epithelial tissue provides a covering, muscle tissue facilitates movement, and nervous tissue transmits nerve impulses.",
     "mnemonic": "To remember the four tissue types, just 'CONNECT' with 'EM' 'N' 'EM' (Epithelial, Muscle, and Nerve)."
@@ -1299,8 +1293,13 @@ export const questions: Question[] = [
     "id": 87,
     "original_question": "Where would you find the Small Intestine meridian? epicondyle of the humerus",
     "paraphrased_question": "Where would you find the Small Intestine meridian? epicondyle of the humerus",
-    "options": {},
-    "correct_option": "a",
+    "options": {
+      "a": "Liver",
+      "b": "Medial",
+      "c": "Kidney",
+      "d": "Lung"
+    },
+    "correct_option": "b",
     "correct_answer_text": "Medial",
     "category": "Eastern Medicine",
     "explanation": "The correct answer is Medial. This is an important concept for the NYS massage therapy exam.",
@@ -1370,9 +1369,14 @@ export const questions: Question[] = [
     "id": 92,
     "original_question": "Which muscle, when in spasm, will raise the iliac crest? Lumborun (hip hiker)",
     "paraphrased_question": "A spasm in which of the following muscles results in an elevation of the iliac crest, a condition sometimes called 'hip hiking'?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Quadratus Lumborum",
+    "options": {
+      "a": "Quadratus",
+      "b": "Quadratus Lumborum",
+      "c": "Psoas Major",
+      "d": "Iliacus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Quadratus",
     "category": "Kinesiology",
     "explanation": "The Quadratus Lumborum muscle originates from the iliac crest and inserts on the 12th rib and transverse processes of the lumbar vertebrae. When it spasms or contracts unilaterally, it pulls the iliac crest superiorly, causing the hip to hike up on one side.",
     "mnemonic": "Remember 'QL' for 'Quite a Lift'! The Quadratus Lumborum gives your hip quite a lift when it decides to act up."
@@ -1396,9 +1400,14 @@ export const questions: Question[] = [
     "id": 94,
     "original_question": "Which muscles make up the Pes Anserine? Gracilis, Semitendinosis",
     "paraphrased_question": "The Pes Anserinus, a tendinous structure on the medial knee, is formed by the combined tendons of which three muscles?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Sartorius, Gracilis, and Semitendinosus",
+    "options": {
+      "a": "Psoas Major",
+      "b": "Iliacus",
+      "c": "Sartorius",
+      "d": "Quadratus Lumborum"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "Sartorius",
     "category": "Anatomy",
     "explanation": "The Pes Anserinus, meaning 'goose foot' in Latin, is the insertion point for the tendons of the Sartorius, Gracilis, and Semitendinosus muscles. These muscles converge on the anteromedial aspect of the proximal tibia.",
     "mnemonic": "To remember the muscles of the Pes Anserinus, just 'Say Grace before Tea': Sartorius, Gracilis, Semitendinosus."
@@ -2998,8 +3007,13 @@ export const questions: Question[] = [
     "id": 199,
     "original_question": "Which organ/meridian would be indicated with Eczema and Asthma?",
     "paraphrased_question": "In TCM, which organ and its corresponding meridian are primarily associated with conditions like eczema and asthma?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Lung",
+      "b": "Kidney",
+      "c": "Heart",
+      "d": "Liver"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Lung",
     "category": "Eastern Medicine",
     "explanation": "The Lung organ system in TCM governs the skin and the respiratory system. Therefore, conditions like eczema (a skin issue) and asthma (a respiratory issue) both point to an imbalance in the Lung meridian.",
@@ -3316,9 +3330,14 @@ export const questions: Question[] = [
     "id": 221,
     "original_question": "Which bony landmark can be used to find the upper burner Shu points? The medial tip of the spine of the scapula (upper burner is LU, so scapula (upper burner is LU, so BL-13)",
     "paraphrased_question": "What bony landmark helps locate the Shu points of the upper burner, such as BL-13 for the lung?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "The medial tip of the spine of the scapula",
+    "options": {
+      "a": "Medial",
+      "b": "Lateral",
+      "c": "Anterior",
+      "d": "Posterior"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "The medial tip of the spine of the",
     "category": "Eastern Medicine",
     "explanation": "In Traditional Chinese Medicine, the Shu points are located on the back and are associated with specific organs. The medial (vertebral) border of the scapula is a key landmark for locating many of these points. The spine of the scapula, specifically its medial tip, is a reliable reference for finding points related to the upper burner, which includes the heart and lungs (like BL-13).",
     "mnemonic": "To find the lung's Shu, feel for the scapula's spine coming through!"
@@ -3342,9 +3361,14 @@ export const questions: Question[] = [
     "id": 223,
     "original_question": "The meridians along the Adductor muscles are:",
     "paraphrased_question": "The meridians along the Adductor muscles are:",
-    "options": {},
+    "options": {
+      "a": "Liver",
+      "b": "Heart",
+      "c": "Lung",
+      "d": "Kidney"
+    },
     "correct_option": "a",
-    "correct_answer_text": "Liver, Kidney",
+    "correct_answer_text": "Liver",
     "category": "Eastern Medicine",
     "explanation": "The correct answer is Liver, Kidney. This is an important concept for the NYS massage therapy exam.",
     "mnemonic": "Remember: Liver, Kidney - associate this with the key concept in the question."
@@ -3353,8 +3377,13 @@ export const questions: Question[] = [
     "id": 224,
     "original_question": "The muscle that extends the elbow is:",
     "paraphrased_question": "The muscle that extends the elbow is:",
-    "options": {},
-    "correct_option": "a",
+    "options": {
+      "a": "Psoas Major",
+      "b": "Quadratus Lumborum",
+      "c": "Iliacus",
+      "d": "Triceps Brachii"
+    },
+    "correct_option": "d",
     "correct_answer_text": "Triceps Brachii",
     "category": "Anatomy",
     "explanation": "The correct answer is Triceps Brachii. This is an important concept for the NYS massage therapy exam.",
@@ -3465,8 +3494,13 @@ export const questions: Question[] = [
     "id": 232,
     "original_question": "The lymph nodes that are found anterior to the tragus of the joint of the ear are:",
     "paraphrased_question": "The lymph nodes that are found anterior to the tragus of the joint of the ear are:",
-    "options": {},
-    "correct_option": "a",
+    "options": {
+      "a": "Cervical",
+      "b": "Inguinal",
+      "c": "Parotid",
+      "d": "Axillary"
+    },
+    "correct_option": "c",
     "correct_answer_text": "Parotid",
     "category": "Anatomy",
     "explanation": "The correct answer is Parotid. This is an important concept for the NYS massage therapy exam.",
@@ -3656,9 +3690,14 @@ export const questions: Question[] = [
     "id": 246,
     "original_question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side as the Mastectomy. This is probably due to what? Surgical removal of Axillary Lymph Nodes",
     "paraphrased_question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side as the Mastectomy. This is probably due to what? Surgical removal of Axillary Lymph Nodes",
-    "options": {},
-    "correct_option": "a",
-    "correct_answer_text": "",
+    "options": {
+      "a": "Inguinal",
+      "b": "Cervical",
+      "c": "Axillary",
+      "d": "Parotid"
+    },
+    "correct_option": "d",
+    "correct_answer_text": "Parotid",
     "category": "Anatomy",
     "explanation": "The correct answer is . This is an important concept for the NYS massage therapy exam.",
     "mnemonic": "Remember:  - associate this with the key concept in the question."
@@ -3698,7 +3737,12 @@ export const questions: Question[] = [
     "id": 249,
     "original_question": "Massage can best duplicate the effects of:",
     "paraphrased_question": "Massage can best duplicate the effects of:",
-    "options": {},
+    "options": {
+      "a": "Regular excercise",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
     "correct_option": "a",
     "correct_answer_text": "Regular excercise",
     "category": "Anatomy",
@@ -3709,9 +3753,14 @@ export const questions: Question[] = [
     "id": 250,
     "original_question": "Pre-event tapotement is done to: Contract muscles, stimulate nerves and increase local blood and increase local blood supply",
     "paraphrased_question": "Pre-event tapotement is done to: Contract muscles, stimulate nerves and increase local blood and increase local blood supply",
-    "options": {},
-    "correct_option": "a",
-    "correct_answer_text": "Contract muscles, stimulate nerves",
+    "options": {
+      "a": "Psoas Major",
+      "b": "Contract muscles",
+      "c": "Quadratus Lumborum",
+      "d": "Iliacus"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "Contract muscles",
     "category": "Massage Techniques",
     "explanation": "The correct answer is Contract muscles, stimulate nerves. This is an important concept for the NYS massage therapy exam.",
     "mnemonic": "Remember: Contract muscles, stimulate nerves - associate this with the key concept in the question."
@@ -3720,7 +3769,12 @@ export const questions: Question[] = [
     "id": 251,
     "original_question": "Client has Neuralgia and can't tolerate effleurage: and vibration",
     "paraphrased_question": "Client has Neuralgia and can't tolerate effleurage: and vibration",
-    "options": {},
+    "options": {
+      "a": "Nerve tapping",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
     "correct_option": "a",
     "correct_answer_text": "Nerve tapping",
     "category": "Massage Techniques",
@@ -3731,7 +3785,12 @@ export const questions: Question[] = [
     "id": 252,
     "original_question": "The ability to know where your body is in space is called:",
     "paraphrased_question": "The ability to know where your body is in space is called:",
-    "options": {},
+    "options": {
+      "a": "Proprioception",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
     "correct_option": "a",
     "correct_answer_text": "Proprioception",
     "category": "Anatomy",
@@ -3742,7 +3801,12 @@ export const questions: Question[] = [
     "id": 253,
     "original_question": "Which is the \"Sea of Qi?\"",
     "paraphrased_question": "Which is the \"Sea of Qi?\"",
-    "options": {},
+    "options": {
+      "a": "CV-6",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
     "correct_option": "a",
     "correct_answer_text": "CV-6",
     "category": "Eastern Medicine",
@@ -3753,8 +3817,13 @@ export const questions: Question[] = [
     "id": 254,
     "original_question": "How many points are there on the LU meridian?",
     "paraphrased_question": "What is the total number of acupuncture points located on the Lung (LU) meridian?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "11",
+      "b": "Lung",
+      "c": "Liver",
+      "d": "Kidney"
+    },
+    "correct_option": "a",
     "correct_answer_text": "11",
     "category": "Eastern Medicine",
     "explanation": "In Traditional Chinese Medicine, the Lung meridian is one of the twelve primary meridians and contains 11 distinct points. These points are clinically used to address respiratory issues, skin conditions, and other problems that appear along the channel's pathway.",
@@ -3779,8 +3848,13 @@ export const questions: Question[] = [
     "id": 256,
     "original_question": "Lateral movement of the wrist when standing in anatomical position is called:",
     "paraphrased_question": "From the anatomical position, what is the correct term for the movement of the wrist away from the body's midline?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Radial deviation",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Radial deviation",
     "category": "Kinesiology",
     "explanation": "In the standard anatomical position, the radius bone is on the lateral side (thumb side) of the forearm. Therefore, moving the wrist laterally is termed radial deviation because the hand moves toward the radius bone.",
@@ -3790,8 +3864,13 @@ export const questions: Question[] = [
     "id": 257,
     "original_question": "Which meridians are most involved in immunodeficiency disorders? energizer",
     "paraphrased_question": "Which two meridians are primarily implicated in conditions related to a compromised immune system?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Liver",
+      "b": "Lung and Triple",
+      "c": "Lung",
+      "d": "Kidney"
+    },
+    "correct_option": "b",
     "correct_answer_text": "Lung and Triple",
     "category": "Eastern Medicine",
     "explanation": "In TCM, the Lung meridian is associated with Wei Qi (defensive energy), our first line of defense against external pathogens. The Triple Energizer (San Jiao) meridian manages the body's fluids and overall energy transformation, playing a key role in the immune response.",
@@ -3801,9 +3880,14 @@ export const questions: Question[] = [
     "id": 258,
     "original_question": "Myelinated fibers conduct impulses in which way? Salutatory (as opposed to continuos)",
     "paraphrased_question": "What is the specific mode of impulse conduction that occurs in myelinated nerve fibers?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Salutatory",
+    "options": {
+      "a": "Option A",
+      "b": "Option B",
+      "c": "Option C",
+      "d": "Option D"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Option A",
     "category": "Physiology",
     "explanation": "Myelinated nerve fibers transmit signals via salutatory conduction. The myelin sheath acts as an insulator, forcing the electrical impulse to jump from one Node of Ranvier to the next, which is much faster than continuous conduction in unmyelinated fibers.",
     "mnemonic": "Think 'S' for Salutatory and 'S' for Skipping; the impulse skips down the axon."
@@ -3812,8 +3896,13 @@ export const questions: Question[] = [
     "id": 259,
     "original_question": "A term for one motor neuron and all the muscle fibers it innervates is:",
     "paraphrased_question": "What is the collective term for a single motor neuron and all of the corresponding muscle fibers that it stimulates?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Quadratus Lumborum",
+      "b": "Iliacus",
+      "c": "Psoas Major",
+      "d": "A motor unit"
+    },
+    "correct_option": "d",
     "correct_answer_text": "A motor unit",
     "category": "Anatomy",
     "explanation": "A motor unit is the fundamental functional component of muscle contraction. It consists of one motor neuron and the specific group of muscle fibers that this neuron activates.",
@@ -3823,8 +3912,13 @@ export const questions: Question[] = [
     "id": 260,
     "original_question": "Which are Adductors of the humerus?",
     "paraphrased_question": "Which major muscles are responsible for adducting the humerus?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Pec Major and Lats",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Pec Major and Lats",
     "category": "Kinesiology",
     "explanation": "Adduction of the humerus is the movement of the arm toward the body's midline. The Pectoralis Major and Latissimus Dorsi are powerful primary movers for this action.",
@@ -3834,9 +3928,14 @@ export const questions: Question[] = [
     "id": 261,
     "original_question": "Flaccidity or flaccid muscle is due to which? Pathology or damage to anterior horn motor neuron (lower motor",
     "paraphrased_question": "What is the underlying neurological cause of muscle flaccidity?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Damage to lower motor neurons",
+    "options": {
+      "a": "Quadratus Lumborum",
+      "b": "Psoas Major",
+      "c": "...",
+      "d": "Iliacus"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "...",
     "category": "Pathology",
     "explanation": "Flaccidity, or a lack of muscle tone, results from damage to lower motor neurons. These neurons form the final common pathway for transmitting signals from the central nervous system to the muscles, and their damage interrupts this connection.",
     "mnemonic": "If the LOW motor neuron is out, the muscle tone is LOW (flaccid)."
@@ -3845,8 +3944,13 @@ export const questions: Question[] = [
     "id": 262,
     "original_question": "What is the location of Ankylosing Spondylitis",
     "paraphrased_question": "Which part of the body is primarily affected by Ankylosing Spondylitis?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Vertebral column",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Vertebral column",
     "category": "Pathology",
     "explanation": "Ankylosing Spondylitis is a chronic inflammatory arthritis that primarily affects the axial skeleton, especially the sacroiliac joints and the vertebral column. Over time, it can lead to the fusion of vertebrae, causing stiffness and immobility.",
@@ -3856,8 +3960,13 @@ export const questions: Question[] = [
     "id": 263,
     "original_question": "The origin of Rectus Femoris is:",
     "paraphrased_question": "What is the anatomical origin point of the Rectus Femoris muscle?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "AIIS",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "AIIS",
     "category": "Anatomy",
     "explanation": "The Rectus Femoris muscle, one of the four quadriceps muscles, originates from the Anterior Inferior Iliac Spine (AIIS). This is a bony landmark on the ilium bone of the pelvis.",
@@ -3867,8 +3976,13 @@ export const questions: Question[] = [
     "id": 264,
     "original_question": "Sweat is the fluid secretion for which element?",
     "paraphrased_question": "Which element is associated with the secretion of sweat?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Water",
+      "b": "Fire",
+      "c": "Metal",
+      "d": "Wood"
+    },
+    "correct_option": "b",
     "correct_answer_text": "Fire",
     "category": "Eastern Medicine",
     "explanation": "In Traditional Chinese Medicine (TCM), the Fire element is associated with the heart and small intestine. The heart governs the spirit and blood, and its corresponding fluid is sweat.",
@@ -3894,8 +4008,13 @@ export const questions: Question[] = [
     "id": 266,
     "original_question": "The three major nerves of the Lumbosacral Plexus are: Obturator and Sciatic",
     "paraphrased_question": "Besides the Obturator and Sciatic nerves, what is the other major nerve of the Lumbosacral Plexus?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Femoral,",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Femoral,",
     "category": "Anatomy",
     "explanation": "The lumbosacral plexus is a network of nerves in the lumbar and sacral regions. The three major nerves that arise from it are the femoral, obturator, and sciatic nerves.",
@@ -3905,9 +4024,14 @@ export const questions: Question[] = [
     "id": 267,
     "original_question": "Fibrosis and contracture of muscle tissue is usually caused by: Loss of muscle balance between antagonistic muscles - Loss of muscle balance between antagonistic muscles",
     "paraphrased_question": "What is the typical cause of fibrosis and contracture in muscle tissue?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Loss of muscle balance between antagonistic muscles",
+    "options": {
+      "a": "Iliacus",
+      "b": "Rectus Abdominis",
+      "c": "Quadratus Lumborum",
+      "d": "Psoas Major"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "Quadratus Lumborum",
     "category": "Pathology",
     "explanation": "Fibrosis and contracture of muscle tissue often result from a loss of balance between antagonistic muscles. This imbalance can lead to chronic shortening and tightening of the muscle, causing the development of fibrous tissue and a loss of flexibility.",
     "mnemonic": "When antagonists don't play fair, muscles contract in despair."
@@ -3960,8 +4084,13 @@ export const questions: Question[] = [
     "id": 271,
     "original_question": "When palmar kneading posterior thigh while client prone, what is best position for knee?",
     "paraphrased_question": "What is the optimal knee position for a client who is prone while receiving palmar kneading on the posterior thigh?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Slightly flexed",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Slightly flexed",
     "category": "Massage Techniques",
     "explanation": "Slightly flexing the knee when the client is prone helps to soften and relax the hamstring muscles of the posterior thigh. This allows for a more effective and comfortable massage.",
@@ -4033,8 +4162,13 @@ export const questions: Question[] = [
     "id": 276,
     "original_question": "What is the end point on the bladder channel? lateral pinky toe",
     "paraphrased_question": "Where does the bladder meridian terminate?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "BL-67 on the",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "BL-67 on the",
     "category": "Eastern Medicine",
     "explanation": "In traditional Chinese medicine, the Bladder meridian, one of the longest channels, concludes at the acupoint BL-67, which is located on the lateral side of the small toe.",
@@ -4044,8 +4178,13 @@ export const questions: Question[] = [
     "id": 277,
     "original_question": "What is the beginning point for the meridian dealing with elimination? index finger (LI-1)",
     "paraphrased_question": "Which meridian, associated with elimination, originates at the index finger?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Lung",
+      "b": "Kidney",
+      "c": "Liver",
+      "d": "Radial side of"
+    },
+    "correct_option": "d",
     "correct_answer_text": "Radial side of",
     "category": "Eastern Medicine",
     "explanation": "The Large Intestine meridian, which governs the function of elimination, begins at the acupoint LI-1, located on the radial side of the index finger.",
@@ -4084,8 +4223,13 @@ export const questions: Question[] = [
     "id": 280,
     "original_question": "Which muscle laterally rotates and abducts?",
     "paraphrased_question": "Which muscle is responsible for both lateral rotation and abduction of the hip?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Iliacus",
+      "b": "Piriformis",
+      "c": "Quadratus Lumborum",
+      "d": "Psoas Major"
+    },
+    "correct_option": "b",
     "correct_answer_text": "Piriformis",
     "category": "Kinesiology",
     "explanation": "The Piriformis muscle is a key lateral rotator of the hip. It also assists in abduction of the flexed thigh.",
@@ -4095,8 +4239,13 @@ export const questions: Question[] = [
     "id": 281,
     "original_question": "Client is a right Hemiplegic and right foot is inverted. What condition is the client's foot in?",
     "paraphrased_question": "A client with right-sided hemiplegia presents with an inverted right foot. What is this condition called?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Spasticity",
+      "b": "None of the above",
+      "c": "All of the above",
+      "d": "Cannot be determined"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Spasticity",
     "category": "Pathology",
     "explanation": "Hemiplegia, often resulting from a stroke, can lead to spasticity, a condition characterized by continuous muscle contraction. An inverted foot is a common presentation of spasticity in the lower limb.",
@@ -4106,9 +4255,14 @@ export const questions: Question[] = [
     "id": 282,
     "original_question": "What is the best position for the client with Bronchiectasis? Prone, feet elevated, head lower than chest (for drainage) - (for drainage)",
     "paraphrased_question": "For a client with bronchiectasis, what is the optimal positioning to facilitate drainage?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": null,
+    "options": {
+      "a": "Option A",
+      "b": "Option B",
+      "c": "Option C",
+      "d": "Option D"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Option A",
     "category": "Pathology",
     "explanation": "Bronchiectasis involves the widening of the airways, leading to mucus buildup. Postural drainage, with the head lower than the chest, uses gravity to help clear the lungs.",
     "mnemonic": "To drain the bronchi, bring the head below the chest, letting gravity do the rest."
@@ -4117,8 +4271,13 @@ export const questions: Question[] = [
     "id": 283,
     "original_question": "A cyclist's foot is dorsiflexed and inverted. Which muscle is contracted?",
     "paraphrased_question": "If a cyclist's foot is held in a position of dorsiflexion and inversion, which muscle is primarily engaged?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Psoas Major",
+      "b": "Quadratus Lumborum",
+      "c": "Iliacus",
+      "d": "Tibialis anterior"
+    },
+    "correct_option": "d",
     "correct_answer_text": "Tibialis anterior",
     "category": "Kinesiology",
     "explanation": "The Tibialis Anterior is the primary muscle responsible for both dorsiflexion and inversion of the foot. These are common movements in the pedaling motion of cycling.",

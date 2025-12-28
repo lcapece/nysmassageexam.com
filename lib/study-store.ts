@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   ONBOARDING_COMPLETE: 'onboarding_complete',
   EXAM_DATE: 'selected_exam_date',
   STUDY_START_DATE: 'study_start_date',
+  HAS_PURCHASED: 'has_purchased',
 };
 
 // Types
@@ -68,6 +69,29 @@ export const EXAM_DATES = [
   { date: '2026-03-06', label: 'March 6, 2026', applicationDeadline: '2025-11-01' },
   { date: '2026-09-18', label: 'September 18, 2026', applicationDeadline: '2026-06-01' },
 ];
+
+// Trial mode - 3 fixed questions per category for free users
+// These IDs are deterministic so all trial users see the same questions
+export const TRIAL_QUESTION_IDS: Record<string, number[]> = {
+  'Massage Techniques': [1, 6, 11],
+  'Anatomy': [2, 4, 7],
+  'Physiology': [9, 14, 17],
+  'Pathology': [22, 28, 35],
+  'Eastern Medicine': [264, 199, 76],
+  'Ethics & Law': [45, 52, 58],
+  'Kinesiology': [3, 12, 19],
+  'Hydrotherapy': [67, 73, 81],
+};
+
+// Get all trial question IDs as a flat array
+export function getTrialQuestionIds(): number[] {
+  return Object.values(TRIAL_QUESTION_IDS).flat();
+}
+
+// Check if a question is available in trial mode
+export function isTrialQuestion(questionId: number): boolean {
+  return getTrialQuestionIds().includes(questionId);
+}
 
 // Categories
 export const CATEGORIES = [
@@ -278,6 +302,31 @@ export function calculateRecommendedDailyQuestions(
   // Aim to master all questions with some buffer for review
   const questionsPerDay = Math.ceil((questionsRemaining * 1.5) / daysLeft);
   return Math.max(10, Math.min(50, questionsPerDay));
+}
+
+// Purchase status functions
+export async function hasPurchased(): Promise<boolean> {
+  try {
+    const data = await AsyncStorage.getItem(STORAGE_KEYS.HAS_PURCHASED);
+    return data === 'true';
+  } catch {
+    return false;
+  }
+}
+
+export async function setPurchased(purchased: boolean): Promise<void> {
+  await AsyncStorage.setItem(STORAGE_KEYS.HAS_PURCHASED, purchased ? 'true' : 'false');
+}
+
+// Get questions available to the user based on purchase status
+export async function getAvailableQuestions(): Promise<Question[]> {
+  const purchased = await hasPurchased();
+  if (purchased) {
+    return questions;
+  }
+  // Trial mode: only return trial questions
+  const trialIds = getTrialQuestionIds();
+  return questions.filter(q => trialIds.includes(q.id));
 }
 
 export { questions };

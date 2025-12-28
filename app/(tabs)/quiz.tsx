@@ -16,6 +16,9 @@ import {
   getBookmarks,
   toggleBookmark,
   CATEGORIES,
+  hasPurchased,
+  isTrialQuestion,
+  TRIAL_QUESTION_IDS,
 } from "@/lib/study-store";
 
 type QuizState = "setup" | "question" | "feedback" | "complete";
@@ -34,24 +37,49 @@ export default function QuizScreen() {
   const [startTime, setStartTime] = useState<number>(0);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(false);
+  const [isPurchased, setIsPurchased] = useState(true); // Default to true, will check on mount
 
   useEffect(() => {
     loadBookmarks();
+    checkPurchaseStatus();
   }, []);
+
+  const checkPurchaseStatus = async () => {
+    const purchased = await hasPurchased();
+    setIsPurchased(purchased);
+  };
 
   const loadBookmarks = async () => {
     const bm = await getBookmarks();
     setBookmarks(bm);
   };
 
-  const startQuiz = (category: string | null, count: number = 10) => {
-    let availableQuestions = category 
-      ? questions.filter(q => q.category === category)
-      : [...questions];
+  const startQuiz = async (category: string | null, count: number = 10) => {
+    const purchased = await hasPurchased();
+    setIsPurchased(purchased);
+    
+    let availableQuestions: Question[];
+    
+    if (purchased) {
+      // Full access - use all questions
+      availableQuestions = category 
+        ? questions.filter(q => q.category === category)
+        : [...questions];
+    } else {
+      // Trial mode - only use trial questions
+      if (category) {
+        const trialIds = TRIAL_QUESTION_IDS[category] || [];
+        availableQuestions = questions.filter(q => trialIds.includes(q.id));
+      } else {
+        // All trial questions across categories
+        availableQuestions = questions.filter(q => isTrialQuestion(q.id));
+      }
+    }
     
     // Shuffle and take requested count
     const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+    const maxCount = purchased ? count : Math.min(count, availableQuestions.length);
+    const selected = shuffled.slice(0, Math.min(maxCount, shuffled.length));
     
     setQuizQuestions(selected);
     setSelectedCategory(category);
@@ -140,6 +168,23 @@ export default function QuizScreen() {
             <Text className="text-3xl font-bold text-foreground">Quiz Mode</Text>
             <Text className="text-base text-muted mt-1">Test your knowledge</Text>
           </View>
+
+          {/* Trial Mode Banner */}
+          {!isPurchased && (
+            <Pressable
+              onPress={() => router.push("/upgrade")}
+              style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1 }]}
+              className="mx-5 mt-4 bg-warning/10 border border-warning/30 rounded-xl p-4"
+            >
+              <View className="flex-row items-center justify-between">
+                <View className="flex-1">
+                  <Text className="text-foreground font-semibold">Free Trial Mode</Text>
+                  <Text className="text-muted text-sm">3 questions per category • Tap to unlock all 287</Text>
+                </View>
+                <MaterialIcons name="lock-open" size={24} color={colors.warning} />
+              </View>
+            </Pressable>
+          )}
 
           {/* Quick Start */}
           <View className="px-5 mt-4">

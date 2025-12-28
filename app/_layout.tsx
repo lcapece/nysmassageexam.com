@@ -88,6 +88,9 @@ export default function RootLayout() {
             <Stack.Screen name="(tabs)" />
             <Stack.Screen name="onboarding" options={{ gestureEnabled: false }} />
             <Stack.Screen name="exam-info" />
+            <Stack.Screen name="landing" options={{ gestureEnabled: false }} />
+            <Stack.Screen name="login" />
+            <Stack.Screen name="upgrade" />
             <Stack.Screen name="oauth/callback" />
           </Stack>
           <StatusBar style="auto" />

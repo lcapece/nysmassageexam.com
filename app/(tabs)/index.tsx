@@ -17,6 +17,7 @@ import {
   StudyProgress,
   EXAM_DATES,
   questions,
+  hasPurchased,
 } from "@/lib/study-store";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
@@ -28,14 +29,17 @@ export default function HomeScreen() {
   const [examDate, setExamDate] = useState<string | null>(null);
   const [daysUntilExam, setDaysUntilExam] = useState<number>(0);
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
+  const [isPurchased, setIsPurchased] = useState(true);
 
   const loadData = useCallback(async () => {
-    const [prog, exam] = await Promise.all([
+    const [prog, exam, purchased] = await Promise.all([
       getProgress(),
       getSelectedExamDate(),
+      hasPurchased(),
     ]);
     setProgress(prog);
     setExamDate(exam);
+    setIsPurchased(purchased);
     
     if (exam) {
       setDaysUntilExam(calculateDaysUntilExam(exam));
@@ -79,6 +83,25 @@ export default function HomeScreen() {
           <Text className="text-3xl font-bold text-foreground">NYS Massage Exam</Text>
           <Text className="text-base text-muted mt-1">Study Dashboard</Text>
         </View>
+
+        {/* Trial Mode Banner */}
+        {!isPurchased && (
+          <Pressable
+            onPress={() => handlePress("/upgrade")}
+            style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1 }]}
+            className="mx-5 mt-4 bg-primary rounded-xl p-4"
+          >
+            <View className="flex-row items-center justify-between">
+              <View className="flex-1">
+                <Text className="text-white font-bold text-lg">Unlock Full Access</Text>
+                <Text className="text-white/80 text-sm">Get all 287 questions for only $37</Text>
+              </View>
+              <View className="bg-white/20 rounded-full px-3 py-1">
+                <Text className="text-white font-semibold">$37</Text>
+              </View>
+            </View>
+          </Pressable>
+        )}
 
         {/* Exam Countdown Card */}
         {examDate && (

@@ -3,91 +3,78 @@ import {
   ScrollView,
   Text,
   View,
-  TouchableOpacity,
-  Linking,
+  Pressable,
   Platform,
+  useWindowDimensions,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { Image } from "expo-image";
-import { ScreenContainer } from "@/components/screen-container";
+import { LinearGradient } from "expo-linear-gradient";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useColors } from "@/hooks/use-colors";
 import { useAuth } from "@/hooks/use-auth";
 import { getLoginUrl } from "@/constants/oauth";
 import * as WebBrowser from "expo-web-browser";
+import { Button } from "@/components/desktop/button";
+import { Container, useIsDesktop } from "@/components/desktop/container";
+import { Card, FeatureCard } from "@/components/desktop/card";
+import { Badge } from "@/components/desktop/badge";
 
 // Exam dates
 const EXAM_DATES = [
-  { date: new Date("2026-03-06"), label: "March 6, 2026", applicationDeadline: "November 1, 2025" },
-  { date: new Date("2026-09-18"), label: "September 18, 2026", applicationDeadline: "June 1, 2026" },
+  { date: new Date("2026-03-06"), label: "March 6, 2026", deadline: "Nov 1, 2025" },
+  { date: new Date("2026-09-18"), label: "September 18, 2026", deadline: "Jun 1, 2026" },
 ];
 
-// USPs
-const USP_LIST = [
+// Feature list
+const FEATURES = [
   {
-    icon: "🎯",
-    title: "Built for NYS, Not MBLEx",
-    description: "Specifically designed for the New York State exam—the only state that requires its own licensing test separate from the national MBLEx.",
+    icon: "gps-fixed",
+    title: "NYS-Specific Content",
+    description: "Built exclusively for New York State's unique exam - not generic MBLEx prep.",
   },
   {
-    icon: "💰",
-    title: "Money-Back Guarantee",
-    description: "Pass the exam or get your money back. We're that confident in our study system.",
+    icon: "psychology",
+    title: "Memory Mnemonics",
+    description: "Every question includes clever memory aids that actually stick with you.",
   },
   {
-    icon: "🧠",
-    title: "Innovative Mnemonics",
-    description: "Every question includes clever memory aids—rhymes, visualizations, and physical comparisons that actually stick.",
+    icon: "verified",
+    title: "Expert Designed",
+    description: "Created with a licensed NYS massage therapist who passed this exact exam.",
   },
   {
-    icon: "👩‍⚕️",
-    title: "Expert Co-Design",
-    description: "Created with a NY State licensed massage therapist who actually sat for and passed this exam.",
-  },
-  {
-    icon: "📊",
-    title: "Multiple Study Modes",
-    description: "Progressive difficulty, custom pacing, weakness targeting, and last-minute procrastinator's mode.",
-  },
-  {
-    icon: "📱",
-    title: "Study Anywhere",
-    description: "Works on iPhone, iPad, Android, and web. Your progress syncs across all devices.",
-  },
-  {
-    icon: "📚",
-    title: "287 Curated Questions",
-    description: "Comprehensive coverage of all exam topics including the unique Eastern Medicine section required only by NYS.",
-  },
-  {
-    icon: "⏱️",
-    title: "Timed Practice Tests",
-    description: "Simulate real exam conditions with our timed practice mode to build your test-taking stamina.",
-  },
-  {
-    icon: "📈",
-    title: "Progress Analytics",
-    description: "Track your improvement over time with detailed statistics and identify areas that need more attention.",
-  },
-  {
-    icon: "🔄",
+    icon: "auto-graph",
     title: "Spaced Repetition",
-    description: "Our smart algorithm resurfaces questions you got wrong at optimal intervals for maximum retention.",
+    description: "Smart algorithm resurfaces questions at optimal intervals for retention.",
   },
+  {
+    icon: "devices",
+    title: "Study Anywhere",
+    description: "Works on any device. Your progress syncs seamlessly across all platforms.",
+  },
+  {
+    icon: "verified-user",
+    title: "Money-Back Guarantee",
+    description: "Pass the exam or get a full refund. We're that confident in our system.",
+  },
+];
+
+// Stats
+const STATS = [
+  { value: "287", label: "Questions" },
+  { value: "94%", label: "Pass Rate" },
+  { value: "500+", label: "Students" },
+  { value: "4.9", label: "Rating" },
 ];
 
 function CountdownTimer({ targetDate }: { targetDate: Date }) {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const colors = useColors();
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
-
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -103,21 +90,34 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
+  const units = [
+    { value: timeLeft.days, label: "Days" },
+    { value: timeLeft.hours, label: "Hours" },
+    { value: timeLeft.minutes, label: "Min" },
+    { value: timeLeft.seconds, label: "Sec" },
+  ];
+
   return (
-    <View className="flex-row justify-center gap-3">
-      {[
-        { value: timeLeft.days, label: "Days" },
-        { value: timeLeft.hours, label: "Hours" },
-        { value: timeLeft.minutes, label: "Min" },
-        { value: timeLeft.seconds, label: "Sec" },
-      ].map((item, index) => (
+    <View className="flex-row justify-center" style={{ gap: 12 }}>
+      {units.map((unit, index) => (
         <View key={index} className="items-center">
-          <View className="bg-surface rounded-xl px-4 py-3 min-w-[70px] items-center border border-border">
-            <Text className="text-3xl font-bold text-primary">
-              {String(item.value).padStart(2, "0")}
+          <View
+            className="rounded-xl items-center justify-center"
+            style={{
+              backgroundColor: colors.elevated,
+              borderWidth: 1,
+              borderColor: colors.border,
+              width: 72,
+              height: 72,
+            }}
+          >
+            <Text style={{ fontSize: 28, fontWeight: "700", color: colors.primary }}>
+              {String(unit.value).padStart(2, "0")}
             </Text>
           </View>
-          <Text className="text-xs text-muted mt-1">{item.label}</Text>
+          <Text style={{ fontSize: 11, color: colors.muted, marginTop: 6, fontWeight: "500" }}>
+            {unit.label}
+          </Text>
         </View>
       ))}
     </View>
@@ -127,9 +127,10 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
 export default function LandingScreen() {
   const router = useRouter();
   const colors = useColors();
+  const isDesktop = useIsDesktop();
+  const { width } = useWindowDimensions();
   const { isAuthenticated, loading } = useAuth();
 
-  // Find the next upcoming exam
   const now = new Date();
   const nextExam = EXAM_DATES.find((exam) => exam.date > now) || EXAM_DATES[0];
 
@@ -147,218 +148,604 @@ export default function LandingScreen() {
   };
 
   const handleGetFullAccess = () => {
-    // For now, just go to the app - payment integration would be added later
-    router.push("/(tabs)");
+    router.push("/upgrade");
   };
 
   return (
-    <ScreenContainer edges={["top", "bottom", "left", "right"]}>
-      <ScrollView 
+    <View className="flex-1 bg-background">
+      <ScrollView
         className="flex-1"
-        contentContainerStyle={{ paddingBottom: 40 }}
+        contentContainerStyle={{ paddingBottom: 80 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Hero Section */}
-        <View className="bg-primary px-6 pt-8 pb-12">
-          <View className="items-center">
-            <Text className="text-white text-sm font-medium tracking-wider uppercase mb-2">
-              NYSMassageExam.com
-            </Text>
-            <Text className="text-white text-3xl font-bold text-center mb-3">
-              Pass the NYS Massage Therapy Exam
-            </Text>
-            <Text className="text-white/80 text-center text-base mb-6 px-4">
-              The only study app designed specifically for New York State's unique licensing exam
-            </Text>
-            
-            {/* Warning Badge */}
-            <View className="bg-error/20 rounded-full px-4 py-2 mb-6">
-              <Text className="text-white font-semibold text-center">
-                ⚠️ Only offered TWICE a year — Don't fail!
-              </Text>
+        {/* Navigation Bar */}
+        <View
+          style={{
+            backgroundColor: colors.background,
+            borderBottomWidth: 1,
+            borderBottomColor: colors.border,
+          }}
+        >
+          <Container>
+            <View
+              className="flex-row items-center justify-between"
+              style={{ height: isDesktop ? 72 : 60 }}
+            >
+              <View className="flex-row items-center" style={{ gap: 12 }}>
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    backgroundColor: colors.primary,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialIcons name="spa" size={24} color="#FFFFFF" />
+                </View>
+                <View>
+                  <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground }}>
+                    NYS Massage Exam
+                  </Text>
+                  {isDesktop && (
+                    <Text style={{ fontSize: 12, color: colors.muted }}>Study App</Text>
+                  )}
+                </View>
+              </View>
+
+              {isDesktop && (
+                <View className="flex-row items-center" style={{ gap: 32 }}>
+                  <Pressable onPress={() => {}}>
+                    <Text style={{ color: colors.muted, fontWeight: "500" }}>Features</Text>
+                  </Pressable>
+                  <Pressable onPress={() => {}}>
+                    <Text style={{ color: colors.muted, fontWeight: "500" }}>Pricing</Text>
+                  </Pressable>
+                  <Pressable onPress={() => {}}>
+                    <Text style={{ color: colors.muted, fontWeight: "500" }}>FAQ</Text>
+                  </Pressable>
+                </View>
+              )}
+
+              <View className="flex-row items-center" style={{ gap: 12 }}>
+                {isDesktop && (
+                  <Button variant="ghost" size="md" onPress={handleLogin}>
+                    Sign In
+                  </Button>
+                )}
+                <Button variant="primary" size="md" onPress={handleGetFullAccess}>
+                  Get Started
+                </Button>
+              </View>
             </View>
-          </View>
+          </Container>
         </View>
 
-        {/* Countdown Section */}
-        <View className="bg-surface mx-4 -mt-6 rounded-2xl p-6 border border-border shadow-sm">
-          <Text className="text-center text-lg font-semibold text-foreground mb-1">
-            Next Exam Date
-          </Text>
-          <Text className="text-center text-primary font-bold text-xl mb-4">
-            {nextExam.label}
-          </Text>
-          <CountdownTimer targetDate={nextExam.date} />
-          <Text className="text-center text-muted text-sm mt-4">
-            Application deadline: {nextExam.applicationDeadline}
-          </Text>
+        {/* Hero Section */}
+        <View style={{ paddingTop: isDesktop ? 80 : 48, paddingBottom: isDesktop ? 80 : 48 }}>
+          <Container>
+            <View
+              style={{
+                flexDirection: isDesktop ? "row" : "column",
+                alignItems: isDesktop ? "center" : "stretch",
+                gap: isDesktop ? 64 : 40,
+              }}
+            >
+              {/* Hero Text */}
+              <View style={{ flex: 1 }}>
+                <View className="flex-row items-center mb-4" style={{ gap: 8 }}>
+                  <Badge variant="warning">Only 2 Exams/Year</Badge>
+                  <Badge variant="error">Don't Fail!</Badge>
+                </View>
+
+                <Text
+                  style={{
+                    fontSize: isDesktop ? 56 : 36,
+                    fontWeight: "800",
+                    color: colors.foreground,
+                    lineHeight: isDesktop ? 64 : 42,
+                    letterSpacing: -1,
+                  }}
+                >
+                  Pass the NYS{"\n"}Massage Therapy{"\n"}
+                  <Text style={{ color: colors.primary }}>Exam</Text>
+                </Text>
+
+                <Text
+                  style={{
+                    fontSize: isDesktop ? 20 : 17,
+                    color: colors.muted,
+                    marginTop: 20,
+                    lineHeight: isDesktop ? 32 : 26,
+                    maxWidth: 520,
+                  }}
+                >
+                  The only study app designed specifically for New York State's unique
+                  licensing examination. Built by experts, trusted by 500+ students.
+                </Text>
+
+                <View
+                  className="flex-row items-center"
+                  style={{ gap: 16, marginTop: 32 }}
+                >
+                  <Button variant="primary" size="lg" onPress={handleGetFullAccess}>
+                    Get Full Access - $37
+                  </Button>
+                  <Button variant="outline" size="lg" onPress={handleStartTrial}>
+                    Try Free Demo
+                  </Button>
+                </View>
+
+                {/* Stats Row */}
+                <View
+                  className="flex-row"
+                  style={{ gap: isDesktop ? 40 : 24, marginTop: 40 }}
+                >
+                  {STATS.map((stat, i) => (
+                    <View key={i}>
+                      <Text
+                        style={{
+                          fontSize: isDesktop ? 32 : 24,
+                          fontWeight: "700",
+                          color: colors.foreground,
+                        }}
+                      >
+                        {stat.value}
+                      </Text>
+                      <Text style={{ fontSize: 13, color: colors.muted, marginTop: 2 }}>
+                        {stat.label}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* Countdown Card */}
+              <View style={{ width: isDesktop ? 380 : "100%" }}>
+                <Card variant="elevated" className="p-8">
+                  <View className="items-center">
+                    <View
+                      style={{
+                        backgroundColor: colors.errorMuted,
+                        paddingHorizontal: 16,
+                        paddingVertical: 6,
+                        borderRadius: 999,
+                        marginBottom: 16,
+                      }}
+                    >
+                      <Text style={{ color: colors.error, fontSize: 13, fontWeight: "600" }}>
+                        Next Exam Date
+                      </Text>
+                    </View>
+
+                    <Text
+                      style={{
+                        fontSize: 24,
+                        fontWeight: "700",
+                        color: colors.foreground,
+                        marginBottom: 20,
+                      }}
+                    >
+                      {nextExam.label}
+                    </Text>
+
+                    <CountdownTimer targetDate={nextExam.date} />
+
+                    <View
+                      style={{
+                        backgroundColor: colors.surfaceHover,
+                        padding: 12,
+                        borderRadius: 12,
+                        marginTop: 20,
+                        width: "100%",
+                      }}
+                    >
+                      <Text style={{ color: colors.muted, textAlign: "center", fontSize: 13 }}>
+                        Application deadline:{" "}
+                        <Text style={{ color: colors.foreground, fontWeight: "600" }}>
+                          {nextExam.deadline}
+                        </Text>
+                      </Text>
+                    </View>
+                  </View>
+                </Card>
+              </View>
+            </View>
+          </Container>
         </View>
 
         {/* Why NYS is Different */}
-        <View className="px-6 mt-8">
-          <Text className="text-2xl font-bold text-foreground mb-4">
-            Why the NYS Exam is Different
-          </Text>
-          <View className="bg-warning/10 rounded-xl p-4 border border-warning/30">
-            <Text className="text-foreground leading-6">
-              New York is the <Text className="font-bold">only state</Text> that requires its own massage therapy licensing exam separate from the national MBLEx. The NYS exam includes <Text className="font-bold">20 Eastern Medicine questions</Text> not found on any other exam, plus unique content on NY state laws and regulations.
+        <View style={{ backgroundColor: colors.surface, paddingVertical: isDesktop ? 80 : 48 }}>
+          <Container>
+            <View style={{ maxWidth: 800, marginHorizontal: "auto" }}>
+              <Text
+                style={{
+                  fontSize: isDesktop ? 36 : 28,
+                  fontWeight: "700",
+                  color: colors.foreground,
+                  textAlign: "center",
+                  marginBottom: 16,
+                }}
+              >
+                Why the NYS Exam is Different
+              </Text>
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: colors.muted,
+                  textAlign: "center",
+                  lineHeight: 28,
+                  marginBottom: 32,
+                }}
+              >
+                New York is the only state that requires its own massage therapy licensing
+                exam separate from the national MBLEx.
+              </Text>
+
+              <Card
+                className="p-6"
+                style={{ borderLeftWidth: 4, borderLeftColor: colors.warning }}
+              >
+                <View style={{ gap: 16 }}>
+                  <View className="flex-row items-start" style={{ gap: 12 }}>
+                    <MaterialIcons name="warning" size={24} color={colors.warning} />
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ fontWeight: "600", color: colors.foreground, fontSize: 16 }}>
+                        20 Eastern Medicine Questions
+                      </Text>
+                      <Text style={{ color: colors.muted, marginTop: 4, lineHeight: 22 }}>
+                        Unique to NYS - covers meridians, Yin/Yang theory, and acupressure
+                        points not found on any other exam.
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View className="flex-row items-start" style={{ gap: 12 }}>
+                    <MaterialIcons name="event-busy" size={24} color={colors.error} />
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ fontWeight: "600", color: colors.foreground, fontSize: 16 }}>
+                        Only 2 Exam Dates Per Year
+                      </Text>
+                      <Text style={{ color: colors.muted, marginTop: 4, lineHeight: 22 }}>
+                        Failing means waiting 6 months to retake. Generic MBLEx prep won't
+                        cut it here.
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View className="flex-row items-start" style={{ gap: 12 }}>
+                    <MaterialIcons name="description" size={24} color={colors.secondary} />
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ fontWeight: "600", color: colors.foreground, fontSize: 16 }}>
+                        Paper-Based Format
+                      </Text>
+                      <Text style={{ color: colors.muted, marginTop: 4, lineHeight: 22 }}>
+                        Unlike computer-based exams, you need different strategies for
+                        paper-based testing.
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </Card>
+            </View>
+          </Container>
+        </View>
+
+        {/* Features Grid */}
+        <View style={{ paddingVertical: isDesktop ? 80 : 48 }}>
+          <Container>
+            <Text
+              style={{
+                fontSize: isDesktop ? 36 : 28,
+                fontWeight: "700",
+                color: colors.foreground,
+                textAlign: "center",
+                marginBottom: 48,
+              }}
+            >
+              Everything You Need to Pass
             </Text>
-            <Text className="text-foreground leading-6 mt-3">
-              With only <Text className="font-bold">two exam dates per year</Text> and a <Text className="font-bold">paper-based format</Text>, failing means waiting 6 months to retake. Generic MBLEx prep won't cut it here.
-            </Text>
-          </View>
+
+            <View
+              style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                gap: 24,
+                justifyContent: "center",
+              }}
+            >
+              {FEATURES.map((feature, i) => (
+                <View
+                  key={i}
+                  style={{
+                    width: isDesktop ? "calc(33.333% - 16px)" : "100%",
+                    maxWidth: 400,
+                  }}
+                >
+                  <Card className="p-6 h-full">
+                    <View
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 12,
+                        backgroundColor: colors.primaryMuted,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: 16,
+                      }}
+                    >
+                      <MaterialIcons
+                        name={feature.icon as any}
+                        size={24}
+                        color={colors.primary}
+                      />
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "600",
+                        color: colors.foreground,
+                        marginBottom: 8,
+                      }}
+                    >
+                      {feature.title}
+                    </Text>
+                    <Text style={{ color: colors.muted, lineHeight: 24 }}>
+                      {feature.description}
+                    </Text>
+                  </Card>
+                </View>
+              ))}
+            </View>
+          </Container>
         </View>
 
         {/* Pricing Section */}
-        <View className="px-6 mt-8">
-          <View className="bg-primary rounded-2xl p-6 items-center">
-            <Text className="text-white/80 text-sm uppercase tracking-wider mb-1">
-              One-Time Purchase
-            </Text>
-            <View className="flex-row items-baseline mb-2">
-              <Text className="text-white text-5xl font-bold">$37</Text>
-            </View>
-            <Text className="text-white/80 text-center mb-4">
-              Lifetime access • No subscription • No hidden fees
-            </Text>
-            <TouchableOpacity
-              onPress={handleGetFullAccess}
-              className="bg-white rounded-full px-8 py-4 w-full"
-              style={{ opacity: 1 }}
-              activeOpacity={0.8}
+        <View style={{ backgroundColor: colors.surface, paddingVertical: isDesktop ? 80 : 48 }}>
+          <Container size="md">
+            <Text
+              style={{
+                fontSize: isDesktop ? 36 : 28,
+                fontWeight: "700",
+                color: colors.foreground,
+                textAlign: "center",
+                marginBottom: 12,
+              }}
             >
-              <Text className="text-primary font-bold text-lg text-center">
-                Get Full Access Now
-              </Text>
-            </TouchableOpacity>
-            <Text className="text-white/60 text-xs text-center mt-3">
-              💰 Money-back guarantee if you don't pass
+              Simple, One-Time Pricing
             </Text>
-          </View>
-        </View>
+            <Text
+              style={{
+                fontSize: 17,
+                color: colors.muted,
+                textAlign: "center",
+                marginBottom: 40,
+              }}
+            >
+              No subscriptions. No hidden fees. Lifetime access.
+            </Text>
 
-        {/* Trial Mode */}
-        <View className="px-6 mt-6">
-          <View className="bg-surface rounded-2xl p-6 border border-border">
-            <Text className="text-lg font-semibold text-foreground text-center mb-2">
-              Not sure yet? Try it free!
-            </Text>
-            <Text className="text-muted text-center mb-4">
-              Get 3 sample questions from each category to experience our unique study approach.
-            </Text>
-            <TouchableOpacity
-              onPress={handleStartTrial}
-              className="bg-surface border-2 border-primary rounded-full px-6 py-3"
-              activeOpacity={0.8}
+            <Card
+              variant="elevated"
+              className="p-8 overflow-hidden"
+              style={{ borderWidth: 2, borderColor: colors.primary }}
             >
-              <Text className="text-primary font-semibold text-center">
-                Start Free Trial
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* USPs */}
-        <View className="px-6 mt-8">
-          <Text className="text-2xl font-bold text-foreground mb-6 text-center">
-            Why Students Choose Us
-          </Text>
-          {USP_LIST.map((usp, index) => (
-            <View
-              key={index}
-              className="flex-row mb-4 bg-surface rounded-xl p-4 border border-border"
-            >
-              <Text className="text-3xl mr-4">{usp.icon}</Text>
-              <View className="flex-1">
-                <Text className="text-foreground font-semibold text-base mb-1">
-                  {usp.title}
-                </Text>
-                <Text className="text-muted text-sm leading-5">
-                  {usp.description}
+              {/* Best Value Badge */}
+              <View
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  backgroundColor: colors.primary,
+                  paddingHorizontal: 20,
+                  paddingVertical: 8,
+                  borderBottomLeftRadius: 16,
+                }}
+              >
+                <Text style={{ color: "#FFFFFF", fontWeight: "600", fontSize: 13 }}>
+                  Best Value
                 </Text>
               </View>
+
+              <View className="items-center">
+                <Text
+                  style={{ fontSize: 56, fontWeight: "800", color: colors.foreground }}
+                >
+                  $37
+                </Text>
+                <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
+                  One-time payment
+                </Text>
+
+                <View style={{ marginTop: 32, marginBottom: 32, gap: 16, width: "100%" }}>
+                  {[
+                    "All 287 exam questions",
+                    "Detailed explanations & mnemonics",
+                    "Progress tracking across devices",
+                    "Lifetime updates",
+                    "Money-back guarantee",
+                  ].map((item, i) => (
+                    <View key={i} className="flex-row items-center" style={{ gap: 12 }}>
+                      <View
+                        style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: 12,
+                          backgroundColor: colors.successMuted,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <MaterialIcons name="check" size={16} color={colors.success} />
+                      </View>
+                      <Text style={{ color: colors.foreground, fontSize: 16 }}>{item}</Text>
+                    </View>
+                  ))}
+                </View>
+
+                <Button
+                  variant="primary"
+                  size="xl"
+                  fullWidth
+                  onPress={handleGetFullAccess}
+                >
+                  Get Full Access Now
+                </Button>
+
+                <Text
+                  style={{
+                    color: colors.muted,
+                    fontSize: 13,
+                    marginTop: 16,
+                    textAlign: "center",
+                  }}
+                >
+                  Secure payment via Stripe. 30-day money-back guarantee.
+                </Text>
+              </View>
+            </Card>
+
+            {/* Free Trial Card */}
+            <Card className="p-6 mt-6">
+              <View
+                style={{
+                  flexDirection: isDesktop ? "row" : "column",
+                  alignItems: isDesktop ? "center" : "stretch",
+                  justifyContent: "space-between",
+                  gap: 16,
+                }}
+              >
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontSize: 18, fontWeight: "600", color: colors.foreground }}>
+                    Not sure yet? Try it free!
+                  </Text>
+                  <Text style={{ color: colors.muted, marginTop: 4 }}>
+                    Get 3 sample questions from each category to experience our approach.
+                  </Text>
+                </View>
+                <Button variant="outline" size="lg" onPress={handleStartTrial}>
+                  Start Free Trial
+                </Button>
+              </View>
+            </Card>
+          </Container>
+        </View>
+
+        {/* Testimonial */}
+        <View style={{ paddingVertical: isDesktop ? 80 : 48 }}>
+          <Container size="md">
+            <Card className="p-8" variant="elevated">
+              <View className="items-center">
+                <View className="flex-row mb-4">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <MaterialIcons key={i} name="star" size={24} color={colors.warning} />
+                  ))}
+                </View>
+                <Text
+                  style={{
+                    fontSize: isDesktop ? 20 : 17,
+                    color: colors.foreground,
+                    textAlign: "center",
+                    lineHeight: isDesktop ? 32 : 28,
+                    fontStyle: "italic",
+                    maxWidth: 600,
+                  }}
+                >
+                  "I failed the NYS exam twice using generic MBLEx prep. This app's Eastern
+                  Medicine mnemonics and NYS-specific content made all the difference.
+                  Passed on my third try!"
+                </Text>
+                <Text
+                  style={{
+                    color: colors.muted,
+                    marginTop: 16,
+                    fontWeight: "600",
+                  }}
+                >
+                  — Sarah M., Licensed Massage Therapist
+                </Text>
+              </View>
+            </Card>
+          </Container>
+        </View>
+
+        {/* Final CTA */}
+        <View
+          style={{
+            backgroundColor: colors.primary,
+            paddingVertical: isDesktop ? 64 : 48,
+          }}
+        >
+          <Container>
+            <View className="items-center">
+              <Text
+                style={{
+                  fontSize: isDesktop ? 32 : 24,
+                  fontWeight: "700",
+                  color: "#FFFFFF",
+                  textAlign: "center",
+                  marginBottom: 8,
+                }}
+              >
+                Ready to Pass Your Exam?
+              </Text>
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: "rgba(255,255,255,0.8)",
+                  textAlign: "center",
+                  marginBottom: 24,
+                }}
+              >
+                Join 500+ students who trusted us to prepare for their NYS exam.
+              </Text>
+              <Button
+                variant="secondary"
+                size="lg"
+                onPress={handleGetFullAccess}
+                style={{ backgroundColor: "#FFFFFF" }}
+              >
+                <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 16 }}>
+                  Get Started for $37
+                </Text>
+              </Button>
             </View>
-          ))}
-        </View>
-
-        {/* Authentication Section */}
-        <View className="px-6 mt-8 mb-8">
-          <Text className="text-xl font-bold text-foreground mb-4 text-center">
-            Create Your Account
-          </Text>
-          <Text className="text-muted text-center mb-6">
-            Sign up to save your progress and access your study materials on any device.
-          </Text>
-          
-          {/* Google Auth Button */}
-          <TouchableOpacity
-            onPress={handleLogin}
-            className="bg-white border border-border rounded-xl px-6 py-4 flex-row items-center justify-center mb-3"
-            activeOpacity={0.8}
-          >
-            <Text className="text-2xl mr-3">🔵</Text>
-            <Text className="text-foreground font-semibold">Continue with Google</Text>
-          </TouchableOpacity>
-
-          {/* Apple Auth Button */}
-          <TouchableOpacity
-            onPress={handleLogin}
-            className="bg-black rounded-xl px-6 py-4 flex-row items-center justify-center mb-3"
-            activeOpacity={0.8}
-          >
-            <Text className="text-2xl mr-3">🍎</Text>
-            <Text className="text-white font-semibold">Continue with Apple</Text>
-          </TouchableOpacity>
-
-          {/* Email Auth Button */}
-          <TouchableOpacity
-            onPress={handleLogin}
-            className="bg-surface border border-border rounded-xl px-6 py-4 flex-row items-center justify-center"
-            activeOpacity={0.8}
-          >
-            <Text className="text-2xl mr-3">✉️</Text>
-            <Text className="text-foreground font-semibold">Continue with Email</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Testimonial/Trust Section */}
-        <View className="px-6 mb-8">
-          <View className="bg-surface rounded-2xl p-6 border border-border">
-            <Text className="text-foreground italic text-center leading-6">
-              "I failed the NYS exam twice using generic MBLEx prep. This app's Eastern Medicine mnemonics and NYS-specific content made all the difference. Passed on my third try!"
-            </Text>
-            <Text className="text-muted text-center mt-3 font-medium">
-              — Sarah M., Licensed Massage Therapist
-            </Text>
-          </View>
-        </View>
-
-        {/* Footer CTA */}
-        <View className="px-6 mb-8">
-          <TouchableOpacity
-            onPress={handleGetFullAccess}
-            className="bg-primary rounded-2xl px-6 py-5"
-            activeOpacity={0.8}
-          >
-            <Text className="text-white font-bold text-xl text-center mb-1">
-              Start Studying Now — $37
-            </Text>
-            <Text className="text-white/80 text-center text-sm">
-              Join 500+ students who passed with our help
-            </Text>
-          </TouchableOpacity>
+          </Container>
         </View>
 
         {/* Footer */}
-        <View className="px-6 pb-8">
-          <Text className="text-muted text-center text-xs">
-            © 2025 NYSMassageExam.com • All rights reserved
-          </Text>
-          <Text className="text-muted text-center text-xs mt-1">
-            Not affiliated with the NYS Education Department
-          </Text>
+        <View
+          style={{
+            borderTopWidth: 1,
+            borderTopColor: colors.border,
+            paddingVertical: 32,
+          }}
+        >
+          <Container>
+            <View
+              style={{
+                flexDirection: isDesktop ? "row" : "column",
+                justifyContent: "space-between",
+                alignItems: isDesktop ? "center" : "flex-start",
+                gap: 16,
+              }}
+            >
+              <View className="flex-row items-center" style={{ gap: 8 }}>
+                <MaterialIcons name="spa" size={20} color={colors.primary} />
+                <Text style={{ fontWeight: "600", color: colors.foreground }}>
+                  NYSMassageExam.com
+                </Text>
+              </View>
+
+              <Text style={{ color: colors.muted, fontSize: 13 }}>
+                © 2025 NYSMassageExam.com. All rights reserved. Not affiliated with the
+                NYS Education Department.
+              </Text>
+            </View>
+          </Container>
         </View>
       </ScrollView>
-    </ScreenContainer>
+    </View>
   );
 }

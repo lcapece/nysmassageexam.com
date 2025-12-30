@@ -1,12 +1,17 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, Alert } from "react-native";
+import { ScrollView, Text, View, Pressable, Alert, Platform, useWindowDimensions } from "react-native";
 import { useRouter } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
-import { Platform } from "react-native";
+import Svg, { Circle } from "react-native-svg";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { Container, useIsDesktop } from "@/components/desktop/container";
+import { Card, StatCard } from "@/components/desktop/card";
+import { Button } from "@/components/desktop/button";
+import { Badge } from "@/components/desktop/badge";
+import { AppShell } from "@/components/desktop/nav";
 import {
   questions,
   Question,
@@ -26,7 +31,9 @@ type QuizState = "setup" | "question" | "feedback" | "complete";
 export default function QuizScreen() {
   const router = useRouter();
   const colors = useColors();
-  
+  const isDesktop = useIsDesktop();
+  const { width } = useWindowDimensions();
+
   const [quizState, setQuizState] = useState<QuizState>("setup");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
@@ -37,7 +44,7 @@ export default function QuizScreen() {
   const [startTime, setStartTime] = useState<number>(0);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(false);
-  const [isPurchased, setIsPurchased] = useState(true); // Default to true, will check on mount
+  const [isPurchased, setIsPurchased] = useState(true);
 
   useEffect(() => {
     loadBookmarks();
@@ -57,30 +64,26 @@ export default function QuizScreen() {
   const startQuiz = async (category: string | null, count: number = 10) => {
     const purchased = await hasPurchased();
     setIsPurchased(purchased);
-    
+
     let availableQuestions: Question[];
-    
+
     if (purchased) {
-      // Full access - use all questions
-      availableQuestions = category 
+      availableQuestions = category
         ? questions.filter(q => q.category === category)
         : [...questions];
     } else {
-      // Trial mode - only use trial questions
       if (category) {
         const trialIds = TRIAL_QUESTION_IDS[category] || [];
         availableQuestions = questions.filter(q => trialIds.includes(q.id));
       } else {
-        // All trial questions across categories
         availableQuestions = questions.filter(q => isTrialQuestion(q.id));
       }
     }
-    
-    // Shuffle and take requested count
+
     const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
     const maxCount = purchased ? count : Math.min(count, availableQuestions.length);
     const selected = shuffled.slice(0, Math.min(maxCount, shuffled.length));
-    
+
     setQuizQuestions(selected);
     setSelectedCategory(category);
     setCurrentIndex(0);
@@ -93,15 +96,15 @@ export default function QuizScreen() {
   };
 
   const handleAnswer = async (answer: string) => {
-    if (selectedAnswer) return; // Already answered
-    
+    if (selectedAnswer) return;
+
     const question = quizQuestions[currentIndex];
     const correct = answer === question.correct_option;
-    
+
     setSelectedAnswer(answer);
     setIsCorrect(correct);
     setQuizState("feedback");
-    
+
     if (correct) {
       setScore(s => s + 1);
       if (Platform.OS !== "web") {
@@ -112,8 +115,7 @@ export default function QuizScreen() {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       }
     }
-    
-    // Record progress
+
     await recordAnswer(question.id, correct);
   };
 
@@ -159,7 +161,564 @@ export default function QuizScreen() {
     setIsCorrect(null);
   };
 
-  // Setup Screen
+  // DESKTOP SETUP SCREEN
+  if (quizState === "setup" && isDesktop) {
+    return (
+      <AppShell>
+        <ScrollView
+          style={{ flex: 1, backgroundColor: colors.background }}
+          contentContainerStyle={{ paddingBottom: 48 }}
+          showsVerticalScrollIndicator={false}
+        >
+          <Container>
+            {/* Header */}
+            <View style={{ paddingTop: 32, paddingBottom: 24 }}>
+              <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground }}>
+                Quiz Mode
+              </Text>
+              <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
+                Test your knowledge with practice questions
+              </Text>
+            </View>
+
+            {/* Trial Mode Banner */}
+            {!isPurchased && (
+              <Pressable
+                onPress={() => router.push("/upgrade")}
+                style={({ pressed }: any) => ({
+                  marginBottom: 24,
+                  opacity: pressed ? 0.95 : 1,
+                })}
+              >
+                <Card style={{ padding: 20, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <View style={{ flex: 1 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                        <Badge variant="warning">FREE TRIAL</Badge>
+                      </View>
+                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                        You're in trial mode
+                      </Text>
+                      <Text style={{ fontSize: 14, color: colors.muted, marginTop: 2 }}>
+                        3 questions per category • Unlock all 287 for just $37
+                      </Text>
+                    </View>
+                    <MaterialIcons name="lock-open" size={32} color={colors.warning} />
+                  </View>
+                </Card>
+              </Pressable>
+            )}
+
+            {/* Quick Start Options */}
+            <View style={{ flexDirection: 'row', gap: 20, marginBottom: 32 }}>
+              <Pressable
+                onPress={() => startQuiz(null, 10)}
+                style={({ pressed, hovered }: any) => ({ flex: 1, opacity: pressed ? 0.95 : 1 })}
+              >
+                {({ hovered }: any) => (
+                  <View
+                    style={{
+                      backgroundColor: colors.primary,
+                      padding: 32,
+                      borderRadius: 16,
+                      transform: [{ scale: hovered ? 1.02 : 1 }],
+                    }}
+                  >
+                    <View style={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: 14,
+                      backgroundColor: 'rgba(255,255,255,0.2)',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 16,
+                    }}>
+                      <MaterialIcons name="play-arrow" size={32} color="#FFFFFF" />
+                    </View>
+                    <Text style={{ fontSize: 22, fontWeight: '700', color: '#FFFFFF' }}>
+                      Quick Quiz
+                    </Text>
+                    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
+                      10 random questions to warm up
+                    </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: '#FFFFFF' }}>
+                        Start now
+                      </Text>
+                      <MaterialIcons name="arrow-forward" size={18} color="#FFFFFF" style={{ marginLeft: 4 }} />
+                    </View>
+                  </View>
+                )}
+              </Pressable>
+
+              <Pressable
+                onPress={() => startQuiz(null, 140)}
+                style={({ pressed }: any) => ({ flex: 1, opacity: pressed ? 0.95 : 1 })}
+              >
+                {({ hovered }: any) => (
+                  <Card
+                    style={{
+                      padding: 32,
+                      borderWidth: 2,
+                      borderColor: colors.primary,
+                      transform: [{ scale: hovered ? 1.02 : 1 }],
+                    }}
+                  >
+                    <View style={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: 14,
+                      backgroundColor: colors.primaryMuted,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 16,
+                    }}>
+                      <MaterialIcons name="assignment" size={32} color={colors.primary} />
+                    </View>
+                    <Text style={{ fontSize: 22, fontWeight: '700', color: colors.foreground }}>
+                      Full Exam Practice
+                    </Text>
+                    <Text style={{ fontSize: 14, color: colors.muted, marginTop: 4 }}>
+                      140 questions like the real NYS exam
+                    </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.primary }}>
+                        Start exam
+                      </Text>
+                      <MaterialIcons name="arrow-forward" size={18} color={colors.primary} style={{ marginLeft: 4 }} />
+                    </View>
+                  </Card>
+                )}
+              </Pressable>
+            </View>
+
+            {/* Categories Grid */}
+            <View>
+              <Text style={{ fontSize: 20, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
+                Practice by Category
+              </Text>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
+                {CATEGORIES.map((category) => {
+                  const count = questions.filter(q => q.category === category).length;
+                  const icon = getCategoryIcon(category);
+                  return (
+                    <Pressable
+                      key={category}
+                      onPress={() => startQuiz(category, 10)}
+                      style={{ width: 'calc(25% - 12px)' } as any}
+                    >
+                      {({ hovered, pressed }: any) => (
+                        <Card
+                          style={{
+                            padding: 20,
+                            backgroundColor: hovered ? colors.surfaceHover : colors.surface,
+                            transform: [{ scale: pressed ? 0.98 : 1 }],
+                          }}
+                        >
+                          <View style={{
+                            width: 44,
+                            height: 44,
+                            borderRadius: 12,
+                            backgroundColor: colors.primaryMuted,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginBottom: 12,
+                          }}>
+                            <MaterialIcons name={icon} size={24} color={colors.primary} />
+                          </View>
+                          <Text style={{ fontSize: 15, fontWeight: '600', color: colors.foreground }}>
+                            {category}
+                          </Text>
+                          <Text style={{ fontSize: 13, color: colors.muted, marginTop: 4 }}>
+                            {count} questions
+                          </Text>
+                        </Card>
+                      )}
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </View>
+          </Container>
+        </ScrollView>
+      </AppShell>
+    );
+  }
+
+  // DESKTOP COMPLETE SCREEN
+  if (quizState === "complete" && isDesktop) {
+    const percentage = Math.round((score / quizQuestions.length) * 100);
+    const isPassing = percentage >= 70;
+    const duration = Math.round((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+
+    return (
+      <AppShell>
+        <View style={{ flex: 1, backgroundColor: colors.background, justifyContent: 'center', alignItems: 'center', padding: 48 }}>
+          <Card style={{ padding: 48, maxWidth: 600, width: '100%', alignItems: 'center' }}>
+            {/* Result Icon */}
+            <View style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: isPassing ? colors.successMuted : colors.warningMuted,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: 24,
+            }}>
+              <MaterialIcons
+                name={isPassing ? "celebration" : "sentiment-dissatisfied"}
+                size={56}
+                color={isPassing ? colors.success : colors.warning}
+              />
+            </View>
+
+            {/* Title */}
+            <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground, marginBottom: 8 }}>
+              {isPassing ? "Excellent Work!" : "Keep Practicing!"}
+            </Text>
+            <Text style={{ fontSize: 16, color: colors.muted, textAlign: 'center', marginBottom: 32 }}>
+              {isPassing
+                ? "You're on track to pass the NYS exam!"
+                : "Review the material and try again. You've got this!"}
+            </Text>
+
+            {/* Score Ring */}
+            <View style={{ marginBottom: 32 }}>
+              <ScoreRing
+                percent={percentage}
+                size={160}
+                strokeWidth={12}
+                color={isPassing ? colors.success : colors.warning}
+                bgColor={colors.border}
+              />
+            </View>
+
+            {/* Stats Row */}
+            <View style={{ flexDirection: 'row', gap: 32, marginBottom: 32 }}>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>{score}</Text>
+                <Text style={{ fontSize: 14, color: colors.muted }}>Correct</Text>
+              </View>
+              <View style={{ width: 1, backgroundColor: colors.border }} />
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>{quizQuestions.length - score}</Text>
+                <Text style={{ fontSize: 14, color: colors.muted }}>Incorrect</Text>
+              </View>
+              <View style={{ width: 1, backgroundColor: colors.border }} />
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
+                  {minutes}:{seconds.toString().padStart(2, '0')}
+                </Text>
+                <Text style={{ fontSize: 14, color: colors.muted }}>Time</Text>
+              </View>
+            </View>
+
+            {/* Action Buttons */}
+            <View style={{ flexDirection: 'row', gap: 16, width: '100%' }}>
+              <Button
+                variant="primary"
+                size="lg"
+                fullWidth
+                icon={<MaterialIcons name="refresh" size={20} color="#FFFFFF" />}
+                onPress={resetQuiz}
+              >
+                New Quiz
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                fullWidth
+                icon={<MaterialIcons name="bar-chart" size={20} color={colors.foreground} />}
+                onPress={() => router.push("/progress")}
+              >
+                View Progress
+              </Button>
+            </View>
+          </Card>
+        </View>
+      </AppShell>
+    );
+  }
+
+  // DESKTOP QUESTION/FEEDBACK SCREEN
+  if ((quizState === "question" || quizState === "feedback") && isDesktop) {
+    const question = quizQuestions[currentIndex];
+    const isBookmarked = bookmarks.includes(question.id);
+    const progressPercent = ((currentIndex + 1) / quizQuestions.length) * 100;
+
+    return (
+      <AppShell>
+        <View style={{ flex: 1, backgroundColor: colors.background }}>
+          <Container>
+            {/* Top Bar */}
+            <View style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingVertical: 20,
+              borderBottomWidth: 1,
+              borderBottomColor: colors.border,
+            }}>
+              <Pressable
+                onPress={resetQuiz}
+                style={({ hovered }: any) => ({
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: 8,
+                  borderRadius: 8,
+                  backgroundColor: hovered ? colors.surfaceHover : 'transparent',
+                })}
+              >
+                <MaterialIcons name="close" size={24} color={colors.muted} />
+                <Text style={{ fontSize: 14, color: colors.muted }}>Exit Quiz</Text>
+              </Pressable>
+
+              <View style={{ flex: 1, maxWidth: 400, marginHorizontal: 32 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
+                    Question {currentIndex + 1} of {quizQuestions.length}
+                  </Text>
+                  <Text style={{ fontSize: 14, color: colors.muted }}>
+                    Score: {score}/{currentIndex + (quizState === 'feedback' ? 1 : 0)}
+                  </Text>
+                </View>
+                <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
+                  <View
+                    style={{
+                      height: '100%',
+                      width: `${progressPercent}%`,
+                      backgroundColor: colors.primary,
+                      borderRadius: 3,
+                    }}
+                  />
+                </View>
+              </View>
+
+              <Pressable
+                onPress={handleBookmark}
+                style={({ hovered }: any) => ({
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: 8,
+                  borderRadius: 8,
+                  backgroundColor: hovered ? colors.surfaceHover : 'transparent',
+                })}
+              >
+                <MaterialIcons
+                  name={isBookmarked ? "bookmark" : "bookmark-border"}
+                  size={24}
+                  color={isBookmarked ? colors.primary : colors.muted}
+                />
+                <Text style={{ fontSize: 14, color: isBookmarked ? colors.primary : colors.muted }}>
+                  {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+                </Text>
+              </Pressable>
+            </View>
+
+            {/* Main Content Area */}
+            <View style={{ flexDirection: 'row', gap: 32, paddingVertical: 32 }}>
+              {/* Question Panel */}
+              <View style={{ flex: 3 }}>
+                <Card style={{ padding: 32 }}>
+                  {/* Category Badge */}
+                  <Badge variant="primary" size="md">{question.category}</Badge>
+
+                  {/* Question Text */}
+                  <Text style={{
+                    fontSize: 22,
+                    fontWeight: '600',
+                    color: colors.foreground,
+                    lineHeight: 32,
+                    marginTop: 20,
+                    marginBottom: 28,
+                  }}>
+                    {question.paraphrased_question}
+                  </Text>
+
+                  {/* Answer Options */}
+                  <View style={{ gap: 12 }}>
+                    {Object.entries(question.options).map(([key, value]) => {
+                      const isSelected = selectedAnswer === key;
+                      const isCorrectAnswer = key === question.correct_option;
+                      const showResult = quizState === "feedback";
+
+                      let bgColor = colors.surface;
+                      let borderColor = colors.border;
+                      let textColor = colors.foreground;
+
+                      if (showResult) {
+                        if (isCorrectAnswer) {
+                          bgColor = colors.successMuted;
+                          borderColor = colors.success;
+                          textColor = colors.success;
+                        } else if (isSelected && !isCorrectAnswer) {
+                          bgColor = colors.errorMuted;
+                          borderColor = colors.error;
+                          textColor = colors.error;
+                        }
+                      } else if (isSelected) {
+                        bgColor = colors.primaryMuted;
+                        borderColor = colors.primary;
+                      }
+
+                      return (
+                        <Pressable
+                          key={key}
+                          onPress={() => handleAnswer(key)}
+                          disabled={quizState === "feedback"}
+                        >
+                          {({ hovered, pressed }: any) => (
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                padding: 16,
+                                borderRadius: 12,
+                                borderWidth: 2,
+                                borderColor: borderColor,
+                                backgroundColor: hovered && quizState !== 'feedback' ? colors.surfaceHover : bgColor,
+                                transform: [{ scale: pressed ? 0.99 : 1 }],
+                              }}
+                            >
+                              <View
+                                style={{
+                                  width: 36,
+                                  height: 36,
+                                  borderRadius: 18,
+                                  backgroundColor: showResult && isCorrectAnswer ? colors.success : colors.border,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  marginRight: 16,
+                                }}
+                              >
+                                <Text style={{
+                                  fontSize: 14,
+                                  fontWeight: '700',
+                                  color: showResult && isCorrectAnswer ? '#FFFFFF' : colors.foreground,
+                                }}>
+                                  {key.toUpperCase()}
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, fontSize: 16, color: textColor }}>
+                                {value}
+                              </Text>
+                              {showResult && isCorrectAnswer && (
+                                <MaterialIcons name="check-circle" size={24} color={colors.success} />
+                              )}
+                              {showResult && isSelected && !isCorrectAnswer && (
+                                <MaterialIcons name="cancel" size={24} color={colors.error} />
+                              )}
+                            </View>
+                          )}
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+                </Card>
+              </View>
+
+              {/* Side Panel - Shows during feedback */}
+              {quizState === "feedback" && (
+                <View style={{ flex: 2 }}>
+                  {/* Result Indicator */}
+                  <Card
+                    style={{
+                      padding: 24,
+                      marginBottom: 16,
+                      backgroundColor: isCorrect ? colors.successMuted : colors.errorMuted,
+                      borderWidth: 0,
+                    }}
+                  >
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                      <MaterialIcons
+                        name={isCorrect ? "check-circle" : "cancel"}
+                        size={32}
+                        color={isCorrect ? colors.success : colors.error}
+                      />
+                      <View>
+                        <Text style={{
+                          fontSize: 18,
+                          fontWeight: '700',
+                          color: isCorrect ? colors.success : colors.error,
+                        }}>
+                          {isCorrect ? "Correct!" : "Incorrect"}
+                        </Text>
+                        <Text style={{ fontSize: 14, color: colors.muted }}>
+                          {isCorrect ? "Great job!" : `The answer was ${question.correct_option.toUpperCase()}`}
+                        </Text>
+                      </View>
+                    </View>
+                  </Card>
+
+                  {/* Explanation */}
+                  <Card style={{ padding: 24, marginBottom: 16 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                      <MaterialIcons name="info" size={20} color={colors.primary} />
+                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                        Explanation
+                      </Text>
+                    </View>
+                    <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
+                      {question.explanation}
+                    </Text>
+                  </Card>
+
+                  {/* Mnemonic */}
+                  <Pressable onPress={() => setShowMnemonic(!showMnemonic)}>
+                    <Card
+                      style={{
+                        padding: 24,
+                        marginBottom: 24,
+                        borderLeftWidth: 4,
+                        borderLeftColor: colors.warning,
+                      }}
+                    >
+                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                          <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
+                          <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                            Memory Tip
+                          </Text>
+                        </View>
+                        <MaterialIcons
+                          name={showMnemonic ? "expand-less" : "expand-more"}
+                          size={24}
+                          color={colors.muted}
+                        />
+                      </View>
+                      {showMnemonic && (
+                        <Text style={{ fontSize: 14, color: colors.foreground, fontStyle: 'italic', marginTop: 12, lineHeight: 22 }}>
+                          {question.mnemonic}
+                        </Text>
+                      )}
+                    </Card>
+                  </Pressable>
+
+                  {/* Next Button */}
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    icon={<MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" />}
+                    iconPosition="right"
+                    onPress={nextQuestion}
+                  >
+                    {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                  </Button>
+                </View>
+              )}
+            </View>
+          </Container>
+        </View>
+      </AppShell>
+    );
+  }
+
+  // MOBILE SETUP SCREEN
   if (quizState === "setup") {
     return (
       <ScreenContainer>
@@ -169,7 +728,6 @@ export default function QuizScreen() {
             <Text className="text-base text-muted mt-1">Test your knowledge</Text>
           </View>
 
-          {/* Trial Mode Banner */}
           {!isPurchased && (
             <Pressable
               onPress={() => router.push("/upgrade")}
@@ -186,7 +744,6 @@ export default function QuizScreen() {
             </Pressable>
           )}
 
-          {/* Quick Start */}
           <View className="px-5 mt-4">
             <Pressable
               onPress={() => startQuiz(null, 10)}
@@ -211,7 +768,6 @@ export default function QuizScreen() {
             </Pressable>
           </View>
 
-          {/* Full Exam Practice */}
           <View className="px-5 mt-3">
             <Pressable
               onPress={() => startQuiz(null, 140)}
@@ -226,18 +782,13 @@ export default function QuizScreen() {
               className="rounded-xl p-5 flex-row items-center justify-between"
             >
               <View>
-                <Text className="text-lg font-semibold text-foreground">
-                  Full Exam Practice
-                </Text>
-                <Text className="text-sm text-muted">
-                  140 questions (like the real exam)
-                </Text>
+                <Text className="text-lg font-semibold text-foreground">Full Exam Practice</Text>
+                <Text className="text-sm text-muted">140 questions (like the real exam)</Text>
               </View>
               <MaterialIcons name="assignment" size={28} color={colors.primary} />
             </Pressable>
           </View>
 
-          {/* By Category */}
           <View className="px-5 mt-6">
             <Text className="text-lg font-semibold text-foreground mb-3">By Category</Text>
             {CATEGORIES.map((category) => {
@@ -257,11 +808,7 @@ export default function QuizScreen() {
                   className="rounded-xl p-4 mb-2 flex-row items-center justify-between"
                 >
                   <View className="flex-row items-center">
-                    <MaterialIcons 
-                      name={getCategoryIcon(category)} 
-                      size={24} 
-                      color={colors.primary} 
-                    />
+                    <MaterialIcons name={getCategoryIcon(category)} size={24} color={colors.primary} />
                     <Text className="text-base text-foreground ml-3">{category}</Text>
                   </View>
                   <View className="flex-row items-center">
@@ -277,18 +824,18 @@ export default function QuizScreen() {
     );
   }
 
-  // Complete Screen
+  // MOBILE COMPLETE SCREEN
   if (quizState === "complete") {
     const percentage = Math.round((score / quizQuestions.length) * 100);
     const isPassing = percentage >= 70;
-    
+
     return (
       <ScreenContainer>
         <View className="flex-1 items-center justify-center px-5">
-          <MaterialIcons 
-            name={isPassing ? "celebration" : "sentiment-dissatisfied"} 
-            size={80} 
-            color={isPassing ? colors.success : colors.warning} 
+          <MaterialIcons
+            name={isPassing ? "celebration" : "sentiment-dissatisfied"}
+            size={80}
+            color={isPassing ? colors.success : colors.warning}
           />
           <Text className="text-3xl font-bold text-foreground mt-4">
             {isPassing ? "Great Job!" : "Keep Practicing!"}
@@ -299,7 +846,7 @@ export default function QuizScreen() {
           <Text className="text-lg text-muted mt-2">
             {score} out of {quizQuestions.length} correct
           </Text>
-          
+
           <View className="w-full mt-8 gap-3">
             <Pressable
               onPress={resetQuiz}
@@ -315,7 +862,7 @@ export default function QuizScreen() {
                 New Quiz
               </Text>
             </Pressable>
-            
+
             <Pressable
               onPress={() => router.push("/progress")}
               style={({ pressed }) => [
@@ -336,14 +883,13 @@ export default function QuizScreen() {
     );
   }
 
-  // Question/Feedback Screen
+  // MOBILE QUESTION/FEEDBACK SCREEN
   const question = quizQuestions[currentIndex];
   const isBookmarked = bookmarks.includes(question.id);
 
   return (
     <ScreenContainer>
       <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 100 }}>
-        {/* Header */}
         <View className="px-5 pt-4 flex-row items-center justify-between">
           <Pressable onPress={resetQuiz}>
             <MaterialIcons name="close" size={28} color={colors.muted} />
@@ -352,28 +898,26 @@ export default function QuizScreen() {
             {currentIndex + 1} / {quizQuestions.length}
           </Text>
           <Pressable onPress={handleBookmark}>
-            <MaterialIcons 
-              name={isBookmarked ? "bookmark" : "bookmark-border"} 
-              size={28} 
-              color={isBookmarked ? colors.primary : colors.muted} 
+            <MaterialIcons
+              name={isBookmarked ? "bookmark" : "bookmark-border"}
+              size={28}
+              color={isBookmarked ? colors.primary : colors.muted}
             />
           </Pressable>
         </View>
 
-        {/* Progress Bar */}
         <View className="mx-5 mt-3 h-2 bg-border rounded-full overflow-hidden">
-          <View 
+          <View
             className="h-full rounded-full"
-            style={{ 
+            style={{
               width: `${((currentIndex + 1) / quizQuestions.length) * 100}%`,
-              backgroundColor: colors.primary 
+              backgroundColor: colors.primary
             }}
           />
         </View>
 
-        {/* Category Badge */}
         <View className="px-5 mt-4">
-          <View 
+          <View
             className="self-start px-3 py-1 rounded-full"
             style={{ backgroundColor: colors.primary + '20' }}
           >
@@ -383,24 +927,22 @@ export default function QuizScreen() {
           </View>
         </View>
 
-        {/* Question */}
         <View className="px-5 mt-4">
           <Text className="text-xl font-semibold text-foreground leading-7">
             {question.paraphrased_question}
           </Text>
         </View>
 
-        {/* Answer Options */}
         <View className="px-5 mt-6 gap-3">
           {Object.entries(question.options).map(([key, value]) => {
             const isSelected = selectedAnswer === key;
             const isCorrectAnswer = key === question.correct_option;
             const showResult = quizState === "feedback";
-            
+
             let bgColor = colors.surface;
             let borderColor = colors.border;
             let textColor = colors.foreground;
-            
+
             if (showResult) {
               if (isCorrectAnswer) {
                 bgColor = colors.success + '20';
@@ -415,7 +957,7 @@ export default function QuizScreen() {
               bgColor = colors.primary + '20';
               borderColor = colors.primary;
             }
-            
+
             return (
               <Pressable
                 key={key}
@@ -431,23 +973,20 @@ export default function QuizScreen() {
                 ]}
                 className="rounded-xl p-4 flex-row items-center"
               >
-                <View 
+                <View
                   className="w-8 h-8 rounded-full items-center justify-center mr-3"
-                  style={{ 
+                  style={{
                     backgroundColor: showResult && isCorrectAnswer ? colors.success : colors.border,
                   }}
                 >
-                  <Text 
+                  <Text
                     className="text-sm font-bold"
                     style={{ color: showResult && isCorrectAnswer ? colors.background : colors.foreground }}
                   >
                     {key.toUpperCase()}
                   </Text>
                 </View>
-                <Text 
-                  className="flex-1 text-base"
-                  style={{ color: textColor }}
-                >
+                <Text className="flex-1 text-base" style={{ color: textColor }}>
                   {value}
                 </Text>
                 {showResult && isCorrectAnswer && (
@@ -461,13 +1000,11 @@ export default function QuizScreen() {
           })}
         </View>
 
-        {/* Feedback Section */}
         {quizState === "feedback" && (
           <View className="px-5 mt-6">
-            {/* Explanation */}
-            <View 
+            <View
               className="rounded-xl p-4 border"
-              style={{ 
+              style={{
                 backgroundColor: colors.surface,
                 borderColor: colors.border,
               }}
@@ -476,19 +1013,13 @@ export default function QuizScreen() {
                 <MaterialIcons name="info" size={20} color={colors.primary} />
                 <Text className="text-base font-semibold text-foreground ml-2">Explanation</Text>
               </View>
-              <Text className="text-sm text-muted leading-5">
-                {question.explanation}
-              </Text>
+              <Text className="text-sm text-muted leading-5">{question.explanation}</Text>
             </View>
 
-            {/* Mnemonic */}
-            <Pressable
-              onPress={() => setShowMnemonic(!showMnemonic)}
-              style={{ marginTop: 12 }}
-            >
-              <View 
+            <Pressable onPress={() => setShowMnemonic(!showMnemonic)} style={{ marginTop: 12 }}>
+              <View
                 className="rounded-xl p-4"
-                style={{ 
+                style={{
                   backgroundColor: colors.warning + '15',
                   borderLeftWidth: 4,
                   borderLeftColor: colors.warning,
@@ -497,14 +1028,12 @@ export default function QuizScreen() {
                 <View className="flex-row items-center justify-between">
                   <View className="flex-row items-center">
                     <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
-                    <Text className="text-base font-semibold text-foreground ml-2">
-                      Memory Tip
-                    </Text>
+                    <Text className="text-base font-semibold text-foreground ml-2">Memory Tip</Text>
                   </View>
-                  <MaterialIcons 
-                    name={showMnemonic ? "expand-less" : "expand-more"} 
-                    size={24} 
-                    color={colors.muted} 
+                  <MaterialIcons
+                    name={showMnemonic ? "expand-less" : "expand-more"}
+                    size={24}
+                    color={colors.muted}
                   />
                 </View>
                 {showMnemonic && (
@@ -515,7 +1044,6 @@ export default function QuizScreen() {
               </View>
             </Pressable>
 
-            {/* Next Button */}
             <Pressable
               onPress={nextQuestion}
               style={({ pressed }) => [
@@ -530,10 +1058,10 @@ export default function QuizScreen() {
               <Text className="text-lg font-semibold" style={{ color: colors.background }}>
                 {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
               </Text>
-              <MaterialIcons 
-                name="arrow-forward" 
-                size={24} 
-                color={colors.background} 
+              <MaterialIcons
+                name="arrow-forward"
+                size={24}
+                color={colors.background}
                 style={{ marginLeft: 8 }}
               />
             </Pressable>
@@ -541,6 +1069,67 @@ export default function QuizScreen() {
         )}
       </ScrollView>
     </ScreenContainer>
+  );
+}
+
+// Score Ring Component for Results
+function ScoreRing({
+  percent,
+  size,
+  strokeWidth,
+  color,
+  bgColor
+}: {
+  percent: number;
+  size: number;
+  strokeWidth: number;
+  color: string;
+  bgColor: string;
+}) {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const strokeDashoffset = circumference - (percent / 100) * circumference;
+
+  return (
+    <View style={{ width: size, height: size }}>
+      <Svg width={size} height={size}>
+        <Circle
+          stroke={bgColor}
+          fill="none"
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          strokeWidth={strokeWidth}
+        />
+        <Circle
+          stroke={color}
+          fill="none"
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={strokeDashoffset}
+          strokeLinecap="round"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+        />
+      </Svg>
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Text style={{ fontSize: size * 0.25, fontWeight: 'bold', color }}>
+          {percent}%
+        </Text>
+      </View>
+    </View>
   );
 }
 

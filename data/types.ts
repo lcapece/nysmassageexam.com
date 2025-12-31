@@ -1,11 +1,13 @@
 export interface Question {
   id: number;
-  original_question: string;
-  paraphrased_question: string;
+  question: string;
   options: Record<string, string>;
   correct_option: string | null;
   correct_answer_text: string | null;
-  category: string;
-  explanation: string;
+  rewrite_question: string;
   mnemonic: string;
+  topic_explanation: string;
+  incorrect_explanations: Record<string, string>;
+  visual_aid_prompt: string;
+  category: string;
 }

@@ -381,7 +381,7 @@ export default function StudyScreen() {
                                 style={{ fontSize: 14, color: colors.foreground, lineHeight: 20 }}
                                 numberOfLines={2}
                               >
-                                {item.paraphrased_question}
+                                {item.rewrite_question}
                               </Text>
                               {isBookmarked && (
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
@@ -428,7 +428,7 @@ export default function StudyScreen() {
 
                   {/* Question Text */}
                   <Text style={{ fontSize: 22, fontWeight: '600', color: colors.foreground, lineHeight: 32, marginBottom: 28 }}>
-                    {selectedQuestion.paraphrased_question}
+                    {selectedQuestion.rewrite_question}
                   </Text>
 
                   {/* Answer Options */}
@@ -482,7 +482,7 @@ export default function StudyScreen() {
                       </Text>
                     </View>
                     <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                      {selectedQuestion.explanation}
+                      {selectedQuestion.topic_explanation}
                     </Text>
                   </Card>
 
@@ -547,7 +547,7 @@ export default function StudyScreen() {
                 </View>
 
                 <Text style={{ fontSize: 24, fontWeight: '600', color: colors.foreground, lineHeight: 34, marginBottom: 32 }}>
-                  {selectedQuestion.paraphrased_question}
+                  {selectedQuestion.rewrite_question}
                 </Text>
 
                 <View style={{ gap: 12, marginBottom: 32 }}>
@@ -594,7 +594,7 @@ export default function StudyScreen() {
                     <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginLeft: 8 }}>Explanation</Text>
                   </View>
                   <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                    {selectedQuestion.explanation}
+                    {selectedQuestion.topic_explanation}
                   </Text>
                 </View>
 
@@ -786,7 +786,7 @@ export default function StudyScreen() {
                       className="text-base text-foreground leading-5"
                       numberOfLines={2}
                     >
-                      {item.paraphrased_question}
+                      {item.rewrite_question}
                     </Text>
                     <View className="flex-row items-center mt-2">
                       {isBookmarked && (
@@ -840,7 +840,7 @@ export default function StudyScreen() {
 
           <View className="px-5 mt-4">
             <Text className="text-xl font-semibold text-foreground leading-7">
-              {selectedQuestion.paraphrased_question}
+              {selectedQuestion.rewrite_question}
             </Text>
           </View>
 
@@ -898,7 +898,7 @@ export default function StudyScreen() {
                 <Text className="text-base font-semibold text-foreground ml-2">Explanation</Text>
               </View>
               <Text className="text-sm text-muted leading-5">
-                {selectedQuestion.explanation}
+                {selectedQuestion.topic_explanation}
               </Text>
             </View>
           </View>

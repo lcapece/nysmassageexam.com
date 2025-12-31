@@ -536,7 +536,7 @@ export default function QuizScreen() {
                     marginTop: 20,
                     marginBottom: 28,
                   }}>
-                    {question.paraphrased_question}
+                    {question.rewrite_question}
                   </Text>
 
                   {/* Answer Options */}
@@ -663,7 +663,7 @@ export default function QuizScreen() {
                       </Text>
                     </View>
                     <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                      {question.explanation}
+                      {question.topic_explanation}
                     </Text>
                   </Card>
 
@@ -929,7 +929,7 @@ export default function QuizScreen() {
 
         <View className="px-5 mt-4">
           <Text className="text-xl font-semibold text-foreground leading-7">
-            {question.paraphrased_question}
+            {question.rewrite_question}
           </Text>
         </View>
 
@@ -1013,7 +1013,7 @@ export default function QuizScreen() {
                 <MaterialIcons name="info" size={20} color={colors.primary} />
                 <Text className="text-base font-semibold text-foreground ml-2">Explanation</Text>
               </View>
-              <Text className="text-sm text-muted leading-5">{question.explanation}</Text>
+              <Text className="text-sm text-muted leading-5">{question.topic_explanation}</Text>
             </View>
 
             <Pressable onPress={() => setShowMnemonic(!showMnemonic)} style={{ marginTop: 12 }}>

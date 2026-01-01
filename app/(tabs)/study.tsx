@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, FlatList, Platform, useWindowDimensions } from "react-native";
+import { ScrollView, Text, View, Pressable, FlatList, Platform, useWindowDimensions, Image } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
@@ -498,6 +498,23 @@ export default function StudyScreen() {
                       {selectedQuestion.mnemonic}
                     </Text>
                   </Card>
+
+                  {/* Visual Diagram */}
+                  {selectedQuestion.image_url && (
+                    <Card style={{ padding: 24, marginTop: 16 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                        <MaterialIcons name="image" size={20} color={colors.primary} />
+                        <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                          Visual Aid
+                        </Text>
+                      </View>
+                      <Image
+                        source={{ uri: selectedQuestion.image_url }}
+                        style={{ width: '100%', height: 300, borderRadius: 12 }}
+                        resizeMode="contain"
+                      />
+                    </Card>
+                  )}
                 </ScrollView>
               )}
             </View>
@@ -607,6 +624,21 @@ export default function StudyScreen() {
                     {selectedQuestion.mnemonic}
                   </Text>
                 </View>
+
+                {/* Visual Diagram - Desktop Standalone */}
+                {selectedQuestion.image_url && (
+                  <View style={{ padding: 20, backgroundColor: colors.surface, borderRadius: 12, borderWidth: 1, borderColor: colors.border, marginTop: 16 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+                      <MaterialIcons name="image" size={20} color={colors.primary} />
+                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginLeft: 8 }}>Visual Aid</Text>
+                    </View>
+                    <Image
+                      source={{ uri: selectedQuestion.image_url }}
+                      style={{ width: '100%', height: 300, borderRadius: 12 }}
+                      resizeMode="contain"
+                    />
+                  </View>
+                )}
               </Card>
             </Container>
           </ScrollView>
@@ -923,6 +955,31 @@ export default function StudyScreen() {
               </Text>
             </View>
           </View>
+
+          {/* Visual Diagram - Mobile */}
+          {selectedQuestion.image_url && (
+            <View className="px-5 mt-4">
+              <View
+                className="rounded-xl p-4 border"
+                style={{
+                  backgroundColor: colors.surface,
+                  borderColor: colors.border,
+                }}
+              >
+                <View className="flex-row items-center mb-3">
+                  <MaterialIcons name="image" size={20} color={colors.primary} />
+                  <Text className="text-base font-semibold text-foreground ml-2">
+                    Visual Aid
+                  </Text>
+                </View>
+                <Image
+                  source={{ uri: selectedQuestion.image_url }}
+                  style={{ width: '100%', height: 250, borderRadius: 12 }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          )}
         </ScrollView>
       </ScreenContainer>
     );

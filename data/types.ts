@@ -10,4 +10,5 @@ export interface Question {
   incorrect_explanations: Record<string, string>;
   visual_aid_prompt: string;
   category: string;
+  image_url: string | null;
 }

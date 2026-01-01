@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, Alert, Platform, useWindowDimensions } from "react-native";
+import { ScrollView, Text, View, Pressable, Alert, Platform, useWindowDimensions, Image } from "react-native";
 import { useRouter } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
@@ -672,7 +672,7 @@ export default function QuizScreen() {
                     <Card
                       style={{
                         padding: 24,
-                        marginBottom: 24,
+                        marginBottom: 16,
                         borderLeftWidth: 4,
                         borderLeftColor: colors.warning,
                       }}
@@ -697,6 +697,23 @@ export default function QuizScreen() {
                       )}
                     </Card>
                   </Pressable>
+
+                  {/* Visual Diagram */}
+                  {question.image_url && (
+                    <Card style={{ padding: 24, marginBottom: 24 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                        <MaterialIcons name="image" size={20} color={colors.primary} />
+                        <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                          Visual Aid
+                        </Text>
+                      </View>
+                      <Image
+                        source={{ uri: question.image_url }}
+                        style={{ width: '100%', height: 250, borderRadius: 12 }}
+                        resizeMode="contain"
+                      />
+                    </Card>
+                  )}
 
                   {/* Next Button */}
                   <Button
@@ -1043,6 +1060,29 @@ export default function QuizScreen() {
                 )}
               </View>
             </Pressable>
+
+            {/* Visual Diagram - Mobile */}
+            {question.image_url && (
+              <View
+                className="rounded-xl p-4 border mt-3"
+                style={{
+                  backgroundColor: colors.surface,
+                  borderColor: colors.border,
+                }}
+              >
+                <View className="flex-row items-center mb-3">
+                  <MaterialIcons name="image" size={20} color={colors.primary} />
+                  <Text className="text-base font-semibold text-foreground ml-2">
+                    Visual Aid
+                  </Text>
+                </View>
+                <Image
+                  source={{ uri: question.image_url }}
+                  style={{ width: '100%', height: 200, borderRadius: 12 }}
+                  resizeMode="contain"
+                />
+              </View>
+            )}
 
             <Pressable
               onPress={nextQuestion}

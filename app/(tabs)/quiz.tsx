@@ -174,10 +174,10 @@ export default function QuizScreen() {
           <Container>
             {/* Header */}
             <View style={{ paddingTop: 32, paddingBottom: 24 }}>
-              <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground }}>
+              <Text style={{ fontSize: 56, fontWeight: '700', color: colors.foreground }}>
                 Quiz Mode
               </Text>
-              <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
+              <Text style={{ fontSize: 28, color: colors.muted, marginTop: 4 }}>
                 Test your knowledge with practice questions
               </Text>
             </View>
@@ -191,20 +191,20 @@ export default function QuizScreen() {
                   opacity: pressed ? 0.95 : 1,
                 })}
               >
-                <Card style={{ padding: 20, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
+                <Card style={{ padding: 28, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <View style={{ flex: 1 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                         <Badge variant="warning">FREE TRIAL</Badge>
                       </View>
-                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                      <Text style={{ fontSize: 28, fontWeight: '600', color: colors.foreground }}>
                         You're in trial mode
                       </Text>
-                      <Text style={{ fontSize: 14, color: colors.muted, marginTop: 2 }}>
+                      <Text style={{ fontSize: 24, color: colors.muted, marginTop: 2 }}>
                         3 questions per category • Unlock all 287 for just $37
                       </Text>
                     </View>
-                    <MaterialIcons name="lock-open" size={32} color={colors.warning} />
+                    <MaterialIcons name="lock-open" size={48} color={colors.warning} />
                   </View>
                 </Card>
               </Pressable>
@@ -220,33 +220,33 @@ export default function QuizScreen() {
                   <View
                     style={{
                       backgroundColor: colors.primary,
-                      padding: 32,
+                      padding: 40,
                       borderRadius: 16,
                       transform: [{ scale: hovered ? 1.02 : 1 }],
                     }}
                   >
                     <View style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 14,
+                      width: 72,
+                      height: 72,
+                      borderRadius: 18,
                       backgroundColor: 'rgba(255,255,255,0.2)',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 16,
+                      marginBottom: 20,
                     }}>
-                      <MaterialIcons name="play-arrow" size={32} color="#FFFFFF" />
+                      <MaterialIcons name="play-arrow" size={44} color="#FFFFFF" />
                     </View>
-                    <Text style={{ fontSize: 22, fontWeight: '700', color: '#FFFFFF' }}>
+                    <Text style={{ fontSize: 38, fontWeight: '700', color: '#FFFFFF' }}>
                       Quick Quiz
                     </Text>
-                    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
+                    <Text style={{ fontSize: 24, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
                       10 random questions to warm up
                     </Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16 }}>
-                      <Text style={{ fontSize: 14, fontWeight: '600', color: '#FFFFFF' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                      <Text style={{ fontSize: 24, fontWeight: '600', color: '#FFFFFF' }}>
                         Start now
                       </Text>
-                      <MaterialIcons name="arrow-forward" size={18} color="#FFFFFF" style={{ marginLeft: 4 }} />
+                      <MaterialIcons name="arrow-forward" size={28} color="#FFFFFF" style={{ marginLeft: 6 }} />
                     </View>
                   </View>
                 )}
@@ -259,34 +259,34 @@ export default function QuizScreen() {
                 {({ hovered }: any) => (
                   <Card
                     style={{
-                      padding: 32,
+                      padding: 40,
                       borderWidth: 2,
                       borderColor: colors.primary,
                       transform: [{ scale: hovered ? 1.02 : 1 }],
                     }}
                   >
                     <View style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 14,
+                      width: 72,
+                      height: 72,
+                      borderRadius: 18,
                       backgroundColor: colors.primaryMuted,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 16,
+                      marginBottom: 20,
                     }}>
-                      <MaterialIcons name="assignment" size={32} color={colors.primary} />
+                      <MaterialIcons name="assignment" size={44} color={colors.primary} />
                     </View>
-                    <Text style={{ fontSize: 22, fontWeight: '700', color: colors.foreground }}>
+                    <Text style={{ fontSize: 38, fontWeight: '700', color: colors.foreground }}>
                       Full Exam Practice
                     </Text>
-                    <Text style={{ fontSize: 14, color: colors.muted, marginTop: 4 }}>
+                    <Text style={{ fontSize: 24, color: colors.muted, marginTop: 4 }}>
                       140 questions like the real NYS exam
                     </Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16 }}>
-                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.primary }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                      <Text style={{ fontSize: 24, fontWeight: '600', color: colors.primary }}>
                         Start exam
                       </Text>
-                      <MaterialIcons name="arrow-forward" size={18} color={colors.primary} style={{ marginLeft: 4 }} />
+                      <MaterialIcons name="arrow-forward" size={28} color={colors.primary} style={{ marginLeft: 6 }} />
                     </View>
                   </Card>
                 )}
@@ -295,10 +295,10 @@ export default function QuizScreen() {
 
             {/* Categories Grid */}
             <View>
-              <Text style={{ fontSize: 20, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
+              <Text style={{ fontSize: 35, fontWeight: '600', color: colors.foreground, marginBottom: 24 }}>
                 Practice by Category
               </Text>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 20 }}>
                 {CATEGORIES.map((category) => {
                   const count = questions.filter(q => q.category === category).length;
                   const icon = getCategoryIcon(category);
@@ -306,31 +306,31 @@ export default function QuizScreen() {
                     <Pressable
                       key={category}
                       onPress={() => startQuiz(category, 10)}
-                      style={{ width: 'calc(25% - 12px)' } as any}
+                      style={{ width: 'calc(25% - 15px)' } as any}
                     >
                       {({ hovered, pressed }: any) => (
                         <Card
                           style={{
-                            padding: 20,
+                            padding: 28,
                             backgroundColor: hovered ? colors.surfaceHover : colors.surface,
                             transform: [{ scale: pressed ? 0.98 : 1 }],
                           }}
                         >
                           <View style={{
-                            width: 44,
-                            height: 44,
-                            borderRadius: 12,
+                            width: 64,
+                            height: 64,
+                            borderRadius: 16,
                             backgroundColor: colors.primaryMuted,
                             alignItems: 'center',
                             justifyContent: 'center',
-                            marginBottom: 12,
+                            marginBottom: 16,
                           }}>
-                            <MaterialIcons name={icon} size={24} color={colors.primary} />
+                            <MaterialIcons name={icon} size={36} color={colors.primary} />
                           </View>
-                          <Text style={{ fontSize: 15, fontWeight: '600', color: colors.foreground }}>
+                          <Text style={{ fontSize: 26, fontWeight: '600', color: colors.foreground }}>
                             {category}
                           </Text>
-                          <Text style={{ fontSize: 13, color: colors.muted, marginTop: 4 }}>
+                          <Text style={{ fontSize: 22, color: colors.muted, marginTop: 6 }}>
                             {count} questions
                           </Text>
                         </Card>

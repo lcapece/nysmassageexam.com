@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, FlatList, Platform, useWindowDimensions, Image } from "react-native";
+import { ScrollView, Text, View, Pressable, FlatList, Platform, useWindowDimensions, Image, Modal } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
@@ -34,6 +34,7 @@ export default function StudyScreen() {
   const [progress, setProgress] = useState<StudyProgress | null>(null);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(true);
+  const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
 
   const loadData = useCallback(async () => {
     const [prog, bm] = await Promise.all([
@@ -501,24 +502,50 @@ export default function StudyScreen() {
 
                   {/* Visual Diagram */}
                   {selectedQuestion.image_url && (
-                    <Card style={{ padding: 24, marginTop: 16 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                        <MaterialIcons name="image" size={20} color={colors.primary} />
-                        <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
-                          Visual Aid
-                        </Text>
-                      </View>
-                      <Image
-                        source={{ uri: selectedQuestion.image_url }}
-                        style={{ width: '100%', height: 300, borderRadius: 12 }}
-                        resizeMode="contain"
-                      />
-                    </Card>
+                    <Pressable onPress={() => setZoomedImageUrl(selectedQuestion.image_url)}>
+                      <Card style={{ padding: 0, marginTop: 16, overflow: 'hidden' }}>
+                        <Image
+                          source={{ uri: selectedQuestion.image_url }}
+                          style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
+                          resizeMode="cover"
+                        />
+                      </Card>
+                    </Pressable>
                   )}
                 </ScrollView>
               )}
             </View>
           </View>
+
+          {/* Image Zoom Modal - Desktop Questions */}
+          <Modal
+            visible={!!zoomedImageUrl}
+            transparent={true}
+            animationType="fade"
+            onRequestClose={() => setZoomedImageUrl(null)}
+          >
+            <Pressable
+              onPress={() => setZoomedImageUrl(null)}
+              style={{
+                flex: 1,
+                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 40,
+              }}
+            >
+              <Pressable onPress={() => setZoomedImageUrl(null)} style={{ position: 'absolute', top: 40, right: 40, zIndex: 10 }}>
+                <MaterialIcons name="close" size={36} color="#FFFFFF" />
+              </Pressable>
+              {zoomedImageUrl && (
+                <Image
+                  source={{ uri: zoomedImageUrl }}
+                  style={{ width: '200%', maxWidth: 1200, aspectRatio: 1 }}
+                  resizeMode="contain"
+                />
+              )}
+            </Pressable>
+          </Modal>
         </AppShell>
       );
     }
@@ -627,21 +654,49 @@ export default function StudyScreen() {
 
                 {/* Visual Diagram - Desktop Standalone */}
                 {selectedQuestion.image_url && (
-                  <View style={{ padding: 20, backgroundColor: colors.surface, borderRadius: 12, borderWidth: 1, borderColor: colors.border, marginTop: 16 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
-                      <MaterialIcons name="image" size={20} color={colors.primary} />
-                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginLeft: 8 }}>Visual Aid</Text>
+                  <Pressable onPress={() => setZoomedImageUrl(selectedQuestion.image_url)} style={{ marginTop: 16 }}>
+                    <View style={{ backgroundColor: colors.surface, borderRadius: 12, borderWidth: 1, borderColor: colors.border, overflow: 'hidden' }}>
+                      <Image
+                        source={{ uri: selectedQuestion.image_url }}
+                        style={{ width: '100%', aspectRatio: 1 }}
+                        resizeMode="cover"
+                      />
                     </View>
-                    <Image
-                      source={{ uri: selectedQuestion.image_url }}
-                      style={{ width: '100%', height: 300, borderRadius: 12 }}
-                      resizeMode="contain"
-                    />
-                  </View>
+                  </Pressable>
                 )}
               </Card>
             </Container>
           </ScrollView>
+
+          {/* Image Zoom Modal - Desktop Standalone */}
+          <Modal
+            visible={!!zoomedImageUrl}
+            transparent={true}
+            animationType="fade"
+            onRequestClose={() => setZoomedImageUrl(null)}
+          >
+            <Pressable
+              onPress={() => setZoomedImageUrl(null)}
+              style={{
+                flex: 1,
+                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 40,
+              }}
+            >
+              <Pressable onPress={() => setZoomedImageUrl(null)} style={{ position: 'absolute', top: 40, right: 40, zIndex: 10 }}>
+                <MaterialIcons name="close" size={36} color="#FFFFFF" />
+              </Pressable>
+              {zoomedImageUrl && (
+                <Image
+                  source={{ uri: zoomedImageUrl }}
+                  style={{ width: '200%', maxWidth: 1200, aspectRatio: 1 }}
+                  resizeMode="contain"
+                />
+              )}
+            </Pressable>
+          </Modal>
         </AppShell>
       );
     }
@@ -958,29 +1013,53 @@ export default function StudyScreen() {
 
           {/* Visual Diagram - Mobile */}
           {selectedQuestion.image_url && (
-            <View className="px-5 mt-4">
+            <Pressable onPress={() => setZoomedImageUrl(selectedQuestion.image_url)} className="px-5 mt-4">
               <View
-                className="rounded-xl p-4 border"
+                className="rounded-xl overflow-hidden border"
                 style={{
                   backgroundColor: colors.surface,
                   borderColor: colors.border,
                 }}
               >
-                <View className="flex-row items-center mb-3">
-                  <MaterialIcons name="image" size={20} color={colors.primary} />
-                  <Text className="text-base font-semibold text-foreground ml-2">
-                    Visual Aid
-                  </Text>
-                </View>
                 <Image
                   source={{ uri: selectedQuestion.image_url }}
-                  style={{ width: '100%', height: 250, borderRadius: 12 }}
-                  resizeMode="contain"
+                  style={{ width: '100%', aspectRatio: 1 }}
+                  resizeMode="cover"
                 />
               </View>
-            </View>
+            </Pressable>
           )}
         </ScrollView>
+
+        {/* Image Zoom Modal */}
+        <Modal
+          visible={!!zoomedImageUrl}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setZoomedImageUrl(null)}
+        >
+          <Pressable
+            onPress={() => setZoomedImageUrl(null)}
+            style={{
+              flex: 1,
+              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 20,
+            }}
+          >
+            <Pressable onPress={() => setZoomedImageUrl(null)} style={{ position: 'absolute', top: 40, right: 20, zIndex: 10 }}>
+              <MaterialIcons name="close" size={32} color="#FFFFFF" />
+            </Pressable>
+            {zoomedImageUrl && (
+              <Image
+                source={{ uri: zoomedImageUrl }}
+                style={{ width: '200%', maxWidth: 800, aspectRatio: 1 }}
+                resizeMode="contain"
+              />
+            )}
+          </Pressable>
+        </Modal>
       </ScreenContainer>
     );
   }

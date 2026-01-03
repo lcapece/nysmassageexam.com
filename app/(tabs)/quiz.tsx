@@ -454,7 +454,7 @@ export default function QuizScreen() {
     return (
       <AppShell>
         <View style={{ flex: 1, backgroundColor: colors.background }}>
-          <Container style={{ flex: 1 }}>
+          <Container style={{ flex: 1, flexDirection: 'column' }}>
             {/* Top Bar */}
             <View style={{
               flexDirection: 'row',
@@ -523,7 +523,7 @@ export default function QuizScreen() {
             </View>
 
             {/* Main Content Area */}
-            <View style={{ flex: 1, flexDirection: 'row', gap: 32, paddingVertical: 32 }}>
+            <View style={{ flexDirection: 'row', gap: 32, paddingVertical: 32, flexGrow: 1 }}>
               {/* Question Panel */}
               <View style={{ flex: 3 }}>
                 <Card style={{ padding: 32 }}>

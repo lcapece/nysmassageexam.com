@@ -44,6 +44,7 @@ export default function QuizScreen() {
   const [startTime, setStartTime] = useState<number>(0);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(false);
+  const [showIncorrectExplanations, setShowIncorrectExplanations] = useState(false);
   const [isPurchased, setIsPurchased] = useState(true);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
 
@@ -127,6 +128,7 @@ export default function QuizScreen() {
       setIsCorrect(null);
       setQuizState("question");
       setShowMnemonic(false);
+      setShowIncorrectExplanations(false);
     } else {
       finishQuiz();
     }
@@ -654,7 +656,7 @@ export default function QuizScreen() {
                             {isCorrect ? "Correct!" : "Incorrect"}
                           </Text>
                           <Text style={{ fontSize: 14, color: colors.muted }}>
-                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option?.toUpperCase() || 'N/A'}`}
+                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option ? question.correct_option.toUpperCase() : '[ERROR: No correct option]'}`}
                           </Text>
                         </View>
                       </View>
@@ -703,6 +705,56 @@ export default function QuizScreen() {
                         )}
                       </Card>
                     </Pressable>
+
+                    {/* Incorrect Answer Explanations */}
+                    <Card style={{ padding: 24, marginBottom: 16 }}>
+                      <Pressable
+                        onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
+                        style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}
+                      >
+                        <View style={{
+                          width: 20,
+                          height: 20,
+                          borderRadius: 4,
+                          borderWidth: 2,
+                          borderColor: colors.primary,
+                          backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                          {showIncorrectExplanations && (
+                            <MaterialIcons name="check" size={14} color="#FFFFFF" />
+                          )}
+                        </View>
+                        <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
+                          Show explanations for wrong answers
+                        </Text>
+                      </Pressable>
+
+                      {showIncorrectExplanations && question.incorrect_explanations && (
+                        <View style={{ marginTop: 16, gap: 12 }}>
+                          {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
+                            <View
+                              key={option}
+                              style={{
+                                padding: 12,
+                                backgroundColor: colors.errorMuted,
+                                borderRadius: 8,
+                                borderLeftWidth: 3,
+                                borderLeftColor: colors.error,
+                              }}
+                            >
+                              <Text style={{ fontSize: 14, fontWeight: '600', color: colors.error, marginBottom: 6 }}>
+                                Why {option.toUpperCase()} is incorrect:
+                              </Text>
+                              <Text style={{ fontSize: 14, color: colors.foreground, lineHeight: 20 }}>
+                                {explanation}
+                              </Text>
+                            </View>
+                          ))}
+                        </View>
+                      )}
+                    </Card>
 
                     {/* Visual Diagram */}
                     {question.image_url && (
@@ -1093,6 +1145,62 @@ export default function QuizScreen() {
                 )}
               </View>
             </Pressable>
+
+            {/* Incorrect Answer Explanations - Mobile */}
+            <View
+              className="rounded-xl p-4 border mt-3"
+              style={{
+                backgroundColor: colors.surface,
+                borderColor: colors.border,
+              }}
+            >
+              <Pressable
+                onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
+                className="flex-row items-center"
+                style={{ gap: 12 }}
+              >
+                <View style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 4,
+                  borderWidth: 2,
+                  borderColor: colors.primary,
+                  backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  {showIncorrectExplanations && (
+                    <MaterialIcons name="check" size={14} color="#FFFFFF" />
+                  )}
+                </View>
+                <Text className="text-sm font-semibold text-foreground">
+                  Show explanations for wrong answers
+                </Text>
+              </Pressable>
+
+              {showIncorrectExplanations && question.incorrect_explanations && (
+                <View className="mt-3" style={{ gap: 10 }}>
+                  {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
+                    <View
+                      key={option}
+                      className="p-3 rounded-lg"
+                      style={{
+                        backgroundColor: colors.error + '20',
+                        borderLeftWidth: 3,
+                        borderLeftColor: colors.error,
+                      }}
+                    >
+                      <Text className="text-sm font-semibold mb-1" style={{ color: colors.error }}>
+                        Why {option.toUpperCase()} is incorrect:
+                      </Text>
+                      <Text className="text-sm text-foreground leading-5">
+                        {explanation}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              )}
+            </View>
 
             {/* Visual Diagram - Mobile */}
             {question.image_url && (

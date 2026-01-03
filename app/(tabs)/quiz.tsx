@@ -625,104 +625,110 @@ export default function QuizScreen() {
               {/* Side Panel - Shows during feedback */}
               {quizState === "feedback" && (
                 <View style={{ flex: 2 }}>
-                  {/* Result Indicator */}
-                  <Card
-                    style={{
-                      padding: 24,
-                      marginBottom: 16,
-                      backgroundColor: isCorrect ? colors.successMuted : colors.errorMuted,
-                      borderWidth: 0,
-                    }}
+                  <ScrollView
+                    style={{ flex: 1 }}
+                    contentContainerStyle={{ paddingBottom: 16 }}
+                    showsVerticalScrollIndicator={true}
                   >
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                      <MaterialIcons
-                        name={isCorrect ? "check-circle" : "cancel"}
-                        size={32}
-                        color={isCorrect ? colors.success : colors.error}
-                      />
-                      <View>
-                        <Text style={{
-                          fontSize: 18,
-                          fontWeight: '700',
-                          color: isCorrect ? colors.success : colors.error,
-                        }}>
-                          {isCorrect ? "Correct!" : "Incorrect"}
-                        </Text>
-                        <Text style={{ fontSize: 14, color: colors.muted }}>
-                          {isCorrect ? "Great job!" : `The answer was ${question.correct_option.toUpperCase()}`}
-                        </Text>
-                      </View>
-                    </View>
-                  </Card>
-
-                  {/* Explanation */}
-                  <Card style={{ padding: 24, marginBottom: 16 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                      <MaterialIcons name="info" size={20} color={colors.primary} />
-                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
-                        Explanation
-                      </Text>
-                    </View>
-                    <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                      {question.topic_explanation}
-                    </Text>
-                  </Card>
-
-                  {/* Mnemonic */}
-                  <Pressable onPress={() => setShowMnemonic(!showMnemonic)}>
+                    {/* Result Indicator */}
                     <Card
                       style={{
                         padding: 24,
                         marginBottom: 16,
-                        borderLeftWidth: 4,
-                        borderLeftColor: colors.warning,
+                        backgroundColor: isCorrect ? colors.successMuted : colors.errorMuted,
+                        borderWidth: 0,
                       }}
                     >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                          <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
-                          <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
-                            Memory Tip
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                        <MaterialIcons
+                          name={isCorrect ? "check-circle" : "cancel"}
+                          size={32}
+                          color={isCorrect ? colors.success : colors.error}
+                        />
+                        <View>
+                          <Text style={{
+                            fontSize: 18,
+                            fontWeight: '700',
+                            color: isCorrect ? colors.success : colors.error,
+                          }}>
+                            {isCorrect ? "Correct!" : "Incorrect"}
+                          </Text>
+                          <Text style={{ fontSize: 14, color: colors.muted }}>
+                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option?.toUpperCase() || 'N/A'}`}
                           </Text>
                         </View>
-                        <MaterialIcons
-                          name={showMnemonic ? "expand-less" : "expand-more"}
-                          size={24}
-                          color={colors.muted}
-                        />
                       </View>
-                      {showMnemonic && (
-                        <Text style={{ fontSize: 14, color: colors.foreground, fontStyle: 'italic', marginTop: 12, lineHeight: 22 }}>
-                          {question.mnemonic}
-                        </Text>
-                      )}
                     </Card>
-                  </Pressable>
 
-                  {/* Visual Diagram */}
-                  {question.image_url && (
-                    <Pressable onPress={() => setZoomedImageUrl(question.image_url)} style={{ marginBottom: 24 }}>
-                      <Card style={{ padding: 0, overflow: 'hidden' }}>
-                        <Image
-                          source={{ uri: question.image_url }}
-                          style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
-                          resizeMode="cover"
-                        />
+                    {/* Explanation */}
+                    <Card style={{ padding: 24, marginBottom: 16 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                        <MaterialIcons name="info" size={20} color={colors.primary} />
+                        <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                          Explanation
+                        </Text>
+                      </View>
+                      <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
+                        {question.topic_explanation}
+                      </Text>
+                    </Card>
+
+                    {/* Mnemonic */}
+                    <Pressable onPress={() => setShowMnemonic(!showMnemonic)}>
+                      <Card
+                        style={{
+                          padding: 24,
+                          marginBottom: 16,
+                          borderLeftWidth: 4,
+                          borderLeftColor: colors.warning,
+                        }}
+                      >
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                            <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
+                            <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                              Memory Tip
+                            </Text>
+                          </View>
+                          <MaterialIcons
+                            name={showMnemonic ? "expand-less" : "expand-more"}
+                            size={24}
+                            color={colors.muted}
+                          />
+                        </View>
+                        {showMnemonic && (
+                          <Text style={{ fontSize: 14, color: colors.foreground, fontStyle: 'italic', marginTop: 12, lineHeight: 22 }}>
+                            {question.mnemonic}
+                          </Text>
+                        )}
                       </Card>
                     </Pressable>
-                  )}
 
-                  {/* Next Button */}
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    fullWidth
-                    icon={<MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" />}
-                    iconPosition="right"
-                    onPress={nextQuestion}
-                  >
-                    {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
-                  </Button>
+                    {/* Visual Diagram */}
+                    {question.image_url && (
+                      <Pressable onPress={() => setZoomedImageUrl(question.image_url)} style={{ marginBottom: 24 }}>
+                        <Card style={{ padding: 0, overflow: 'hidden' }}>
+                          <Image
+                            source={{ uri: question.image_url }}
+                            style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
+                            resizeMode="cover"
+                          />
+                        </Card>
+                      </Pressable>
+                    )}
+
+                    {/* Next Button */}
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      fullWidth
+                      icon={<MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" />}
+                      iconPosition="right"
+                      onPress={nextQuestion}
+                    >
+                      {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                    </Button>
+                  </ScrollView>
                 </View>
               )}
             </View>

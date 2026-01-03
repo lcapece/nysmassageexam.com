@@ -453,9 +453,9 @@ export default function QuizScreen() {
 
     return (
       <AppShell>
-        <View style={{ flex: 1, backgroundColor: colors.background }}>
-          <Container style={{ flex: 1, flexDirection: 'column' }}>
-            {/* Top Bar */}
+        <View style={{ flex: 1, backgroundColor: colors.background, flexDirection: 'column' }}>
+          {/* Top Bar */}
+          <Container>
             <View style={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -521,11 +521,14 @@ export default function QuizScreen() {
                 </Text>
               </Pressable>
             </View>
+          </Container>
 
-            {/* Main Content Area */}
-            <View style={{ flexDirection: 'row', gap: 32, paddingVertical: 32, flexGrow: 1 }}>
-              {/* Question Panel */}
-              <View style={{ flex: 3 }}>
+          {/* Main Content Area */}
+          <View style={{ flex: 1, overflow: 'hidden' }}>
+            <Container style={{ flex: 1 }}>
+              <View style={{ flex: 1, flexDirection: 'row', gap: 32, paddingVertical: 32 }}>
+                {/* Question Panel */}
+                <ScrollView style={{ flex: 3 }} contentContainerStyle={{ paddingBottom: 20 }} showsVerticalScrollIndicator={false}>
                 <Card style={{ padding: 32 }}>
                   {/* Category Badge */}
                   <Badge variant="primary" size="md">{question.category}</Badge>
@@ -622,11 +625,11 @@ export default function QuizScreen() {
                     })}
                   </View>
                 </Card>
-              </View>
+                </ScrollView>
 
-              {/* Side Panel - Shows during feedback */}
-              {quizState === "feedback" && (
-                <View style={{ flex: 2 }}>
+                {/* Side Panel - Shows during feedback */}
+                {quizState === "feedback" && (
+                  <View style={{ flex: 2 }}>
                   <ScrollView
                     style={{ flex: 1 }}
                     contentContainerStyle={{ paddingBottom: 16 }}
@@ -781,10 +784,11 @@ export default function QuizScreen() {
                       {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
                     </Button>
                   </ScrollView>
-                </View>
-              )}
-            </View>
-          </Container>
+                  </View>
+                )}
+              </View>
+            </Container>
+          </View>
 
           {/* Image Zoom Modal */}
           <Modal

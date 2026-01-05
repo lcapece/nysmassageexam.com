@@ -28,6 +28,13 @@ interface Article {
 
 const articles: Article[] = [
   {
+    title: 'Paper Test Mode',
+    description: 'Realistic scantron practice exam',
+    icon: 'description',
+    color: '#1a5f2a',
+    href: '/paper-test',
+  },
+  {
     title: 'NYS Exam Overview',
     description: 'Exam format, passing scores & what to expect',
     icon: 'school',
@@ -54,13 +61,6 @@ const articles: Article[] = [
     icon: 'gavel',
     color: '#059669',
     href: '/study?category=ethics',
-  },
-  {
-    title: 'Study Strategies',
-    description: 'Proven techniques for exam success',
-    icon: 'psychology',
-    color: '#D97706',
-    href: '/exam-info#study-tips',
   },
 ];
 

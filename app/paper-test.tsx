@@ -31,6 +31,188 @@ function shuffleArray<T>(array: T[]): T[] {
   return newArray;
 }
 
+// Watch-face pace timer component
+function PaceTimer({
+  secondsRemaining,
+  totalSeconds,
+  isVisible,
+}: {
+  secondsRemaining: number;
+  totalSeconds: number;
+  isVisible: boolean;
+}) {
+  if (!isVisible) return null;
+
+  const size = 64;
+  const strokeWidth = 4;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const progress = secondsRemaining / totalSeconds;
+  const strokeDashoffset = circumference * (1 - progress);
+
+  // Color based on time remaining
+  const getColor = () => {
+    if (secondsRemaining <= 10) return "#DC2626"; // Red - urgent
+    if (secondsRemaining <= 20) return "#F59E0B"; // Orange - warning
+    return "#059669"; // Green - good pace
+  };
+
+  return (
+    <View
+      style={{
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        backgroundColor: "#1a1a1a",
+        justifyContent: "center",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        // Watch bezel effect
+        borderWidth: 3,
+        borderColor: "#333",
+      }}
+    >
+      {/* SVG circle progress */}
+      {Platform.OS === "web" ? (
+        <svg
+          width={size - 6}
+          height={size - 6}
+          style={{ position: "absolute" } as any}
+        >
+          {/* Background circle */}
+          <circle
+            cx={(size - 6) / 2}
+            cy={(size - 6) / 2}
+            r={radius - 3}
+            fill="none"
+            stroke="#333"
+            strokeWidth={strokeWidth}
+          />
+          {/* Progress circle */}
+          <circle
+            cx={(size - 6) / 2}
+            cy={(size - 6) / 2}
+            r={radius - 3}
+            fill="none"
+            stroke={getColor()}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
+            transform={`rotate(-90 ${(size - 6) / 2} ${(size - 6) / 2})`}
+          />
+        </svg>
+      ) : (
+        <View
+          style={{
+            position: "absolute",
+            width: size - 10,
+            height: size - 10,
+            borderRadius: (size - 10) / 2,
+            borderWidth: strokeWidth,
+            borderColor: getColor(),
+            opacity: 0.3,
+          }}
+        />
+      )}
+      {/* Time display */}
+      <Text
+        style={{
+          fontSize: 18,
+          fontWeight: "700",
+          color: getColor(),
+          fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+        }}
+      >
+        {secondsRemaining}
+      </Text>
+      <Text
+        style={{
+          fontSize: 8,
+          color: "#6B7280",
+          marginTop: -2,
+        }}
+      >
+        SEC
+      </Text>
+    </View>
+  );
+}
+
+// Overall pace indicator component
+function PaceIndicator({
+  questionsAnswered,
+  totalQuestions,
+  timeElapsed,
+  totalTime,
+  isVisible,
+}: {
+  questionsAnswered: number;
+  totalQuestions: number;
+  timeElapsed: number;
+  totalTime: number;
+  isVisible: boolean;
+}) {
+  if (!isVisible) return null;
+
+  // Calculate expected progress vs actual progress
+  const expectedProgress = timeElapsed / totalTime; // 0 to 1
+  const actualProgress = questionsAnswered / totalQuestions; // 0 to 1
+
+  // Difference: positive = ahead, negative = behind
+  const progressDiff = actualProgress - expectedProgress;
+  const questionsAheadBehind = Math.round(progressDiff * totalQuestions);
+
+  const isAhead = questionsAheadBehind >= 0;
+  const isOnTrack = Math.abs(questionsAheadBehind) <= 2;
+
+  const getColor = () => {
+    if (isOnTrack) return "#059669"; // Green - on track
+    if (isAhead) return "#3B82F6"; // Blue - ahead
+    return "#DC2626"; // Red - behind
+  };
+
+  const getIcon = (): "trending-up" | "trending-down" | "trending-flat" => {
+    if (isOnTrack) return "trending-flat";
+    if (isAhead) return "trending-up";
+    return "trending-down";
+  };
+
+  const getMessage = () => {
+    if (isOnTrack) return "On Track";
+    if (isAhead) return `${questionsAheadBehind} ahead`;
+    return `${Math.abs(questionsAheadBehind)} behind`;
+  };
+
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "rgba(0,0,0,0.6)",
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        borderRadius: 16,
+        gap: 6,
+      }}
+    >
+      <MaterialIcons name={getIcon()} size={16} color={getColor()} />
+      <Text
+        style={{
+          fontSize: 12,
+          fontWeight: "600",
+          color: getColor(),
+        }}
+      >
+        {getMessage()}
+      </Text>
+    </View>
+  );
+}
+
 // Scantron bubble component
 function ScantronBubble({
   label,
@@ -216,6 +398,10 @@ export default function PaperTestScreen() {
   const [timeRemaining, setTimeRemaining] = useState(90 * 60); // 90 minutes default
   const [isTimerRunning, setIsTimerRunning] = useState(true);
   const [isPurchased, setIsPurchased] = useState(false);
+  const [totalTimeSeconds, setTotalTimeSeconds] = useState(90 * 60); // Store initial total time
+  const [showPaceTimer, setShowPaceTimer] = useState(true);
+  const [paceSecondsRemaining, setPaceSecondsRemaining] = useState(0);
+  const [paceSecondsTotal, setPaceSecondsTotal] = useState(0);
 
   const questionsPerPage = 25;
   const totalPages = Math.ceil(testQuestions.length / questionsPerPage);
@@ -233,7 +419,15 @@ export default function PaperTestScreen() {
       // Set timer based on question count
       const questionCount = purchased ? PAID_QUESTION_COUNT : FREE_QUESTION_COUNT;
       const timerMinutes = purchased ? 150 : 30; // 2.5 hours for paid, 30 min for free
-      setTimeRemaining(timerMinutes * 60);
+      const totalSeconds = timerMinutes * 60;
+      setTimeRemaining(totalSeconds);
+      setTotalTimeSeconds(totalSeconds);
+
+      // Calculate pace timer: seconds per question (minus ~10 sec buffer for navigation)
+      // e.g., 150 min for 140 questions = ~64 sec/question, minus buffer = ~54 sec
+      const secondsPerQuestion = Math.floor((totalSeconds / questionCount) - 10);
+      setPaceSecondsTotal(secondsPerQuestion);
+      setPaceSecondsRemaining(secondsPerQuestion);
 
       // Filter questions that have valid options (at least a and b with content)
       const validQuestions = questions.filter(q => {
@@ -249,7 +443,7 @@ export default function PaperTestScreen() {
     initTest();
   }, []);
 
-  // Timer
+  // Timer (main countdown + pace timer)
   useEffect(() => {
     if (!isTimerRunning || showResults) return;
 
@@ -261,10 +455,19 @@ export default function PaperTestScreen() {
         }
         return prev - 1;
       });
+
+      // Pace timer countdown
+      setPaceSecondsRemaining((prev) => {
+        if (prev <= 0) {
+          // Reset pace timer when it hits 0
+          return paceSecondsTotal;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isTimerRunning, showResults]);
+  }, [isTimerRunning, showResults, paceSecondsTotal]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -280,6 +483,10 @@ export default function PaperTestScreen() {
         const newAnswers = { ...prev };
         delete newAnswers[questionIndex];
         return newAnswers;
+      }
+      // Reset pace timer when answering a new question
+      if (!prev[questionIndex]) {
+        setPaceSecondsRemaining(paceSecondsTotal);
       }
       return {
         ...prev,
@@ -412,6 +619,66 @@ export default function PaperTestScreen() {
           </View>
         </View>
 
+        {/* Pace Timer Row */}
+        {!showResults && (
+          <View
+            style={{
+              backgroundColor: "rgba(0,0,0,0.6)",
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 20,
+              borderTopWidth: 1,
+              borderTopColor: "rgba(255,255,255,0.1)",
+            }}
+          >
+            {/* Toggle pace timer */}
+            <Pressable
+              onPress={() => setShowPaceTimer(!showPaceTimer)}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 6,
+                opacity: 0.8,
+              }}
+            >
+              <MaterialIcons
+                name={showPaceTimer ? "visibility" : "visibility-off"}
+                size={16}
+                color="#fff"
+              />
+              <Text style={{ color: "#fff", fontSize: 11 }}>
+                Pace
+              </Text>
+            </Pressable>
+
+            {/* Pace Timer Watch */}
+            <PaceTimer
+              secondsRemaining={paceSecondsRemaining}
+              totalSeconds={paceSecondsTotal}
+              isVisible={showPaceTimer}
+            />
+
+            {/* Pace Indicator */}
+            <PaceIndicator
+              questionsAnswered={answeredCount}
+              totalQuestions={testQuestions.length}
+              timeElapsed={totalTimeSeconds - timeRemaining}
+              totalTime={totalTimeSeconds}
+              isVisible={showPaceTimer}
+            />
+
+            {/* Pace explanation */}
+            {showPaceTimer && (
+              <Text style={{ color: "rgba(255,255,255,0.6)", fontSize: 10, maxWidth: 120 }}>
+                ~{paceSecondsTotal}s per question to finish on time
+              </Text>
+            )}
+          </View>
+        )}
+
         {/* Free trial banner */}
         {!isPurchased && (
           <Pressable
@@ -479,17 +746,46 @@ export default function PaperTestScreen() {
               >
                 NYS MASSAGE THERAPY EXAMINATION
               </Text>
-              <Text
+              {/* Mode indicator */}
+              <View
                 style={{
-                  color: "rgba(255,255,255,0.8)",
-                  fontSize: 12,
-                  textAlign: "center",
-                  marginTop: 4,
-                  fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 8,
+                  gap: 8,
                 }}
               >
-                GENERAL PURPOSE ANSWER SHEET
-              </Text>
+                <View
+                  style={{
+                    backgroundColor: isPurchased ? "#059669" : "#F59E0B",
+                    paddingHorizontal: 12,
+                    paddingVertical: 4,
+                    borderRadius: 4,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#fff",
+                      fontSize: 12,
+                      fontWeight: "700",
+                      fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                    }}
+                  >
+                    {isPurchased ? "FULL EXAM" : "DEMO MODE"}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: "rgba(255,255,255,0.9)",
+                    fontSize: 12,
+                    fontWeight: "600",
+                    fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                  }}
+                >
+                  {testQuestions.length} QUESTIONS • {isPurchased ? "150" : "30"} MIN
+                </Text>
+              </View>
             </View>
 
             {/* Instructions */}

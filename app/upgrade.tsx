@@ -8,11 +8,16 @@ import {
   TextInput,
   Alert,
   Platform,
+  Linking,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
+
+// Supabase Edge Function URL
+const SUPABASE_URL = "https://ekklokrukxmqlahtonnc.supabase.co";
+const CHECKOUT_FUNCTION_URL = `${SUPABASE_URL}/functions/v1/nys-massage-stripe-checkout`;
 
 // Valid promo codes - LNC3690 gives $37 off (100% discount = free)
 const PROMO_CODES: Record<string, { discount: number; description: string }> = {
@@ -35,10 +40,17 @@ export default function UpgradeScreen() {
   const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState<{ discount: number; description: string } | null>(null);
   const [promoError, setPromoError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const basePrice = 37;
   const finalPrice = promoApplied ? Math.max(0, basePrice - promoApplied.discount) : basePrice;
   const isFree = finalPrice === 0;
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleApplyPromo = () => {
     const code = promoCode.trim().toUpperCase();
@@ -66,53 +78,143 @@ export default function UpgradeScreen() {
   };
 
   const handlePurchase = async () => {
-    setLoading(true);
-
-    if (isFree) {
-      // Promo code makes it free - instant unlock
-      await setPurchased(true);
-      setLoading(false);
-
-      const showAlert = Platform.OS === 'web' ? window.alert : Alert.alert;
-      if (Platform.OS === 'web') {
-        window.alert("Success! Full access unlocked with promo code.");
-      } else {
-        Alert.alert("Success!", "Full access unlocked with promo code.", [{ text: "OK" }]);
-      }
-
-      router.replace("/(tabs)");
+    // Validate email
+    if (!email.trim()) {
+      setEmailError("Please enter your email address");
       return;
     }
+    if (!validateEmail(email.trim())) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    setEmailError("");
 
-    // For paid purchases, show message about payment integration
-    setLoading(false);
-    if (Platform.OS === 'web') {
-      window.alert("Payment processing is not yet configured. Please use a promo code or contact support.");
-    } else {
-      Alert.alert(
-        "Payment Not Available",
-        "Payment processing is not yet configured. Please use a promo code or contact support.",
-        [{ text: "OK" }]
-      );
+    setLoading(true);
+
+    try {
+      // Get the current URL for success/cancel redirects
+      const baseUrl = Platform.OS === 'web'
+        ? window.location.origin
+        : 'https://nysmassageexam.com';
+
+      const response = await fetch(CHECKOUT_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          promoCode: promoApplied ? promoCode.trim().toUpperCase() : null,
+          deviceId: null, // Could add device ID tracking later
+          successUrl: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${baseUrl}/upgrade`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.alreadyPurchased) {
+          // User already has access
+          await setPurchased(true);
+          if (Platform.OS === 'web') {
+            window.alert("You already have full access! Restoring your purchase...");
+          } else {
+            Alert.alert("Already Purchased", "You already have full access! Restoring your purchase...");
+          }
+          router.replace("/(tabs)");
+          return;
+        }
+        throw new Error(data.error || "Failed to create checkout session");
+      }
+
+      // If free with promo code
+      if (data.free) {
+        await setPurchased(true);
+        if (Platform.OS === 'web') {
+          window.alert("Success! Full access unlocked with promo code.");
+        } else {
+          Alert.alert("Success!", "Full access unlocked with promo code.", [{ text: "OK" }]);
+        }
+        router.replace("/(tabs)");
+        return;
+      }
+
+      // Redirect to Stripe checkout
+      if (data.checkoutUrl) {
+        if (Platform.OS === 'web') {
+          window.location.href = data.checkoutUrl;
+        } else {
+          await Linking.openURL(data.checkoutUrl);
+        }
+      }
+    } catch (error: any) {
+      console.error("Purchase error:", error);
+      if (Platform.OS === 'web') {
+        window.alert(error.message || "Failed to process purchase. Please try again.");
+      } else {
+        Alert.alert("Error", error.message || "Failed to process purchase. Please try again.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleRestore = async () => {
+    if (!email.trim()) {
+      setEmailError("Please enter your email to restore purchase");
+      return;
+    }
+    if (!validateEmail(email.trim())) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+
     setLoading(true);
-    
-    // Simulate restore process
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // For demo purposes, mark as purchased
-    await setPurchased(true);
-    
-    setLoading(false);
-    router.replace("/(tabs)");
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/nys-massage-check-purchase`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.hasPurchased) {
+        await setPurchased(true);
+        if (Platform.OS === 'web') {
+          window.alert("Purchase restored successfully!");
+        } else {
+          Alert.alert("Success!", "Purchase restored successfully!");
+        }
+        router.replace("/(tabs)");
+      } else {
+        if (Platform.OS === 'web') {
+          window.alert("No purchase found for this email address.");
+        } else {
+          Alert.alert("Not Found", "No purchase found for this email address.");
+        }
+      }
+    } catch (error: any) {
+      console.error("Restore error:", error);
+      if (Platform.OS === 'web') {
+        window.alert("Failed to restore purchase. Please try again.");
+      } else {
+        Alert.alert("Error", "Failed to restore purchase. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <ScreenContainer edges={["top", "bottom", "left", "right"]}>
-      <ScrollView 
+      <ScrollView
         className="flex-1"
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -138,7 +240,7 @@ export default function UpgradeScreen() {
         {/* Trial Info */}
         <View className="mx-6 bg-warning/10 rounded-xl p-4 border border-warning/30 mb-6">
           <Text className="text-foreground text-center">
-            You're currently on the <Text className="font-bold">free trial</Text> with access to 24 sample questions (3 per category).
+            You're currently on the <Text className="font-bold">free trial</Text> with access to 25 sample questions.
           </Text>
         </View>
 
@@ -155,6 +257,34 @@ export default function UpgradeScreen() {
               </Text>
             </View>
           ))}
+        </View>
+
+        {/* Email Input */}
+        <View className="px-6 mb-4">
+          <View className="bg-surface rounded-xl border border-border p-4">
+            <Text className="text-foreground font-medium mb-3">Your Email Address</Text>
+            <TextInput
+              value={email}
+              onChangeText={(text) => {
+                setEmail(text);
+                setEmailError("");
+              }}
+              placeholder="email@example.com"
+              placeholderTextColor={colors.muted}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              autoComplete="email"
+              className="bg-background border border-border rounded-lg px-4 py-3 text-foreground"
+              style={{ color: colors.foreground }}
+            />
+            {emailError ? (
+              <Text className="text-error text-sm mt-2">{emailError}</Text>
+            ) : (
+              <Text className="text-muted text-xs mt-2">
+                We'll send your receipt to this email. Also used to restore purchases.
+              </Text>
+            )}
+          </View>
         </View>
 
         {/* Promo Code Section */}
@@ -252,7 +382,7 @@ export default function UpgradeScreen() {
             </TouchableOpacity>
 
             <Text className="text-white/60 text-xs text-center mt-3">
-              {isFree ? '🎉 Enjoy your free access!' : '💰 Money-back guarantee if you don\'t pass'}
+              {isFree ? '🎉 Enjoy your free access!' : '🔒 Secure payment via Stripe'}
             </Text>
           </View>
         </View>
@@ -288,15 +418,15 @@ export default function UpgradeScreen() {
                 <Text className="text-primary font-medium">Full</Text>
               </View>
             </View>
-            
+
             {/* Rows */}
             {[
-              { feature: "Questions", free: "24", full: "287" },
+              { feature: "Questions", free: "25", full: "287" },
               { feature: "Categories", free: "All", full: "All" },
               { feature: "Mnemonics", free: "✓", full: "✓" },
               { feature: "Explanations", free: "✓", full: "✓" },
               { feature: "Progress Tracking", free: "Limited", full: "Full" },
-              { feature: "Study Modes", free: "Basic", full: "All" },
+              { feature: "Pencil Test", free: "25 Q", full: "140 Q" },
             ].map((row, index) => (
               <View key={index} className="flex-row border-b border-border last:border-b-0">
                 <View className="flex-1 p-3">
@@ -316,7 +446,7 @@ export default function UpgradeScreen() {
         {/* Footer */}
         <View className="px-6 pb-8">
           <Text className="text-muted text-xs text-center">
-            Payment will be charged to your Apple ID or Google Play account. 
+            Secure payment processed by Stripe.
             By purchasing, you agree to our Terms of Service.
           </Text>
         </View>

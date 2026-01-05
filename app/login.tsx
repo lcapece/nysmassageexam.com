@@ -12,8 +12,9 @@ import {
 import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
-import { getLoginUrl } from "@/constants/oauth";
+import { supabase, getOAuthRedirectUrl } from "@/lib/supabase";
 import * as WebBrowser from "expo-web-browser";
+import * as Linking from "expo-linking";
 
 type AuthMethod = "select" | "email";
 
@@ -24,24 +25,114 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleOAuthLogin = async (provider: "google" | "apple") => {
+  const handleGoogleLogin = async () => {
     setLoading(true);
+    setError("");
+
     try {
-      const loginUrl = getLoginUrl();
-      // Append provider hint to the URL
-      const urlWithProvider = `${loginUrl}&provider=${provider}`;
-      
+      const redirectUrl = getOAuthRedirectUrl();
+
+      const { data, error: authError } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: redirectUrl,
+          skipBrowserRedirect: Platform.OS !== "web",
+        },
+      });
+
+      if (authError) {
+        setError(authError.message);
+        return;
+      }
+
       if (Platform.OS === "web") {
-        window.location.href = urlWithProvider;
+        // Web: the redirect happens automatically
+        if (data.url) {
+          window.location.href = data.url;
+        }
       } else {
-        const result = await WebBrowser.openAuthSessionAsync(urlWithProvider);
-        if (result.type === "success") {
-          router.replace("/(tabs)");
+        // Native: open browser for OAuth
+        if (data.url) {
+          const result = await WebBrowser.openAuthSessionAsync(
+            data.url,
+            redirectUrl
+          );
+
+          if (result.type === "success" && result.url) {
+            // Handle the callback URL
+            const url = new URL(result.url);
+            const accessToken = url.searchParams.get("access_token");
+            const refreshToken = url.searchParams.get("refresh_token");
+
+            if (accessToken && refreshToken) {
+              await supabase.auth.setSession({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              });
+              router.replace("/(tabs)");
+            }
+          }
         }
       }
-    } catch (error) {
-      console.error("OAuth login error:", error);
+    } catch (err: any) {
+      console.error("Google login error:", err);
+      setError(err.message || "Failed to sign in with Google");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAppleLogin = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const redirectUrl = getOAuthRedirectUrl();
+
+      const { data, error: authError } = await supabase.auth.signInWithOAuth({
+        provider: "apple",
+        options: {
+          redirectTo: redirectUrl,
+          skipBrowserRedirect: Platform.OS !== "web",
+        },
+      });
+
+      if (authError) {
+        setError(authError.message);
+        return;
+      }
+
+      if (Platform.OS === "web") {
+        if (data.url) {
+          window.location.href = data.url;
+        }
+      } else {
+        if (data.url) {
+          const result = await WebBrowser.openAuthSessionAsync(
+            data.url,
+            redirectUrl
+          );
+
+          if (result.type === "success" && result.url) {
+            const url = new URL(result.url);
+            const accessToken = url.searchParams.get("access_token");
+            const refreshToken = url.searchParams.get("refresh_token");
+
+            if (accessToken && refreshToken) {
+              await supabase.auth.setSession({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              });
+              router.replace("/(tabs)");
+            }
+          }
+        }
+      }
+    } catch (err: any) {
+      console.error("Apple login error:", err);
+      setError(err.message || "Failed to sign in with Apple");
     } finally {
       setLoading(false);
     }
@@ -49,25 +140,30 @@ export default function LoginScreen() {
 
   const handleEmailLogin = async () => {
     if (!email || !email.includes("@")) {
+      setError("Please enter a valid email address");
       return;
     }
-    
+
     setLoading(true);
+    setError("");
+
     try {
-      // For now, redirect to OAuth with email hint
-      const loginUrl = getLoginUrl();
-      const urlWithEmail = `${loginUrl}&login_hint=${encodeURIComponent(email)}`;
-      
-      if (Platform.OS === "web") {
-        window.location.href = urlWithEmail;
-      } else {
-        const result = await WebBrowser.openAuthSessionAsync(urlWithEmail);
-        if (result.type === "success") {
-          router.replace("/(tabs)");
-        }
+      const { error: authError } = await supabase.auth.signInWithOtp({
+        email: email.trim().toLowerCase(),
+        options: {
+          emailRedirectTo: getOAuthRedirectUrl(),
+        },
+      });
+
+      if (authError) {
+        setError(authError.message);
+        return;
       }
-    } catch (error) {
-      console.error("Email login error:", error);
+
+      setEmailSent(true);
+    } catch (err: any) {
+      console.error("Email login error:", err);
+      setError(err.message || "Failed to send magic link");
     } finally {
       setLoading(false);
     }
@@ -78,6 +174,7 @@ export default function LoginScreen() {
       setAuthMethod("select");
       setEmail("");
       setEmailSent(false);
+      setError("");
     } else {
       router.back();
     }
@@ -85,11 +182,11 @@ export default function LoginScreen() {
 
   return (
     <ScreenContainer edges={["top", "bottom", "left", "right"]}>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         className="flex-1"
       >
-        <ScrollView 
+        <ScrollView
           className="flex-1"
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
@@ -113,12 +210,19 @@ export default function LoginScreen() {
               </Text>
             </View>
 
+            {/* Error Message */}
+            {error ? (
+              <View className="bg-error/10 border border-error/30 rounded-xl p-3 mb-4">
+                <Text className="text-error text-center">{error}</Text>
+              </View>
+            ) : null}
+
             {authMethod === "select" ? (
               /* Auth Method Selection */
               <View className="gap-3">
                 {/* Google Auth */}
                 <TouchableOpacity
-                  onPress={() => handleOAuthLogin("google")}
+                  onPress={handleGoogleLogin}
                   disabled={loading}
                   className="bg-white border border-border rounded-xl px-6 py-4 flex-row items-center justify-center"
                   activeOpacity={0.8}
@@ -139,7 +243,7 @@ export default function LoginScreen() {
 
                 {/* Apple Auth */}
                 <TouchableOpacity
-                  onPress={() => handleOAuthLogin("apple")}
+                  onPress={handleAppleLogin}
                   disabled={loading}
                   className="bg-black rounded-xl px-6 py-4 flex-row items-center justify-center"
                   activeOpacity={0.8}
@@ -149,7 +253,7 @@ export default function LoginScreen() {
                   ) : (
                     <>
                       <View className="w-6 h-6 mr-3 items-center justify-center">
-                        <Text className="text-xl text-white">🍎</Text>
+                        <Text className="text-xl text-white"></Text>
                       </View>
                       <Text className="text-white font-semibold text-base">
                         Continue with Apple
@@ -197,6 +301,7 @@ export default function LoginScreen() {
                       onPress={() => {
                         setEmailSent(false);
                         setEmail("");
+                        setError("");
                       }}
                       className="py-2"
                     >
@@ -212,7 +317,10 @@ export default function LoginScreen() {
                     </Text>
                     <TextInput
                       value={email}
-                      onChangeText={setEmail}
+                      onChangeText={(text) => {
+                        setEmail(text);
+                        setError("");
+                      }}
                       placeholder="you@example.com"
                       placeholderTextColor={colors.muted}
                       keyboardType="email-address"
@@ -235,7 +343,7 @@ export default function LoginScreen() {
                         <ActivityIndicator color="white" />
                       ) : (
                         <Text className="text-white font-semibold text-base text-center">
-                          Continue
+                          Send Magic Link
                         </Text>
                       )}
                     </TouchableOpacity>

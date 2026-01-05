@@ -45,7 +45,7 @@ export default function QuizScreen() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(false);
   const [showIncorrectExplanations, setShowIncorrectExplanations] = useState(false);
-  const [isPurchased, setIsPurchased] = useState(true);
+  const [isPurchased, setIsPurchased] = useState(false);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -282,10 +282,10 @@ export default function QuizScreen() {
                       <MaterialIcons name="assignment" size={44} color={colors.primary} />
                     </View>
                     <Text style={{ fontSize: 38, fontWeight: '700', color: colors.foreground }}>
-                      Full Exam Practice
+                      {isPurchased ? 'Full Exam Practice' : 'Demo Exam Practice'}
                     </Text>
                     <Text style={{ fontSize: 24, color: colors.muted, marginTop: 4 }}>
-                      140 questions like the real NYS exam
+                      {isPurchased ? '140 questions like the real NYS exam' : '25 questions (free trial)'}
                     </Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
                       <Text style={{ fontSize: 24, fontWeight: '600', color: colors.primary }}>
@@ -924,8 +924,8 @@ export default function QuizScreen() {
               className="rounded-xl p-5 flex-row items-center justify-between"
             >
               <View>
-                <Text className="text-lg font-semibold text-foreground">Full Exam Practice</Text>
-                <Text className="text-sm text-muted">140 questions (like the real exam)</Text>
+                <Text className="text-lg font-semibold text-foreground">{isPurchased ? 'Full Exam Practice' : 'Demo Exam Practice'}</Text>
+                <Text className="text-sm text-muted">{isPurchased ? '140 questions (like the real exam)' : '25 questions (free trial)'}</Text>
               </View>
               <MaterialIcons name="assignment" size={28} color={colors.primary} />
             </Pressable>

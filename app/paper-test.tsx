@@ -1,21 +1,19 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   View,
   Text,
   ScrollView,
   Pressable,
-  Animated,
   Platform,
   useWindowDimensions,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
-import { questions, getProgress, saveProgress, StudyProgress } from "@/lib/study-store";
+import { questions } from "@/lib/study-store";
 
 // Shuffle array helper
 function shuffleArray<T>(array: T[]): T[] {
@@ -27,7 +25,7 @@ function shuffleArray<T>(array: T[]): T[] {
   return newArray;
 }
 
-// Scantron bubble component with fill animation
+// Scantron bubble component
 function ScantronBubble({
   label,
   filled,
@@ -43,17 +41,6 @@ function ScantronBubble({
   onPress: () => void;
   disabled: boolean;
 }) {
-  const fillAnim = useRef(new Animated.Value(filled ? 1 : 0)).current;
-  const colors = useColors();
-
-  useEffect(() => {
-    Animated.timing(fillAnim, {
-      toValue: filled ? 1 : 0,
-      duration: 150,
-      useNativeDriver: false,
-    }).start();
-  }, [filled]);
-
   const getBubbleColor = () => {
     if (!showResult) return filled ? "#1a1a1a" : "transparent";
     if (correct && filled) return "#059669"; // Green for correct
@@ -73,7 +60,7 @@ function ScantronBubble({
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={({ pressed, hovered }: any) => ({
+      style={({ pressed }: any) => ({
         opacity: disabled ? 0.7 : pressed ? 0.8 : 1,
         transform: [{ scale: pressed ? 0.95 : 1 }],
       })}
@@ -89,35 +76,20 @@ function ScantronBubble({
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 4,
-          // Paper indent effect
           shadowColor: "#000",
           shadowOffset: { width: 0, height: 1 },
           shadowOpacity: 0.1,
           shadowRadius: 1,
         }}
       >
-        <Animated.View
-          style={{
-            width: 26,
-            height: 12,
-            borderRadius: 6,
-            backgroundColor: fillAnim.interpolate({
-              inputRange: [0, 1],
-              outputRange: ["transparent", getBubbleColor()],
-            }),
-          }}
-        />
-        {/* Pencil graphite texture when filled */}
-        {filled && !showResult && (
+        {/* Filled bubble */}
+        {(filled || (showResult && correct)) && (
           <View
             style={{
-              position: "absolute",
               width: 26,
               height: 12,
               borderRadius: 6,
-              backgroundColor: "rgba(26, 26, 26, 0.85)",
-              // Graphite texture
-              opacity: 0.9,
+              backgroundColor: getBubbleColor(),
             }}
           />
         )}
@@ -276,22 +248,9 @@ export default function PaperTestScreen() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     setShowResults(true);
     setIsTimerRunning(false);
-
-    // Calculate and save results
-    let correct = 0;
-    testQuestions.forEach((q, index) => {
-      const correctLetter = ["A", "B", "C", "D"][q.correctIndex];
-      if (answers[index] === correctLetter) {
-        correct++;
-      }
-    });
-
-    // Save progress
-    const progress = await getProgress();
-    // Update progress with results...
   };
 
   const getScore = () => {
@@ -310,6 +269,24 @@ export default function PaperTestScreen() {
     currentPage * questionsPerPage,
     (currentPage + 1) * questionsPerPage
   );
+
+  // Loading state
+  if (testQuestions.length === 0) {
+    return (
+      <ScreenContainer edges={["top", "bottom"]}>
+        <View style={{ flex: 1, backgroundColor: "#8B7355", justifyContent: "center", alignItems: "center" }}>
+          <View style={{ backgroundColor: "#f5f5dc", padding: 32, borderRadius: 8, alignItems: "center" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "#374151", marginBottom: 8 }}>
+              Preparing Your Exam...
+            </Text>
+            <Text style={{ fontSize: 14, color: "#6B7280" }}>
+              Shuffling 100 questions
+            </Text>
+          </View>
+        </View>
+      </ScreenContainer>
+    );
+  }
 
   return (
     <ScreenContainer edges={["top", "bottom"]}>

@@ -34,6 +34,10 @@ export default function HomeScreen() {
   const [daysUntilExam, setDaysUntilExam] = useState<number>(0);
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
   const [isPurchased, setIsPurchased] = useState(true);
+  const [isBannerExpanded, setIsBannerExpanded] = useState(true);
+
+  // Default to March 6, 2026 exam if no exam date is set
+  const DEFAULT_EXAM_DATE = '2026-03-06';
 
   const loadData = useCallback(async () => {
     const [prog, exam, purchased] = await Promise.all([
@@ -42,13 +46,13 @@ export default function HomeScreen() {
       hasPurchased(),
     ]);
     setProgress(prog);
-    setExamDate(exam);
+    // Use default exam date if none is set
+    const effectiveExamDate = exam || DEFAULT_EXAM_DATE;
+    setExamDate(effectiveExamDate);
     setIsPurchased(purchased);
 
-    if (exam) {
-      setDaysUntilExam(calculateDaysUntilExam(exam));
-      setRecommendedDaily(calculateRecommendedDailyQuestions(exam, prog));
-    }
+    setDaysUntilExam(calculateDaysUntilExam(effectiveExamDate));
+    setRecommendedDaily(calculateRecommendedDailyQuestions(effectiveExamDate, prog));
   }, []);
 
   useFocusEffect(
@@ -107,171 +111,214 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           <Container>
-            {/* Exam Countdown Hero Banner */}
+            {/* Exam Countdown Hero Banner - Collapsible */}
             {examDate && (
               <Card style={{
                 marginTop: 32,
                 marginBottom: 24,
-                padding: 32,
-                background: `linear-gradient(135deg, ${colors.primary}15 0%, ${colors.success}10 100%)`,
+                padding: 0,
+                overflow: 'hidden',
                 borderWidth: 2,
                 borderColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
               }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  {/* Countdown Section */}
-                  <View style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                      <MaterialIcons
-                        name="event"
-                        size={32}
-                        color={daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary}
-                      />
-                      <View>
-                        <Text style={{ fontSize: 14, fontWeight: '600', color: colors.muted, textTransform: 'uppercase', letterSpacing: 1 }}>
-                          NYS Massage Therapy Exam
-                        </Text>
-                        <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginTop: 2 }}>
-                          March 2026
-                        </Text>
-                      </View>
-                    </View>
-
-                    {/* Urgency Message */}
-                    <View style={{
-                      backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
-                      padding: 16,
-                      borderRadius: 12,
-                      borderLeftWidth: 4,
-                      borderLeftColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                      marginTop: 12,
-                    }}>
-                      <Text style={{
-                        fontSize: 16,
-                        fontWeight: '700',
-                        color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                        marginBottom: 4,
-                      }}>
-                        {daysUntilExam <= 30 ? '🔥 FINAL STRETCH!' : daysUntilExam <= 60 ? '⚡ CRUNCH TIME!' : '✨ You\'ve Got This!'}
+                {/* Collapsed Header - Always Visible */}
+                <Pressable
+                  onPress={() => setIsBannerExpanded(!isBannerExpanded)}
+                  style={({ hovered }: any) => ({
+                    padding: 20,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    backgroundColor: hovered ? colors.surfaceHover : 'transparent',
+                  })}
+                >
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                    <MaterialIcons
+                      name="event"
+                      size={28}
+                      color={daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary}
+                    />
+                    <View>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.muted, textTransform: 'uppercase', letterSpacing: 1 }}>
+                        NYS Massage Therapy Exam
                       </Text>
-                      <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}>
-                        {daysUntilExam <= 30
-                          ? 'Less than a month to go! Focus on your weak areas and do daily practice tests.'
-                          : daysUntilExam <= 60
-                          ? 'Two months left! Build momentum with consistent daily study sessions.'
-                          : 'Start strong! Establish a daily study routine to master all 287 questions.'}
+                      <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground, marginTop: 2 }}>
+                        {EXAM_DATES.find(e => e.date === examDate)?.label || 'March 6, 2026'}
                       </Text>
                     </View>
                   </View>
 
-                  {/* Days Countdown */}
-                  <View style={{ alignItems: 'center', marginLeft: 40 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+                    {/* Mini countdown always visible */}
                     <View style={{
-                      width: 140,
-                      height: 140,
-                      borderRadius: 70,
-                      backgroundColor: colors.background,
-                      borderWidth: 6,
-                      borderColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+                      flexDirection: 'row',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      shadowColor: '#000',
-                      shadowOffset: { width: 0, height: 4 },
-                      shadowOpacity: 0.1,
-                      shadowRadius: 8,
+                      gap: 8,
+                      backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
+                      paddingHorizontal: 16,
+                      paddingVertical: 8,
+                      borderRadius: 20,
                     }}>
                       <Text style={{
-                        fontSize: 48,
+                        fontSize: 24,
                         fontWeight: '800',
                         color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
                       }}>
                         {daysUntilExam}
                       </Text>
-                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.muted, marginTop: -4 }}>
-                        DAYS
+                      <Text style={{ fontSize: 12, fontWeight: '600', color: colors.muted }}>
+                        days left
                       </Text>
                     </View>
-                    <Text style={{ fontSize: 12, color: colors.muted, marginTop: 8, textAlign: 'center' }}>
-                      Until Exam Day
-                    </Text>
+
+                    {/* Expand/Collapse Icon */}
+                    <MaterialIcons
+                      name={isBannerExpanded ? "expand-less" : "expand-more"}
+                      size={28}
+                      color={colors.muted}
+                    />
                   </View>
+                </Pressable>
 
-                  {/* Mini Progress Stats */}
-                  <View style={{ flex: 1, marginLeft: 40 }}>
-                    <View style={{ gap: 16 }}>
-                      {/* Success Rate */}
-                      <View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                            <MaterialIcons name="trending-up" size={20} color={colors.success} />
-                            <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
-                              Success Rate
-                            </Text>
-                          </View>
-                          <Text style={{ fontSize: 18, fontWeight: '700', color: colors.success }}>
-                            {masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%
+                {/* Expanded Content */}
+                {isBannerExpanded && (
+                  <View style={{ padding: 24, paddingTop: 0 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                      {/* Urgency Message */}
+                      <View style={{ flex: 1 }}>
+                        <View style={{
+                          backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
+                          padding: 16,
+                          borderRadius: 12,
+                          borderLeftWidth: 4,
+                          borderLeftColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+                        }}>
+                          <Text style={{
+                            fontSize: 16,
+                            fontWeight: '700',
+                            color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+                            marginBottom: 4,
+                          }}>
+                            {daysUntilExam <= 30 ? '🔥 FINAL STRETCH!' : daysUntilExam <= 60 ? '⚡ CRUNCH TIME!' : '✨ You\'ve Got This!'}
                           </Text>
-                        </View>
-                        <View style={{ height: 8, backgroundColor: colors.border, borderRadius: 4, overflow: 'hidden' }}>
-                          <View style={{
-                            height: '100%',
-                            width: `${masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%`,
-                            backgroundColor: colors.success,
-                            borderRadius: 4,
-                          }} />
+                          <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}>
+                            {daysUntilExam <= 30
+                              ? 'Less than a month to go! Focus on your weak areas and do daily practice tests.'
+                              : daysUntilExam <= 60
+                              ? 'Two months left! Build momentum with consistent daily study sessions.'
+                              : 'Start strong! Establish a daily study routine to master all 287 questions.'}
+                          </Text>
                         </View>
                       </View>
 
-                      {/* Overall Progress */}
-                      <View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                            <MaterialIcons name="school" size={20} color={colors.primary} />
-                            <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
-                              Overall Progress
-                            </Text>
-                          </View>
-                          <Text style={{ fontSize: 18, fontWeight: '700', color: colors.primary }}>
-                            {progressPercent}%
+                      {/* Days Countdown Circle */}
+                      <View style={{ alignItems: 'center', marginLeft: 32 }}>
+                        <View style={{
+                          width: 120,
+                          height: 120,
+                          borderRadius: 60,
+                          backgroundColor: colors.background,
+                          borderWidth: 6,
+                          borderColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          shadowColor: '#000',
+                          shadowOffset: { width: 0, height: 4 },
+                          shadowOpacity: 0.1,
+                          shadowRadius: 8,
+                        }}>
+                          <Text style={{
+                            fontSize: 40,
+                            fontWeight: '800',
+                            color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+                          }}>
+                            {daysUntilExam}
                           </Text>
-                        </View>
-                        <View style={{ height: 8, backgroundColor: colors.border, borderRadius: 4, overflow: 'hidden' }}>
-                          <View style={{
-                            height: '100%',
-                            width: `${progressPercent}%`,
-                            backgroundColor: colors.primary,
-                            borderRadius: 4,
-                          }} />
+                          <Text style={{ fontSize: 12, fontWeight: '600', color: colors.muted, marginTop: -4 }}>
+                            DAYS
+                          </Text>
                         </View>
                       </View>
 
-                      {/* Daily Study Time */}
-                      <View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                            <MaterialIcons name="access-time" size={20} color={colors.warning} />
-                            <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
-                              Today's Activity
+                      {/* Mini Progress Stats */}
+                      <View style={{ flex: 1, marginLeft: 32 }}>
+                        <View style={{ gap: 14 }}>
+                          {/* Success Rate */}
+                          <View>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                                <MaterialIcons name="trending-up" size={18} color={colors.success} />
+                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
+                                  Success Rate
+                                </Text>
+                              </View>
+                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.success }}>
+                                {masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%
+                              </Text>
+                            </View>
+                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
+                              <View style={{
+                                height: '100%',
+                                width: `${masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%`,
+                                backgroundColor: colors.success,
+                                borderRadius: 3,
+                              }} />
+                            </View>
+                          </View>
+
+                          {/* Overall Progress */}
+                          <View>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                                <MaterialIcons name="school" size={18} color={colors.primary} />
+                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
+                                  Overall Progress
+                                </Text>
+                              </View>
+                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.primary }}>
+                                {progressPercent}%
+                              </Text>
+                            </View>
+                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
+                              <View style={{
+                                height: '100%',
+                                width: `${progressPercent}%`,
+                                backgroundColor: colors.primary,
+                                borderRadius: 3,
+                              }} />
+                            </View>
+                          </View>
+
+                          {/* Today's Activity */}
+                          <View>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                                <MaterialIcons name="access-time" size={18} color={colors.warning} />
+                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
+                                  Today's Activity
+                                </Text>
+                              </View>
+                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.warning }}>
+                                {todayAnswered} Q's
+                              </Text>
+                            </View>
+                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
+                              <View style={{
+                                height: '100%',
+                                width: `${Math.min(100, dailyGoalPercent)}%`,
+                                backgroundColor: colors.warning,
+                                borderRadius: 3,
+                              }} />
+                            </View>
+                            <Text style={{ fontSize: 10, color: colors.muted, marginTop: 4 }}>
+                              Goal: {recommendedDaily}/day
                             </Text>
                           </View>
-                          <Text style={{ fontSize: 18, fontWeight: '700', color: colors.warning }}>
-                            {todayAnswered > 0 ? Math.round((todayAnswered / 60) * 60) : 0}min
-                          </Text>
                         </View>
-                        <View style={{ height: 8, backgroundColor: colors.border, borderRadius: 4, overflow: 'hidden' }}>
-                          <View style={{
-                            height: '100%',
-                            width: `${Math.min(100, dailyGoalPercent)}%`,
-                            backgroundColor: colors.warning,
-                            borderRadius: 4,
-                          }} />
-                        </View>
-                        <Text style={{ fontSize: 11, color: colors.muted, marginTop: 4 }}>
-                          {todayAnswered} questions • Goal: {recommendedDaily}/day
-                        </Text>
                       </View>
                     </View>
                   </View>
-                </View>
+                )}
               </Card>
             )}
 

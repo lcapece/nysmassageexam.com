@@ -101,7 +101,10 @@ export default function QuizScreen() {
     if (selectedAnswer) return;
 
     const question = quizQuestions[currentIndex];
-    const correct = answer === question.correct_option;
+    // Handle both correct_option and correct_answer_text (which starts with letter like "c. ...")
+    const correctKey = question.correct_option ||
+      (question.correct_answer_text?.charAt(0).toLowerCase());
+    const correct = answer === correctKey;
 
     setSelectedAnswer(answer);
     setIsCorrect(correct);
@@ -525,107 +528,120 @@ export default function QuizScreen() {
 
           {/* Main Content Area */}
           <View style={{ flex: 1, overflow: 'hidden' }}>
-            <Container style={{ flex: 1 }}>
-              <View style={{ flex: 1, flexDirection: 'row', gap: 32, paddingVertical: 32 }}>
+            <Container style={{ flex: 1, paddingHorizontal: 0 }}>
+              <View style={{ flex: 1, flexDirection: 'row', gap: 24, paddingTop: 24, paddingHorizontal: 32 }}>
                 {/* Question Panel */}
-                <ScrollView style={{ flex: 3 }} contentContainerStyle={{ paddingBottom: 20 }} showsVerticalScrollIndicator={false}>
-                <Card style={{ padding: 32 }}>
-                  {/* Category Badge */}
-                  <Badge variant="primary" size="md">{question.category}</Badge>
+                <View style={{ flex: 5, display: 'flex', flexDirection: 'column' }}>
+                  <ScrollView
+                    style={{ flex: 1 }}
+                    contentContainerStyle={{ paddingBottom: 24 }}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    <Card style={{ padding: 40, height: '100%' }}>
+                      {/* Category Badge */}
+                      <Badge variant="primary" size="md">{question.category}</Badge>
 
-                  {/* Question Text */}
-                  <Text style={{
-                    fontSize: 22,
-                    fontWeight: '600',
-                    color: colors.foreground,
-                    lineHeight: 32,
-                    marginTop: 20,
-                    marginBottom: 28,
-                  }}>
-                    {question.rewrite_question}
-                  </Text>
+                      {/* Question Text */}
+                      <Text style={{
+                        fontSize: 26,
+                        fontWeight: '600',
+                        color: colors.foreground,
+                        lineHeight: 38,
+                        marginTop: 24,
+                        marginBottom: 32,
+                      }}>
+                        {question.rewrite_question}
+                      </Text>
 
-                  {/* Answer Options */}
-                  <View style={{ gap: 12 }}>
-                    {Object.entries(question.options).map(([key, value]) => {
-                      const isSelected = selectedAnswer === key;
-                      const isCorrectAnswer = key === question.correct_option;
-                      const showResult = quizState === "feedback";
+                      {/* Answer Options */}
+                      <View style={{ gap: 16 }}>
+                        {Object.entries(question.options).map(([key, value]) => {
+                          const isSelected = selectedAnswer === key;
+                          // Handle both correct_option and correct_answer_text (which starts with letter like "c. ...")
+                          const correctKey = question.correct_option ||
+                            (question.correct_answer_text?.charAt(0).toLowerCase());
+                          const isCorrectAnswer = key === correctKey;
+                          const showResult = quizState === "feedback";
 
-                      let bgColor = colors.surface;
-                      let borderColor = colors.border;
-                      let textColor = colors.foreground;
+                          let bgColor = colors.surface;
+                          let borderColor = colors.border;
+                          let textColor = colors.foreground;
 
-                      if (showResult) {
-                        if (isCorrectAnswer) {
-                          bgColor = colors.successMuted;
-                          borderColor = colors.success;
-                          textColor = colors.success;
-                        } else if (isSelected && !isCorrectAnswer) {
-                          bgColor = colors.errorMuted;
-                          borderColor = colors.error;
-                          textColor = colors.error;
-                        }
-                      } else if (isSelected) {
-                        bgColor = colors.primaryMuted;
-                        borderColor = colors.primary;
-                      }
+                          if (showResult) {
+                            if (isCorrectAnswer) {
+                              bgColor = colors.successMuted;
+                              borderColor = colors.success;
+                              textColor = colors.success;
+                            } else if (isSelected && !isCorrectAnswer) {
+                              bgColor = colors.errorMuted;
+                              borderColor = colors.error;
+                              textColor = colors.error;
+                            }
+                          } else if (isSelected) {
+                            bgColor = colors.primaryMuted;
+                            borderColor = colors.primary;
+                          }
 
-                      return (
-                        <Pressable
-                          key={key}
-                          onPress={() => handleAnswer(key)}
-                          disabled={quizState === "feedback"}
-                        >
-                          {({ hovered, pressed }: any) => (
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                padding: 16,
-                                borderRadius: 12,
-                                borderWidth: 2,
-                                borderColor: borderColor,
-                                backgroundColor: hovered && quizState !== 'feedback' ? colors.surfaceHover : bgColor,
-                                transform: [{ scale: pressed ? 0.99 : 1 }],
-                              }}
+                          return (
+                            <Pressable
+                              key={key}
+                              onPress={() => handleAnswer(key)}
+                              disabled={quizState === "feedback"}
                             >
-                              <View
-                                style={{
-                                  width: 36,
-                                  height: 36,
-                                  borderRadius: 18,
-                                  backgroundColor: showResult && isCorrectAnswer ? colors.success : colors.border,
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  marginRight: 16,
-                                }}
-                              >
-                                <Text style={{
-                                  fontSize: 14,
-                                  fontWeight: '700',
-                                  color: showResult && isCorrectAnswer ? '#FFFFFF' : colors.foreground,
-                                }}>
-                                  {key.toUpperCase()}
-                                </Text>
-                              </View>
-                              <Text style={{ flex: 1, fontSize: 16, color: textColor }}>
-                                {value}
-                              </Text>
-                              {showResult && isCorrectAnswer && (
-                                <MaterialIcons name="check-circle" size={24} color={colors.success} />
+                              {({ hovered, pressed }: any) => (
+                                <View
+                                  style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    padding: 20,
+                                    borderRadius: 12,
+                                    borderWidth: 2,
+                                    borderColor: borderColor,
+                                    backgroundColor: hovered && quizState !== 'feedback' ? colors.surfaceHover : bgColor,
+                                    transform: [{ scale: pressed ? 0.98 : hovered ? 1.01 : 1 }],
+                                    shadowColor: '#000',
+                                    shadowOffset: hovered ? { width: 0, height: 4 } : { width: 0, height: 0 },
+                                    shadowOpacity: hovered ? 0.1 : 0,
+                                    shadowRadius: hovered ? 8 : 0,
+                                  }}
+                                >
+                                  <View
+                                    style={{
+                                      width: 44,
+                                      height: 44,
+                                      borderRadius: 22,
+                                      backgroundColor: showResult && isCorrectAnswer ? colors.success : colors.border,
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      marginRight: 20,
+                                    }}
+                                  >
+                                    <Text style={{
+                                      fontSize: 16,
+                                      fontWeight: '700',
+                                      color: showResult && isCorrectAnswer ? '#FFFFFF' : colors.foreground,
+                                    }}>
+                                      {key.toUpperCase()}
+                                    </Text>
+                                  </View>
+                                  <Text style={{ flex: 1, fontSize: 18, lineHeight: 26, color: textColor }}>
+                                    {value}
+                                  </Text>
+                                  {showResult && isCorrectAnswer && (
+                                    <MaterialIcons name="check-circle" size={28} color={colors.success} />
+                                  )}
+                                  {showResult && isSelected && !isCorrectAnswer && (
+                                    <MaterialIcons name="cancel" size={28} color={colors.error} />
+                                  )}
+                                </View>
                               )}
-                              {showResult && isSelected && !isCorrectAnswer && (
-                                <MaterialIcons name="cancel" size={24} color={colors.error} />
-                              )}
-                            </View>
-                          )}
-                        </Pressable>
-                      );
-                    })}
-                  </View>
+                            </Pressable>
+                          );
+                        })}
+                      </View>
                 </Card>
                 </ScrollView>
+                </View>
 
                 {/* Side Panel - Shows during feedback */}
                 {quizState === "feedback" && (
@@ -638,119 +654,131 @@ export default function QuizScreen() {
                     {/* Result Indicator */}
                     <Card
                       style={{
-                        padding: 24,
-                        marginBottom: 16,
+                        padding: 28,
+                        marginBottom: 20,
                         backgroundColor: isCorrect ? colors.successMuted : colors.errorMuted,
                         borderWidth: 0,
                       }}
                     >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
                         <MaterialIcons
                           name={isCorrect ? "check-circle" : "cancel"}
-                          size={32}
+                          size={40}
                           color={isCorrect ? colors.success : colors.error}
                         />
                         <View>
                           <Text style={{
-                            fontSize: 18,
+                            fontSize: 22,
                             fontWeight: '700',
                             color: isCorrect ? colors.success : colors.error,
+                            marginBottom: 4,
                           }}>
                             {isCorrect ? "Correct!" : "Incorrect"}
                           </Text>
-                          <Text style={{ fontSize: 14, color: colors.muted }}>
-                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option ? question.correct_option.toUpperCase() : '[ERROR: No correct option]'}`}
+                          <Text style={{ fontSize: 16, color: colors.muted }}>
+                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option ? question.correct_option.toUpperCase() : (question.correct_answer_text || '[No answer available]')}`}
                           </Text>
                         </View>
                       </View>
                     </Card>
 
                     {/* Explanation */}
-                    <Card style={{ padding: 24, marginBottom: 16 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                        <MaterialIcons name="info" size={20} color={colors.primary} />
-                        <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                    <Card style={{ padding: 28, marginBottom: 20 }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                        <MaterialIcons name="info" size={24} color={colors.primary} />
+                        <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
                           Explanation
                         </Text>
                       </View>
-                      <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
+                      <Text style={{ fontSize: 16, color: colors.muted, lineHeight: 26 }}>
                         {question.topic_explanation}
                       </Text>
                     </Card>
 
                     {/* Mnemonic */}
                     <Pressable onPress={() => setShowMnemonic(!showMnemonic)}>
-                      <Card
-                        style={{
-                          padding: 24,
-                          marginBottom: 16,
-                          borderLeftWidth: 4,
-                          borderLeftColor: colors.warning,
-                        }}
-                      >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                            <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
-                            <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
-                              Memory Tip
-                            </Text>
+                      {({ hovered }: any) => (
+                        <Card
+                          style={{
+                            padding: 28,
+                            marginBottom: 20,
+                            borderLeftWidth: 4,
+                            borderLeftColor: colors.warning,
+                            backgroundColor: hovered ? colors.surfaceHover : colors.card,
+                          }}
+                        >
+                          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                              <MaterialIcons name="lightbulb" size={24} color={colors.warning} />
+                              <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
+                                Memory Tip
+                              </Text>
+                            </View>
+                            <MaterialIcons
+                              name={showMnemonic ? "expand-less" : "expand-more"}
+                              size={28}
+                              color={colors.muted}
+                            />
                           </View>
-                          <MaterialIcons
-                            name={showMnemonic ? "expand-less" : "expand-more"}
-                            size={24}
-                            color={colors.muted}
-                          />
-                        </View>
-                        {showMnemonic && (
-                          <Text style={{ fontSize: 14, color: colors.foreground, fontStyle: 'italic', marginTop: 12, lineHeight: 22 }}>
-                            {question.mnemonic}
-                          </Text>
-                        )}
-                      </Card>
+                          {showMnemonic && (
+                            <Text style={{ fontSize: 16, color: colors.foreground, fontStyle: 'italic', marginTop: 16, lineHeight: 26 }}>
+                              {question.mnemonic}
+                            </Text>
+                          )}
+                        </Card>
+                      )}
                     </Pressable>
 
                     {/* Incorrect Answer Explanations */}
-                    <Card style={{ padding: 24, marginBottom: 16 }}>
+                    <Card style={{ padding: 28, marginBottom: 20 }}>
                       <Pressable
                         onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
-                        style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}
                       >
-                        <View style={{
-                          width: 20,
-                          height: 20,
-                          borderRadius: 4,
-                          borderWidth: 2,
-                          borderColor: colors.primary,
-                          backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}>
-                          {showIncorrectExplanations && (
-                            <MaterialIcons name="check" size={14} color="#FFFFFF" />
-                          )}
-                        </View>
-                        <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
-                          Show explanations for wrong answers
-                        </Text>
+                        {({ hovered }: any) => (
+                          <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 14,
+                            opacity: hovered ? 0.8 : 1,
+                          }}>
+                            <View style={{
+                              width: 24,
+                              height: 24,
+                              borderRadius: 6,
+                              borderWidth: 2,
+                              borderColor: colors.primary,
+                              backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                              {showIncorrectExplanations && (
+                                <MaterialIcons name="check" size={16} color="#FFFFFF" />
+                              )}
+                            </View>
+                            <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
+                              Show explanations for wrong answers
+                            </Text>
+                          </View>
+                        )}
                       </Pressable>
 
                       {showIncorrectExplanations && question.incorrect_explanations && (
-                        <View style={{ marginTop: 16, gap: 12 }}>
+                        <View style={{ marginTop: 20, gap: 16 }}>
                           {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
                             <View
                               key={option}
                               style={{
-                                padding: 12,
+                                padding: 16,
                                 backgroundColor: colors.errorMuted,
-                                borderRadius: 8,
-                                borderLeftWidth: 3,
+                                borderRadius: 10,
+                                borderLeftWidth: 4,
                                 borderLeftColor: colors.error,
                               }}
                             >
-                              <Text style={{ fontSize: 14, fontWeight: '600', color: colors.error, marginBottom: 6 }}>
+                              <Text style={{ fontSize: 16, fontWeight: '600', color: colors.error, marginBottom: 8 }}>
                                 Why {option.toUpperCase()} is incorrect:
                               </Text>
-                              <Text style={{ fontSize: 14, color: colors.foreground, lineHeight: 20 }}>
+                              <Text style={{ fontSize: 15, color: colors.foreground, lineHeight: 24 }}>
                                 {explanation}
                               </Text>
                             </View>
@@ -761,14 +789,22 @@ export default function QuizScreen() {
 
                     {/* Visual Diagram */}
                     {question.image_url && (
-                      <Pressable onPress={() => setZoomedImageUrl(question.image_url)} style={{ marginBottom: 24 }}>
-                        <Card style={{ padding: 0, overflow: 'hidden' }}>
-                          <Image
-                            source={{ uri: question.image_url }}
-                            style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
-                            resizeMode="cover"
-                          />
-                        </Card>
+                      <Pressable onPress={() => setZoomedImageUrl(question.image_url)} style={{ marginBottom: 28 }}>
+                        {({ hovered }: any) => (
+                          <Card style={{
+                            padding: 0,
+                            overflow: 'hidden',
+                            borderWidth: 2,
+                            borderColor: hovered ? colors.primary : colors.border,
+                            transform: [{ scale: hovered ? 1.01 : 1 }],
+                          }}>
+                            <Image
+                              source={{ uri: question.image_url }}
+                              style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
+                              resizeMode="cover"
+                            />
+                          </Card>
+                        )}
                       </Pressable>
                     )}
 
@@ -1042,7 +1078,10 @@ export default function QuizScreen() {
         <View className="px-5 mt-6 gap-3">
           {Object.entries(question.options).map(([key, value]) => {
             const isSelected = selectedAnswer === key;
-            const isCorrectAnswer = key === question.correct_option;
+            // Handle both correct_option and correct_answer_text (which starts with letter like "c. ...")
+            const correctKey = question.correct_option ||
+              (question.correct_answer_text?.charAt(0).toLowerCase());
+            const isCorrectAnswer = key === correctKey;
             const showResult = quizState === "feedback";
 
             let bgColor = colors.surface;

@@ -3,6 +3,7 @@ import { ScrollView, Text, View, Pressable, FlatList, Platform, useWindowDimensi
 import { useFocusEffect } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
@@ -21,6 +22,15 @@ import {
   StudyProgress,
 } from "@/lib/study-store";
 
+// Font size options
+type FontSizeOption = 'small' | 'medium' | 'large';
+const FONT_SIZE_KEY = 'study_font_size';
+const FONT_SIZES: Record<FontSizeOption, { question: number; option: number; label: string }> = {
+  small: { question: 14, option: 13, label: 'A' },
+  medium: { question: 16, option: 14, label: 'A' },
+  large: { question: 20, option: 18, label: 'A' },
+};
+
 type ViewMode = "categories" | "questions" | "detail";
 
 export default function StudyScreen() {
@@ -35,15 +45,28 @@ export default function StudyScreen() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(true);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
+  const [fontSize, setFontSize] = useState<FontSizeOption>('medium');
 
   const loadData = useCallback(async () => {
-    const [prog, bm] = await Promise.all([
+    const [prog, bm, savedFontSize] = await Promise.all([
       getProgress(),
       getBookmarks(),
+      AsyncStorage.getItem(FONT_SIZE_KEY),
     ]);
     setProgress(prog);
     setBookmarks(bm);
+    if (savedFontSize && (savedFontSize === 'small' || savedFontSize === 'medium' || savedFontSize === 'large')) {
+      setFontSize(savedFontSize);
+    }
   }, []);
+
+  const changeFontSize = async (size: FontSizeOption) => {
+    setFontSize(size);
+    await AsyncStorage.setItem(FONT_SIZE_KEY, size);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -322,6 +345,34 @@ export default function StudyScreen() {
                     {categoryQuestions.length} questions
                   </Text>
                 </View>
+                {/* Font Size Control */}
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginLeft: 16 }}>
+                  <Text style={{ fontSize: 12, color: colors.muted, marginRight: 8 }}>Font:</Text>
+                  {(['small', 'medium', 'large'] as FontSizeOption[]).map((size) => (
+                    <Pressable
+                      key={size}
+                      onPress={() => changeFontSize(size)}
+                      style={({ hovered }: any) => ({
+                        width: 32,
+                        height: 32,
+                        borderRadius: 6,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: fontSize === size ? colors.primary : hovered ? colors.surfaceHover : colors.surface,
+                        borderWidth: 1,
+                        borderColor: fontSize === size ? colors.primary : colors.border,
+                      })}
+                    >
+                      <Text style={{
+                        fontSize: size === 'small' ? 12 : size === 'medium' ? 14 : 18,
+                        fontWeight: '600',
+                        color: fontSize === size ? '#FFFFFF' : colors.foreground,
+                      }}>
+                        A
+                      </Text>
+                    </Pressable>
+                  ))}
+                </View>
               </View>
             </Container>
 
@@ -379,7 +430,7 @@ export default function StudyScreen() {
                             </View>
                             <View style={{ flex: 1 }}>
                               <Text
-                                style={{ fontSize: 14, color: colors.foreground, lineHeight: 20 }}
+                                style={{ fontSize: FONT_SIZES[fontSize].question, color: colors.foreground, lineHeight: FONT_SIZES[fontSize].question * 1.5 }}
                                 numberOfLines={2}
                               >
                                 {item.rewrite_question}
@@ -818,13 +869,41 @@ export default function StudyScreen() {
 
     return (
       <ScreenContainer>
-        <View className="px-5 pt-4 pb-3 flex-row items-center">
-          <Pressable onPress={goBack} className="mr-3">
-            <MaterialIcons name="arrow-back" size={24} color={colors.foreground} />
-          </Pressable>
-          <View className="flex-1">
-            <Text className="text-xl font-bold text-foreground">{selectedCategory}</Text>
-            <Text className="text-sm text-muted">{categoryQuestions.length} questions</Text>
+        <View className="px-5 pt-4 pb-3">
+          <View className="flex-row items-center">
+            <Pressable onPress={goBack} className="mr-3">
+              <MaterialIcons name="arrow-back" size={24} color={colors.foreground} />
+            </Pressable>
+            <View className="flex-1">
+              <Text className="text-xl font-bold text-foreground">{selectedCategory}</Text>
+              <Text className="text-sm text-muted">{categoryQuestions.length} questions</Text>
+            </View>
+          </View>
+          {/* Font Size Control - Mobile */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12, gap: 8 }}>
+            <Text style={{ fontSize: 12, color: colors.muted }}>Font size:</Text>
+            {(['small', 'medium', 'large'] as FontSizeOption[]).map((size) => (
+              <Pressable
+                key={size}
+                onPress={() => changeFontSize(size)}
+                style={{
+                  paddingHorizontal: 12,
+                  paddingVertical: 6,
+                  borderRadius: 6,
+                  backgroundColor: fontSize === size ? colors.primary : colors.surface,
+                  borderWidth: 1,
+                  borderColor: fontSize === size ? colors.primary : colors.border,
+                }}
+              >
+                <Text style={{
+                  fontSize: size === 'small' ? 12 : size === 'medium' ? 14 : 16,
+                  fontWeight: '600',
+                  color: fontSize === size ? '#FFFFFF' : colors.foreground,
+                }}>
+                  A
+                </Text>
+              </Pressable>
+            ))}
           </View>
         </View>
 
@@ -870,7 +949,7 @@ export default function StudyScreen() {
                   </View>
                   <View className="flex-1">
                     <Text
-                      className="text-base text-foreground leading-5"
+                      style={{ fontSize: FONT_SIZES[fontSize].question, lineHeight: FONT_SIZES[fontSize].question * 1.5, color: colors.foreground }}
                       numberOfLines={2}
                     >
                       {item.rewrite_question}

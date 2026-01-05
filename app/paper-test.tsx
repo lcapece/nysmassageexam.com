@@ -13,7 +13,7 @@ import * as Haptics from "expo-haptics";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
-import { questions } from "@/lib/study-store";
+import { questions, hasPurchased } from "@/lib/study-store";
 
 // Photorealistic pencil cursor (SVG data URI) - 96x96 (3x larger)
 // Hotspot at (78, 78) = pencil tip after -45deg rotation
@@ -213,24 +213,40 @@ export default function PaperTestScreen() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const [timeRemaining, setTimeRemaining] = useState(90 * 60); // 90 minutes
+  const [timeRemaining, setTimeRemaining] = useState(90 * 60); // 90 minutes default
   const [isTimerRunning, setIsTimerRunning] = useState(true);
+  const [isPurchased, setIsPurchased] = useState(false);
 
   const questionsPerPage = 25;
   const totalPages = Math.ceil(testQuestions.length / questionsPerPage);
 
+  // Free: 25 questions (30 min), Paid: 140 questions (2.5 hours)
+  const FREE_QUESTION_COUNT = 25;
+  const PAID_QUESTION_COUNT = 140;
+
   // Initialize test with shuffled questions (filter out questions with missing options)
   useEffect(() => {
-    // Filter questions that have valid options (at least a and b with content)
-    const validQuestions = questions.filter(q => {
-      const opts = q.options;
-      if (!opts || typeof opts !== 'object') return false;
-      const keys = Object.keys(opts);
-      // Must have at least 2 options with actual content (keys are lowercase: a, b, c, d)
-      return keys.length >= 2 && opts.a && opts.b;
-    });
-    const shuffled = shuffleArray(validQuestions).slice(0, 100); // 100 question test
-    setTestQuestions(shuffled);
+    const initTest = async () => {
+      const purchased = await hasPurchased();
+      setIsPurchased(purchased);
+
+      // Set timer based on question count
+      const questionCount = purchased ? PAID_QUESTION_COUNT : FREE_QUESTION_COUNT;
+      const timerMinutes = purchased ? 150 : 30; // 2.5 hours for paid, 30 min for free
+      setTimeRemaining(timerMinutes * 60);
+
+      // Filter questions that have valid options (at least a and b with content)
+      const validQuestions = questions.filter(q => {
+        const opts = q.options;
+        if (!opts || typeof opts !== 'object') return false;
+        const keys = Object.keys(opts);
+        // Must have at least 2 options with actual content (keys are lowercase: a, b, c, d)
+        return keys.length >= 2 && opts.a && opts.b;
+      });
+      const shuffled = shuffleArray(validQuestions).slice(0, questionCount);
+      setTestQuestions(shuffled);
+    };
+    initTest();
   }, []);
 
   // Timer
@@ -304,7 +320,7 @@ export default function PaperTestScreen() {
               Preparing Your Exam...
             </Text>
             <Text style={{ fontSize: 14, color: "#6B7280" }}>
-              Shuffling 100 questions
+              Loading questions
             </Text>
           </View>
         </View>
@@ -395,6 +411,27 @@ export default function PaperTestScreen() {
             </Text>
           </View>
         </View>
+
+        {/* Free trial banner */}
+        {!isPurchased && (
+          <Pressable
+            onPress={() => router.push("/upgrade")}
+            style={{
+              backgroundColor: "#F59E0B",
+              paddingVertical: 10,
+              paddingHorizontal: 16,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <MaterialIcons name="lock" size={18} color="#fff" />
+            <Text style={{ color: "#fff", fontWeight: "600", marginLeft: 8 }}>
+              Free Trial: 25 Questions • Upgrade for full 140-question exam
+            </Text>
+            <MaterialIcons name="arrow-forward" size={18} color="#fff" style={{ marginLeft: 8 }} />
+          </Pressable>
+        )}
 
         <ScrollView
           contentContainerStyle={{

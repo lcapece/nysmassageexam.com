@@ -256,8 +256,7 @@ export default function PaperTestScreen() {
   const getScore = () => {
     let correct = 0;
     testQuestions.forEach((q, index) => {
-      const correctLetter = ["A", "B", "C", "D"][q.correctIndex];
-      if (answers[index] === correctLetter) {
+      if (answers[index] === q.correct_option) {
         correct++;
       }
     });
@@ -536,14 +535,13 @@ export default function PaperTestScreen() {
             {/* Answer rows */}
             {currentQuestions.map((question, index) => {
               const globalIndex = currentPage * questionsPerPage + index;
-              const correctLetter = ["A", "B", "C", "D"][question.correctIndex];
 
               return (
                 <ScantronRow
                   key={globalIndex}
                   questionNumber={globalIndex + 1}
                   selectedAnswer={answers[globalIndex] || null}
-                  correctAnswer={correctLetter}
+                  correctAnswer={question.correct_option || "A"}
                   showResult={showResults}
                   onSelectAnswer={(answer) => handleSelectAnswer(globalIndex, answer)}
                   disabled={showResults}
@@ -675,9 +673,9 @@ export default function PaperTestScreen() {
                       >
                         {globalIndex + 1}. {question.question}
                       </Text>
-                      {question.options.map((option, optIndex) => (
+                      {Object.entries(question.options).map(([key, value]) => (
                         <Text
-                          key={optIndex}
+                          key={key}
                           style={{
                             fontSize: 11,
                             color: "#6B7280",
@@ -685,7 +683,7 @@ export default function PaperTestScreen() {
                             marginBottom: 2,
                           }}
                         >
-                          {["A", "B", "C", "D"][optIndex]}. {option}
+                          {key}. {value}
                         </Text>
                       ))}
                     </View>
@@ -745,9 +743,9 @@ export default function PaperTestScreen() {
                     >
                       {globalIndex + 1}. {question.question}
                     </Text>
-                    {question.options.map((option, optIndex) => (
+                    {Object.entries(question.options).map(([key, value]) => (
                       <Text
-                        key={optIndex}
+                        key={key}
                         style={{
                           fontSize: 12,
                           color: "#6B7280",
@@ -755,7 +753,7 @@ export default function PaperTestScreen() {
                           marginBottom: 2,
                         }}
                       >
-                        {["A", "B", "C", "D"][optIndex]}. {option}
+                        {key}. {value}
                       </Text>
                     ))}
                   </View>

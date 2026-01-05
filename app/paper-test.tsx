@@ -15,6 +15,11 @@ import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { questions } from "@/lib/study-store";
 
+// Photorealistic pencil cursor (SVG data URI)
+const PENCIL_CURSOR = Platform.OS === 'web'
+  ? `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='wood' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23DEB887'/%3E%3Cstop offset='50%25' style='stop-color:%23F4A460'/%3E%3Cstop offset='100%25' style='stop-color:%23DEB887'/%3E%3C/linearGradient%3E%3ClinearGradient id='metal' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23C0C0C0'/%3E%3Cstop offset='50%25' style='stop-color:%23E8E8E8'/%3E%3Cstop offset='100%25' style='stop-color:%23A0A0A0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='rotate(-45 16 16)'%3E%3Crect x='12' y='4' width='8' height='20' fill='url(%23wood)' rx='0.5'/%3E%3Cpolygon points='12,24 16,30 20,24' fill='%23F5DEB3'/%3E%3Cpolygon points='14,26 16,30 18,26' fill='%23333'/%3E%3Crect x='12' y='4' width='8' height='3' fill='url(%23metal)'/%3E%3Crect x='12' y='2' width='8' height='3' fill='%23FFB6C1' rx='1'/%3E%3Cline x1='14' y1='7' x2='14' y2='24' stroke='%23CD853F' stroke-width='0.5'/%3E%3Cline x1='18' y1='7' x2='18' y2='24' stroke='%23CD853F' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E") 2 30, auto`
+  : undefined;
+
 // Shuffle array helper
 function shuffleArray<T>(array: T[]): T[] {
   const newArray = [...array];
@@ -211,9 +216,17 @@ export default function PaperTestScreen() {
   const questionsPerPage = 25;
   const totalPages = Math.ceil(testQuestions.length / questionsPerPage);
 
-  // Initialize test with shuffled questions
+  // Initialize test with shuffled questions (filter out questions with missing options)
   useEffect(() => {
-    const shuffled = shuffleArray(questions).slice(0, 100); // 100 question test
+    // Filter questions that have valid options (at least A and B with content)
+    const validQuestions = questions.filter(q => {
+      const opts = q.options;
+      if (!opts || typeof opts !== 'object') return false;
+      const keys = Object.keys(opts);
+      // Must have at least A and B options with actual content
+      return keys.length >= 2 && opts.A && opts.B;
+    });
+    const shuffled = shuffleArray(validQuestions).slice(0, 100); // 100 question test
     setTestQuestions(shuffled);
   }, []);
 
@@ -393,6 +406,8 @@ export default function PaperTestScreen() {
               // Paper edge effect
               borderWidth: 1,
               borderColor: "rgba(0,0,0,0.1)",
+              // Pencil cursor on web
+              ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
             }}
           >
             {/* Scantron Header */}

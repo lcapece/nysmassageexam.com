@@ -5,11 +5,19 @@ import {
   View,
   TouchableOpacity,
   ActivityIndicator,
+  TextInput,
+  Alert,
+  Platform,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
+
+// Valid promo codes - LNC3690 gives $37 off (100% discount = free)
+const PROMO_CODES: Record<string, { discount: number; description: string }> = {
+  "LNC3690": { discount: 37, description: "Full discount - FREE access!" },
+};
 
 const FEATURES = [
   { icon: "✅", text: "All 287 exam questions" },
@@ -24,21 +32,69 @@ export default function UpgradeScreen() {
   const router = useRouter();
   const colors = useColors();
   const [loading, setLoading] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState<{ discount: number; description: string } | null>(null);
+  const [promoError, setPromoError] = useState("");
+
+  const basePrice = 37;
+  const finalPrice = promoApplied ? Math.max(0, basePrice - promoApplied.discount) : basePrice;
+  const isFree = finalPrice === 0;
+
+  const handleApplyPromo = () => {
+    const code = promoCode.trim().toUpperCase();
+    setPromoError("");
+
+    if (!code) {
+      setPromoError("Please enter a promo code");
+      return;
+    }
+
+    const promo = PROMO_CODES[code];
+    if (promo) {
+      setPromoApplied(promo);
+      setPromoError("");
+    } else {
+      setPromoApplied(null);
+      setPromoError("Invalid promo code");
+    }
+  };
+
+  const handleRemovePromo = () => {
+    setPromoApplied(null);
+    setPromoCode("");
+    setPromoError("");
+  };
 
   const handlePurchase = async () => {
     setLoading(true);
-    
-    // Simulate purchase process
-    // In production, this would integrate with Apple/Google in-app purchases
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Mark as purchased
-    await setPurchased(true);
-    
+
+    if (isFree) {
+      // Promo code makes it free - instant unlock
+      await setPurchased(true);
+      setLoading(false);
+
+      const showAlert = Platform.OS === 'web' ? window.alert : Alert.alert;
+      if (Platform.OS === 'web') {
+        window.alert("Success! Full access unlocked with promo code.");
+      } else {
+        Alert.alert("Success!", "Full access unlocked with promo code.", [{ text: "OK" }]);
+      }
+
+      router.replace("/(tabs)");
+      return;
+    }
+
+    // For paid purchases, show message about payment integration
     setLoading(false);
-    
-    // Navigate back to the app
-    router.replace("/(tabs)");
+    if (Platform.OS === 'web') {
+      window.alert("Payment processing is not yet configured. Please use a promo code or contact support.");
+    } else {
+      Alert.alert(
+        "Payment Not Available",
+        "Payment processing is not yet configured. Please use a promo code or contact support.",
+        [{ text: "OK" }]
+      );
+    }
   };
 
   const handleRestore = async () => {
@@ -101,19 +157,85 @@ export default function UpgradeScreen() {
           ))}
         </View>
 
+        {/* Promo Code Section */}
+        <View className="px-6 mb-4">
+          <View className="bg-surface rounded-xl border border-border p-4">
+            <Text className="text-foreground font-medium mb-3">Have a promo code?</Text>
+
+            {promoApplied ? (
+              <View className="bg-success/10 rounded-lg p-3 border border-success/30">
+                <View className="flex-row items-center justify-between">
+                  <View className="flex-1">
+                    <Text className="text-success font-bold text-base">
+                      {promoCode.toUpperCase()} applied!
+                    </Text>
+                    <Text className="text-success/80 text-sm">
+                      {promoApplied.description}
+                    </Text>
+                  </View>
+                  <TouchableOpacity
+                    onPress={handleRemovePromo}
+                    className="bg-success/20 rounded-full px-3 py-1"
+                  >
+                    <Text className="text-success font-medium">Remove</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            ) : (
+              <View>
+                <View className="flex-row gap-2">
+                  <TextInput
+                    value={promoCode}
+                    onChangeText={(text) => {
+                      setPromoCode(text);
+                      setPromoError("");
+                    }}
+                    placeholder="Enter promo code"
+                    placeholderTextColor={colors.muted}
+                    autoCapitalize="characters"
+                    className="flex-1 bg-background border border-border rounded-lg px-4 py-3 text-foreground"
+                    style={{ color: colors.foreground }}
+                  />
+                  <TouchableOpacity
+                    onPress={handleApplyPromo}
+                    className="bg-primary rounded-lg px-4 py-3"
+                  >
+                    <Text className="text-white font-medium">Apply</Text>
+                  </TouchableOpacity>
+                </View>
+                {promoError ? (
+                  <Text className="text-error text-sm mt-2">{promoError}</Text>
+                ) : null}
+              </View>
+            )}
+          </View>
+        </View>
+
         {/* Pricing */}
         <View className="px-6 mb-6">
-          <View className="bg-primary rounded-2xl p-6 items-center">
+          <View className={`${isFree ? 'bg-success' : 'bg-primary'} rounded-2xl p-6 items-center`}>
             <Text className="text-white/80 text-sm uppercase tracking-wider mb-1">
-              One-Time Purchase
+              {isFree ? 'Promo Applied' : 'One-Time Purchase'}
             </Text>
             <View className="flex-row items-baseline mb-1">
-              <Text className="text-white text-5xl font-bold">$37</Text>
+              {promoApplied && !isFree ? (
+                <>
+                  <Text className="text-white/60 text-2xl line-through mr-2">${basePrice}</Text>
+                  <Text className="text-white text-5xl font-bold">${finalPrice}</Text>
+                </>
+              ) : isFree ? (
+                <>
+                  <Text className="text-white/60 text-2xl line-through mr-2">${basePrice}</Text>
+                  <Text className="text-white text-5xl font-bold">FREE</Text>
+                </>
+              ) : (
+                <Text className="text-white text-5xl font-bold">${basePrice}</Text>
+              )}
             </View>
             <Text className="text-white/80 text-center mb-4">
               Lifetime access • No subscription
             </Text>
-            
+
             <TouchableOpacity
               onPress={handlePurchase}
               disabled={loading}
@@ -121,16 +243,16 @@ export default function UpgradeScreen() {
               activeOpacity={0.8}
             >
               {loading ? (
-                <ActivityIndicator color={colors.primary} />
+                <ActivityIndicator color={isFree ? colors.success : colors.primary} />
               ) : (
-                <Text className="text-primary font-bold text-lg text-center">
-                  Get Full Access
+                <Text className={`${isFree ? 'text-success' : 'text-primary'} font-bold text-lg text-center`}>
+                  {isFree ? 'Unlock Free Access' : 'Get Full Access'}
                 </Text>
               )}
             </TouchableOpacity>
-            
+
             <Text className="text-white/60 text-xs text-center mt-3">
-              💰 Money-back guarantee if you don't pass
+              {isFree ? '🎉 Enjoy your free access!' : '💰 Money-back guarantee if you don\'t pass'}
             </Text>
           </View>
         </View>

@@ -68,6 +68,8 @@ function ScantronBubble({
       style={({ pressed }: any) => ({
         opacity: disabled ? 0.7 : pressed ? 0.8 : 1,
         transform: [{ scale: pressed ? 0.95 : 1 }],
+        // Keep pencil cursor on bubbles
+        ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
       })}
     >
       <View
@@ -490,6 +492,7 @@ export default function PaperTestScreen() {
                     justifyContent: "center",
                     alignItems: "center",
                     marginHorizontal: 4,
+                    ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
                   }}
                 >
                   <Text
@@ -604,6 +607,7 @@ export default function PaperTestScreen() {
                       paddingHorizontal: 24,
                       paddingVertical: 12,
                       borderRadius: 8,
+                      ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
                     }}
                   >
                     <Text style={{ color: "#fff", fontWeight: "600" }}>
@@ -620,6 +624,7 @@ export default function PaperTestScreen() {
                     paddingVertical: 14,
                     borderRadius: 8,
                     opacity: pressed ? 0.9 : 1,
+                    ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
                   })}
                 >
                   <Text

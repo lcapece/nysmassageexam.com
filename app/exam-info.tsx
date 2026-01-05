@@ -13,10 +13,105 @@ type Section = {
   content: React.ReactNode;
 };
 
+type Article = {
+  id: string;
+  title: string;
+  readTime: string;
+  icon: string;
+  content: string;
+};
+
+const READING_ARTICLES: Article[] = [
+  {
+    id: "nys-vs-mblex",
+    title: "How the NYS Massage Exam Differs from the National MBLEx",
+    readTime: "4 min read",
+    icon: "compare-arrows",
+    content: `If you've studied for the MBLEx or heard about it from colleagues in other states, you might assume the New York State massage licensing exam is similar. It's not. Understanding these differences is critical to passing on your first attempt.
+
+The most significant difference is content. While the MBLEx focuses almost exclusively on Western massage principles, the NYS exam dedicates approximately 14% of its questions (20 out of 140) to Eastern medicine concepts. This includes Traditional Chinese Medicine theory, the 12 primary meridians, acupressure points, Yin/Yang theory, and the Five Element system. Many candidates who breezed through MBLEx preparation find themselves struggling with these unfamiliar concepts.
+
+The format also differs substantially. The MBLEx is a computer-adaptive test available year-round at Pearson VUE testing centers nationwide. You receive your results immediately upon completion. The NYS exam, by contrast, is a paper-based test offered only twice per year in March and September, exclusively in New York State. Results take several weeks to arrive by mail.
+
+Question count and timing vary as well. The MBLEx contains 100 questions with a two-hour time limit. The NYS exam has 140 questions, requiring better time management and stamina. The longer format can lead to fatigue-related errors if you're not prepared.
+
+Perhaps most importantly, there's no reciprocity. Passing the MBLEx doesn't qualify you to practice in New York, and passing the NYS exam doesn't automatically transfer to MBLEx states. Each credential stands alone.`
+  },
+  {
+    id: "eastern-medicine",
+    title: "Mastering the Eastern Medicine Section: Your 20-Question Strategy",
+    readTime: "5 min read",
+    icon: "self-improvement",
+    content: `The Eastern medicine section is where most NYS massage exam candidates lose critical points. With 20 questions worth roughly 14% of your total score, neglecting this content area can mean the difference between passing and waiting six months for another attempt.
+
+Start by understanding the foundational concepts. Yin and Yang aren't just abstract philosophy—they're the basis for understanding how TCM views the body. Yin represents cold, passive, interior, and descending qualities. Yang represents hot, active, exterior, and ascending qualities. Every organ, meridian, and treatment approach in TCM relates back to balancing these forces.
+
+The Five Element theory (Wood, Fire, Earth, Metal, Water) is equally essential. Each element corresponds to specific organs, emotions, seasons, colors, and body tissues. For example, Wood relates to the Liver and Gallbladder, the emotion of anger, spring season, and the tendons. Creating mnemonic devices for these associations will save you during the exam.
+
+Learn the 12 primary meridians systematically. Know their pathways, their associated organs, and their Yin or Yang classification. The Lung, Spleen, Heart, Kidney, Pericardium, and Liver meridians are Yin. The Large Intestine, Stomach, Small Intestine, Bladder, Triple Warmer, and Gallbladder meridians are Yang.
+
+Key acupressure points appear frequently on the exam. Focus on commonly tested points like LI4 (Hegu), ST36 (Zusanli), SP6 (Sanyinjiao), and GB20 (Fengchi). Know their locations and therapeutic applications.
+
+Practice with Eastern medicine-specific questions daily in the weeks before your exam. What feels foreign initially becomes second nature with consistent exposure.`
+  },
+  {
+    id: "pass-rate-reality",
+    title: "The Truth About NYS Massage Exam Pass Rates and What It Means for You",
+    readTime: "4 min read",
+    icon: "analytics",
+    content: `Let's address the elephant in the room: the NYS massage therapy exam has a reputation for being difficult, and that reputation is earned. While official pass rate statistics aren't publicly published by NYSED, anecdotal evidence from massage schools and candidates suggests first-time pass rates hover between 60-75%, depending on the exam administration.
+
+What does this mean for you? First, it means you're not alone if you're feeling anxious. The exam is designed to be challenging, ensuring that licensed massage therapists in New York meet a high standard of knowledge. Second, it means preparation isn't optional—it's essential.
+
+The candidates who fail typically share common characteristics. They underestimate the Eastern medicine section, assuming their Western training is sufficient. They don't practice with the paper-based format, losing valuable time on exam day. They cram in the final weeks rather than studying consistently over months. They neglect the treatment planning questions, which require applied critical thinking rather than memorization.
+
+The candidates who pass take a different approach. They begin studying 3-4 months before the exam date. They identify their weak areas early through practice tests and focus their efforts there. They treat Eastern medicine as seriously as anatomy and physiology. They practice time management with full-length mock exams. They use memory techniques like mnemonics and visualization to retain complex information.
+
+If you fail, you can retake the exam at the next administration (six months later). While this is frustrating, use that time productively to address your specific weaknesses rather than simply reviewing the same material the same way.`
+  },
+  {
+    id: "treatment-planning",
+    title: "Conquering the Treatment Planning Section: Beyond Memorization",
+    readTime: "4 min read",
+    icon: "assignment",
+    content: `The treatment planning section comprises 27% of the NYS massage exam—approximately 37 questions. Unlike anatomy questions where you either know the answer or you don't, treatment planning questions require you to synthesize information and make clinical decisions. This is where critical thinking separates passing candidates from those who fall short.
+
+Treatment planning questions typically present a client scenario and ask what you would do. For example: "A 45-year-old office worker presents with chronic tension headaches, forward head posture, and reports sitting at a computer 8 hours daily. Which treatment approach is MOST appropriate?" The answer requires understanding postural assessment, muscle imbalances, and appropriate techniques—then selecting the best option among several reasonable-sounding choices.
+
+To excel in this section, think like a practicing therapist, not a student. When reading a scenario, mentally walk through your assessment process. What muscles are likely involved? What are the contraindications? What techniques address the root cause versus just the symptoms? What would you prioritize in a 60-minute session?
+
+Learn to recognize red flags and contraindications. Many treatment planning questions test whether you can identify when massage is inappropriate or when modifications are needed. Fever, acute inflammation, certain medications, and specific conditions all require recognition and appropriate response.
+
+Practice case studies regularly. Create or find scenarios and practice developing treatment plans before looking at the answers. This active engagement builds the clinical reasoning skills the exam tests.
+
+Pay attention to qualifying words in questions and answers. "Most appropriate," "first priority," and "best approach" all signal that multiple answers might be partially correct, but one is superior. Read all options before selecting your answer.`
+  },
+  {
+    id: "exam-day-psychology",
+    title: "Exam Day Psychology: Managing Anxiety and Maximizing Performance",
+    readTime: "4 min read",
+    icon: "psychology",
+    content: `Your mental state on exam day can add or subtract points from your score. Candidates who manage test anxiety effectively often outperform those with superior knowledge who let nerves derail their performance. Here's how to optimize your psychological approach.
+
+The night before the exam, stop studying. Seriously. Last-minute cramming increases anxiety without meaningfully improving retention. Instead, prepare everything you'll need: photo ID, admission confirmation, directions to the testing location, comfortable clothing, and any allowed materials. Go to bed at your normal time rather than artificially early, which often leads to anxious wakefulness.
+
+On exam morning, eat a balanced breakfast with protein and complex carbohydrates—nothing too heavy or unfamiliar that might cause digestive distress. Arrive 30 minutes early to allow time for check-in and settling in without rushing. Visit the restroom before entering the testing room.
+
+When you receive your exam, don't immediately dive in. Take 30 seconds to breathe deeply and ground yourself. Remind yourself that you've prepared for this and that moderate anxiety actually enhances performance.
+
+Read each question completely, including all answer choices, before selecting your response. Your first instinct is often correct, so don't change answers unless you have a concrete reason. If you encounter a difficult question, mark it (if allowed) and move on—don't let one question consume disproportionate time and mental energy.
+
+Monitor your pace. With 140 questions, you have roughly one minute per question. Every 30-40 questions, check the clock to ensure you're on track. If you're falling behind, pick up the pace on questions you know well.
+
+During the exam, if anxiety spikes, use grounding techniques. Feel your feet on the floor. Take three slow breaths. Remind yourself that this feeling is temporary and manageable. Then return your focus to the next question.`
+  },
+];
+
 export default function ExamInfoScreen() {
   const router = useRouter();
   const colors = useColors();
   const [expandedSection, setExpandedSection] = useState<string | null>("overview");
+  const [expandedArticle, setExpandedArticle] = useState<string | null>(null);
 
   const sections: Section[] = [
     {
@@ -310,6 +405,81 @@ export default function ExamInfoScreen() {
                     style={{ backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border }}
                   >
                     {section.content}
+                  </View>
+                )}
+              </View>
+            );
+          })}
+        </View>
+
+        {/* Important Reading Topics Section */}
+        <View className="px-5 mt-8">
+          <View className="flex-row items-center mb-4">
+            <View
+              className="w-10 h-10 rounded-full items-center justify-center mr-3"
+              style={{ backgroundColor: colors.warning + '20' }}
+            >
+              <MaterialIcons name="menu-book" size={20} color={colors.warning} />
+            </View>
+            <View>
+              <Text className="text-xl font-bold text-foreground">Important Reading Topics</Text>
+              <Text className="text-sm text-muted">In-depth guides to help you pass</Text>
+            </View>
+          </View>
+
+          {READING_ARTICLES.map((article) => {
+            const isExpanded = expandedArticle === article.id;
+
+            return (
+              <View key={article.id} className="mb-3">
+                <Pressable
+                  onPress={() => setExpandedArticle(isExpanded ? null : article.id)}
+                  style={({ pressed }) => [
+                    {
+                      backgroundColor: colors.surface,
+                      borderWidth: 1,
+                      borderColor: isExpanded ? colors.warning : colors.border,
+                      opacity: pressed ? 0.9 : 1,
+                    },
+                  ]}
+                  className="rounded-xl p-4"
+                >
+                  <View className="flex-row items-start justify-between">
+                    <View className="flex-row items-start flex-1">
+                      <View
+                        className="w-10 h-10 rounded-full items-center justify-center mr-3 mt-0.5"
+                        style={{ backgroundColor: colors.warning + '20' }}
+                      >
+                        <MaterialIcons name={article.icon as any} size={20} color={colors.warning} />
+                      </View>
+                      <View className="flex-1">
+                        <Text className="text-base font-medium text-foreground leading-5">
+                          {article.title}
+                        </Text>
+                        <Text className="text-xs text-muted mt-1">{article.readTime}</Text>
+                      </View>
+                    </View>
+                    <MaterialIcons
+                      name={isExpanded ? "expand-less" : "expand-more"}
+                      size={24}
+                      color={colors.muted}
+                    />
+                  </View>
+                </Pressable>
+
+                {isExpanded && (
+                  <View
+                    className="mt-2 p-5 rounded-xl"
+                    style={{
+                      backgroundColor: colors.surface,
+                      borderWidth: 1,
+                      borderColor: colors.warning,
+                      borderLeftWidth: 4,
+                    }}
+                  >
+                    <Text className="text-sm text-foreground leading-6" style={{ lineHeight: 24 }}>
+                      {article.content}
+                    </Text>
                   </View>
                 )}
               </View>

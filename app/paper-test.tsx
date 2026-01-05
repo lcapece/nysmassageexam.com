@@ -218,13 +218,13 @@ export default function PaperTestScreen() {
 
   // Initialize test with shuffled questions (filter out questions with missing options)
   useEffect(() => {
-    // Filter questions that have valid options (at least A and B with content)
+    // Filter questions that have valid options (at least a and b with content)
     const validQuestions = questions.filter(q => {
       const opts = q.options;
       if (!opts || typeof opts !== 'object') return false;
       const keys = Object.keys(opts);
-      // Must have at least A and B options with actual content
-      return keys.length >= 2 && opts.A && opts.B;
+      // Must have at least 2 options with actual content (keys are lowercase: a, b, c, d)
+      return keys.length >= 2 && opts.a && opts.b;
     });
     const shuffled = shuffleArray(validQuestions).slice(0, 100); // 100 question test
     setTestQuestions(shuffled);
@@ -269,7 +269,8 @@ export default function PaperTestScreen() {
   const getScore = () => {
     let correct = 0;
     testQuestions.forEach((q, index) => {
-      if (answers[index] === q.correct_option) {
+      // Compare case-insensitively (answers are uppercase, correct_option is lowercase)
+      if (answers[index]?.toLowerCase() === q.correct_option?.toLowerCase()) {
         correct++;
       }
     });
@@ -556,7 +557,7 @@ export default function PaperTestScreen() {
                   key={globalIndex}
                   questionNumber={globalIndex + 1}
                   selectedAnswer={answers[globalIndex] || null}
-                  correctAnswer={question.correct_option || "A"}
+                  correctAnswer={(question.correct_option || "a").toUpperCase()}
                   showResult={showResults}
                   onSelectAnswer={(answer) => handleSelectAnswer(globalIndex, answer)}
                   disabled={showResults}

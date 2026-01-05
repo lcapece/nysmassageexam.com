@@ -34,7 +34,7 @@ export default function HomeScreen() {
   const [daysUntilExam, setDaysUntilExam] = useState<number>(0);
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
   const [isPurchased, setIsPurchased] = useState(true);
-  const [isBannerExpanded, setIsBannerExpanded] = useState(true);
+  const [isBannerExpanded, setIsBannerExpanded] = useState(false); // Collapsed by default
 
   // Default to March 6, 2026 exam if no exam date is set
   const DEFAULT_EXAM_DATE = '2026-03-06';
@@ -105,542 +105,176 @@ export default function HomeScreen() {
   if (isDesktop) {
     return (
       <AppShell>
-        <ScrollView
-          style={{ flex: 1, backgroundColor: colors.background }}
-          contentContainerStyle={{ paddingBottom: 48 }}
-          showsVerticalScrollIndicator={false}
-        >
-          <Container>
-            {/* Exam Countdown Hero Banner - Collapsible */}
+        <View style={{ flex: 1, backgroundColor: colors.background, padding: 24 }}>
+          {/* Compact Header Row */}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <Text style={{ fontSize: 24, fontWeight: '700', color: colors.foreground }}>
+              Study Dashboard
+            </Text>
             {examDate && (
-              <Card style={{
-                marginTop: 32,
-                marginBottom: 24,
-                padding: 0,
-                overflow: 'hidden',
-                borderWidth: 2,
-                borderColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 12,
+                backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                borderRadius: 20,
               }}>
-                {/* Collapsed Header - Always Visible */}
-                <Pressable
-                  onPress={() => setIsBannerExpanded(!isBannerExpanded)}
-                  style={({ hovered }: any) => ({
-                    padding: 20,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    backgroundColor: hovered ? colors.surfaceHover : 'transparent',
-                  })}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-                    <MaterialIcons
-                      name="event"
-                      size={28}
-                      color={daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary}
-                    />
-                    <View>
-                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.muted, textTransform: 'uppercase', letterSpacing: 1 }}>
-                        NYS Massage Therapy Exam
-                      </Text>
-                      <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground, marginTop: 2 }}>
-                        {EXAM_DATES.find(e => e.date === examDate)?.label || 'March 6, 2026'}
-                      </Text>
-                    </View>
-                  </View>
-
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
-                    {/* Mini countdown always visible */}
-                    <View style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 8,
-                      backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
-                      paddingHorizontal: 16,
-                      paddingVertical: 8,
-                      borderRadius: 20,
-                    }}>
-                      <Text style={{
-                        fontSize: 24,
-                        fontWeight: '800',
-                        color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                      }}>
-                        {daysUntilExam}
-                      </Text>
-                      <Text style={{ fontSize: 12, fontWeight: '600', color: colors.muted }}>
-                        days left
-                      </Text>
-                    </View>
-
-                    {/* Expand/Collapse Icon */}
-                    <MaterialIcons
-                      name={isBannerExpanded ? "expand-less" : "expand-more"}
-                      size={28}
-                      color={colors.muted}
-                    />
-                  </View>
-                </Pressable>
-
-                {/* Expanded Content */}
-                {isBannerExpanded && (
-                  <View style={{ padding: 24, paddingTop: 0 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                      {/* Urgency Message */}
-                      <View style={{ flex: 1 }}>
-                        <View style={{
-                          backgroundColor: daysUntilExam <= 30 ? colors.errorMuted : daysUntilExam <= 60 ? colors.warningMuted : colors.primaryMuted,
-                          padding: 16,
-                          borderRadius: 12,
-                          borderLeftWidth: 4,
-                          borderLeftColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                        }}>
-                          <Text style={{
-                            fontSize: 16,
-                            fontWeight: '700',
-                            color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                            marginBottom: 4,
-                          }}>
-                            {daysUntilExam <= 30 ? '🔥 FINAL STRETCH!' : daysUntilExam <= 60 ? '⚡ CRUNCH TIME!' : '✨ You\'ve Got This!'}
-                          </Text>
-                          <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}>
-                            {daysUntilExam <= 30
-                              ? 'Less than a month to go! Focus on your weak areas and do daily practice tests.'
-                              : daysUntilExam <= 60
-                              ? 'Two months left! Build momentum with consistent daily study sessions.'
-                              : 'Start strong! Establish a daily study routine to master all 287 questions.'}
-                          </Text>
-                        </View>
-                      </View>
-
-                      {/* Days Countdown Circle */}
-                      <View style={{ alignItems: 'center', marginLeft: 32 }}>
-                        <View style={{
-                          width: 120,
-                          height: 120,
-                          borderRadius: 60,
-                          backgroundColor: colors.background,
-                          borderWidth: 6,
-                          borderColor: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          shadowColor: '#000',
-                          shadowOffset: { width: 0, height: 4 },
-                          shadowOpacity: 0.1,
-                          shadowRadius: 8,
-                        }}>
-                          <Text style={{
-                            fontSize: 40,
-                            fontWeight: '800',
-                            color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary,
-                          }}>
-                            {daysUntilExam}
-                          </Text>
-                          <Text style={{ fontSize: 12, fontWeight: '600', color: colors.muted, marginTop: -4 }}>
-                            DAYS
-                          </Text>
-                        </View>
-                      </View>
-
-                      {/* Mini Progress Stats */}
-                      <View style={{ flex: 1, marginLeft: 32 }}>
-                        <View style={{ gap: 14 }}>
-                          {/* Success Rate */}
-                          <View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                                <MaterialIcons name="trending-up" size={18} color={colors.success} />
-                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
-                                  Success Rate
-                                </Text>
-                              </View>
-                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.success }}>
-                                {masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%
-                              </Text>
-                            </View>
-                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
-                              <View style={{
-                                height: '100%',
-                                width: `${masteredQuestions > 0 ? Math.round((masteredQuestions / attemptedQuestions) * 100) : 0}%`,
-                                backgroundColor: colors.success,
-                                borderRadius: 3,
-                              }} />
-                            </View>
-                          </View>
-
-                          {/* Overall Progress */}
-                          <View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                                <MaterialIcons name="school" size={18} color={colors.primary} />
-                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
-                                  Overall Progress
-                                </Text>
-                              </View>
-                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.primary }}>
-                                {progressPercent}%
-                              </Text>
-                            </View>
-                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
-                              <View style={{
-                                height: '100%',
-                                width: `${progressPercent}%`,
-                                backgroundColor: colors.primary,
-                                borderRadius: 3,
-                              }} />
-                            </View>
-                          </View>
-
-                          {/* Today's Activity */}
-                          <View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                                <MaterialIcons name="access-time" size={18} color={colors.warning} />
-                                <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
-                                  Today's Activity
-                                </Text>
-                              </View>
-                              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.warning }}>
-                                {todayAnswered} Q's
-                              </Text>
-                            </View>
-                            <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
-                              <View style={{
-                                height: '100%',
-                                width: `${Math.min(100, dailyGoalPercent)}%`,
-                                backgroundColor: colors.warning,
-                                borderRadius: 3,
-                              }} />
-                            </View>
-                            <Text style={{ fontSize: 10, color: colors.muted, marginTop: 4 }}>
-                              Goal: {recommendedDaily}/day
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                )}
-              </Card>
-            )}
-
-            {/* Desktop Header */}
-            <View style={{ paddingTop: examDate ? 0 : 32, paddingBottom: 24 }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <View>
-                  <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground }}>
-                    Study Dashboard
-                  </Text>
-                  <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
-                    Track your progress and prepare for your NYS Massage Therapy exam
-                  </Text>
-                </View>
+                <MaterialIcons name="event" size={18} color={daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary} />
+                <Text style={{ fontSize: 18, fontWeight: '700', color: daysUntilExam <= 30 ? colors.error : daysUntilExam <= 60 ? colors.warning : colors.primary }}>
+                  {daysUntilExam} days
+                </Text>
+                <Text style={{ fontSize: 12, color: colors.muted }}>until exam</Text>
               </View>
-            </View>
-
-            {/* Trial Mode Banner */}
-            {!isPurchased && (
-              <Pressable
-                onPress={() => handlePress("/upgrade")}
-                style={({ pressed, hovered }: any) => ({
-                  marginBottom: 24,
-                  borderRadius: 16,
-                  overflow: 'hidden',
-                  opacity: pressed ? 0.95 : 1,
-                  transform: [{ scale: pressed ? 0.995 : 1 }],
-                })}
-              >
-                <View
-                  style={{
-                    backgroundColor: colors.primary,
-                    padding: 24,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <View style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                      <Badge variant="warning" size="sm">TRIAL MODE</Badge>
-                    </View>
-                    <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: '700' }}>
-                      Unlock All 287 Questions
-                    </Text>
-                    <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 4 }}>
-                      One-time payment • Lifetime access • No subscription
-                    </Text>
-                  </View>
-                  <View style={{ alignItems: 'center' }}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 36, fontWeight: '800' }}>$37</Text>
-                    <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>one-time</Text>
-                  </View>
-                </View>
-              </Pressable>
             )}
+          </View>
 
-            {/* Main Stats Row */}
-            <View style={{ flexDirection: 'row', gap: 20, marginBottom: 24 }}>
-              {/* Progress Ring Card */}
-              <Card style={{ flex: 1, padding: 32, alignItems: 'center', justifyContent: 'center' }}>
-                <ProgressRing
-                  percent={progressPercent}
-                  size={180}
-                  strokeWidth={14}
-                  colors={colors}
-                />
-                <Text style={{ fontSize: 14, color: colors.muted, marginTop: 16, textAlign: 'center' }}>
-                  {masteredQuestions} of {totalQuestions} questions mastered
+          {/* Trial Mode Banner - Compact */}
+          {!isPurchased && (
+            <Pressable
+              onPress={() => handlePress("/upgrade")}
+              style={{ marginBottom: 16, borderRadius: 12, overflow: 'hidden' }}
+            >
+              <View style={{ backgroundColor: colors.primary, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                  <Badge variant="warning" size="sm">TRIAL</Badge>
+                  <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '600' }}>Unlock All 287 Questions</Text>
+                </View>
+                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '800' }}>$37</Text>
+              </View>
+            </Pressable>
+          )}
+
+          {/* Main Content - Single Row */}
+          <View style={{ flexDirection: 'row', gap: 16, flex: 1 }}>
+            {/* Left Column - Progress & Stats */}
+            <View style={{ width: 280, gap: 12 }}>
+              {/* Progress Ring - Compact */}
+              <Card style={{ padding: 16, alignItems: 'center' }}>
+                <ProgressRing percent={progressPercent} size={120} strokeWidth={10} colors={colors} />
+                <Text style={{ fontSize: 12, color: colors.muted, marginTop: 8 }}>
+                  {masteredQuestions}/{totalQuestions} mastered
                 </Text>
               </Card>
 
-              {/* Stats Grid */}
-              <View style={{ flex: 1, gap: 16 }}>
-                <View style={{ flexDirection: 'row', gap: 16 }}>
-                  <StatCard
-                    label="Mastered"
-                    value={masteredQuestions}
-                    icon={<MaterialIcons name="check-circle" size={24} color={colors.success} />}
-                    color="success"
-                    className="flex-1"
-                  />
-                  <StatCard
-                    label="Needs Review"
-                    value={needsReview}
-                    icon={<MaterialIcons name="refresh" size={24} color={colors.warning} />}
-                    color="warning"
-                    className="flex-1"
-                  />
-                </View>
-                <View style={{ flexDirection: 'row', gap: 16 }}>
-                  <StatCard
-                    label="Not Started"
-                    value={notStarted}
-                    icon={<MaterialIcons name="radio-button-unchecked" size={24} color={colors.muted} />}
-                    color="default"
-                    className="flex-1"
-                  />
-                  <StatCard
-                    label="Day Streak"
-                    value={progress?.streakDays || 0}
-                    icon={<MaterialIcons name="local-fire-department" size={24} color={colors.error} />}
-                    color="error"
-                    className="flex-1"
-                  />
-                </View>
-              </View>
-            </View>
-
-            {/* Daily Goal & Timeline Row */}
-            <View style={{ flexDirection: 'row', gap: 20, marginBottom: 24 }}>
-              {/* Daily Goal Card */}
-              <Card style={{ flex: 1, padding: 24 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                    <View style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 12,
-                      backgroundColor: colors.primaryMuted,
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <MaterialIcons name="flag" size={24} color={colors.primary} />
-                    </View>
-                    <View>
-                      <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
-                        Today's Goal
-                      </Text>
-                      <Text style={{ fontSize: 13, color: colors.muted }}>
-                        {recommendedDaily} questions recommended
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={{ alignItems: 'flex-end' }}>
-                    <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
-                      {todayAnswered}
-                    </Text>
-                    <Text style={{ fontSize: 13, color: colors.muted }}>
-                      of {recommendedDaily}
-                    </Text>
-                  </View>
-                </View>
-
-                {/* Progress Bar */}
-                <View style={{ height: 12, backgroundColor: colors.border, borderRadius: 6, overflow: 'hidden' }}>
-                  <View
-                    style={{
-                      height: '100%',
-                      width: `${dailyGoalPercent}%`,
-                      backgroundColor: dailyGoalPercent >= 100 ? colors.success : colors.primary,
-                      borderRadius: 6,
-                    }}
-                  />
-                </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
-                  <Text style={{ fontSize: 12, color: colors.muted }}>
-                    {dailyGoalPercent}% complete
-                  </Text>
-                  {dailyGoalPercent >= 100 && (
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                      <MaterialIcons name="emoji-events" size={14} color={colors.success} />
-                      <Text style={{ fontSize: 12, color: colors.success, fontWeight: '600' }}>
-                        Goal reached!
-                      </Text>
-                    </View>
-                  )}
-                </View>
-              </Card>
-
-              {/* Exam Timeline Card */}
-              {examDate && (
-                <Card style={{ flex: 1, padding: 24 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                    <View style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 12,
-                      backgroundColor: colors.warningMuted,
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <MaterialIcons name="event" size={24} color={colors.warning} />
-                    </View>
-                    <View style={{ flex: 1 }}>
-                      <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
-                        Exam Timeline
-                      </Text>
-                      <Text style={{ fontSize: 13, color: colors.muted }}>
-                        {EXAM_DATES.find(e => e.date === examDate)?.label || examDate}
-                      </Text>
-                    </View>
-                    <Badge
-                      variant={daysUntilExam <= 30 ? 'error' : daysUntilExam <= 60 ? 'warning' : 'primary'}
-                    >
-                      {daysUntilExam} days
-                    </Badge>
-                  </View>
-
-                  <TimelineGraphic
-                    daysUntilExam={daysUntilExam}
-                    progressPercent={progressPercent}
-                    colors={colors}
-                    width={Math.min(400, width - 200)}
-                  />
+              {/* Stats - Compact Grid */}
+              <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Card style={{ flex: 1, padding: 12, alignItems: 'center' }}>
+                  <MaterialIcons name="check-circle" size={20} color={colors.success} />
+                  <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, marginTop: 4 }}>{masteredQuestions}</Text>
+                  <Text style={{ fontSize: 10, color: colors.muted }}>Mastered</Text>
                 </Card>
-              )}
+                <Card style={{ flex: 1, padding: 12, alignItems: 'center' }}>
+                  <MaterialIcons name="refresh" size={20} color={colors.warning} />
+                  <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, marginTop: 4 }}>{needsReview}</Text>
+                  <Text style={{ fontSize: 10, color: colors.muted }}>Review</Text>
+                </Card>
+              </View>
+              <View style={{ flexDirection: 'row', gap: 8 }}>
+                <Card style={{ flex: 1, padding: 12, alignItems: 'center' }}>
+                  <MaterialIcons name="radio-button-unchecked" size={20} color={colors.muted} />
+                  <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, marginTop: 4 }}>{notStarted}</Text>
+                  <Text style={{ fontSize: 10, color: colors.muted }}>Not Started</Text>
+                </Card>
+                <Card style={{ flex: 1, padding: 12, alignItems: 'center' }}>
+                  <MaterialIcons name="local-fire-department" size={20} color={colors.error} />
+                  <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, marginTop: 4 }}>{progress?.streakDays || 0}</Text>
+                  <Text style={{ fontSize: 10, color: colors.muted }}>Streak</Text>
+                </Card>
+              </View>
+
+              {/* Daily Goal - Compact */}
+              <Card style={{ padding: 12 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                    <MaterialIcons name="flag" size={16} color={colors.primary} />
+                    <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>Today</Text>
+                  </View>
+                  <Text style={{ fontSize: 14, fontWeight: '700', color: colors.foreground }}>{todayAnswered}/{recommendedDaily}</Text>
+                </View>
+                <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, overflow: 'hidden' }}>
+                  <View style={{ height: '100%', width: `${dailyGoalPercent}%`, backgroundColor: dailyGoalPercent >= 100 ? colors.success : colors.primary, borderRadius: 3 }} />
+                </View>
+              </Card>
             </View>
 
-            {/* Action Buttons & Tips Row */}
-            <View style={{ flexDirection: 'row', gap: 20 }}>
-              {/* Quick Actions */}
-              <Card style={{ flex: 2, padding: 24 }}>
-                <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
-                  Quick Actions
-                </Text>
-                <View style={{ gap: 12 }}>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    fullWidth
-                    icon={<MaterialIcons name="play-arrow" size={24} color="#FFFFFF" />}
-                    onPress={() => handlePress("/quiz")}
-                  >
-                    Start Quiz Session
+            {/* Middle Column - Quick Actions */}
+            <Card style={{ flex: 1, padding: 16 }}>
+              <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginBottom: 12 }}>Quick Actions</Text>
+              <View style={{ gap: 10 }}>
+                <Button variant="primary" size="md" fullWidth icon={<MaterialIcons name="play-arrow" size={20} color="#FFFFFF" />} onPress={() => handlePress("/quiz")}>
+                  Start Quiz
+                </Button>
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                  <Button variant="secondary" size="sm" fullWidth icon={<MaterialIcons name="menu-book" size={18} color={colors.foreground} />} onPress={() => handlePress("/study")}>
+                    Study
                   </Button>
-                  <View style={{ flexDirection: 'row', gap: 12 }}>
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      fullWidth
-                      icon={<MaterialIcons name="menu-book" size={20} color={colors.foreground} />}
-                      onPress={() => handlePress("/study")}
-                    >
-                      Study Mode
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      fullWidth
-                      icon={<MaterialIcons name="bookmark" size={20} color={colors.foreground} />}
-                      onPress={() => handlePress("/study?filter=bookmarked")}
-                    >
-                      Bookmarked
-                    </Button>
-                  </View>
-                  <View style={{ flexDirection: 'row', gap: 12 }}>
-                    <Button
-                      variant="ghost"
-                      size="md"
-                      fullWidth
-                      icon={<MaterialIcons name="info-outline" size={20} color={colors.foreground} />}
-                      onPress={() => handlePress("/exam-info")}
-                    >
-                      Exam Info
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="md"
-                      fullWidth
-                      icon={<MaterialIcons name="bar-chart" size={20} color={colors.foreground} />}
-                      onPress={() => handlePress("/progress")}
-                    >
-                      Full Progress
-                    </Button>
-                  </View>
+                  <Button variant="secondary" size="sm" fullWidth icon={<MaterialIcons name="bookmark" size={18} color={colors.foreground} />} onPress={() => handlePress("/study?filter=bookmarked")}>
+                    Bookmarked
+                  </Button>
                 </View>
-              </Card>
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                  <Button variant="ghost" size="sm" fullWidth icon={<MaterialIcons name="info-outline" size={18} color={colors.foreground} />} onPress={() => handlePress("/exam-info")}>
+                    Exam Info
+                  </Button>
+                  <Button variant="ghost" size="sm" fullWidth icon={<MaterialIcons name="bar-chart" size={18} color={colors.foreground} />} onPress={() => handlePress("/progress")}>
+                    Progress
+                  </Button>
+                </View>
+              </View>
 
-              {/* Study Tip */}
-              <Card style={{ flex: 1, padding: 24 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                  <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
-                  <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
-                    Study Tip
-                  </Text>
-                </View>
-                <View style={{
-                  padding: 16,
-                  backgroundColor: colors.warningMuted,
-                  borderRadius: 12,
-                  borderLeftWidth: 4,
-                  borderLeftColor: colors.warning,
-                }}>
+              {/* Timeline - Compact */}
+              {examDate && (
+                <View style={{ marginTop: 16, paddingTop: 16, borderTopWidth: 1, borderTopColor: colors.border }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                    <MaterialIcons name={currentTip.icon} size={18} color={colors.warning} />
-                    <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
-                      {currentTip.title}
-                    </Text>
+                    <MaterialIcons name="timeline" size={16} color={colors.warning} />
+                    <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>Exam Timeline</Text>
+                    <Text style={{ fontSize: 11, color: colors.muted, marginLeft: 'auto' }}>{EXAM_DATES.find(e => e.date === examDate)?.label}</Text>
                   </View>
-                  <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}>
-                    {currentTip.tip}
-                  </Text>
+                  <TimelineGraphic daysUntilExam={daysUntilExam} progressPercent={progressPercent} colors={colors} width={300} />
                 </View>
+              )}
+            </Card>
 
-                {/* Mini Category Breakdown */}
-                <View style={{ marginTop: 20 }}>
-                  <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground, marginBottom: 12 }}>
-                    Focus Areas
-                  </Text>
-                  <View style={{ gap: 8 }}>
-                    {[
-                      { name: "Anatomy", percent: 35, color: colors.primary },
-                      { name: "Eastern Med", percent: 20, color: colors.success },
-                      { name: "Ethics", percent: 15, color: colors.warning },
-                    ].map((cat, i) => (
-                      <View key={i}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
-                          <Text style={{ fontSize: 12, color: colors.muted }}>{cat.name}</Text>
-                          <Text style={{ fontSize: 12, color: colors.muted }}>{cat.percent}%</Text>
-                        </View>
-                        <View style={{ height: 4, backgroundColor: colors.border, borderRadius: 2 }}>
-                          <View style={{ height: '100%', width: `${cat.percent}%`, backgroundColor: cat.color, borderRadius: 2 }} />
-                        </View>
-                      </View>
-                    ))}
-                  </View>
+            {/* Right Column - Study Tip */}
+            <Card style={{ width: 260, padding: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+                <MaterialIcons name="lightbulb" size={18} color={colors.warning} />
+                <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>Study Tip</Text>
+              </View>
+              <View style={{ padding: 12, backgroundColor: colors.warningMuted, borderRadius: 8, borderLeftWidth: 3, borderLeftColor: colors.warning }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                  <MaterialIcons name={currentTip.icon} size={14} color={colors.warning} />
+                  <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>{currentTip.title}</Text>
                 </View>
-              </Card>
-            </View>
-          </Container>
-        </ScrollView>
+                <Text style={{ fontSize: 12, color: colors.muted, lineHeight: 18 }}>{currentTip.tip}</Text>
+              </View>
+
+              {/* Focus Areas - Compact */}
+              <View style={{ marginTop: 16 }}>
+                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground, marginBottom: 8 }}>Focus Areas</Text>
+                <View style={{ gap: 6 }}>
+                  {[
+                    { name: "Anatomy", percent: 35, color: colors.primary },
+                    { name: "Eastern Med", percent: 20, color: colors.success },
+                    { name: "Ethics", percent: 15, color: colors.warning },
+                  ].map((cat, i) => (
+                    <View key={i}>
+                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 }}>
+                        <Text style={{ fontSize: 10, color: colors.muted }}>{cat.name}</Text>
+                        <Text style={{ fontSize: 10, color: colors.muted }}>{cat.percent}%</Text>
+                      </View>
+                      <View style={{ height: 3, backgroundColor: colors.border, borderRadius: 2 }}>
+                        <View style={{ height: '100%', width: `${cat.percent}%`, backgroundColor: cat.color, borderRadius: 2 }} />
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            </Card>
+          </View>
+        </View>
       </AppShell>
     );
   }

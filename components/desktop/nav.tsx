@@ -1,8 +1,7 @@
-import { View, Text, Pressable, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, Pressable, Platform, useWindowDimensions, ScrollView, Linking } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useColors } from '@/hooks/use-colors';
-import { cn } from '@/lib/utils';
 
 interface NavItem {
   label: string;
@@ -16,6 +15,53 @@ const navItems: NavItem[] = [
   { label: 'Quiz', href: '/(tabs)/quiz', icon: 'quiz' },
   { label: 'Study', href: '/(tabs)/study', icon: 'menu-book' },
   { label: 'Progress', href: '/(tabs)/progress', icon: 'bar-chart' },
+];
+
+// Informative articles for exam preparation
+interface Article {
+  title: string;
+  description: string;
+  icon: keyof typeof MaterialIcons.glyphMap;
+  color: string;
+  href: string;
+}
+
+const articles: Article[] = [
+  {
+    title: 'NYS Exam Overview',
+    description: 'Exam format, passing scores & what to expect',
+    icon: 'school',
+    color: '#0D9373',
+    href: '/exam-info',
+  },
+  {
+    title: 'Eastern Medicine Tips',
+    description: 'Master meridians & Yin/Yang theory',
+    icon: 'self-improvement',
+    color: '#F97316',
+    href: '/study?category=eastern',
+  },
+  {
+    title: 'Anatomy Essentials',
+    description: 'Key muscles, bones & body systems',
+    icon: 'accessibility-new',
+    color: '#4F46E5',
+    href: '/study?category=anatomy',
+  },
+  {
+    title: 'Ethics & Business',
+    description: 'Professional standards & NY regulations',
+    icon: 'gavel',
+    color: '#059669',
+    href: '/study?category=ethics',
+  },
+  {
+    title: 'Study Strategies',
+    description: 'Proven techniques for exam success',
+    icon: 'psychology',
+    color: '#D97706',
+    href: '/exam-info#study-tips',
+  },
 ];
 
 export function DesktopSidebar() {
@@ -35,7 +81,7 @@ export function DesktopSidebar() {
       </View>
 
       {/* Navigation */}
-      <View className="flex-1 py-4 px-3">
+      <View className="py-4 px-3">
         {navItems.map((item) => {
           const isActive = pathname === item.href ||
             (item.href === '/(tabs)' && pathname === '/') ||
@@ -81,6 +127,71 @@ export function DesktopSidebar() {
             </Pressable>
           );
         })}
+      </View>
+
+      {/* Articles Section */}
+      <View className="flex-1 px-3 pb-2">
+        <View className="px-4 py-2 mb-2">
+          <Text className="text-xs font-semibold text-muted uppercase tracking-wider">
+            Exam Resources
+          </Text>
+        </View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 8 }}
+        >
+          {articles.map((article, index) => (
+            <Pressable
+              key={index}
+              onPress={() => router.push(article.href as any)}
+            >
+              {({ hovered }: any) => (
+                <View
+                  className="px-3 py-3 rounded-xl mb-1"
+                  style={{
+                    backgroundColor: hovered ? colors.surfaceHover : 'transparent',
+                  }}
+                >
+                  <View className="flex-row items-start">
+                    <View
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 8,
+                        backgroundColor: `${article.color}15`,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: 10,
+                      }}
+                    >
+                      <MaterialIcons
+                        name={article.icon}
+                        size={18}
+                        color={article.color}
+                      />
+                    </View>
+                    <View className="flex-1">
+                      <Text
+                        className="text-sm font-medium"
+                        style={{ color: colors.foreground }}
+                        numberOfLines={1}
+                      >
+                        {article.title}
+                      </Text>
+                      <Text
+                        className="text-xs mt-0.5"
+                        style={{ color: colors.muted }}
+                        numberOfLines={2}
+                      >
+                        {article.description}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              )}
+            </Pressable>
+          ))}
+        </ScrollView>
       </View>
 
       {/* Bottom section */}

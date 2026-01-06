@@ -505,6 +505,16 @@ export default function ExamInfoScreen() {
             </Text>
           </Pressable>
         </View>
+
+        {/* Footer */}
+        <View className="px-5 mt-8 mb-4">
+          <Text className="text-xs text-muted text-center">
+            Created by DataAutomation.ai
+          </Text>
+          <Text className="text-xs text-muted text-center mt-1">
+            © 2026 All Rights Reserved
+          </Text>
+        </View>
       </ScrollView>
     </ScreenContainer>
   );

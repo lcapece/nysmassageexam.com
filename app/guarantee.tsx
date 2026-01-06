@@ -10,18 +10,14 @@ export default function GuaranteeScreen() {
   const colors = useColors();
 
   const handleEmailRequest = () => {
-    const subject = encodeURIComponent("Money-Back Guarantee Request - NYS Massage Exam Prep");
+    const subject = encodeURIComponent("Refund Request - NYS Massage Exam Prep");
     const body = encodeURIComponent(
       `Hello,
 
-I am requesting a refund under the Money-Back Guarantee policy.
+I am requesting a refund.
 
 Full Name: [Your Full Name]
 Email Used for Purchase: [Your Email]
-
-I did not pass the NYS Massage Therapy Exam.
-
-Please process my refund request.
 
 Thank you.`
     );
@@ -43,8 +39,8 @@ Thank you.`
             <MaterialIcons name="arrow-back" size={24} color={colors.foreground} />
           </Pressable>
           <View>
-            <Text className="text-2xl font-bold text-foreground">Money-Back Guarantee</Text>
-            <Text className="text-base text-muted">Our commitment to your success</Text>
+            <Text className="text-2xl font-bold text-foreground">Refund Policy</Text>
+            <Text className="text-base text-muted">Simple and hassle-free</Text>
           </View>
         </View>
 
@@ -61,15 +57,15 @@ Thank you.`
               <MaterialIcons name="verified" size={48} color={colors.success} />
             </View>
             <Text className="text-2xl font-bold text-foreground text-center mb-2">
-              Pass or Your Money Back
+              30-Day Money-Back Guarantee
             </Text>
             <Text className="text-base text-muted text-center leading-6">
-              We're so confident in our exam prep materials that we guarantee your success.
+              Full refund within 30 days of purchase. No questions asked.
             </Text>
           </View>
         </View>
 
-        {/* The Promise */}
+        {/* The Policy */}
         <View className="px-5 mt-6">
           <View className="bg-surface rounded-xl p-5 border border-border">
             <View className="flex-row items-center mb-4">
@@ -79,94 +75,45 @@ Thank you.`
               >
                 <MaterialIcons name="handshake" size={20} color={colors.primary} />
               </View>
-              <Text className="text-lg font-bold text-foreground">Our Promise</Text>
+              <Text className="text-lg font-bold text-foreground">Our Policy</Text>
             </View>
             <Text className="text-base text-foreground leading-7">
-              If you purchase NYS Massage Exam Prep, use our study materials to prepare for the exam, and still don't pass the NYS Massage Therapy Licensing Examination, we will refund your purchase in full. No questions asked.
+              If you're not satisfied with NYS Massage Exam Prep for any reason, simply request a refund within 30 days of your purchase. We'll refund your full purchase price - no questions asked, no hoops to jump through.
             </Text>
           </View>
         </View>
 
-        {/* Eligibility Requirements */}
+        {/* Simple Requirements */}
         <View className="px-5 mt-6">
-          <Text className="text-xl font-bold text-foreground mb-4">Eligibility Requirements</Text>
+          <Text className="text-xl font-bold text-foreground mb-4">It's Simple</Text>
 
-          {[
-            {
-              icon: "calendar-today",
-              title: "30-Day Minimum Study Period",
-              description: "Your exam date must be at least 30 days after your purchase date. This ensures you have adequate time to study with our materials.",
-              highlight: true,
-            },
-            {
-              icon: "event",
-              title: "Valid Exam Attempt",
-              description: "The guarantee applies to the NYS Massage Therapy Licensing Examination only. You must have taken the official exam administered by NYSED.",
-              highlight: false,
-            },
-            {
-              icon: "receipt",
-              title: "Proof of Purchase",
-              description: "You must have purchased full access to NYS Massage Exam Prep. The guarantee does not apply to free trial users.",
-              highlight: false,
-            },
-          ].map((item, index) => (
-            <View
-              key={index}
-              className="mb-4 rounded-xl p-4"
-              style={{
-                backgroundColor: item.highlight ? colors.warning + '10' : colors.surface,
-                borderWidth: 1,
-                borderColor: item.highlight ? colors.warning : colors.border,
-              }}
-            >
-              <View className="flex-row items-start">
-                <View
-                  className="w-10 h-10 rounded-full items-center justify-center mr-3"
-                  style={{ backgroundColor: item.highlight ? colors.warning + '20' : colors.primary + '20' }}
-                >
-                  <MaterialIcons
-                    name={item.icon as any}
-                    size={20}
-                    color={item.highlight ? colors.warning : colors.primary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-base font-semibold text-foreground mb-1">{item.title}</Text>
-                  <Text className="text-sm text-muted leading-5">{item.description}</Text>
-                </View>
-              </View>
-            </View>
-          ))}
-        </View>
-
-        {/* Important Note About Timing */}
-        <View className="px-5 mt-2">
           <View
-            className="rounded-xl p-4"
-            style={{ backgroundColor: colors.warning + '15', borderWidth: 1, borderColor: colors.warning }}
+            className="rounded-xl p-5"
+            style={{ backgroundColor: colors.success + '10', borderWidth: 1, borderColor: colors.success }}
           >
-            <View className="flex-row items-start">
-              <MaterialIcons name="info" size={24} color={colors.warning} style={{ marginRight: 12, marginTop: 2 }} />
-              <View className="flex-1">
-                <Text className="text-base font-semibold text-foreground mb-2">Important: Exam Timing</Text>
-                <Text className="text-sm text-muted leading-5">
-                  If your next scheduled exam is less than 30 days from your purchase date, the guarantee will apply to the following exam date (typically 6 months later). The NYS exam is offered only twice per year (March and September).
-                </Text>
-              </View>
+            <View className="flex-row items-center mb-3">
+              <MaterialIcons name="check-circle" size={24} color={colors.success} />
+              <Text className="text-base font-semibold text-foreground ml-3">Request within 30 days of purchase</Text>
+            </View>
+            <View className="flex-row items-center mb-3">
+              <MaterialIcons name="check-circle" size={24} color={colors.success} />
+              <Text className="text-base font-semibold text-foreground ml-3">Any reason - no explanation needed</Text>
+            </View>
+            <View className="flex-row items-center">
+              <MaterialIcons name="check-circle" size={24} color={colors.success} />
+              <Text className="text-base font-semibold text-foreground ml-3">Just send an email</Text>
             </View>
           </View>
         </View>
 
-        {/* How to Claim */}
+        {/* How to Get Refund */}
         <View className="px-5 mt-6">
-          <Text className="text-xl font-bold text-foreground mb-4">How to Claim Your Refund</Text>
+          <Text className="text-xl font-bold text-foreground mb-4">How to Get Your Refund</Text>
 
           <View className="bg-surface rounded-xl p-5 border border-border">
             {[
-              { step: "1", text: "Take the NYS Massage Therapy Exam" },
-              { step: "2", text: "If you did not pass, send us an email stating you didn't pass" },
-              { step: "3", text: "Receive your full refund within 5-10 business days" },
+              { step: "1", text: "Send us an email requesting a refund" },
+              { step: "2", text: "Receive your full refund within 5-10 business days" },
             ].map((item, index) => (
               <View key={index} className="flex-row items-start mb-4 last:mb-0">
                 <View
@@ -193,10 +140,10 @@ Thank you.`
               >
                 <MaterialIcons name="email" size={20} color={colors.primary} />
               </View>
-              <Text className="text-lg font-bold text-foreground">Submit Refund Request</Text>
+              <Text className="text-lg font-bold text-foreground">Request a Refund</Text>
             </View>
             <Text className="text-sm text-muted leading-5 mb-4">
-              Send your refund request to the email address below. Just let us know that you didn't pass - no proof required.
+              Send your refund request to the email address below. That's it!
             </Text>
 
             <View
@@ -232,24 +179,16 @@ Thank you.`
 
           {[
             {
-              question: "What if I purchase the app less than 30 days before the exam?",
-              answer: "The guarantee will apply to your next exam attempt, which is typically 6 months later. This policy exists to ensure you have adequate time to study with our materials.",
-            },
-            {
-              question: "Do I need to provide proof that I failed?",
-              answer: "No. Simply email us stating that you did not pass the exam. We trust our customers and don't require any documentation.",
+              question: "Do I need to give a reason for the refund?",
+              answer: "No. You can request a refund for any reason within 30 days of purchase. No explanation needed.",
             },
             {
               question: "How will I receive my refund?",
-              answer: "Refunds are processed to your original payment method. You'll receive a full refund of your purchase price within 5-10 business days.",
+              answer: "Refunds are processed to your original payment method. You'll receive your full purchase price within 5-10 business days.",
             },
             {
-              question: "Can I use the guarantee more than once?",
-              answer: "The money-back guarantee is valid for one exam attempt per purchase. If you need to retake the exam, you would need to make a new purchase.",
-            },
-            {
-              question: "Is there a time limit on when I can take the exam?",
-              answer: "We recommend taking the exam within 12 months of your purchase to ensure you're using up-to-date study materials.",
+              question: "What if it's been more than 30 days?",
+              answer: "Our 30-day guarantee applies to refund requests made within 30 days of your original purchase date. After 30 days, refunds are evaluated on a case-by-case basis.",
             },
           ].map((item, index) => (
             <View key={index} className="mb-4 bg-surface rounded-xl p-4 border border-border">
@@ -266,10 +205,10 @@ Thank you.`
             style={{ backgroundColor: colors.success + '10', borderWidth: 1, borderColor: colors.success }}
           >
             <Text className="text-lg font-bold text-foreground text-center mb-2">
-              Study with Confidence
+              Purchase with Confidence
             </Text>
             <Text className="text-base text-muted text-center leading-6 mb-4">
-              With our money-back guarantee, you have nothing to lose. Get full access today and start your journey to becoming a licensed massage therapist in New York.
+              With our 30-day money-back guarantee, you have nothing to lose. Try it risk-free!
             </Text>
             <Pressable
               onPress={() => router.push("/upgrade" as any)}
@@ -289,10 +228,13 @@ Thank you.`
           </View>
         </View>
 
-        {/* Legal Disclaimer */}
-        <View className="px-5 mt-6">
+        {/* Footer */}
+        <View className="px-5 mt-8 mb-4">
           <Text className="text-xs text-muted text-center leading-4">
-            This guarantee is subject to the terms and conditions outlined above. NYS Massage Exam Prep reserves the right to verify all refund requests. Fraudulent claims may result in denial of refund and termination of account access.
+            Created by DataAutomation.ai
+          </Text>
+          <Text className="text-xs text-muted text-center mt-1">
+            © 2026 All Rights Reserved
           </Text>
         </View>
       </ScrollView>

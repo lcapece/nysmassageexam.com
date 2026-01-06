@@ -532,6 +532,12 @@ export default function UpgradeScreen() {
             Secure payment processed by Square.
             By purchasing, you agree to our Terms of Service.
           </Text>
+          <Text className="text-muted text-xs text-center mt-4">
+            Created by DataAutomation.ai
+          </Text>
+          <Text className="text-muted text-xs text-center mt-1">
+            © 2026 All Rights Reserved
+          </Text>
         </View>
       </ScrollView>
     </ScreenContainer>

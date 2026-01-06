@@ -487,6 +487,8 @@ onPress={() => setShowSubscription(true)}
         <View className="mx-5 mt-6 items-center">
           <Text className="text-sm text-muted">NYS Massage Exam Study</Text>
           <Text className="text-xs text-muted mt-1">Version 1.0.0</Text>
+          <Text className="text-xs text-muted mt-4">Created by DataAutomation.ai</Text>
+          <Text className="text-xs text-muted mt-1">© 2026 All Rights Reserved</Text>
         </View>
       </ScrollView>
     </ScreenContainer>

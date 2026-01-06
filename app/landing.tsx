@@ -29,10 +29,12 @@ const EXAM_DATES = [
 
 const STATS = [
   { value: "287", label: "Questions" },
-  { value: "94%", label: "Pass Rate" },
+  { value: "90%", label: "Pass Rate*" },
   { value: "500+", label: "Students" },
   { value: "4.9", label: "Rating" },
 ];
+
+const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
 
 const EXAM_CATEGORIES = [
   { name: "Anatomy", percentage: 28, color: "#2A9D8F", questions: 80 },
@@ -464,7 +466,7 @@ export default function LandingScreen() {
           <Container size="md">
             <View className="items-center mb-12">
               <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>Us vs. Generic MBLEx Prep</Text>
-              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 500 }}>There's a reason 94% of our students pass on their first try.</Text>
+              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 500 }}>There's a reason 90%* of our students pass on their first try.</Text>
             </View>
             <ComparisonTable />
           </Container>
@@ -491,7 +493,7 @@ export default function LandingScreen() {
             <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", marginBottom: 40 }}>No subscriptions. No hidden fees. No upsells.</Text>
             <Card variant="elevated" className="p-8 overflow-hidden" style={{ borderWidth: 2, borderColor: colors.primary }}>
               <View style={{ position: "absolute", top: 0, right: 0, backgroundColor: colors.primary, paddingHorizontal: 20, paddingVertical: 8, borderBottomLeftRadius: 16 }}>
-                <Text style={{ color: "#FFFFFF", fontWeight: "600", fontSize: 13 }}>94% Pass Rate</Text>
+                <Text style={{ color: "#FFFFFF", fontWeight: "600", fontSize: 13 }}>90% Pass Rate*</Text>
               </View>
               <View className="items-center">
                 <Text style={{ fontSize: 56, fontWeight: "800", color: colors.foreground }}>$37</Text>
@@ -543,7 +545,10 @@ export default function LandingScreen() {
                 <Image source={{ uri: LOGO_URL }} style={{ width: 24, height: 24, borderRadius: 6 }} resizeMode="contain" />
                 <Text style={{ fontWeight: "600", color: colors.foreground }}>NYSMassageExam.com</Text>
               </View>
+              <View>
               <Text style={{ color: colors.muted, fontSize: 13 }}>© 2025 NYSMassageExam.com. All rights reserved. Not affiliated with the NYS Education Department.</Text>
+              <Text style={{ color: colors.muted, fontSize: 11, marginTop: 8 }}>{PASS_RATE_DISCLAIMER}</Text>
+            </View>
             </View>
           </Container>
         </View>

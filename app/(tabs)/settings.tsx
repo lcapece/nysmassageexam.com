@@ -8,6 +8,7 @@ import { Platform } from "react-native";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { useThemeContext } from "@/lib/theme-provider";
 import {
   getSettings,
   saveSettings,
@@ -21,7 +22,8 @@ import {
 export default function SettingsScreen() {
   const router = useRouter();
   const colors = useColors();
-  
+  const { colorScheme, setColorScheme } = useThemeContext();
+
   const [settings, setSettings] = useState<Settings | null>(null);
   const [examDate, setExamDate] = useState<string | null>(null);
   const [showExamPicker, setShowExamPicker] = useState(false);
@@ -47,6 +49,13 @@ export default function SettingsScreen() {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     await saveSettings(newSettings);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  };
+
+  const handleThemeToggle = (isDark: boolean) => {
+    setColorScheme(isDark ? "dark" : "light");
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
@@ -381,9 +390,29 @@ onPress={() => setShowSubscription(true)}
         {/* Settings */}
         <View className="mx-5 mt-6">
           <Text className="text-lg font-semibold text-foreground mb-3">Settings</Text>
-          
+
           <View className="bg-surface rounded-xl border border-border overflow-hidden">
+            {/* Dark Mode Toggle */}
             <View className="p-4 flex-row items-center justify-between">
+              <View className="flex-row items-center">
+                <MaterialIcons
+                  name={colorScheme === "dark" ? "dark-mode" : "light-mode"}
+                  size={24}
+                  color={colors.muted}
+                />
+                <Text className="text-base text-foreground ml-3">Dark Mode</Text>
+              </View>
+              <Switch
+                value={colorScheme === "dark"}
+                onValueChange={handleThemeToggle}
+                trackColor={{ false: colors.border, true: colors.primary }}
+              />
+            </View>
+
+            <View
+              className="p-4 flex-row items-center justify-between"
+              style={{ borderTopWidth: 1, borderTopColor: colors.border }}
+            >
               <View className="flex-row items-center">
                 <MaterialIcons name="vibration" size={24} color={colors.muted} />
                 <Text className="text-base text-foreground ml-3">Haptic Feedback</Text>
@@ -394,8 +423,8 @@ onPress={() => setShowSubscription(true)}
                 trackColor={{ false: colors.border, true: colors.primary }}
               />
             </View>
-            
-            <View 
+
+            <View
               className="p-4 flex-row items-center justify-between"
               style={{ borderTopWidth: 1, borderTopColor: colors.border }}
             >

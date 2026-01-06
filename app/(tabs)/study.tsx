@@ -22,6 +22,72 @@ import {
   StudyProgress,
 } from "@/lib/study-store";
 
+// Enhanced markdown text renderer - renders bold, line breaks, and styled sections
+const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
+  if (!text) return null;
+
+  // Split by double newlines for paragraphs
+  const paragraphs = text.split(/\n\n+/);
+
+  const renderLine = (line: string, key: string, isLastLine: boolean, isLastPara: boolean, baseStyle: any) => {
+    // Check if line starts with an emoji (common section marker)
+    const emojiMatch = line.match(/^([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}])/u);
+    const hasEmoji = emojiMatch !== null;
+
+    // Parse **bold** text
+    const parts = line.split(/(\*\*[^*]+\*\*)/g);
+
+    // Determine if this is a "header-like" line (starts with emoji and has bold)
+    const isSectionHeader = hasEmoji && line.includes('**');
+
+    return (
+      <Text
+        key={key}
+        style={[
+          baseStyle,
+          !isLastLine || !isLastPara ? { marginBottom: isSectionHeader ? 8 : 6 } : {},
+          isSectionHeader ? { marginTop: 4 } : {}
+        ]}
+      >
+        {parts.map((part, i) => {
+          if (part.startsWith('**') && part.endsWith('**')) {
+            return (
+              <Text
+                key={i}
+                style={{
+                  fontWeight: '700',
+                  color: colors?.foreground || baseStyle?.color
+                }}
+              >
+                {part.slice(2, -2)}
+              </Text>
+            );
+          }
+          return part;
+        })}
+      </Text>
+    );
+  };
+
+  return (
+    <View style={{ gap: 2 }}>
+      {paragraphs.map((para, pIdx) => {
+        const lines = para.split(/\n/);
+        const isLastPara = pIdx === paragraphs.length - 1;
+
+        return (
+          <View key={pIdx} style={{ marginBottom: isLastPara ? 0 : 8 }}>
+            {lines.map((line, lIdx) => {
+              const isLastLine = lIdx === lines.length - 1;
+              return renderLine(line, `${pIdx}-${lIdx}`, isLastLine, isLastPara, style);
+            })}
+          </View>
+        );
+      })}
+    </View>
+  );
+};
+
 // Font size options
 type FontSizeOption = 'small' | 'medium' | 'large';
 const FONT_SIZE_KEY = 'study_font_size';
@@ -534,9 +600,11 @@ export default function StudyScreen() {
                         Explanation
                       </Text>
                     </View>
-                    <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                      {selectedQuestion.topic_explanation}
-                    </Text>
+                    <MarkdownText
+                      text={selectedQuestion.topic_explanation}
+                      style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}
+                      colors={colors}
+                    />
                   </Card>
 
                   {/* Mnemonic Card */}
@@ -689,9 +757,11 @@ export default function StudyScreen() {
                     <MaterialIcons name="info" size={20} color={colors.primary} />
                     <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginLeft: 8 }}>Explanation</Text>
                   </View>
-                  <Text style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}>
-                    {selectedQuestion.topic_explanation}
-                  </Text>
+                  <MarkdownText
+                    text={selectedQuestion.topic_explanation}
+                    style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}
+                    colors={colors}
+                  />
                 </View>
 
                 <View style={{ padding: 20, backgroundColor: colors.warningMuted, borderRadius: 12, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
@@ -1064,9 +1134,11 @@ export default function StudyScreen() {
                 <MaterialIcons name="info" size={20} color={colors.primary} />
                 <Text className="text-base font-semibold text-foreground ml-2">Explanation</Text>
               </View>
-              <Text className="text-sm text-muted leading-5">
-                {selectedQuestion.topic_explanation}
-              </Text>
+              <MarkdownText
+                text={selectedQuestion.topic_explanation}
+                style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}
+                colors={colors}
+              />
             </View>
           </View>
 

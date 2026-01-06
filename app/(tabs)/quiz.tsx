@@ -24,14 +24,78 @@ import {
   hasPurchased,
   isTrialQuestion,
   TRIAL_QUESTION_IDS,
-  startStudySession,
-  syncProgressToServer,
 } from "@/lib/study-store";
 import {
-  startStudySession as startLeaderboardSession,
+  startStudySession,
   recordSessionAnswer,
-  syncProgressToServer as syncLeaderboardProgress,
+  syncProgressToServer,
 } from "@/lib/leaderboard-service";
+
+// Enhanced markdown text renderer - renders bold, line breaks, and styled sections
+const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
+  if (!text) return null;
+
+  // Split by double newlines for paragraphs
+  const paragraphs = text.split(/\n\n+/);
+
+  const renderLine = (line: string, key: string, isLastLine: boolean, isLastPara: boolean, baseStyle: any) => {
+    // Check if line starts with an emoji (common section marker)
+    const emojiMatch = line.match(/^([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}])/u);
+    const hasEmoji = emojiMatch !== null;
+
+    // Parse **bold** text
+    const parts = line.split(/(\*\*[^*]+\*\*)/g);
+
+    // Determine if this is a "header-like" line (starts with emoji and has bold)
+    const isSectionHeader = hasEmoji && line.includes('**');
+
+    return (
+      <Text
+        key={key}
+        style={[
+          baseStyle,
+          !isLastLine || !isLastPara ? { marginBottom: isSectionHeader ? 8 : 6 } : {},
+          isSectionHeader ? { marginTop: 4 } : {}
+        ]}
+      >
+        {parts.map((part, i) => {
+          if (part.startsWith('**') && part.endsWith('**')) {
+            return (
+              <Text
+                key={i}
+                style={{
+                  fontWeight: '700',
+                  color: colors?.foreground || baseStyle?.color
+                }}
+              >
+                {part.slice(2, -2)}
+              </Text>
+            );
+          }
+          return part;
+        })}
+      </Text>
+    );
+  };
+
+  return (
+    <View style={{ gap: 2 }}>
+      {paragraphs.map((para, pIdx) => {
+        const lines = para.split(/\n/);
+        const isLastPara = pIdx === paragraphs.length - 1;
+
+        return (
+          <View key={pIdx} style={{ marginBottom: isLastPara ? 0 : 8 }}>
+            {lines.map((line, lIdx) => {
+              const isLastLine = lIdx === lines.length - 1;
+              return renderLine(line, `${pIdx}-${lIdx}`, isLastLine, isLastPara, style);
+            })}
+          </View>
+        );
+      })}
+    </View>
+  );
+};
 
 type QuizState = "setup" | "question" | "feedback" | "complete";
 
@@ -106,7 +170,6 @@ export default function QuizScreen() {
 
     // Start tracking study session for SMS progress sync and leaderboard
     startStudySession();
-    startLeaderboardSession();
   };
 
   const handleAnswer = async (answer: string) => {
@@ -165,7 +228,6 @@ export default function QuizScreen() {
 
     // Sync progress to server for SMS reminders and leaderboard (non-blocking)
     syncProgressToServer().catch(() => {});
-    syncLeaderboardProgress().catch(() => {});
   };
 
   const handleBookmark = async () => {
@@ -730,7 +792,7 @@ export default function QuizScreen() {
                           marginRight: 12,
                           width: 420,
                           maxHeight: 420,
-                          backgroundColor: colors.card,
+                          backgroundColor: colors.elevated,
                           borderRadius: 12,
                           borderWidth: 1,
                           borderColor: colors.border,
@@ -754,9 +816,11 @@ export default function QuizScreen() {
                                 Explanation
                               </Text>
                             </View>
-                            <Text style={{ fontSize: 11, color: colors.muted, lineHeight: 16 }}>
-                              {question.topic_explanation}
-                            </Text>
+                            <MarkdownText
+                              text={question.topic_explanation}
+                              style={{ fontSize: 11, color: colors.muted, lineHeight: 16 }}
+                              colors={colors}
+                            />
                           </View>
 
                           {/* Mnemonic - 25% smaller font */}
@@ -1189,7 +1253,11 @@ export default function QuizScreen() {
                 <MaterialIcons name="info" size={20} color={colors.primary} />
                 <Text className="text-base font-semibold text-foreground ml-2">Explanation</Text>
               </View>
-              <Text className="text-sm text-muted leading-5">{question.topic_explanation}</Text>
+              <MarkdownText
+                text={question.topic_explanation}
+                style={{ fontSize: 14, color: colors.muted, lineHeight: 20 }}
+                colors={colors}
+              />
             </View>
 
             <Pressable onPress={() => setShowMnemonic(!showMnemonic)} style={{ marginTop: 12 }}>

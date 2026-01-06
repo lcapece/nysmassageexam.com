@@ -18,13 +18,8 @@ I am requesting a refund under the Money-Back Guarantee policy.
 
 Full Name: [Your Full Name]
 Email Used for Purchase: [Your Email]
-Purchase Date: [Date]
-Exam Date Taken: [Date]
 
-I certify that:
-- I did not pass the NYS Massage Therapy Exam
-- My exam date was at least 30 days after my purchase date
-- I have attached or can provide proof of my exam result
+I did not pass the NYS Massage Therapy Exam.
 
 Please process my refund request.
 
@@ -115,12 +110,6 @@ Thank you.`
               description: "You must have purchased full access to NYS Massage Exam Prep. The guarantee does not apply to free trial users.",
               highlight: false,
             },
-            {
-              icon: "description",
-              title: "Proof of Exam Result",
-              description: "You must provide documentation showing that you did not pass the exam (official score report or result letter from NYSED).",
-              highlight: false,
-            },
           ].map((item, index) => (
             <View
               key={index}
@@ -176,10 +165,8 @@ Thank you.`
           <View className="bg-surface rounded-xl p-5 border border-border">
             {[
               { step: "1", text: "Take the NYS Massage Therapy Exam" },
-              { step: "2", text: "Receive your official exam results" },
-              { step: "3", text: "If you did not pass, gather your proof of result" },
-              { step: "4", text: "Send a refund request email within 30 days of receiving results" },
-              { step: "5", text: "Receive your full refund within 5-10 business days" },
+              { step: "2", text: "If you did not pass, send us an email stating you didn't pass" },
+              { step: "3", text: "Receive your full refund within 5-10 business days" },
             ].map((item, index) => (
               <View key={index} className="flex-row items-start mb-4 last:mb-0">
                 <View
@@ -209,7 +196,7 @@ Thank you.`
               <Text className="text-lg font-bold text-foreground">Submit Refund Request</Text>
             </View>
             <Text className="text-sm text-muted leading-5 mb-4">
-              Send your refund request to the email address below. Include your name, purchase email, purchase date, exam date, and proof of your exam result.
+              Send your refund request to the email address below. Just let us know that you didn't pass - no proof required.
             </Text>
 
             <View
@@ -249,12 +236,8 @@ Thank you.`
               answer: "The guarantee will apply to your next exam attempt, which is typically 6 months later. This policy exists to ensure you have adequate time to study with our materials.",
             },
             {
-              question: "How long do I have to submit a refund request?",
-              answer: "You must submit your refund request within 30 days of receiving your official exam results from NYSED.",
-            },
-            {
-              question: "What documentation do I need to provide?",
-              answer: "You'll need to provide your official exam result letter or score report from NYSED showing that you did not pass.",
+              question: "Do I need to provide proof that I failed?",
+              answer: "No. Simply email us stating that you did not pass the exam. We trust our customers and don't require any documentation.",
             },
             {
               question: "How will I receive my refund?",

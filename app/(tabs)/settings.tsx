@@ -368,6 +368,25 @@ onPress={() => setShowSubscription(true)}
           </Pressable>
 
           <Pressable
+            onPress={() => router.push("/guarantee" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center">
+              <MaterialIcons name="verified" size={24} color={colors.success} />
+              <Text className="text-base text-foreground ml-3">Money-Back Guarantee</Text>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
+          <Pressable
             onPress={() => Linking.openURL('https://www.op.nysed.gov/professions/massage-therapy')}
             style={({ pressed }) => [
               {

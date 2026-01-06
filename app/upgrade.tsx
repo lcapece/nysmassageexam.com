@@ -28,12 +28,12 @@ const PROMO_CODES: Record<string, { discount: number; description: string }> = {
 };
 
 const FEATURES = [
-  { icon: "✅", text: "All 287 exam questions" },
-  { icon: "🧠", text: "Mnemonics for every question" },
-  { icon: "📚", text: "Detailed explanations" },
-  { icon: "📊", text: "Progress tracking" },
-  { icon: "🎯", text: "All study modes" },
-  { icon: "💰", text: "Money-back guarantee" },
+  { icon: "✅", text: "All 287 exam questions", link: null },
+  { icon: "🧠", text: "Mnemonics for every question", link: null },
+  { icon: "📚", text: "Detailed explanations", link: null },
+  { icon: "📊", text: "Progress tracking", link: null },
+  { icon: "🎯", text: "All study modes", link: null },
+  { icon: "💰", text: "Money-back guarantee", link: "/guarantee" },
 ];
 
 // Screen states
@@ -320,12 +320,26 @@ export default function UpgradeScreen() {
             What you'll get:
           </Text>
           {FEATURES.map((feature, index) => (
-            <View key={index} className="flex-row items-center mb-3">
-              <Text className="text-xl mr-3">{feature.icon}</Text>
-              <Text className="text-foreground text-base flex-1">
-                {feature.text}
-              </Text>
-            </View>
+            feature.link ? (
+              <TouchableOpacity
+                key={index}
+                onPress={() => router.push(feature.link as any)}
+                className="flex-row items-center mb-3"
+              >
+                <Text className="text-xl mr-3">{feature.icon}</Text>
+                <Text className="text-primary text-base flex-1 underline">
+                  {feature.text}
+                </Text>
+                <Text className="text-primary text-sm">Learn more →</Text>
+              </TouchableOpacity>
+            ) : (
+              <View key={index} className="flex-row items-center mb-3">
+                <Text className="text-xl mr-3">{feature.icon}</Text>
+                <Text className="text-foreground text-base flex-1">
+                  {feature.text}
+                </Text>
+              </View>
+            )
           ))}
         </View>
 

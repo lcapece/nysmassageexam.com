@@ -14,6 +14,7 @@ import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
+import { SubscriberForm, SubscriberFormData, saveSubscriber } from "@/components/subscriber-form";
 
 // Square Payment Link
 const SQUARE_PAYMENT_URL = "https://square.link/u/hJT8Zc0x";
@@ -35,6 +36,9 @@ const FEATURES = [
   { icon: "💰", text: "Money-back guarantee" },
 ];
 
+// Screen states
+type ScreenState = "info" | "form" | "payment";
+
 export default function UpgradeScreen() {
   const router = useRouter();
   const colors = useColors();
@@ -44,6 +48,8 @@ export default function UpgradeScreen() {
   const [promoError, setPromoError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [screenState, setScreenState] = useState<ScreenState>("info");
+  const [subscriberData, setSubscriberData] = useState<SubscriberFormData | null>(null);
 
   const basePrice = 37;
   const finalPrice = promoApplied ? Math.max(0, basePrice - promoApplied.discount) : basePrice;
@@ -80,10 +86,28 @@ export default function UpgradeScreen() {
   };
 
   const handlePurchase = async () => {
+    // Show the subscriber form before proceeding to payment
+    setScreenState("form");
+  };
+
+  const handleFormSubmit = async (data: SubscriberFormData) => {
+    setSubscriberData(data);
+
     // If promo code gives 100% discount (free)
     if (isFree && promoApplied) {
       setLoading(true);
       try {
+        // Save subscriber with purchase info
+        const result = await saveSubscriber(data, {
+          purchaseAmount: 0,
+          promoCodeUsed: promoCode.trim().toUpperCase(),
+          paymentMethod: "promo_code",
+        });
+
+        if (!result.success) {
+          throw new Error(result.error);
+        }
+
         await setPurchased(true);
         if (Platform.OS === 'web') {
           window.alert("Success! Full access unlocked with promo code.");
@@ -92,9 +116,28 @@ export default function UpgradeScreen() {
         }
         router.replace("/(tabs)");
         return;
+      } catch (error: any) {
+        console.error("Error saving subscriber:", error);
+        if (Platform.OS === 'web') {
+          window.alert("Failed to complete registration. Please try again.");
+        } else {
+          Alert.alert("Error", "Failed to complete registration. Please try again.");
+        }
       } finally {
         setLoading(false);
       }
+      return;
+    }
+
+    // Save subscriber info (without purchase yet - they'll complete payment on Square)
+    try {
+      const result = await saveSubscriber(data);
+      if (!result.success) {
+        console.error("Failed to save subscriber:", result.error);
+        // Continue anyway - we don't want to block the payment
+      }
+    } catch (error) {
+      console.error("Error saving subscriber:", error);
     }
 
     // Open Square payment link
@@ -103,6 +146,20 @@ export default function UpgradeScreen() {
     } else {
       await Linking.openURL(SQUARE_PAYMENT_URL);
     }
+
+    // Show success message
+    if (Platform.OS === 'web') {
+      window.alert("Complete your payment in the new window. Once done, you can restore your purchase using your email address.");
+    } else {
+      Alert.alert(
+        "Complete Payment",
+        "Complete your payment in the browser. Once done, return here and restore your purchase using your email address.",
+        [{ text: "OK" }]
+      );
+    }
+
+    // Go back to info screen so they can restore after payment
+    setScreenState("info");
   };
 
   const handleRestore = async () => {
@@ -156,6 +213,74 @@ export default function UpgradeScreen() {
       setLoading(false);
     }
   };
+
+  // Render the subscriber form screen
+  if (screenState === "form") {
+    return (
+      <ScreenContainer edges={["top", "bottom", "left", "right"]}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+        >
+          {/* Header */}
+          <View className="px-6 pt-4">
+            <TouchableOpacity onPress={() => setScreenState("info")} className="mb-4">
+              <Text className="text-primary text-base">← Back</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Form Header */}
+          <View className="px-6 items-center mb-6">
+            <Text className="text-4xl mb-3">📝</Text>
+            <Text className="text-2xl font-bold text-foreground text-center mb-2">
+              Complete Your Registration
+            </Text>
+            <Text className="text-muted text-center">
+              Please provide your information to continue
+            </Text>
+          </View>
+
+          {/* Price Summary */}
+          <View className="mx-6 mb-6 bg-surface rounded-xl border border-border p-4">
+            <View className="flex-row justify-between items-center">
+              <Text className="text-foreground font-medium">Total:</Text>
+              <View className="flex-row items-center">
+                {promoApplied && (
+                  <Text className="text-muted line-through mr-2">${basePrice}</Text>
+                )}
+                <Text className={`text-xl font-bold ${isFree ? 'text-success' : 'text-primary'}`}>
+                  {isFree ? 'FREE' : `$${finalPrice}`}
+                </Text>
+              </View>
+            </View>
+            {promoApplied && (
+              <Text className="text-success text-sm mt-1">
+                Promo code {promoCode.toUpperCase()} applied!
+              </Text>
+            )}
+          </View>
+
+          {/* Subscriber Form */}
+          <View className="px-6">
+            <SubscriberForm
+              onSubmit={handleFormSubmit}
+              onCancel={() => setScreenState("info")}
+              submitButtonText={isFree ? "Complete Registration" : "Continue to Payment"}
+            />
+          </View>
+
+          {/* Privacy Note */}
+          <View className="px-6 mt-4">
+            <Text className="text-muted text-xs text-center">
+              Your information is secure and will only be used to provide you with exam prep updates and support.
+            </Text>
+          </View>
+        </ScrollView>
+      </ScreenContainer>
+    );
+  }
 
   return (
     <ScreenContainer edges={["top", "bottom", "left", "right"]}>

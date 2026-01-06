@@ -24,6 +24,8 @@ import {
   hasPurchased,
   isTrialQuestion,
   TRIAL_QUESTION_IDS,
+  startStudySession,
+  syncProgressToServer,
 } from "@/lib/study-store";
 
 type QuizState = "setup" | "question" | "feedback" | "complete";
@@ -47,6 +49,7 @@ export default function QuizScreen() {
   const [showIncorrectExplanations, setShowIncorrectExplanations] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
+  const [explanationPanelOpen, setExplanationPanelOpen] = useState(false);
 
   useEffect(() => {
     loadBookmarks();
@@ -95,6 +98,9 @@ export default function QuizScreen() {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setShowMnemonic(false);
+
+    // Start tracking study session for SMS progress sync
+    startStudySession();
   };
 
   const handleAnswer = async (answer: string) => {
@@ -147,6 +153,9 @@ export default function QuizScreen() {
       duration,
     });
     setQuizState("complete");
+
+    // Sync progress to server for SMS reminders (non-blocking)
+    syncProgressToServer().catch(() => {});
   };
 
   const handleBookmark = async () => {
@@ -179,10 +188,10 @@ export default function QuizScreen() {
           <Container>
             {/* Header */}
             <View style={{ paddingTop: 32, paddingBottom: 24 }}>
-              <Text style={{ fontSize: 56, fontWeight: '700', color: colors.foreground }}>
+              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
                 Quiz Mode
               </Text>
-              <Text style={{ fontSize: 28, color: colors.muted, marginTop: 4 }}>
+              <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
                 Test your knowledge with practice questions
               </Text>
             </View>
@@ -192,31 +201,31 @@ export default function QuizScreen() {
               <Pressable
                 onPress={() => router.push("/upgrade")}
                 style={({ pressed }: any) => ({
-                  marginBottom: 24,
+                  marginBottom: 16,
                   opacity: pressed ? 0.95 : 1,
                 })}
               >
-                <Card style={{ padding: 28, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
+                <Card style={{ padding: 16, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <View style={{ flex: 1 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                         <Badge variant="warning">FREE TRIAL</Badge>
                       </View>
-                      <Text style={{ fontSize: 28, fontWeight: '600', color: colors.foreground }}>
+                      <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
                         You're in trial mode
                       </Text>
-                      <Text style={{ fontSize: 24, color: colors.muted, marginTop: 2 }}>
+                      <Text style={{ fontSize: 14, color: colors.muted, marginTop: 2 }}>
                         3 questions per category • Unlock all 287 for just $37
                       </Text>
                     </View>
-                    <MaterialIcons name="lock-open" size={48} color={colors.warning} />
+                    <MaterialIcons name="lock-open" size={32} color={colors.warning} />
                   </View>
                 </Card>
               </Pressable>
             )}
 
             {/* Quick Start Options */}
-            <View style={{ flexDirection: 'row', gap: 20, marginBottom: 32 }}>
+            <View style={{ flexDirection: 'row', gap: 12, marginBottom: 12 }}>
               <Pressable
                 onPress={() => startQuiz(null, 10)}
                 style={({ pressed, hovered }: any) => ({ flex: 1, opacity: pressed ? 0.95 : 1 })}
@@ -225,30 +234,30 @@ export default function QuizScreen() {
                   <View
                     style={{
                       backgroundColor: colors.primary,
-                      padding: 40,
+                      padding: 20,
                       borderRadius: 16,
                       transform: [{ scale: hovered ? 1.02 : 1 }],
                     }}
                   >
                     <View style={{
-                      width: 72,
-                      height: 72,
+                      width: 48,
+                      height: 48,
                       borderRadius: 18,
                       backgroundColor: 'rgba(255,255,255,0.2)',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 20,
+                      marginBottom: 12,
                     }}>
-                      <MaterialIcons name="play-arrow" size={44} color="#FFFFFF" />
+                      <MaterialIcons name="play-arrow" size={28} color="#FFFFFF" />
                     </View>
-                    <Text style={{ fontSize: 38, fontWeight: '700', color: '#FFFFFF' }}>
+                    <Text style={{ fontSize: 20, fontWeight: '700', color: '#FFFFFF' }}>
                       Quick Quiz
                     </Text>
-                    <Text style={{ fontSize: 24, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
+                    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
                       10 random questions to warm up
                     </Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
-                      <Text style={{ fontSize: 24, fontWeight: '600', color: '#FFFFFF' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: '#FFFFFF' }}>
                         Start now
                       </Text>
                       <MaterialIcons name="arrow-forward" size={28} color="#FFFFFF" style={{ marginLeft: 6 }} />
@@ -264,31 +273,31 @@ export default function QuizScreen() {
                 {({ hovered }: any) => (
                   <Card
                     style={{
-                      padding: 40,
+                      padding: 20,
                       borderWidth: 2,
                       borderColor: colors.primary,
                       transform: [{ scale: hovered ? 1.02 : 1 }],
                     }}
                   >
                     <View style={{
-                      width: 72,
-                      height: 72,
+                      width: 48,
+                      height: 48,
                       borderRadius: 18,
                       backgroundColor: colors.primaryMuted,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: 20,
+                      marginBottom: 12,
                     }}>
-                      <MaterialIcons name="assignment" size={44} color={colors.primary} />
+                      <MaterialIcons name="assignment" size={28} color={colors.primary} />
                     </View>
-                    <Text style={{ fontSize: 38, fontWeight: '700', color: colors.foreground }}>
+                    <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>
                       {isPurchased ? 'Full Exam Practice' : 'Demo Exam Practice'}
                     </Text>
-                    <Text style={{ fontSize: 24, color: colors.muted, marginTop: 4 }}>
+                    <Text style={{ fontSize: 14, color: colors.muted, marginTop: 4 }}>
                       {isPurchased ? '140 questions like the real NYS exam' : '25 questions (free trial)'}
                     </Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
-                      <Text style={{ fontSize: 24, fontWeight: '600', color: colors.primary }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 12 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.primary }}>
                         Start exam
                       </Text>
                       <MaterialIcons name="arrow-forward" size={28} color={colors.primary} style={{ marginLeft: 6 }} />
@@ -300,10 +309,10 @@ export default function QuizScreen() {
 
             {/* Categories Grid */}
             <View>
-              <Text style={{ fontSize: 35, fontWeight: '600', color: colors.foreground, marginBottom: 24 }}>
+              <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
                 Practice by Category
               </Text>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 20 }}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
                 {CATEGORIES.map((category) => {
                   const count = questions.filter(q => q.category === category).length;
                   const icon = getCategoryIcon(category);
@@ -316,26 +325,26 @@ export default function QuizScreen() {
                       {({ hovered, pressed }: any) => (
                         <Card
                           style={{
-                            padding: 28,
+                            padding: 16,
                             backgroundColor: hovered ? colors.surfaceHover : colors.surface,
                             transform: [{ scale: pressed ? 0.98 : 1 }],
                           }}
                         >
                           <View style={{
-                            width: 64,
-                            height: 64,
+                            width: 44,
+                            height: 44,
                             borderRadius: 16,
                             backgroundColor: colors.primaryMuted,
                             alignItems: 'center',
                             justifyContent: 'center',
                             marginBottom: 16,
                           }}>
-                            <MaterialIcons name={icon} size={36} color={colors.primary} />
+                            <MaterialIcons name={icon} size={24} color={colors.primary} />
                           </View>
-                          <Text style={{ fontSize: 26, fontWeight: '600', color: colors.foreground }}>
+                          <Text style={{ fontSize: 15, fontWeight: '600', color: colors.foreground }}>
                             {category}
                           </Text>
-                          <Text style={{ fontSize: 22, color: colors.muted, marginTop: 6 }}>
+                          <Text style={{ fontSize: 13, color: colors.muted, marginTop: 6 }}>
                             {count} questions
                           </Text>
                         </Card>
@@ -361,8 +370,8 @@ export default function QuizScreen() {
 
     return (
       <AppShell>
-        <View style={{ flex: 1, backgroundColor: colors.background, justifyContent: 'center', alignItems: 'center', padding: 48 }}>
-          <Card style={{ padding: 48, maxWidth: 600, width: '100%', alignItems: 'center' }}>
+        <View style={{ flex: 1, backgroundColor: colors.background, justifyContent: 'center', alignItems: 'center', padding: 24 }}>
+          <Card style={{ padding: 24, maxWidth: 600, width: '100%', alignItems: 'center' }}>
             {/* Result Icon */}
             <View style={{
               width: 100,
@@ -371,11 +380,11 @@ export default function QuizScreen() {
               backgroundColor: isPassing ? colors.successMuted : colors.warningMuted,
               alignItems: 'center',
               justifyContent: 'center',
-              marginBottom: 24,
+              marginBottom: 16,
             }}>
               <MaterialIcons
                 name={isPassing ? "celebration" : "sentiment-dissatisfied"}
-                size={56}
+                size={24}
                 color={isPassing ? colors.success : colors.warning}
               />
             </View>
@@ -384,14 +393,14 @@ export default function QuizScreen() {
             <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground, marginBottom: 8 }}>
               {isPassing ? "Excellent Work!" : "Keep Practicing!"}
             </Text>
-            <Text style={{ fontSize: 16, color: colors.muted, textAlign: 'center', marginBottom: 32 }}>
+            <Text style={{ fontSize: 16, color: colors.muted, textAlign: 'center', marginBottom: 12 }}>
               {isPassing
                 ? "You're on track to pass the NYS exam!"
                 : "Review the material and try again. You've got this!"}
             </Text>
 
             {/* Score Ring */}
-            <View style={{ marginBottom: 32 }}>
+            <View style={{ marginBottom: 12 }}>
               <ScoreRing
                 percent={percentage}
                 size={160}
@@ -402,19 +411,19 @@ export default function QuizScreen() {
             </View>
 
             {/* Stats Row */}
-            <View style={{ flexDirection: 'row', gap: 32, marginBottom: 32 }}>
+            <View style={{ flexDirection: 'row', gap: 16, marginBottom: 12 }}>
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>{score}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>{score}</Text>
                 <Text style={{ fontSize: 14, color: colors.muted }}>Correct</Text>
               </View>
               <View style={{ width: 1, backgroundColor: colors.border }} />
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>{quizQuestions.length - score}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>{quizQuestions.length - score}</Text>
                 <Text style={{ fontSize: 14, color: colors.muted }}>Incorrect</Text>
               </View>
               <View style={{ width: 1, backgroundColor: colors.border }} />
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
+                <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
                   {minutes}:{seconds.toString().padStart(2, '0')}
                 </Text>
                 <Text style={{ fontSize: 14, color: colors.muted }}>Time</Text>
@@ -537,18 +546,18 @@ export default function QuizScreen() {
                     contentContainerStyle={{ paddingBottom: 24 }}
                     showsVerticalScrollIndicator={false}
                   >
-                    <Card style={{ padding: 40, height: '100%' }}>
+                    <Card style={{ padding: 20, height: '100%' }}>
                       {/* Category Badge */}
                       <Badge variant="primary" size="md">{question.category}</Badge>
 
                       {/* Question Text */}
                       <Text style={{
-                        fontSize: 26,
+                        fontSize: 15,
                         fontWeight: '600',
                         color: colors.foreground,
                         lineHeight: 38,
                         marginTop: 24,
-                        marginBottom: 32,
+                        marginBottom: 12,
                       }}>
                         {question.rewrite_question}
                       </Text>
@@ -643,183 +652,195 @@ export default function QuizScreen() {
                 </ScrollView>
                 </View>
 
-                {/* Side Panel - Shows during feedback */}
+                                {/* Side Panel - Shows during feedback */}
                 {quizState === "feedback" && (
-                  <View style={{ flex: 2 }}>
-                  <ScrollView
-                    style={{ flex: 1 }}
-                    contentContainerStyle={{ paddingBottom: 16 }}
-                    showsVerticalScrollIndicator={true}
-                  >
-                    {/* Result Indicator */}
+                  <View style={{ flex: 2, position: 'relative' }}>
+                    {/* Compact Result + Next Button */}
                     <Card
                       style={{
-                        padding: 28,
-                        marginBottom: 20,
+                        padding: 12,
+                        marginBottom: 8,
                         backgroundColor: isCorrect ? colors.successMuted : colors.errorMuted,
                         borderWidth: 0,
                       }}
                     >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-                        <MaterialIcons
-                          name={isCorrect ? "check-circle" : "cancel"}
-                          size={40}
-                          color={isCorrect ? colors.success : colors.error}
-                        />
-                        <View>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                          <MaterialIcons
+                            name={isCorrect ? "check-circle" : "cancel"}
+                            size={20}
+                            color={isCorrect ? colors.success : colors.error}
+                          />
                           <Text style={{
-                            fontSize: 22,
-                            fontWeight: '700',
+                            fontSize: 13,
+                            fontWeight: '600',
                             color: isCorrect ? colors.success : colors.error,
-                            marginBottom: 4,
                           }}>
-                            {isCorrect ? "Correct!" : "Incorrect"}
-                          </Text>
-                          <Text style={{ fontSize: 16, color: colors.muted }}>
-                            {isCorrect ? "Great job!" : `The answer was ${question.correct_option ? question.correct_option.toUpperCase() : (question.correct_answer_text || '[No answer available]')}`}
+                            {isCorrect ? "Correct!" : `Incorrect - Answer: ${question.correct_option?.toUpperCase() || ''}`}
                           </Text>
                         </View>
-                      </View>
-                    </Card>
-
-                    {/* Explanation */}
-                    <Card style={{ padding: 28, marginBottom: 20 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                        <MaterialIcons name="info" size={24} color={colors.primary} />
-                        <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
-                          Explanation
-                        </Text>
-                      </View>
-                      <Text style={{ fontSize: 16, color: colors.muted, lineHeight: 26 }}>
-                        {question.topic_explanation}
-                      </Text>
-                    </Card>
-
-                    {/* Mnemonic */}
-                    <Pressable onPress={() => setShowMnemonic(!showMnemonic)}>
-                      {({ hovered }: any) => (
-                        <Card
-                          style={{
-                            padding: 28,
-                            marginBottom: 20,
-                            borderLeftWidth: 4,
-                            borderLeftColor: colors.warning,
-                            backgroundColor: hovered ? colors.surfaceHover : colors.card,
-                          }}
-                        >
-                          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                              <MaterialIcons name="lightbulb" size={24} color={colors.warning} />
-                              <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
-                                Memory Tip
-                              </Text>
-                            </View>
-                            <MaterialIcons
-                              name={showMnemonic ? "expand-less" : "expand-more"}
-                              size={28}
-                              color={colors.muted}
-                            />
-                          </View>
-                          {showMnemonic && (
-                            <Text style={{ fontSize: 16, color: colors.foreground, fontStyle: 'italic', marginTop: 16, lineHeight: 26 }}>
-                              {question.mnemonic}
-                            </Text>
-                          )}
-                        </Card>
-                      )}
-                    </Pressable>
-
-                    {/* Incorrect Answer Explanations */}
-                    <Card style={{ padding: 28, marginBottom: 20 }}>
-                      <Pressable
-                        onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
-                      >
-                        {({ hovered }: any) => (
-                          <View style={{
+                        <Pressable
+                          onPress={() => setExplanationPanelOpen(!explanationPanelOpen)}
+                          style={({ hovered }: any) => ({
                             flexDirection: 'row',
                             alignItems: 'center',
-                            gap: 14,
-                            opacity: hovered ? 0.8 : 1,
-                          }}>
-                            <View style={{
-                              width: 24,
-                              height: 24,
-                              borderRadius: 6,
-                              borderWidth: 2,
-                              borderColor: colors.primary,
-                              backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}>
-                              {showIncorrectExplanations && (
-                                <MaterialIcons name="check" size={16} color="#FFFFFF" />
-                              )}
-                            </View>
-                            <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
-                              Show explanations for wrong answers
-                            </Text>
-                          </View>
-                        )}
-                      </Pressable>
-
-                      {showIncorrectExplanations && question.incorrect_explanations && (
-                        <View style={{ marginTop: 20, gap: 16 }}>
-                          {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
-                            <View
-                              key={option}
-                              style={{
-                                padding: 16,
-                                backgroundColor: colors.errorMuted,
-                                borderRadius: 10,
-                                borderLeftWidth: 4,
-                                borderLeftColor: colors.error,
-                              }}
-                            >
-                              <Text style={{ fontSize: 16, fontWeight: '600', color: colors.error, marginBottom: 8 }}>
-                                Why {option.toUpperCase()} is incorrect:
-                              </Text>
-                              <Text style={{ fontSize: 15, color: colors.foreground, lineHeight: 24 }}>
-                                {explanation}
-                              </Text>
-                            </View>
-                          ))}
-                        </View>
-                      )}
+                            gap: 4,
+                            padding: 6,
+                            borderRadius: 6,
+                            backgroundColor: hovered ? colors.primary : colors.primaryMuted,
+                          })}
+                        >
+                          <MaterialIcons name={explanationPanelOpen ? "close" : "info"} size={16} color={explanationPanelOpen ? '#FFF' : colors.primary} />
+                          <Text style={{ fontSize: 11, fontWeight: '600', color: explanationPanelOpen ? '#FFF' : colors.primary }}>
+                            {explanationPanelOpen ? 'Close' : 'Explain'}
+                          </Text>
+                        </Pressable>
+                      </View>
                     </Card>
 
-                    {/* Visual Diagram */}
-                    {question.image_url && (
-                      <Pressable onPress={() => setZoomedImageUrl(question.image_url)} style={{ marginBottom: 28 }}>
-                        {({ hovered }: any) => (
-                          <Card style={{
-                            padding: 0,
-                            overflow: 'hidden',
-                            borderWidth: 2,
-                            borderColor: hovered ? colors.primary : colors.border,
-                            transform: [{ scale: hovered ? 1.01 : 1 }],
-                          }}>
-                            <Image
-                              source={{ uri: question.image_url }}
-                              style={{ width: '100%', aspectRatio: 1, borderRadius: 12 }}
-                              resizeMode="cover"
-                            />
-                          </Card>
-                        )}
-                      </Pressable>
-                    )}
-
-                    {/* Next Button */}
+                    {/* Next Button - Always visible */}
                     <Button
                       variant="primary"
-                      size="lg"
+                      size="md"
                       fullWidth
-                      icon={<MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" />}
+                      icon={<MaterialIcons name="arrow-forward" size={16} color="#FFFFFF" />}
                       iconPosition="right"
                       onPress={nextQuestion}
                     >
-                      {currentIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                      {currentIndex < quizQuestions.length - 1 ? "Next" : "Results"}
                     </Button>
-                  </ScrollView>
+
+                    {/* Horizontal Fly-out Explanation Panel */}
+                    {explanationPanelOpen && (
+                      <View
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          right: '100%',
+                          marginRight: 12,
+                          width: 420,
+                          maxHeight: 420,
+                          backgroundColor: colors.card,
+                          borderRadius: 12,
+                          borderWidth: 1,
+                          borderColor: colors.border,
+                          shadowColor: '#000',
+                          shadowOffset: { width: -4, height: 4 },
+                          shadowOpacity: 0.15,
+                          shadowRadius: 12,
+                          zIndex: 100,
+                        }}
+                      >
+                        <ScrollView
+                          style={{ flex: 1, maxHeight: 420 }}
+                          contentContainerStyle={{ padding: 14 }}
+                          showsVerticalScrollIndicator={true}
+                        >
+                          {/* Explanation - 25% smaller font */}
+                          <View style={{ marginBottom: 10 }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                              <MaterialIcons name="info" size={14} color={colors.primary} />
+                              <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>
+                                Explanation
+                              </Text>
+                            </View>
+                            <Text style={{ fontSize: 11, color: colors.muted, lineHeight: 16 }}>
+                              {question.topic_explanation}
+                            </Text>
+                          </View>
+
+                          {/* Mnemonic - 25% smaller font */}
+                          <View style={{
+                            padding: 10,
+                            backgroundColor: colors.warningMuted,
+                            borderRadius: 8,
+                            borderLeftWidth: 3,
+                            borderLeftColor: colors.warning,
+                            marginBottom: 10,
+                          }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                              <MaterialIcons name="lightbulb" size={14} color={colors.warning} />
+                              <Text style={{ fontSize: 11, fontWeight: '600', color: colors.foreground }}>
+                                Memory Tip
+                              </Text>
+                            </View>
+                            <Text style={{ fontSize: 10, color: colors.foreground, fontStyle: 'italic', lineHeight: 14 }}>
+                              {question.mnemonic}
+                            </Text>
+                          </View>
+
+                          {/* Incorrect Explanations Toggle - 25% smaller */}
+                          {question.incorrect_explanations && (
+                            <View style={{ marginBottom: 10 }}>
+                              <Pressable
+                                onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
+                                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}
+                              >
+                                <View style={{
+                                  width: 14,
+                                  height: 14,
+                                  borderRadius: 3,
+                                  borderWidth: 1.5,
+                                  borderColor: colors.primary,
+                                  backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}>
+                                  {showIncorrectExplanations && (
+                                    <MaterialIcons name="check" size={10} color="#FFFFFF" />
+                                  )}
+                                </View>
+                                <Text style={{ fontSize: 10, fontWeight: '600', color: colors.foreground }}>
+                                  Why other answers are wrong
+                                </Text>
+                              </Pressable>
+
+                              {showIncorrectExplanations && (
+                                <View style={{ gap: 6 }}>
+                                  {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
+                                    <View
+                                      key={option}
+                                      style={{
+                                        padding: 8,
+                                        backgroundColor: colors.errorMuted,
+                                        borderRadius: 6,
+                                        borderLeftWidth: 2,
+                                        borderLeftColor: colors.error,
+                                      }}
+                                    >
+                                      <Text style={{ fontSize: 10, fontWeight: '600', color: colors.error, marginBottom: 2 }}>
+                                        {option.toUpperCase()}:
+                                      </Text>
+                                      <Text style={{ fontSize: 9, color: colors.foreground, lineHeight: 13 }}>
+                                        {explanation}
+                                      </Text>
+                                    </View>
+                                  ))}
+                                </View>
+                              )}
+                            </View>
+                          )}
+
+                          {/* Visual Diagram - smaller */}
+                          {question.image_url && (
+                            <Pressable onPress={() => setZoomedImageUrl(question.image_url)}>
+                              <View style={{
+                                borderRadius: 8,
+                                overflow: 'hidden',
+                                borderWidth: 1,
+                                borderColor: colors.border,
+                              }}>
+                                <Image
+                                  source={{ uri: question.image_url }}
+                                  style={{ width: '100%', height: 120 }}
+                                  resizeMode="cover"
+                                />
+                              </View>
+                            </Pressable>
+                          )}
+                        </ScrollView>
+                      </View>
+                    )}
                   </View>
                 )}
               </View>
@@ -840,11 +861,11 @@ export default function QuizScreen() {
                 backgroundColor: 'rgba(0, 0, 0, 0.9)',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: 40,
+                padding: 20,
               }}
             >
               <Pressable onPress={() => setZoomedImageUrl(null)} style={{ position: 'absolute', top: 40, right: 40, zIndex: 10 }}>
-                <MaterialIcons name="close" size={36} color="#FFFFFF" />
+                <MaterialIcons name="close" size={24} color="#FFFFFF" />
               </Pressable>
               {zoomedImageUrl && (
                 <Image

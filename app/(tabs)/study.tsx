@@ -45,6 +45,7 @@ export default function StudyScreen() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(true);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
+  const [explanationExpanded, setExplanationExpanded] = useState(true);
   const [fontSize, setFontSize] = useState<FontSizeOption>('medium');
 
   const loadData = useCallback(async () => {
@@ -119,7 +120,7 @@ export default function StudyScreen() {
             <Container>
               {/* Header */}
               <View style={{ paddingTop: 32, paddingBottom: 24 }}>
-                <Text style={{ fontSize: 32, fontWeight: '700', color: colors.foreground }}>
+                <Text style={{ fontSize: 13, fontWeight: '700', color: colors.foreground }}>
                   Study Mode
                 </Text>
                 <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>
@@ -128,8 +129,8 @@ export default function StudyScreen() {
               </View>
 
               {/* Stats Overview */}
-              <View style={{ flexDirection: 'row', gap: 20, marginBottom: 32 }}>
-                <Card style={{ flex: 1, padding: 24 }}>
+              <View style={{ flexDirection: 'row', gap: 12, marginBottom: 16 }}>
+                <Card style={{ flex: 1, padding: 12 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
                     <View style={{
                       width: 56,
@@ -142,7 +143,7 @@ export default function StudyScreen() {
                       <MaterialIcons name="quiz" size={28} color={colors.primary} />
                     </View>
                     <View>
-                      <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
+                      <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
                         {questions.length}
                       </Text>
                       <Text style={{ fontSize: 14, color: colors.muted }}>Total Questions</Text>
@@ -150,7 +151,7 @@ export default function StudyScreen() {
                   </View>
                 </Card>
 
-                <Card style={{ flex: 1, padding: 24 }}>
+                <Card style={{ flex: 1, padding: 12 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
                     <View style={{
                       width: 56,
@@ -163,7 +164,7 @@ export default function StudyScreen() {
                       <MaterialIcons name="check-circle" size={28} color={colors.success} />
                     </View>
                     <View>
-                      <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
+                      <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
                         {progress?.totalCorrect || 0}
                       </Text>
                       <Text style={{ fontSize: 14, color: colors.muted }}>Mastered</Text>
@@ -171,7 +172,7 @@ export default function StudyScreen() {
                   </View>
                 </Card>
 
-                <Card style={{ flex: 1, padding: 24 }}>
+                <Card style={{ flex: 1, padding: 12 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
                     <View style={{
                       width: 56,
@@ -184,7 +185,7 @@ export default function StudyScreen() {
                       <MaterialIcons name="bookmark" size={28} color={colors.warning} />
                     </View>
                     <View>
-                      <Text style={{ fontSize: 28, fontWeight: '700', color: colors.foreground }}>
+                      <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
                         {bookmarks.length}
                       </Text>
                       <Text style={{ fontSize: 14, color: colors.muted }}>Bookmarked</Text>
@@ -200,12 +201,12 @@ export default function StudyScreen() {
                     setSelectedCategory("Bookmarks");
                     setViewMode("questions");
                   }}
-                  style={{ marginBottom: 24 }}
+                  style={{ marginBottom: 12 }}
                 >
                   {({ hovered }: any) => (
                     <Card
                       style={{
-                        padding: 24,
+                        padding: 12,
                         borderWidth: 2,
                         borderColor: colors.warning,
                         backgroundColor: hovered ? colors.surfaceHover : colors.surface,
@@ -224,7 +225,7 @@ export default function StudyScreen() {
                             <MaterialIcons name="bookmark" size={24} color={colors.warning} />
                           </View>
                           <View>
-                            <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground }}>
+                            <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>
                               Bookmarked Questions
                             </Text>
                             <Text style={{ fontSize: 14, color: colors.muted }}>
@@ -240,7 +241,7 @@ export default function StudyScreen() {
               )}
 
               {/* Categories Grid */}
-              <Text style={{ fontSize: 20, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
+              <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground, marginBottom: 16 }}>
                 Browse by Category
               </Text>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
@@ -262,7 +263,7 @@ export default function StudyScreen() {
                       {({ hovered, pressed }: any) => (
                         <Card
                           style={{
-                            padding: 24,
+                            padding: 12,
                             backgroundColor: hovered ? colors.surfaceHover : colors.surface,
                             transform: [{ scale: pressed ? 0.99 : 1 }],
                           }}
@@ -282,7 +283,7 @@ export default function StudyScreen() {
                               {progressPercent}%
                             </Badge>
                           </View>
-                          <Text style={{ fontSize: 18, fontWeight: '600', color: colors.foreground, marginTop: 16 }}>
+                          <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground, marginTop: 16 }}>
                             {category}
                           </Text>
                           <Text style={{ fontSize: 14, color: colors.muted, marginTop: 4 }}>
@@ -338,7 +339,7 @@ export default function StudyScreen() {
                   <Text style={{ fontSize: 14, color: colors.muted }}>Back</Text>
                 </Pressable>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 24, fontWeight: '700', color: colors.foreground }}>
+                  <Text style={{ fontSize: 14, fontWeight: '700', color: colors.foreground }}>
                     {selectedCategory}
                   </Text>
                   <Text style={{ fontSize: 14, color: colors.muted }}>
@@ -452,9 +453,9 @@ export default function StudyScreen() {
 
               {/* Question Detail Panel (Desktop) */}
               {selectedQuestion && (
-                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 32 }}>
+                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16 }}>
                   {/* Question Header */}
-                  <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 24 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 12 }}>
                     <View style={{ flex: 1 }}>
                       <Badge variant="primary" size="md">{selectedQuestion.category}</Badge>
                       <Text style={{ fontSize: 12, color: colors.muted, marginTop: 8 }}>
@@ -479,12 +480,12 @@ export default function StudyScreen() {
                   </View>
 
                   {/* Question Text */}
-                  <Text style={{ fontSize: 22, fontWeight: '600', color: colors.foreground, lineHeight: 32, marginBottom: 28 }}>
+                  <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground, lineHeight: 32, marginBottom: 14 }}>
                     {selectedQuestion.rewrite_question}
                   </Text>
 
                   {/* Answer Options */}
-                  <View style={{ gap: 12, marginBottom: 28 }}>
+                  <View style={{ gap: 12, marginBottom: 14 }}>
                     {Object.entries(selectedQuestion.options).map(([key, value]) => {
                       const isCorrect = key === selectedQuestion.correct_option;
 
@@ -526,7 +527,7 @@ export default function StudyScreen() {
                   </View>
 
                   {/* Explanation Card */}
-                  <Card style={{ padding: 24, marginBottom: 16 }}>
+                  <Card style={{ padding: 12, marginBottom: 16 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                       <MaterialIcons name="info" size={20} color={colors.primary} />
                       <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
@@ -539,7 +540,7 @@ export default function StudyScreen() {
                   </Card>
 
                   {/* Mnemonic Card */}
-                  <Card style={{ padding: 24, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
+                  <Card style={{ padding: 12, borderLeftWidth: 4, borderLeftColor: colors.warning }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                       <MaterialIcons name="lightbulb" size={20} color={colors.warning} />
                       <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground }}>
@@ -629,8 +630,8 @@ export default function StudyScreen() {
               </View>
 
               {/* Question Content */}
-              <Card style={{ padding: 32, maxWidth: 800 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 24 }}>
+              <Card style={{ padding: 16, maxWidth: 800 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 12 }}>
                   <Badge variant="primary" size="md">{selectedQuestion.category}</Badge>
                   <Pressable onPress={() => handleBookmark(selectedQuestion.id)}>
                     <MaterialIcons
@@ -641,11 +642,11 @@ export default function StudyScreen() {
                   </Pressable>
                 </View>
 
-                <Text style={{ fontSize: 24, fontWeight: '600', color: colors.foreground, lineHeight: 34, marginBottom: 32 }}>
+                <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground, lineHeight: 34, marginBottom: 16 }}>
                   {selectedQuestion.rewrite_question}
                 </Text>
 
-                <View style={{ gap: 12, marginBottom: 32 }}>
+                <View style={{ gap: 12, marginBottom: 16 }}>
                   {Object.entries(selectedQuestion.options).map(([key, value]) => {
                     const isCorrect = key === selectedQuestion.correct_option;
                     return (

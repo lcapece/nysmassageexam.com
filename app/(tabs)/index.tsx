@@ -8,6 +8,7 @@ import * as Haptics from "expo-haptics";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { useThemeContext } from "@/lib/theme-provider";
 import { Container, useIsDesktop } from "@/components/desktop/container";
 import { Card, StatCard } from "@/components/desktop/card";
 import { Button } from "@/components/desktop/button";
@@ -27,6 +28,7 @@ import {
 export default function HomeScreen() {
   const router = useRouter();
   const colors = useColors();
+  const { colorScheme, setColorScheme } = useThemeContext();
   const isDesktop = useIsDesktop();
   const { width } = useWindowDimensions();
   const [progress, setProgress] = useState<StudyProgress | null>(null);
@@ -35,6 +37,14 @@ export default function HomeScreen() {
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
   const [isPurchased, setIsPurchased] = useState(true);
   const [isBannerExpanded, setIsBannerExpanded] = useState(false); // Collapsed by default
+
+  const toggleTheme = () => {
+    const newTheme = colorScheme === "dark" ? "light" : "dark";
+    setColorScheme(newTheme);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  };
 
   // Default to March 6, 2026 exam if no exam date is set
   const DEFAULT_EXAM_DATE = '2026-03-06';
@@ -108,9 +118,31 @@ export default function HomeScreen() {
         <View style={{ flex: 1, backgroundColor: colors.background, padding: 24 }}>
           {/* Compact Header Row */}
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-            <Text style={{ fontSize: 24, fontWeight: '700', color: colors.foreground }}>
-              Study Dashboard
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+              <Text style={{ fontSize: 24, fontWeight: '700', color: colors.foreground }}>
+                Study Dashboard
+              </Text>
+              {/* Theme Toggle */}
+              <Pressable
+                onPress={toggleTheme}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: colors.surface,
+                  borderWidth: 1,
+                  borderColor: colors.border,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons
+                  name={colorScheme === 'dark' ? 'light-mode' : 'dark-mode'}
+                  size={20}
+                  color={colors.foreground}
+                />
+              </Pressable>
+            </View>
             {examDate && (
               <View style={{
                 flexDirection: 'row',
@@ -289,8 +321,32 @@ export default function HomeScreen() {
       >
         {/* Header */}
         <View className="px-5 pt-4 pb-2">
-          <Text className="text-3xl font-bold text-foreground">NYS Massage Exam</Text>
-          <Text className="text-base text-muted mt-1">Study Dashboard</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <View>
+              <Text className="text-3xl font-bold text-foreground">NYS Massage Exam</Text>
+              <Text className="text-base text-muted mt-1">Study Dashboard</Text>
+            </View>
+            {/* Theme Toggle */}
+            <Pressable
+              onPress={toggleTheme}
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 22,
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <MaterialIcons
+                name={colorScheme === 'dark' ? 'light-mode' : 'dark-mode'}
+                size={22}
+                color={colors.foreground}
+              />
+            </Pressable>
+          </View>
         </View>
 
         {/* Trial Mode Banner */}

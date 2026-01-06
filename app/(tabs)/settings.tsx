@@ -264,21 +264,21 @@ onPress={() => setShowSubscription(true)}
               },
             ]}
         >
-          <View 
+          <View
             className="w-12 h-12 rounded-full items-center justify-center"
-            style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
+            style={{ backgroundColor: colorScheme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.25)' }}
           >
-            <MaterialIcons name="star" size={24} color={colors.background} />
+            <MaterialIcons name="star" size={24} color={colorScheme === 'dark' ? colors.foreground : '#FFFFFF'} />
           </View>
           <View className="flex-1 ml-4">
-            <Text className="text-lg font-semibold" style={{ color: colors.background }}>
+            <Text className="text-lg font-semibold" style={{ color: '#FFFFFF' }}>
               Upgrade to Pro
             </Text>
-            <Text className="text-sm opacity-80" style={{ color: colors.background }}>
+            <Text className="text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
               One-time purchase • $37
             </Text>
           </View>
-          <MaterialIcons name="chevron-right" size={24} color={colors.background} />
+          <MaterialIcons name="chevron-right" size={24} color="#FFFFFF" />
         </Pressable>
 
         {/* Exam Date Selection */}

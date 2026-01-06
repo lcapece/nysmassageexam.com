@@ -1,0 +1,11 @@
+# robots.txt for nysmassageexam.com
+User-agent: *
+Allow: /
+
+# Disallow admin and private routes
+Disallow: /oauth/
+Disallow: /dev/
+Disallow: /_expo/
+
+# Sitemap location
+Sitemap: https://nysmassageexam.com/sitemap.xml

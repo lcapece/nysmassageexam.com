@@ -64,6 +64,12 @@ const config: ExpoConfig = {
     bundler: "metro",
     output: "static",
     favicon: "./assets/images/favicon.png",
+    name: "NYS Massage Exam Prep",
+    shortName: "NYS Massage",
+    description: "The only study guide built specifically for the NYS Massage Therapy Licensing Exam. 287 questions with mnemonics. 90% pass rate.",
+    lang: "en",
+    themeColor: "#2A9D8F",
+    backgroundColor: "#ffffff",
   },
   plugins: [
     "expo-router",

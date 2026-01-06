@@ -19,6 +19,7 @@ import { Container, useIsDesktop } from "@/components/desktop/container";
 import { Card } from "@/components/desktop/card";
 import { Badge } from "@/components/desktop/badge";
 import Svg, { Rect, Text as SvgText, Circle, G } from "react-native-svg";
+import { SEOHead, SEO_CONFIG } from "@/components/seo-head";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
@@ -327,6 +328,12 @@ export default function LandingScreen() {
 
   return (
     <View className="flex-1 bg-background">
+      <SEOHead
+        title={SEO_CONFIG.landing.title}
+        description={SEO_CONFIG.landing.description}
+        keywords={SEO_CONFIG.landing.keywords}
+        canonicalPath="/landing"
+      />
       <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
         {/* Navigation Bar */}
         <View style={{ backgroundColor: colors.background, borderBottomWidth: 1, borderBottomColor: colors.border }}>

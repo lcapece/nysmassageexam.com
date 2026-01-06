@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npx expo export --platform web"
+  command = "npm install && mkdir -p node_modules/react-native-css-interop/.cache && touch node_modules/react-native-css-interop/.cache/web.css && npx expo export --platform web"
   publish = "dist"
 
 [build.environment]

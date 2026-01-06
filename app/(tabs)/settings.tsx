@@ -158,7 +158,7 @@ export default function SettingsScreen() {
           <View className="px-5 mt-6">
             <Pressable
               onPress={() => {
-                Linking.openURL("https://square.link/u/GNYVqR97");
+                Linking.openURL("https://square.link/u/hJT8Zc0x");
               }}
               style={({ pressed }) => [
                 {

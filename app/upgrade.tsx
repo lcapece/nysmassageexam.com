@@ -16,7 +16,7 @@ import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
 
 // Square Payment Link
-const SQUARE_PAYMENT_URL = "https://square.link/u/GNYVqR97";
+const SQUARE_PAYMENT_URL = "https://square.link/u/hJT8Zc0x";
 
 // Supabase Edge Function URL (for restore purchases)
 const SUPABASE_URL = "https://ekklokrukxmqlahtonnc.supabase.co";

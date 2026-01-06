@@ -8,7 +8,6 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useColors } from "@/hooks/use-colors";
 import { useAuth } from "@/hooks/use-auth";
@@ -69,9 +68,11 @@ const STATS = [
 
 function CountdownTimer({ targetDate }: { targetDate: Date }) {
   const colors = useColors();
+  const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
+    setMounted(true);
     const calculateTimeLeft = () => {
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
@@ -96,6 +97,35 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
     { value: timeLeft.minutes, label: "Min" },
     { value: timeLeft.seconds, label: "Sec" },
   ];
+
+  // Don't render countdown values until mounted (prevents hydration mismatch)
+  if (!mounted) {
+    return (
+      <View className="flex-row justify-center" style={{ gap: 12 }}>
+        {units.map((unit, index) => (
+          <View key={index} className="items-center">
+            <View
+              className="rounded-xl items-center justify-center"
+              style={{
+                backgroundColor: colors.elevated,
+                borderWidth: 1,
+                borderColor: colors.border,
+                width: 72,
+                height: 72,
+              }}
+            >
+              <Text style={{ fontSize: 28, fontWeight: "700", color: colors.primary }}>
+                --
+              </Text>
+            </View>
+            <Text style={{ fontSize: 11, color: colors.muted, marginTop: 6, fontWeight: "500" }}>
+              {unit.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+    );
+  }
 
   return (
     <View className="flex-row justify-center" style={{ gap: 12 }}>
@@ -148,7 +178,7 @@ export default function LandingScreen() {
   };
 
   const handleGetFullAccess = () => {
-    router.push("/upgrade");
+    router.push("/upgrade" as any);
   };
 
   return (
@@ -601,7 +631,7 @@ export default function LandingScreen() {
                     textAlign: "center",
                   }}
                 >
-                  Secure payment via Stripe. 30-day money-back guarantee.
+                  Secure payment via Square. 30-day money-back guarantee.
                 </Text>
               </View>
             </Card>

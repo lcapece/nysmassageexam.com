@@ -114,21 +114,21 @@ export default function SettingsScreen() {
           <View className="mx-5 mt-6 bg-surface rounded-2xl p-5 border-2" style={{ borderColor: colors.primary }}>
             <View className="flex-row items-center justify-between">
               <View>
-                <Text className="text-lg font-semibold text-foreground">Weekly Access</Text>
-                <Text className="text-sm text-muted">Cancel anytime</Text>
+                <Text className="text-lg font-semibold text-foreground">Lifetime Access</Text>
+                <Text className="text-sm text-muted">One-time purchase</Text>
               </View>
               <View className="items-end">
-                <Text className="text-3xl font-bold" style={{ color: colors.primary }}>$4.99</Text>
-                <Text className="text-sm text-muted">/week</Text>
+                <Text className="text-3xl font-bold" style={{ color: colors.primary }}>$37</Text>
+                <Text className="text-sm text-muted">forever</Text>
               </View>
             </View>
-            
-            <View 
+
+            <View
               className="mt-4 px-3 py-2 rounded-lg self-start"
               style={{ backgroundColor: colors.success + '20' }}
             >
               <Text className="text-sm font-medium" style={{ color: colors.success }}>
-                7-day free trial included
+                No subscription required
               </Text>
             </View>
           </View>
@@ -158,11 +158,7 @@ export default function SettingsScreen() {
           <View className="px-5 mt-6">
             <Pressable
               onPress={() => {
-                Alert.alert(
-                  "Demo Mode",
-                  "This is a demo subscription screen. In the production app, this would connect to Apple's StoreKit for in-app purchases.",
-                  [{ text: "OK" }]
-                );
+                Linking.openURL("https://square.link/u/GNYVqR97");
               }}
               style={({ pressed }) => [
                 {
@@ -173,12 +169,12 @@ export default function SettingsScreen() {
               className="rounded-xl p-4 items-center"
             >
               <Text className="text-lg font-semibold" style={{ color: colors.background }}>
-                Start Free Trial
+                Buy Now - $37
               </Text>
             </Pressable>
-            
+
             <Text className="text-xs text-muted text-center mt-3">
-              After your 7-day free trial, you'll be charged $4.99/week. Cancel anytime in Settings.
+              One-time purchase. Instant access to all features forever.
             </Text>
           </View>
 
@@ -270,7 +266,7 @@ onPress={() => setShowSubscription(true)}
               Upgrade to Pro
             </Text>
             <Text className="text-sm opacity-80" style={{ color: colors.background }}>
-              7-day free trial • $4.99/week
+              One-time purchase • $37
             </Text>
           </View>
           <MaterialIcons name="chevron-right" size={24} color={colors.background} />

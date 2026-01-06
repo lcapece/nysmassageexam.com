@@ -15,9 +15,11 @@ import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
 
-// Supabase Edge Function URL
+// Square Payment Link
+const SQUARE_PAYMENT_URL = "https://square.link/u/GNYVqR97";
+
+// Supabase Edge Function URL (for restore purchases)
 const SUPABASE_URL = "https://ekklokrukxmqlahtonnc.supabase.co";
-const CHECKOUT_FUNCTION_URL = `${SUPABASE_URL}/functions/v1/nys-massage-stripe-checkout`;
 
 // Valid promo codes - LNC3690 gives $37 off (100% discount = free)
 const PROMO_CODES: Record<string, { discount: number; description: string }> = {
@@ -78,58 +80,10 @@ export default function UpgradeScreen() {
   };
 
   const handlePurchase = async () => {
-    // Validate email
-    if (!email.trim()) {
-      setEmailError("Please enter your email address");
-      return;
-    }
-    if (!validateEmail(email.trim())) {
-      setEmailError("Please enter a valid email address");
-      return;
-    }
-    setEmailError("");
-
-    setLoading(true);
-
-    try {
-      // Get the current URL for success/cancel redirects
-      const baseUrl = Platform.OS === 'web'
-        ? window.location.origin
-        : 'https://nysmassageexam.com';
-
-      const response = await fetch(CHECKOUT_FUNCTION_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email.trim().toLowerCase(),
-          promoCode: promoApplied ? promoCode.trim().toUpperCase() : null,
-          deviceId: null, // Could add device ID tracking later
-          successUrl: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancelUrl: `${baseUrl}/upgrade`,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        if (data.alreadyPurchased) {
-          // User already has access
-          await setPurchased(true);
-          if (Platform.OS === 'web') {
-            window.alert("You already have full access! Restoring your purchase...");
-          } else {
-            Alert.alert("Already Purchased", "You already have full access! Restoring your purchase...");
-          }
-          router.replace("/(tabs)");
-          return;
-        }
-        throw new Error(data.error || "Failed to create checkout session");
-      }
-
-      // If free with promo code
-      if (data.free) {
+    // If promo code gives 100% discount (free)
+    if (isFree && promoApplied) {
+      setLoading(true);
+      try {
         await setPurchased(true);
         if (Platform.OS === 'web') {
           window.alert("Success! Full access unlocked with promo code.");
@@ -138,25 +92,16 @@ export default function UpgradeScreen() {
         }
         router.replace("/(tabs)");
         return;
+      } finally {
+        setLoading(false);
       }
+    }
 
-      // Redirect to Stripe checkout
-      if (data.checkoutUrl) {
-        if (Platform.OS === 'web') {
-          window.location.href = data.checkoutUrl;
-        } else {
-          await Linking.openURL(data.checkoutUrl);
-        }
-      }
-    } catch (error: any) {
-      console.error("Purchase error:", error);
-      if (Platform.OS === 'web') {
-        window.alert(error.message || "Failed to process purchase. Please try again.");
-      } else {
-        Alert.alert("Error", error.message || "Failed to process purchase. Please try again.");
-      }
-    } finally {
-      setLoading(false);
+    // Open Square payment link
+    if (Platform.OS === 'web') {
+      window.open(SQUARE_PAYMENT_URL, '_blank');
+    } else {
+      await Linking.openURL(SQUARE_PAYMENT_URL);
     }
   };
 
@@ -259,34 +204,6 @@ export default function UpgradeScreen() {
           ))}
         </View>
 
-        {/* Email Input */}
-        <View className="px-6 mb-4">
-          <View className="bg-surface rounded-xl border border-border p-4">
-            <Text className="text-foreground font-medium mb-3">Your Email Address</Text>
-            <TextInput
-              value={email}
-              onChangeText={(text) => {
-                setEmail(text);
-                setEmailError("");
-              }}
-              placeholder="email@example.com"
-              placeholderTextColor={colors.muted}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              autoComplete="email"
-              className="bg-background border border-border rounded-lg px-4 py-3 text-foreground"
-              style={{ color: colors.foreground }}
-            />
-            {emailError ? (
-              <Text className="text-error text-sm mt-2">{emailError}</Text>
-            ) : (
-              <Text className="text-muted text-xs mt-2">
-                We'll send your receipt to this email. Also used to restore purchases.
-              </Text>
-            )}
-          </View>
-        </View>
-
         {/* Promo Code Section */}
         <View className="px-6 mb-4">
           <View className="bg-surface rounded-xl border border-border p-4">
@@ -382,22 +299,49 @@ export default function UpgradeScreen() {
             </TouchableOpacity>
 
             <Text className="text-white/60 text-xs text-center mt-3">
-              {isFree ? '🎉 Enjoy your free access!' : '🔒 Secure payment via Stripe'}
+              {isFree ? '🎉 Enjoy your free access!' : '🔒 Secure payment via Square'}
             </Text>
           </View>
         </View>
 
-        {/* Restore */}
+        {/* Restore Purchase */}
         <View className="px-6 mb-8">
-          <TouchableOpacity
-            onPress={handleRestore}
-            disabled={loading}
-            className="py-3"
-          >
-            <Text className="text-primary text-center font-medium">
-              Restore Previous Purchase
+          <View className="bg-surface rounded-xl border border-border p-4">
+            <Text className="text-foreground font-medium mb-3">Already purchased?</Text>
+            <Text className="text-muted text-sm mb-3">
+              Enter the email you used at checkout to restore your access.
             </Text>
-          </TouchableOpacity>
+            <View className="flex-row gap-2">
+              <TextInput
+                value={email}
+                onChangeText={(text) => {
+                  setEmail(text);
+                  setEmailError("");
+                }}
+                placeholder="email@example.com"
+                placeholderTextColor={colors.muted}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                autoComplete="email"
+                className="flex-1 bg-background border border-border rounded-lg px-4 py-3 text-foreground"
+                style={{ color: colors.foreground }}
+              />
+              <TouchableOpacity
+                onPress={handleRestore}
+                disabled={loading}
+                className="bg-primary/10 rounded-lg px-4 py-3"
+              >
+                {loading ? (
+                  <ActivityIndicator size="small" color={colors.primary} />
+                ) : (
+                  <Text className="text-primary font-medium">Restore</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+            {emailError ? (
+              <Text className="text-error text-sm mt-2">{emailError}</Text>
+            ) : null}
+          </View>
         </View>
 
         {/* Comparison */}
@@ -446,7 +390,7 @@ export default function UpgradeScreen() {
         {/* Footer */}
         <View className="px-6 pb-8">
           <Text className="text-muted text-xs text-center">
-            Secure payment processed by Stripe.
+            Secure payment processed by Square.
             By purchasing, you agree to our Terms of Service.
           </Text>
         </View>

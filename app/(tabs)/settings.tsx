@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, Alert, Switch, Linking } from "react-native";
+import { ScrollView, Text, View, Pressable, Alert, Switch, Linking, Modal } from "react-native";
 import { useRouter } from "expo-router";
 import { useFocusEffect } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -18,6 +18,9 @@ import {
   Settings,
   EXAM_DATES,
 } from "@/lib/study-store";
+import { getUserProfile, saveUserProfile, isAdmin, ADMIN_EMAIL, UserProfile } from "@/lib/leaderboard-service";
+import { ProfileSettings } from "@/components/profile-settings";
+import { AdminPanel } from "@/components/admin-panel";
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -28,14 +31,19 @@ export default function SettingsScreen() {
   const [examDate, setExamDate] = useState<string | null>(null);
   const [showExamPicker, setShowExamPicker] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [showProfileSettings, setShowProfileSettings] = useState(false);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
 
   const loadData = useCallback(async () => {
-    const [s, exam] = await Promise.all([
+    const [s, exam, profile] = await Promise.all([
       getSettings(),
       getSelectedExamDate(),
+      getUserProfile(),
     ]);
     setSettings(s);
     setExamDate(exam);
+    setUserProfile(profile);
   }, []);
 
   useFocusEffect(
@@ -76,8 +84,8 @@ export default function SettingsScreen() {
       "Are you sure you want to reset all your progress? This cannot be undone.",
       [
         { text: "Cancel", style: "cancel" },
-        { 
-          text: "Reset", 
+        {
+          text: "Reset",
           style: "destructive",
           onPress: async () => {
             await resetProgress();
@@ -90,6 +98,60 @@ export default function SettingsScreen() {
       ]
     );
   };
+
+  const handleProfileSave = async (displayName: string, showOnLeaderboard: boolean) => {
+    if (userProfile) {
+      const updatedProfile = { ...userProfile, displayName, showOnLeaderboard };
+      await saveUserProfile(updatedProfile);
+      setUserProfile(updatedProfile);
+    }
+    setShowProfileSettings(false);
+    if (Platform.OS !== "web") {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    }
+  };
+
+  // Admin Panel Modal
+  if (showAdminPanel && userProfile?.email) {
+    return (
+      <ScreenContainer>
+        <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 100 }}>
+          <View className="px-5 pt-4">
+            <AdminPanel
+              userEmail={userProfile.email}
+              onClose={() => setShowAdminPanel(false)}
+            />
+          </View>
+        </ScrollView>
+      </ScreenContainer>
+    );
+  }
+
+  // Profile Settings Modal
+  if (showProfileSettings && userProfile?.email) {
+    return (
+      <ScreenContainer>
+        <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 100 }}>
+          <View className="px-5 pt-4 flex-row items-center mb-4">
+            <Pressable onPress={() => setShowProfileSettings(false)}>
+              <MaterialIcons name="arrow-back" size={28} color={colors.foreground} />
+            </Pressable>
+            <Text className="text-xl font-bold text-foreground ml-4">
+              Leaderboard Profile
+            </Text>
+          </View>
+          <View className="px-5">
+            <ProfileSettings
+              userEmail={userProfile.email}
+              initialDisplayName={userProfile.displayName}
+              initialShowOnLeaderboard={userProfile.showOnLeaderboard}
+              onSave={handleProfileSave}
+            />
+          </View>
+        </ScrollView>
+      </ScreenContainer>
+    );
+  }
 
   // Subscription Modal
   if (showSubscription) {
@@ -460,10 +522,65 @@ onPress={() => setShowSubscription(true)}
           </View>
         </View>
 
+        {/* Leaderboard Profile */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Leaderboard</Text>
+
+          <Pressable
+            onPress={() => setShowProfileSettings(true)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center flex-1">
+              <MaterialIcons name="leaderboard" size={24} color={colors.warning} />
+              <View className="ml-3 flex-1">
+                <Text className="text-base text-foreground">Leaderboard Profile</Text>
+                <Text className="text-sm text-muted">
+                  {userProfile?.displayName
+                    ? `Display name: ${userProfile.displayName}`
+                    : 'Set up your display name'}
+                </Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
+          {/* Admin Panel - only visible to admin */}
+          {userProfile?.email && isAdmin(userProfile.email) && (
+            <Pressable
+              onPress={() => setShowAdminPanel(true)}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: colors.error + '10',
+                  borderWidth: 1,
+                  borderColor: colors.error,
+                  opacity: pressed ? 0.8 : 1,
+                },
+              ]}
+              className="rounded-xl p-4 flex-row items-center justify-between"
+            >
+              <View className="flex-row items-center">
+                <MaterialIcons name="admin-panel-settings" size={24} color={colors.error} />
+                <Text className="text-base ml-3" style={{ color: colors.error }}>
+                  Admin Panel
+                </Text>
+              </View>
+              <MaterialIcons name="chevron-right" size={24} color={colors.error} />
+            </Pressable>
+          )}
+        </View>
+
         {/* Danger Zone */}
         <View className="mx-5 mt-6">
           <Text className="text-lg font-semibold text-foreground mb-3">Data</Text>
-          
+
           <Pressable
             onPress={handleResetProgress}
             style={({ pressed }) => [

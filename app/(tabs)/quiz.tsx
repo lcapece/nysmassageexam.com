@@ -27,6 +27,11 @@ import {
   startStudySession,
   syncProgressToServer,
 } from "@/lib/study-store";
+import {
+  startStudySession as startLeaderboardSession,
+  recordSessionAnswer,
+  syncProgressToServer as syncLeaderboardProgress,
+} from "@/lib/leaderboard-service";
 
 type QuizState = "setup" | "question" | "feedback" | "complete";
 
@@ -99,8 +104,9 @@ export default function QuizScreen() {
     setIsCorrect(null);
     setShowMnemonic(false);
 
-    // Start tracking study session for SMS progress sync
+    // Start tracking study session for SMS progress sync and leaderboard
     startStudySession();
+    startLeaderboardSession();
   };
 
   const handleAnswer = async (answer: string) => {
@@ -128,6 +134,9 @@ export default function QuizScreen() {
     }
 
     await recordAnswer(question.id, correct);
+
+    // Record for leaderboard tracking
+    recordSessionAnswer(correct, question.category);
   };
 
   const nextQuestion = () => {
@@ -154,8 +163,9 @@ export default function QuizScreen() {
     });
     setQuizState("complete");
 
-    // Sync progress to server for SMS reminders (non-blocking)
+    // Sync progress to server for SMS reminders and leaderboard (non-blocking)
     syncProgressToServer().catch(() => {});
+    syncLeaderboardProgress().catch(() => {});
   };
 
   const handleBookmark = async () => {

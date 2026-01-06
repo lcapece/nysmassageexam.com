@@ -24,6 +24,8 @@ import {
   questions,
   hasPurchased,
 } from "@/lib/study-store";
+import { Leaderboard } from "@/components/leaderboard";
+import { getUserProfile, isAdmin } from "@/lib/leaderboard-service";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -37,6 +39,7 @@ export default function HomeScreen() {
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
   const [isPurchased, setIsPurchased] = useState(true);
   const [isBannerExpanded, setIsBannerExpanded] = useState(false); // Collapsed by default
+  const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
 
   const toggleTheme = () => {
     const newTheme = colorScheme === "dark" ? "light" : "dark";
@@ -50,16 +53,18 @@ export default function HomeScreen() {
   const DEFAULT_EXAM_DATE = '2026-03-06';
 
   const loadData = useCallback(async () => {
-    const [prog, exam, purchased] = await Promise.all([
+    const [prog, exam, purchased, profile] = await Promise.all([
       getProgress(),
       getSelectedExamDate(),
       hasPurchased(),
+      getUserProfile(),
     ]);
     setProgress(prog);
     // Use default exam date if none is set
     const effectiveExamDate = exam || DEFAULT_EXAM_DATE;
     setExamDate(effectiveExamDate);
     setIsPurchased(purchased);
+    setUserEmail(profile?.email);
 
     setDaysUntilExam(calculateDaysUntilExam(effectiveExamDate));
     setRecommendedDaily(calculateRecommendedDailyQuestions(effectiveExamDate, prog));
@@ -269,42 +274,10 @@ export default function HomeScreen() {
               )}
             </Card>
 
-            {/* Right Column - Study Tip */}
-            <Card style={{ width: 260, padding: 16 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-                <MaterialIcons name="lightbulb" size={18} color={colors.warning} />
-                <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>Study Tip</Text>
-              </View>
-              <View style={{ padding: 12, backgroundColor: colors.warningMuted, borderRadius: 8, borderLeftWidth: 3, borderLeftColor: colors.warning }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-                  <MaterialIcons name={currentTip.icon} size={14} color={colors.warning} />
-                  <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>{currentTip.title}</Text>
-                </View>
-                <Text style={{ fontSize: 12, color: colors.muted, lineHeight: 18 }}>{currentTip.tip}</Text>
-              </View>
-
-              {/* Focus Areas - Compact */}
-              <View style={{ marginTop: 16 }}>
-                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground, marginBottom: 8 }}>Focus Areas</Text>
-                <View style={{ gap: 6 }}>
-                  {[
-                    { name: "Anatomy", percent: 35, color: colors.primary },
-                    { name: "Eastern Med", percent: 20, color: colors.success },
-                    { name: "Ethics", percent: 15, color: colors.warning },
-                  ].map((cat, i) => (
-                    <View key={i}>
-                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 }}>
-                        <Text style={{ fontSize: 10, color: colors.muted }}>{cat.name}</Text>
-                        <Text style={{ fontSize: 10, color: colors.muted }}>{cat.percent}%</Text>
-                      </View>
-                      <View style={{ height: 3, backgroundColor: colors.border, borderRadius: 2 }}>
-                        <View style={{ height: '100%', width: `${cat.percent}%`, backgroundColor: cat.color, borderRadius: 2 }} />
-                      </View>
-                    </View>
-                  ))}
-                </View>
-              </View>
-            </Card>
+            {/* Right Column - Leaderboard */}
+            <View style={{ width: 320 }}>
+              <Leaderboard currentUserEmail={userEmail} compact />
+            </View>
           </View>
         </View>
       </AppShell>
@@ -517,6 +490,11 @@ export default function HomeScreen() {
           <Text className="text-sm text-muted leading-5">
             {currentTip.tip}
           </Text>
+        </View>
+
+        {/* Leaderboard */}
+        <View className="mx-5 mt-6">
+          <Leaderboard currentUserEmail={userEmail} />
         </View>
       </ScrollView>
     </ScreenContainer>

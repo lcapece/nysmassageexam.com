@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { ScrollView, Text, View, Pressable, Dimensions, Platform, useWindowDimensions } from "react-native";
+import { ScrollView, Text, View, Pressable, Dimensions, Platform, useWindowDimensions, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { useFocusEffect } from "@react-navigation/native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -296,7 +296,11 @@ export default function HomeScreen() {
         <View className="px-5 pt-4 pb-2">
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <View>
-              <Text className="text-3xl font-bold text-foreground">NYS Massage Exam</Text>
+              <Image
+                source={require('../../assets/images/logo.png')}
+                style={{ width: 180, height: 45 }}
+                resizeMode="contain"
+              />
               <Text className="text-base text-muted mt-1">Study Dashboard</Text>
             </View>
             {/* Theme Toggle */}

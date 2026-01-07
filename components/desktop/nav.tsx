@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Platform, useWindowDimensions, ScrollView, Linking } from 'react-native';
+import { View, Text, Pressable, Platform, useWindowDimensions, ScrollView, Linking, Image } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useColors } from '@/hooks/use-colors';
@@ -76,7 +76,11 @@ export function DesktopSidebar() {
     >
       {/* Logo */}
       <View className="h-20 px-6 justify-center border-b border-border">
-        <Text className="text-xl font-bold text-foreground">NYS Massage Exam</Text>
+        <Image
+          source={require('../assets/images/logo.png')}
+          style={{ width: 150, height: 38 }}
+          resizeMode="contain"
+        />
         <Text className="text-xs text-muted mt-0.5">Study App</Text>
       </View>
 

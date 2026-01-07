@@ -13,7 +13,7 @@ export const questions: Question[] = [
     "correct_answer_text": "effleurage",
     "rewrite_question": "For a client with spastic paralysis, which massage technique would be most therapeutic?",
     "mnemonic": "Effleurage = Easy Flow = Eases Spastic muscles. Think 'gentle flowing river calms rough rapids'",
-    "topic_explanation": "🎯 **Key Concept**: Spastic paralysis involves involuntary muscle contractions and increased muscle tone. Effleurage provides gentle, rhythmic, gliding strokes that calm the nervous system.\\n\\n💡 **Memory Tip**: "Easy Flow" = Effleurage for spastics. Gentle gliding soothes overactive nerves.\\n\\n⚠️ **Exam Alert**: Don't pick stimulating strokes like tapotement - they worsen spasticity!\\n\\n✅ **Why Correct**: Effleurage's gentle, calming input reduces hyperactive muscle tone without triggering protective reflexes.",
+    "topic_explanation": "🎯 **Key Concept**: Spastic paralysis involves involuntary muscle contractions and increased muscle tone. Effleurage provides gentle, rhythmic, gliding strokes that calm the nervous system.\\n\\n💡 **Memory Tip**: "Easy Flow" = Effleurage for spastics. Gentle gliding soothes overactive nerves.\\n\\n⚠️ **Exam Alert**: Don't pick stimulating strokes like tapotement - they worsen spasticity!\\n\\n✅ **Why Correct**: Effleurage's gentle, calming input reduces hyperactive muscle tone without triggering protective reflexes."Easy Flow" = Effleurage for spastics. Gentle gliding soothes overactive nerves.\\n\\n⚠️ **Exam Alert**: Don't pick stimulating strokes like tapotement - they worsen spasticity!\\n\\n✅ **Why Correct**: Effleurage's gentle, calming input reduces hyperactive muscle tone without triggering protective reflexes.",
     "incorrect_explanations": {
       "a": "Tapotement involves percussive, stimulating movements that would increase muscle tone and worsen spastic paralysis by overstimulating the already hyperactive nervous system",
       "b": "Friction creates deep pressure and heat which could trigger protective muscle guarding and increase spasticity rather than reducing it"
@@ -5308,7 +5308,13 @@ export const questions: Question[] = [
     "correct_answer_text": "fire and metal",
     "rewrite_question": "In Traditional Chinese Medicine meridian theory, which two elements are associated with meridian pathways that run through the upper extremities?",
     "mnemonic": "FIRE METAL ARM: Fire burns hot in the heart and small intestine (arm meridians), while Metal cuts sharp like lungs and large intestine (also arm meridians). Remember: Fire + Metal = ARM-ed and dangerous!",
-    "topic_explanation": "In Traditional Chinese Medicine, meridians are energy pathways associated with five elements. The arm contains four major meridians: Heart and Small Intestine (Fire element), and Lung and Large Intestine (Metal element). Fire element governs circulation and emotional warmth, while Metal element controls respiration and elimination. These meridians run from the torso through the arms to the fingertips. Understanding this helps massage therapists incorporate TCM principles and recognize referral patterns along these pathways during treatment.",
+    "topic_explanation": "🎯 **Key Concept**: In Traditional Chinese Medicine, the arm contains four major meridians: Heart and Small Intestine (Fire element), and Lung and Large Intestine (Metal element).
+
+💡 **Memory Tip**: "Fire + Metal = ARM-ed and dangerous!" Fire burns in heart/small intestine, Metal cuts like lungs/large intestine - both run through arms!
+
+⚠️ **Exam Alert**: Earth (spleen/stomach) and Water (kidney/bladder) elements run through legs, not arms. Wood (liver/gallbladder) runs through legs and sides.
+
+✅ **Why Correct**: Understanding meridian pathways helps massage therapists incorporate TCM principles and recognize referral patterns during treatment.",
     "incorrect_explanations": {
       "a": "Earth and water elements have meridians in the legs and torso, not arms. Earth (spleen/stomach) runs through the legs and trunk, while water (kidney/bladder) flows along the back and legs.",
       "b": "Wood element (liver/gallbladder) meridians run through the legs and sides of the body, not the arms. Only fire element has arm meridians, but wood does not."

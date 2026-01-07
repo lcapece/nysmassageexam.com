@@ -13,7 +13,8 @@ import * as Haptics from "expo-haptics";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
-import { questions, hasPurchased } from "@/lib/study-store";
+import { questions } from "@/lib/study-store";
+import { useAuthContext } from "@/lib/auth-context";
 
 // Photorealistic pencil cursor (SVG data URI) - 96x96 (3x larger)
 // Hotspot at (78, 78) = pencil tip after -45deg rotation
@@ -397,11 +398,13 @@ export default function PaperTestScreen() {
   const [currentPage, setCurrentPage] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(90 * 60); // 90 minutes default
   const [isTimerRunning, setIsTimerRunning] = useState(true);
-  const [isPurchased, setIsPurchased] = useState(false);
   const [totalTimeSeconds, setTotalTimeSeconds] = useState(90 * 60); // Store initial total time
   const [showPaceTimer, setShowPaceTimer] = useState(true);
   const [paceSecondsRemaining, setPaceSecondsRemaining] = useState(0);
   const [paceSecondsTotal, setPaceSecondsTotal] = useState(0);
+
+  // Use auth context for authoritative purchase status
+  const { hasPurchased: isPurchased } = useAuthContext();
 
   const questionsPerPage = 25;
   const totalPages = Math.ceil(testQuestions.length / questionsPerPage);
@@ -412,36 +415,30 @@ export default function PaperTestScreen() {
 
   // Initialize test with shuffled questions (filter out questions with missing options)
   useEffect(() => {
-    const initTest = async () => {
-      const purchased = await hasPurchased();
-      setIsPurchased(purchased);
+    // Set timer based on question count
+    const questionCount = isPurchased ? PAID_QUESTION_COUNT : FREE_QUESTION_COUNT;
+    const timerMinutes = isPurchased ? 150 : 30; // 2.5 hours for paid, 30 min for free
+    const totalSeconds = timerMinutes * 60;
+    setTimeRemaining(totalSeconds);
+    setTotalTimeSeconds(totalSeconds);
 
-      // Set timer based on question count
-      const questionCount = purchased ? PAID_QUESTION_COUNT : FREE_QUESTION_COUNT;
-      const timerMinutes = purchased ? 150 : 30; // 2.5 hours for paid, 30 min for free
-      const totalSeconds = timerMinutes * 60;
-      setTimeRemaining(totalSeconds);
-      setTotalTimeSeconds(totalSeconds);
+    // Calculate pace timer: seconds per question (minus ~10 sec buffer for navigation)
+    // e.g., 150 min for 140 questions = ~64 sec/question, minus buffer = ~54 sec
+    const secondsPerQuestion = Math.floor((totalSeconds / questionCount) - 10);
+    setPaceSecondsTotal(secondsPerQuestion);
+    setPaceSecondsRemaining(secondsPerQuestion);
 
-      // Calculate pace timer: seconds per question (minus ~10 sec buffer for navigation)
-      // e.g., 150 min for 140 questions = ~64 sec/question, minus buffer = ~54 sec
-      const secondsPerQuestion = Math.floor((totalSeconds / questionCount) - 10);
-      setPaceSecondsTotal(secondsPerQuestion);
-      setPaceSecondsRemaining(secondsPerQuestion);
-
-      // Filter questions that have valid options (at least a and b with content)
-      const validQuestions = questions.filter(q => {
-        const opts = q.options;
-        if (!opts || typeof opts !== 'object') return false;
-        const keys = Object.keys(opts);
-        // Must have at least 2 options with actual content (keys are lowercase: a, b, c, d)
-        return keys.length >= 2 && opts.a && opts.b;
-      });
-      const shuffled = shuffleArray(validQuestions).slice(0, questionCount);
-      setTestQuestions(shuffled);
-    };
-    initTest();
-  }, []);
+    // Filter questions that have valid options (at least a and b with content)
+    const validQuestions = questions.filter(q => {
+      const opts = q.options;
+      if (!opts || typeof opts !== 'object') return false;
+      const keys = Object.keys(opts);
+      // Must have at least 2 options with actual content (keys are lowercase: a, b, c, d)
+      return keys.length >= 2 && opts.a && opts.b;
+    });
+    const shuffled = shuffleArray(validQuestions).slice(0, questionCount);
+    setTestQuestions(shuffled);
+  }, [isPurchased]);
 
   // Timer (main countdown + pace timer)
   useEffect(() => {

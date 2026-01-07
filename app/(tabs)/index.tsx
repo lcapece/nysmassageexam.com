@@ -22,10 +22,10 @@ import {
   StudyProgress,
   EXAM_DATES,
   questions,
-  hasPurchased,
 } from "@/lib/study-store";
 import { Leaderboard } from "@/components/leaderboard";
 import { getUserProfile, isAdmin } from "@/lib/leaderboard-service";
+import { useAuthContext } from "@/lib/auth-context";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -37,9 +37,11 @@ export default function HomeScreen() {
   const [examDate, setExamDate] = useState<string | null>(null);
   const [daysUntilExam, setDaysUntilExam] = useState<number>(0);
   const [recommendedDaily, setRecommendedDaily] = useState<number>(20);
-  const [isPurchased, setIsPurchased] = useState(true);
   const [isBannerExpanded, setIsBannerExpanded] = useState(false); // Collapsed by default
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
+
+  // Use auth context for authoritative purchase status
+  const { hasPurchased: isPurchased, purchaseLoading } = useAuthContext();
 
   const toggleTheme = () => {
     const newTheme = colorScheme === "dark" ? "light" : "dark";
@@ -53,17 +55,15 @@ export default function HomeScreen() {
   const DEFAULT_EXAM_DATE = '2026-03-06';
 
   const loadData = useCallback(async () => {
-    const [prog, exam, purchased, profile] = await Promise.all([
+    const [prog, exam, profile] = await Promise.all([
       getProgress(),
       getSelectedExamDate(),
-      hasPurchased(),
       getUserProfile(),
     ]);
     setProgress(prog);
     // Use default exam date if none is set
     const effectiveExamDate = exam || DEFAULT_EXAM_DATE;
     setExamDate(effectiveExamDate);
-    setIsPurchased(purchased);
     setUserEmail(profile?.email);
 
     setDaysUntilExam(calculateDaysUntilExam(effectiveExamDate));

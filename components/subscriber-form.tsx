@@ -490,6 +490,7 @@ export async function saveSubscriber(
     purchaseAmount?: number;
     promoCodeUsed?: string;
     paymentMethod?: string;
+    userId?: string; // Supabase Auth user ID
   }
 ): Promise<{ success: boolean; error?: string }> {
   try {
@@ -508,6 +509,7 @@ export async function saveSubscriber(
         purchase_amount: purchaseInfo?.purchaseAmount || null,
         promo_code_used: purchaseInfo?.promoCodeUsed || null,
         payment_method: purchaseInfo?.paymentMethod || null,
+        user_id: purchaseInfo?.userId || null,
         updated_at: new Date().toISOString(),
       },
       {

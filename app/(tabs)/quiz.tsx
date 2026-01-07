@@ -21,7 +21,6 @@ import {
   getBookmarks,
   toggleBookmark,
   CATEGORIES,
-  hasPurchased,
   isTrialQuestion,
   TRIAL_QUESTION_IDS,
 } from "@/lib/study-store";
@@ -30,6 +29,7 @@ import {
   recordSessionAnswer,
   syncProgressToServer,
 } from "@/lib/leaderboard-service";
+import { useAuthContext } from "@/lib/auth-context";
 
 // Enhanced markdown text renderer - renders bold, line breaks, and styled sections
 const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
@@ -116,31 +116,24 @@ export default function QuizScreen() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [showMnemonic, setShowMnemonic] = useState(false);
   const [showIncorrectExplanations, setShowIncorrectExplanations] = useState(false);
-  const [isPurchased, setIsPurchased] = useState(false);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
+
+  // Use auth context for authoritative purchase status
+  const { hasPurchased: isPurchased } = useAuthContext();
 
   useEffect(() => {
     loadBookmarks();
-    checkPurchaseStatus();
   }, []);
-
-  const checkPurchaseStatus = async () => {
-    const purchased = await hasPurchased();
-    setIsPurchased(purchased);
-  };
 
   const loadBookmarks = async () => {
     const bm = await getBookmarks();
     setBookmarks(bm);
   };
 
-  const startQuiz = async (category: string | null, count: number = 10) => {
-    const purchased = await hasPurchased();
-    setIsPurchased(purchased);
-
+  const startQuiz = (category: string | null, count: number = 10) => {
     let availableQuestions: Question[];
 
-    if (purchased) {
+    if (isPurchased) {
       availableQuestions = category
         ? questions.filter(q => q.category === category)
         : [...questions];
@@ -154,7 +147,7 @@ export default function QuizScreen() {
     }
 
     const shuffled = availableQuestions.sort(() => Math.random() - 0.5);
-    const maxCount = purchased ? count : Math.min(count, availableQuestions.length);
+    const maxCount = isPurchased ? count : Math.min(count, availableQuestions.length);
     const selected = shuffled.slice(0, Math.min(maxCount, shuffled.length));
 
     setQuizQuestions(selected);

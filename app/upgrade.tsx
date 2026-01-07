@@ -15,6 +15,7 @@ import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { setPurchased } from "@/lib/study-store";
 import { SubscriberForm, SubscriberFormData, saveSubscriber } from "@/components/subscriber-form";
+import { useAuthContext } from "@/lib/auth-context";
 
 // Square Payment Link
 const SQUARE_PAYMENT_URL = "https://square.link/u/hJT8Zc0x";
@@ -42,6 +43,7 @@ type ScreenState = "info" | "form" | "payment";
 export default function UpgradeScreen() {
   const router = useRouter();
   const colors = useColors();
+  const { user, hasPurchased: authHasPurchased, refreshPurchaseStatus } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState<{ discount: number; description: string } | null>(null);
@@ -97,11 +99,12 @@ export default function UpgradeScreen() {
     if (isFree && promoApplied) {
       setLoading(true);
       try {
-        // Save subscriber with purchase info
+        // Save subscriber with purchase info and user ID if logged in
         const result = await saveSubscriber(data, {
           purchaseAmount: 0,
           promoCodeUsed: promoCode.trim().toUpperCase(),
           paymentMethod: "promo_code",
+          userId: user?.id,
         });
 
         if (!result.success) {
@@ -109,6 +112,9 @@ export default function UpgradeScreen() {
         }
 
         await setPurchased(true);
+        // Refresh the auth context purchase status
+        await refreshPurchaseStatus();
+
         if (Platform.OS === 'web') {
           window.alert("Success! Full access unlocked with promo code.");
         } else {
@@ -130,8 +136,11 @@ export default function UpgradeScreen() {
     }
 
     // Save subscriber info (without purchase yet - they'll complete payment on Square)
+    // Include user ID if logged in for easier linking later
     try {
-      const result = await saveSubscriber(data);
+      const result = await saveSubscriber(data, {
+        userId: user?.id,
+      });
       if (!result.success) {
         console.error("Failed to save subscriber:", result.error);
         // Continue anyway - we don't want to block the payment
@@ -189,6 +198,8 @@ export default function UpgradeScreen() {
 
       if (data.hasPurchased) {
         await setPurchased(true);
+        // Refresh the auth context purchase status
+        await refreshPurchaseStatus();
         if (Platform.OS === 'web') {
           window.alert("Purchase restored successfully!");
         } else {

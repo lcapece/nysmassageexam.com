@@ -378,8 +378,7 @@ export default function LandingScreen() {
                   <Badge variant="error">Don't Miss It</Badge>
                 </View>
                 <Text style={{ fontSize: isDesktop ? 52 : 34, fontWeight: "800", color: colors.foreground, lineHeight: isDesktop ? 60 : 40, letterSpacing: -1 }}>
-                  Stop Wasting Time on{"
-"}Generic MBLEx Prep
+                  Stop Wasting Time on{" "}Generic MBLEx Prep
                 </Text>
                 <Text style={{ fontSize: isDesktop ? 20 : 17, color: colors.muted, marginTop: 20, lineHeight: isDesktop ? 32 : 26, maxWidth: 520 }}>
                   New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're the only study tool built specifically for the NYS exam.

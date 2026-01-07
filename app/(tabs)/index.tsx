@@ -448,6 +448,43 @@ export default function HomeScreen() {
             </Text>
           </Pressable>
 
+          {/* Paper Test Mode - Prominent CTA */}
+          <Pressable
+            onPress={() => handlePress("/paper-test")}
+            style={({ pressed }) => [
+              {
+                backgroundColor: '#1a5f2a' + '15',
+                borderWidth: 2,
+                borderColor: '#1a5f2a',
+                opacity: pressed ? 0.9 : 1,
+                transform: [{ scale: pressed ? 0.98 : 1 }],
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-row items-center">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#1a5f2a' + '25',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="description" size={22} color="#1a5f2a" />
+              </View>
+              <View className="ml-3">
+                <Text className="text-base font-semibold" style={{ color: '#1a5f2a' }}>
+                  Paper Test Mode
+                </Text>
+                <Text className="text-sm text-muted">Realistic scantron exam practice</Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color="#1a5f2a" />
+          </Pressable>
+
           <View className="flex-row gap-3">
             <Pressable
               onPress={() => handlePress("/study")}

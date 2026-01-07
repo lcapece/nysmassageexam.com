@@ -406,10 +406,43 @@ onPress={() => setShowSubscription(true)}
           )}
         </View>
 
-        {/* Quick Links */}
+        {/* Exam Resources - Quick Study Links */}
         <View className="mx-5 mt-6">
-          <Text className="text-lg font-semibold text-foreground mb-3">Resources</Text>
-          
+          <Text className="text-lg font-semibold text-foreground mb-3">Exam Resources</Text>
+
+          <Pressable
+            onPress={() => router.push("/paper-test" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: '#1a5f2a' + '15',
+                borderWidth: 1,
+                borderColor: '#1a5f2a',
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center flex-1">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#1a5f2a' + '20',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="description" size={22} color="#1a5f2a" />
+              </View>
+              <View className="ml-3 flex-1">
+                <Text className="text-base font-semibold text-foreground">Paper Test Mode</Text>
+                <Text className="text-sm text-muted">Realistic scantron practice exam</Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
           <Pressable
             onPress={() => router.push("/exam-info" as any)}
             style={({ pressed }) => [
@@ -422,12 +455,130 @@ onPress={() => setShowSubscription(true)}
             ]}
             className="rounded-xl p-4 flex-row items-center justify-between mb-2"
           >
-            <View className="flex-row items-center">
-              <MaterialIcons name="info" size={24} color={colors.primary} />
-              <Text className="text-base text-foreground ml-3">About the NYS Exam</Text>
+            <View className="flex-row items-center flex-1">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#0D9373' + '20',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="school" size={22} color="#0D9373" />
+              </View>
+              <View className="ml-3 flex-1">
+                <Text className="text-base font-semibold text-foreground">NYS Exam Overview</Text>
+                <Text className="text-sm text-muted">Exam format, passing scores & what to expect</Text>
+              </View>
             </View>
             <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
           </Pressable>
+
+          <Pressable
+            onPress={() => router.push("/study?category=eastern" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center flex-1">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#F97316' + '20',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="self-improvement" size={22} color="#F97316" />
+              </View>
+              <View className="ml-3 flex-1">
+                <Text className="text-base font-semibold text-foreground">Eastern Medicine Tips</Text>
+                <Text className="text-sm text-muted">Master meridians & Yin/Yang theory</Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
+          <Pressable
+            onPress={() => router.push("/study?category=anatomy" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center flex-1">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#4F46E5' + '20',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="accessibility-new" size={22} color="#4F46E5" />
+              </View>
+              <View className="ml-3 flex-1">
+                <Text className="text-base font-semibold text-foreground">Anatomy Essentials</Text>
+                <Text className="text-sm text-muted">Key muscles, bones & body systems</Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+
+          <Pressable
+            onPress={() => router.push("/study?category=ethics" as any)}
+            style={({ pressed }) => [
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.border,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+            className="rounded-xl p-4 flex-row items-center justify-between mb-2"
+          >
+            <View className="flex-row items-center flex-1">
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: '#059669' + '20',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons name="gavel" size={22} color="#059669" />
+              </View>
+              <View className="ml-3 flex-1">
+                <Text className="text-base font-semibold text-foreground">Ethics & Business</Text>
+                <Text className="text-sm text-muted">Professional standards & NY regulations</Text>
+              </View>
+            </View>
+            <MaterialIcons name="chevron-right" size={24} color={colors.muted} />
+          </Pressable>
+        </View>
+
+        {/* Quick Links */}
+        <View className="mx-5 mt-6">
+          <Text className="text-lg font-semibold text-foreground mb-3">Resources</Text>
 
           <Pressable
             onPress={() => router.push("/guarantee" as any)}

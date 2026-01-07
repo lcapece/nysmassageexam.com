@@ -48,11 +48,12 @@ describe('Study Store', () => {
     it('should have required fields for each question', () => {
       const sampleQuestion = questions[0];
       expect(sampleQuestion).toHaveProperty('id');
-      expect(sampleQuestion).toHaveProperty('paraphrased_question');
+      expect(sampleQuestion).toHaveProperty('question');
+      expect(sampleQuestion).toHaveProperty('rewrite_question');
       expect(sampleQuestion).toHaveProperty('options');
       expect(sampleQuestion).toHaveProperty('correct_option');
       expect(sampleQuestion).toHaveProperty('category');
-      expect(sampleQuestion).toHaveProperty('explanation');
+      expect(sampleQuestion).toHaveProperty('topic_explanation');
       expect(sampleQuestion).toHaveProperty('mnemonic');
     });
 

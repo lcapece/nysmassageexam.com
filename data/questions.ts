@@ -1328,7 +1328,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "For an athlete with a gracilis muscle injury, which exercise would most effectively target strengthening this muscle?",
     "mnemonic": "GRACILIS = GRACEFUL SQUEEZE - The gracilis muscle helps you gracefully squeeze your legs together, like squeezing a pillow between your knees!",
-    "topic_explanation": "The gracilis muscle is a long, thin muscle of the inner thigh that performs hip adduction (bringing legs toward midline) and assists with knee flexion. It originates from the pubic bone and inserts below the knee on the medial tibia. To strengthen the gracilis specifically, exercises must target adduction movement. Squeezing a pillow between the knees directly targets this muscle's primary function - adducting the thigh. This exercise isolates the gracilis and other adductor muscles while being safe for injury recovery. The resistance can be controlled, and the movement pattern matches the muscle's anatomical function perfectly.",
+    "topic_explanation": "🎯 **Key Concept**: The gracilis is a long, thin muscle of the inner thigh that performs hip adduction (bringing legs toward midline). It originates from the pubic bone and inserts below the knee on the medial tibia.\n\n💡 **Memory Tip**: GRACILIS = GRACEFUL SQUEEZE - The gracilis muscle helps you gracefully squeeze your legs together, like squeezing a pillow between your knees!\n\n⚠️ **Exam Alert**: Generic weight training and running don't specifically target adduction. Only squeezing exercises directly isolate the gracilis muscle's primary function!\n\n✅ **Why Correct**: Squeezing a pillow between the knees directly targets the gracilis's primary function - adducting the thigh. The resistance can be controlled, and the movement pattern matches the muscle's anatomical function perfectly for injury recovery.",
     "incorrect_explanations": {
       "a": "Working with weights is too general and doesn't specifically target the gracilis muscle's adduction function. Without specifying adduction exercises, generic weight training may not effectively rehabilitate this specific inner thigh muscle.",
       "b": "Running primarily uses hip flexors, extensors, and stabilizers but doesn't specifically strengthen the gracilis muscle. While running involves some adduction for stability, it's not targeted enough for rehabilitation of an injured gracilis."
@@ -1349,7 +1349,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What effect does deep massage have on the tissue repair process?",
     "mnemonic": "DEEP massage DELETES scar tissue - like using a heavy eraser to remove unwanted marks and smooth the surface!",
-    "topic_explanation": "Deep massage during healing breaks down excessive scar tissue formation through mechanical disruption of collagen fibers. When tissues heal, collagen forms in random, disorganized patterns creating restrictions and adhesions. Deep massage applies controlled stress that remodels this scar tissue, promoting more organized collagen alignment. The mechanical pressure breaks cross-links between collagen fibers, increases circulation to bring nutrients and remove waste, and stimulates fibroblasts to produce healthier tissue architecture. This doesn't reverse healing but optimizes it by preventing excessive scarring and maintaining tissue mobility. Timing is crucial - too early can disrupt healing, but at appropriate stages, deep work eliminates problematic scar tissue formation.",
+    "topic_explanation": "🎯 **Key Concept**: Deep massage breaks down excessive scar tissue through mechanical disruption of collagen fibers. When tissues heal, collagen forms in random, disorganized patterns creating restrictions and adhesions.\n\n💡 **Memory Tip**: DEEP massage DELETES scar tissue - like using a heavy eraser to remove unwanted marks and smooth the surface!\n\n⚠️ **Exam Alert**: Deep massage doesn't reverse healing or just generally aid it - it SPECIFICALLY eliminates excessive scar tissue. Timing is crucial - too early can disrupt healing!\n\n✅ **Why Correct**: Deep massage applies controlled stress that remodels scar tissue, promoting more organized collagen alignment. The mechanical pressure breaks cross-links between collagen fibers, increases circulation, and stimulates fibroblasts to produce healthier tissue architecture.",
     "incorrect_explanations": {
       "a": "Deep massage doesn't reverse the healing process - it optimizes healing by improving tissue quality. Reversing healing would mean destroying new healthy tissue, which deep massage doesn't do when applied appropriately.",
       "c": "While deep massage can support healing, its primary effect during the healing process is specifically eliminating excessive scar tissue formation rather than generally aiding healing. The question asks about the specific tendency of deep massage."
@@ -1370,7 +1370,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Where is the anatomical structure called the Linea Alba located?",
     "mnemonic": "LINEA ALBA = WHITE LINE down your BELLY - Picture a white line running down the middle of your ABdomen, like a zipper on your stomach!",
-    "topic_explanation": "The Linea Alba is a fibrous structure running vertically down the center of the anterior abdominal wall from the xiphoid process to the pubic symphysis. It's formed by the intersection and fusion of aponeuroses from the rectus abdominis, external oblique, internal oblique, and transversus abdominis muscles. The name means 'white line' in Latin, referring to its pale, tendinous appearance due to its fibrous composition and poor blood supply. This structure provides crucial core stability and serves as an attachment point for abdominal muscles. It's clinically significant as a surgical landmark and can be affected by diastasis recti (separation) during pregnancy or abdominal distension.",
+    "topic_explanation": "🎯 **Key Concept**: The Linea Alba is a fibrous structure running vertically down the center of the anterior abdominal wall from the xiphoid process to the pubic symphysis. It's formed by the fusion of aponeuroses from abdominal muscles.\n\n💡 **Memory Tip**: LINEA ALBA = WHITE LINE down your BELLY - Picture a white line running down the middle of your ABdomen, like a zipper on your stomach!\n\n⚠️ **Exam Alert**: NOT in the spine, NOT in cell membranes - it's ONLY in the abdomen! The name means 'white line' in Latin, referring to its pale, tendinous appearance.\n\n✅ **Why Correct**: This structure provides crucial core stability and serves as an attachment point for abdominal muscles. It's clinically significant as a surgical landmark and can be affected by diastasis recti during pregnancy.",
     "incorrect_explanations": {
       "b": "The spine contains various anatomical landmarks but not the Linea Alba. The Linea Alba is specifically an abdominal structure formed by muscle aponeuroses, not a spinal feature.",
       "c": "Cell membrane refers to the boundary structure of individual cells at a microscopic level. The Linea Alba is a gross anatomical structure visible to the naked eye, made of fibrous tissue in the abdomen, not a cellular component."
@@ -1391,7 +1391,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "In which location would you find blood rich in oxygen?",
     "mnemonic": "LEFT = LIFE! The left ventricle pumps oxygenated blood to give LIFE to the body. Remember: Left = Life-giving oxygen!",
-    "topic_explanation": "The cardiovascular system follows a specific oxygenation pattern. The left side of the heart (left atrium and left ventricle) contains oxygenated blood that returns from the lungs via pulmonary veins. The left ventricle specifically pumps this oxygen-rich blood through the aorta to supply the entire body. The right side handles deoxygenated blood returning from body tissues. Capillaries are exchange sites where oxygen transfers from blood to tissues, so they contain both oxygenated and deoxygenated blood depending on location. Understanding this circulation pattern is crucial for comprehending how massage affects blood flow and tissue oxygenation.",
+    "topic_explanation": "🎯 **Key Concept**: The left side of the heart (left atrium and left ventricle) contains oxygenated blood that returns from the lungs via pulmonary veins. The left ventricle specifically pumps this oxygen-rich blood through the aorta to supply the entire body.\n\n💡 **Memory Tip**: LEFT = LIFE! The left ventricle pumps oxygenated blood to give LIFE to the body. Remember: Left = Life-giving oxygen!\n\n⚠️ **Exam Alert**: Right ventricle = deoxygenated blood (to lungs). Capillaries = BOTH types depending on location. Only left side = purely oxygenated!\n\n✅ **Why Correct**: The right side handles deoxygenated blood returning from body tissues. Understanding this circulation pattern is crucial for comprehending how massage affects blood flow and tissue oxygenation.",
     "incorrect_explanations": {
       "a": "Capillaries contain both oxygenated and deoxygenated blood depending on their location. Arterial capillaries have oxygenated blood, but venous capillaries contain deoxygenated blood after oxygen has been delivered to tissues.",
       "c": "The right ventricle contains deoxygenated blood that has returned from body tissues. It pumps this oxygen-poor blood to the lungs for oxygenation via the pulmonary artery."
@@ -1412,7 +1412,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Which massage technique is most effective for tissue warming and preparation before deeper manipulations?",
     "mnemonic": "EFFLEURAGE = ENTRANCE! It's your gentle entrance into the massage, like slowly entering a warm bath. Effleurage flows like a gentle stream to warm and prepare!",
-    "topic_explanation": "Effleurage consists of long, gliding strokes that gradually warm tissues through gentle friction and increased circulation. This Swedish massage technique uses broad hand contact and smooth, flowing movements that stimulate blood flow without aggressive pressure. The warming effect prepares tissues by increasing local circulation, raising tissue temperature, and relaxing muscle fibers. This makes subsequent deeper work more effective and comfortable. Effleurage also helps assess tissue condition and allows the client's nervous system to adapt to touch. Always begin massage sessions with effleurage to establish therapeutic contact and prepare tissues systematically.",
+    "topic_explanation": "🎯 **Key Concept**: Effleurage consists of long, gliding strokes that gradually warm tissues through gentle friction and increased circulation. This Swedish massage technique uses broad hand contact and smooth, flowing movements.\n\n💡 **Memory Tip**: EFFLEURAGE = ENTRANCE! It's your gentle entrance into the massage, like slowly entering a warm bath. Effleurage flows like a gentle stream to warm and prepare!\n\n⚠️ **Exam Alert**: Tapotement = percussion/stimulation (NOT warming). Petrissage = kneading (requires tissues ALREADY warmed). Only effleurage is for initial warming!\n\n✅ **Why Correct**: The warming effect prepares tissues by increasing local circulation, raising tissue temperature, and relaxing muscle fibers. This makes subsequent deeper work more effective and comfortable. Always begin massage sessions with effleurage.",
     "incorrect_explanations": {
       "a": "Tapotement involves rhythmic percussion movements (tapping, cupping, hacking) that stimulate rather than warm tissues. It's typically used for invigoration or toward the end of treatment, not for initial warming.",
       "c": "Petrissage consists of kneading, lifting, and squeezing movements that work deeper into muscle tissue. It requires tissues to already be warmed up and prepared, making it inappropriate as an initial warming technique."
@@ -1433,7 +1433,7 @@ export const questions: Question[] = [
     "correct_answer_text": "integumentary",
     "rewrite_question": "Sebum belongs to which body system as a secreted substance?",
     "mnemonic": "SEBUM = SKIN'S SUPREME SHIELD! Sebaceous glands in your skin make Sebum to keep skin Smooth and Soft. Skin = Sebum!",
-    "topic_explanation": "Sebum is an oily secretion produced by sebaceous glands, which are accessory structures of the integumentary system (skin, hair, nails, and associated glands). These microscopic glands are located throughout the skin, typically connected to hair follicles. Sebum contains lipids, fatty acids, and cellular debris that create a protective barrier on the skin surface. It prevents water loss, maintains skin flexibility, and provides antimicrobial protection. Understanding sebaceous gland function helps massage therapists recognize normal skin conditions versus pathological changes, and explains why certain skin types respond differently to oils and lotions during treatment.",
+    "topic_explanation": "🎯 **Key Concept**: Sebum is an oily secretion produced by sebaceous glands, which are accessory structures of the integumentary system (skin, hair, nails, and associated glands). These glands are typically connected to hair follicles.\n\n💡 **Memory Tip**: SEBUM = SKIN'S SUPREME SHIELD! Sebaceous glands in your skin make Sebum to keep skin Smooth and Soft. Skin = Sebum!\n\n⚠️ **Exam Alert**: NOT reproductive (that's hormones/gametes), NOT digestive (that's enzymes/bile). Sebum = integumentary system ONLY!\n\n✅ **Why Correct**: Sebum contains lipids, fatty acids, and cellular debris that create a protective barrier on the skin surface. It prevents water loss, maintains skin flexibility, and provides antimicrobial protection.",
     "incorrect_explanations": {
       "a": "The reproductive system produces hormones and gametes, not sebum. While hormones can influence sebaceous gland activity (especially during puberty), sebum itself is not a reproductive system secretion.",
       "b": "The digestive system produces enzymes, acids, and bile for food breakdown and absorption. Sebum is not involved in digestion and is not produced by digestive organs."
@@ -1453,7 +1453,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What creates the highest risk for a massage therapist if neglected in their practice?",
     "mnemonic": "UNIVERSAL = UMBRELLA! Universal precautions are like a protective umbrella covering ALL potential risks - blood, bodily fluids, and unknown infections. One umbrella protects from all weather!",
-    "topic_explanation": "Universal precautions represent a comprehensive infection control system treating all human blood and bodily fluids as potentially infectious. This includes proper hand hygiene, barrier protection (gloves), safe disposal of contaminated materials, surface disinfection, and appropriate wound care protocols. These precautions protect against bloodborne pathogens like HIV, Hepatitis B and C, and other infectious diseases. While hand washing is crucial, universal precautions encompass a broader safety framework including when to use gloves, how to handle linens, equipment sterilization, and emergency procedures. Failure to follow complete universal precautions creates the greatest overall risk exposure for massage therapists and clients.",
+    "topic_explanation": "🎯 **Key Concept**: Universal precautions represent a comprehensive infection control system treating all human blood and bodily fluids as potentially infectious. This includes hand hygiene, barrier protection (gloves), safe disposal, surface disinfection, and wound care protocols.\n\n💡 **Memory Tip**: UNIVERSAL = UMBRELLA! Universal precautions are like a protective umbrella covering ALL potential risks - blood, bodily fluids, and unknown infections. One umbrella protects from all weather!\n\n⚠️ **Exam Alert**: Hand washing alone is NOT enough! Universal precautions include gloves, proper disposal, equipment sterilization, and emergency procedures. Greatest risk = not following the COMPLETE system!\n\n✅ **Why Correct**: These precautions protect against bloodborne pathogens like HIV, Hepatitis B and C, and other infectious diseases. Failure to follow complete universal precautions creates the greatest overall risk exposure for massage therapists and clients.",
     "incorrect_explanations": {
       "b": "While hand washing is extremely important and a component of universal precautions, it alone doesn't address all infection control risks such as bloodborne pathogen exposure, proper barrier use, or contaminated equipment handling."
     },
@@ -1473,7 +1473,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What method should be used to assess a joint's range of motion capabilities?",
     "mnemonic": "ACTIVE = AUTHENTIC! For true ROM evaluation, the client must do it themselves - that's the AUTHENTIC movement pattern. Active Assessment = Accurate Answer!",
-    "topic_explanation": "Active range of motion (AROM) evaluation requires the client to move the joint independently using their own muscular effort. This assessment reveals the true functional capacity of the joint, including muscle strength, coordination, pain limitations, and actual movement restrictions. AROM testing shows what the client can realistically achieve in daily activities. It identifies both joint restrictions and muscular weaknesses simultaneously. Passive ROM (therapist moves the joint) only tests joint mobility without muscle function, while resisted movement tests strength rather than range. For comprehensive evaluation, start with AROM to understand functional limitations, then use passive ROM to differentiate between muscle and joint restrictions.",
+    "topic_explanation": "🎯 **Key Concept**: Active range of motion (AROM) evaluation requires the client to move the joint independently using their own muscular effort. This assessment reveals the true functional capacity including muscle strength, coordination, pain limitations, and actual movement restrictions.\n\n💡 **Memory Tip**: ACTIVE = AUTHENTIC! For true ROM evaluation, the client must do it themselves - that's the AUTHENTIC movement pattern. Active Assessment = Accurate Answer!\n\n⚠️ **Exam Alert**: Passive ROM = only joint mobility (therapist moves limb, no muscle function tested). Resisted = tests strength, NOT range. Only active ROM evaluates functional movement capacity!\n\n✅ **Why Correct**: AROM testing shows what the client can realistically achieve in daily activities. It identifies both joint restrictions and muscular weaknesses simultaneously, giving the most complete assessment picture.",
     "incorrect_explanations": {
       "a": "Passive range of motion only evaluates joint mobility when the therapist moves the limb, but doesn't assess the client's muscle strength, coordination, or functional movement capacity. It doesn't show what the client can actually accomplish independently.",
       "c": "Resisted exercise tests muscle strength against opposition, not range of motion. Adding resistance actually limits the range of motion and focuses on strength assessment rather than mobility evaluation."
@@ -1494,7 +1494,7 @@ export const questions: Question[] = [
     "correct_answer_text": "talking to the client",
     "rewrite_question": "Which action would NOT be considered unprofessional conduct for a massage therapist?",
     "mnemonic": "TCD - Talk is Cool, Draping matters! Remember: Talking = Communication (professional), but Covering properly and IDentification are essential for professionalism.",
-    "topic_explanation": "Professional massage therapy standards focus on client safety, dignity, and therapeutic boundaries. Communication with clients during treatment is not only acceptable but often necessary for checking pressure, comfort levels, and maintaining therapeutic rapport. However, proper draping maintains client modesty and comfort, while name identification ensures accountability and professionalism. Unprofessional behaviors typically involve boundary violations, inadequate safety measures, or actions that compromise client dignity. Effective communication enhances the therapeutic relationship and treatment outcomes.",
+    "topic_explanation": "🎯 **Key Concept**: Professional massage therapy standards focus on client safety, dignity, and therapeutic boundaries. Communication with clients during treatment is not only acceptable but often NECESSARY for checking pressure, comfort levels, and maintaining therapeutic rapport.\n\n💡 **Memory Tip**: TCD - Talk is Cool, Draping matters! Remember: Talking = Communication (professional), but Covering properly and IDentification are essential for professionalism.\n\n⚠️ **Exam Alert**: NOT wearing a nametag = unprofessional (reduces accountability). Poor draping = unprofessional (violates boundaries). Talking to client = PROFESSIONAL and therapeutic!\n\n✅ **Why Correct**: Effective communication enhances the therapeutic relationship and treatment outcomes. Unprofessional behaviors typically involve boundary violations, inadequate safety measures, or actions that compromise client dignity.",
     "incorrect_explanations": {
       "a": "Not wearing a nametag is unprofessional because it prevents client identification of the therapist, reduces accountability, and may violate facility policies requiring staff identification for safety and professional standards.",
       "b": "Poor or improper draping is unprofessional because it compromises client modesty, violates ethical boundaries, creates discomfort, and fails to maintain the therapeutic environment required for professional massage therapy."
@@ -2384,7 +2384,7 @@ export const questions: Question[] = [
     "correct_answer_text": "c. small intestine (because ST only",
     "rewrite_question": "In which organ does the absorption of proteins initially occur?",
     "mnemonic": "Small but MIGHTY! The Small Intestine is the 'Absorption Champion' - it's where proteins finally get ABSORBED after being broken down. Think 'Small = Soak up' (absorption)!",
-    "topic_explanation": "Protein absorption begins in the small intestine, specifically the duodenum and jejunum. While protein digestion starts in the stomach with pepsin breaking proteins into smaller polypeptides, actual absorption of amino acids and small peptides occurs only in the small intestine. The stomach's acidic environment and enzymes digest but don't absorb proteins. Pancreatic enzymes (trypsin, chymotrypsin) and intestinal brush border enzymes complete protein breakdown into absorbable amino acids. The small intestine's villi and microvilli provide massive surface area for absorption. This distinction between digestion (breaking down) and absorption (taking up nutrients into bloodstream) is crucial for understanding digestive physiology.",
+    "topic_explanation": "🎯 **Key Concept**: Protein **absorption** begins in the **small intestine** (duodenum/jejunum). Digestion starts in stomach, but absorption happens only in small intestine!\n\n💡 **Memory Tip**: Small but MIGHTY! Think 'Small = Soak up' (absorption). Stomach DIGESTS, small intestine ABSORBS!\n\n⚠️ **Exam Alert**: Don't confuse digestion (breaking down) with absorption (taking up into bloodstream). Stomach = digest only, NOT absorb!\n\n✅ **Why Correct**: Stomach uses pepsin/acid to digest but doesn't absorb. Pancreatic enzymes (trypsin, chymotrypsin) + brush border enzymes complete breakdown. Villi/microvilli provide massive surface area for absorption of amino acids.",
     "incorrect_explanations": {
       "a": "The stomach digests proteins using pepsin and acid but does not absorb them - absorption requires the specialized structures of the small intestine",
       "b": "The mouth begins carbohydrate digestion with salivary amylase but has no role in protein digestion or absorption"
@@ -2405,7 +2405,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Your regular client has been diagnosed with subacute lupus, and their physician has approved massage therapy. What is your appropriate course of action?",
     "mnemonic": "Doctor's Orders = Green Light GO! When the doc says 'massage indicated' for subacute lupus, you proceed as USUAL. Think 'Subacute = Suitable for usual massage' (not acute flare-up).",
-    "topic_explanation": "When lupus is in subacute stage and physician-approved, massage as usual is appropriate. Lupus has three stages: acute (flare-up - contraindicated), subacute (manageable symptoms), and chronic/remission (generally safe). Subacute means the condition is present but not in active flare. With medical clearance, normal massage protocols apply. The key factors are: physician approval, subacute (not acute) stage, and established client relationship. Lupus patients often benefit from massage for pain relief, stress reduction, and improved circulation. Avoid massage during acute flares (fever, severe joint pain, rashes), but subacute stages with medical approval indicate the condition is stable enough for therapeutic benefits.",
+    "topic_explanation": "🎯 **Key Concept**: When lupus is in **subacute stage** and **physician-approved**, massage as usual is appropriate. Subacute = manageable symptoms, not active flare.\n\n💡 **Memory Tip**: Doctor's Orders = Green Light GO! When doc says 'massage indicated' for subacute lupus, proceed as USUAL. Think 'Subacute = Suitable for usual massage'!\n\n⚠️ **Exam Alert**: Lupus stages: Acute (flare-up, contraindicated), Subacute (manageable, safe with MD approval), Chronic/Remission (generally safe). Key: physician approval!\n\n✅ **Why Correct**: With medical clearance and stable subacute stage, normal massage benefits include pain relief, stress reduction, improved circulation. Avoid during acute flares (fever, severe joint pain, rashes).",
     "incorrect_explanations": {
       "b": "Restricting massage to only head and feet is unnecessarily limiting when the physician has cleared normal massage for subacute lupus",
       "c": "Refusing massage contradicts the physician's recommendation and wastes an opportunity to provide therapeutic benefit during a stable disease phase"
@@ -2426,7 +2426,7 @@ export const questions: Question[] = [
     "correct_answer_text": "yang",
     "rewrite_question": "Which term best characterizes energy in contrast to material substance in Traditional Chinese Medicine?",
     "mnemonic": "YANG = YELLING with ACTIVITY and ENERGY! Yang sounds like 'YANK' - yanking things into motion with force and energy!",
-    "topic_explanation": "In Traditional Chinese Medicine, Yang represents the active, energetic, warm, and dynamic principles of life. While Yin embodies passive, cool, and material aspects, Yang is pure energy, movement, and transformation. Jing refers to essential life essence stored in the kidneys. Yang energy governs metabolic processes, circulation, and all active functions. Understanding this concept helps massage therapists work with clients who practice TCM or receive acupuncture, as Yang deficiency can manifest as fatigue, cold extremities, and sluggish healing.",
+    "topic_explanation": "🎯 **Key Concept**: In TCM, **Yang** represents active, energetic, warm, dynamic principles - pure **energy, movement, and transformation** (vs. Yin = material/passive).\n\n💡 **Memory Tip**: YANG = YELLING with ACTIVITY and ENERGY! Yang sounds like 'YANK' - yanking things into motion with force and energy!\n\n⚠️ **Exam Alert**: Don't confuse with Jing (essential life essence/battery reserve) or Yin (passive, material, cool, structure). Yang = ENERGY in motion!\n\n✅ **Why Correct**: Yang governs metabolic processes, circulation, all active functions. Yang deficiency = fatigue, cold extremities, sluggish healing. Yin = substance/fluids/structure.",
     "incorrect_explanations": {
       "a": "Jing represents essential life essence or constitutional energy stored in the kidneys, not active energy. It's more like the body's battery reserve rather than the energy itself.",
       "b": "Yin represents the passive, material, cool, and nourishing aspects of TCM theory. It's associated with substance, fluids, and structure rather than active energy."
@@ -2448,7 +2448,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "When a woman takes a step forward with her right foot and her left hip sags downward during this motion, which muscle demonstrates weakness?",
     "mnemonic": "TRENDELENBURG DROP = GLUTEUS MEDIUS FLOP! 'MEDIUS KEEPS YOU MEDIUM' - it keeps your pelvis level in the middle when you walk!",
-    "topic_explanation": "The gluteus medius acts as a hip stabilizer during single-leg stance phase of walking. When stepping forward with the right foot, the left leg becomes the stance leg. The left gluteus medius must contract to prevent the right hip from dropping (Trendelenburg sign). If the left hip drops instead, it indicates weakness in the LEFT gluteus medius. This muscle is crucial for lateral pelvic stability and preventing compensatory gait patterns that can cause back pain and other issues.",
+    "topic_explanation": "🎯 **Key Concept**: The **gluteus medius** acts as hip stabilizer during single-leg stance. If left hip drops when stepping on right foot, it indicates **weak LEFT gluteus medius** (Trendelenburg sign).\n\n💡 **Memory Tip**: TRENDELENBURG DROP = GLUTEUS MEDIUS FLOP! 'MEDIUS KEEPS YOU MEDIUM' - keeps pelvis level in the middle when you walk!\n\n⚠️ **Exam Alert**: Don't confuse with gluteus maximus (extends hip, stairs), iliopsoas (flexes hip), or rectus femoris (flexes hip/extends knee). Gluteus medius = LATERAL pelvic stability!\n\n✅ **Why Correct**: Crucial for lateral pelvic stability during single-leg stance phase. Prevents compensatory gait patterns that cause back pain and other issues.",
     "incorrect_explanations": {
       "a": "Gluteus maximus primarily extends the hip and is most active during climbing stairs or rising from sitting. It doesn't provide lateral pelvic stabilization during walking.",
       "c": "Iliopsoas flexes the hip and helps with forward leg swing, but doesn't stabilize the pelvis laterally during stance phase.",
@@ -2470,7 +2470,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "When working with a new client who has Type I Diabetes, what should be your primary area of concern during assessment?",
     "mnemonic": "DIABETES = DELAYED HEALING! 'SKIN INTEGRITY CHECK' - Sugar damages vessels, slow healing wrecks! Check the skin before you begin!",
-    "topic_explanation": "Type I diabetics have compromised circulation and delayed wound healing due to high blood glucose damaging blood vessels and nerves. The primary concern is overall skin integrity - checking for cuts, bruises, infections, or areas of breakdown that may not heal properly. Diabetics often have decreased sensation (neuropathy) and may not notice injuries. Any massage-induced micro-trauma could become problematic. Always perform thorough skin assessment and use lighter pressure. Document any findings and avoid areas of compromised skin integrity.",
+    "topic_explanation": "🎯 **Key Concept**: For Type I diabetics, the primary concern is **overall skin integrity** - checking for cuts, bruises, infections, or breakdown that may not heal properly.\n\n💡 **Memory Tip**: DIABETES = DELAYED HEALING! 'SKIN INTEGRITY CHECK' - Sugar damages vessels, slow healing wrecks! Check skin before you begin!\n\n⚠️ **Exam Alert**: Don't focus on retinopathy (eyes, not massage-relevant) or just hair condition (too narrow). Full assessment: wounds, sensation, healing capacity!\n\n✅ **Why Correct**: High glucose damages blood vessels/nerves. Diabetics have decreased sensation (neuropathy), may not notice injuries. Any massage micro-trauma could become problematic. Use lighter pressure, document findings.",
     "incorrect_explanations": {
       "a": "Retinopathy sites refer to eye problems from diabetes, which isn't relevant for massage therapy assessment and treatment planning.",
       "c": "While skin and hair condition can indicate circulation issues, this is too narrow - you need to assess general skin integrity including wounds, infections, and healing capacity."
@@ -2491,7 +2491,7 @@ export const questions: Question[] = [
     "correct_answer_text": "look out for signs of hypoglycemia",
     "rewrite_question": "What post-massage instruction should you provide to a client diagnosed with Type II Diabetes?",
     "mnemonic": "MASSAGE MOVES GLUCOSE! 'HYPO-WATCH' - Massage can lower blood sugar, so watch for the shakes, sweats, and confusion!",
-    "topic_explanation": "Massage therapy can lower blood glucose levels by improving circulation and insulin sensitivity. Type II diabetics, especially those on medications, risk hypoglycemia (low blood sugar) after massage. Symptoms include shakiness, sweating, confusion, dizziness, and rapid heartbeat. Clients should monitor themselves for 2-4 hours post-massage and have a glucose source available (juice, glucose tablets). This is particularly important for clients on insulin or sulfonylurea medications. Always educate diabetic clients about this potential reaction.",
+    "topic_explanation": "🎯 **Key Concept**: Massage can lower blood glucose levels. Type II diabetics risk **hypoglycemia** (low blood sugar) after massage, especially those on medications.\n\n💡 **Memory Tip**: MASSAGE MOVES GLUCOSE! 'HYPO-WATCH' - Massage can lower blood sugar, so watch for the shakes, sweats, and confusion!\n\n⚠️ **Exam Alert**: Hot/cold packs are contraindicated for diabetics (decreased sensation, burn risk, poor circulation). The answer is hypoglycemia monitoring!\n\n✅ **Why Correct**: Symptoms: shakiness, sweating, confusion, dizziness, rapid heartbeat. Monitor 2-4 hours post-massage. Have glucose source available (juice, tablets). Critical for insulin/sulfonylurea users.",
     "incorrect_explanations": {
       "a": "Hot packs are contraindicated for diabetics due to decreased sensation and poor circulation, which increase burn risk.",
       "b": "Cold packs aren't necessary or beneficial after massage for diabetic clients and could impair already compromised circulation."
@@ -2512,7 +2512,7 @@ export const questions: Question[] = [
     "correct_answer_text": "masseter and temporalis",
     "rewrite_question": "A client experiences jaw clicking sounds and discomfort while chewing. Which muscles should be the focus of your treatment?",
     "mnemonic": "JAW PAIN = CHEWING STRAIN! 'MASS-ETER and TEMP-ORALIS' - MASS (big) muscle at jaw angle, TEMPORAL muscle at your temple!",
-    "topic_explanation": "TMJ dysfunction with clicking and chewing pain primarily involves the muscles of mastication. The masseter (located at the jaw angle) and temporalis (fan-shaped muscle covering the temporal bone) are the primary muscles that close the jaw and generate chewing force. These muscles become tight, trigger-pointed, and painful with TMJ disorders, teeth grinding, and jaw clenching. Treatment focuses on releasing tension in these muscles through gentle massage, trigger point work, and client education about jaw habits.",
+    "topic_explanation": "🎯 **Key Concept**: TMJ dysfunction with clicking/chewing pain primarily involves **masseter** (jaw angle) and **temporalis** (temple) - the muscles of mastication that close the jaw.\n\n💡 **Memory Tip**: JAW PAIN = CHEWING STRAIN! 'MASS-ETER and TEMP-ORALIS' - MASS (big) muscle at jaw angle, TEMPORAL muscle at your temple!\n\n⚠️ **Exam Alert**: Not buccinator (keeps food between teeth) or orbicularis oris (lips), not SCM/scalenes (neck). Mastication muscles = masseter + temporalis!\n\n✅ **Why Correct**: These muscles become tight, trigger-pointed, painful with TMJ disorders, grinding, clenching. Treatment: gentle massage, trigger point work, client education about jaw habits.",
     "incorrect_explanations": {
       "a": "Buccinator helps with chewing by keeping food between teeth but doesn't cause TMJ clicking. Orbicularis oris controls lip movement, not jaw function.",
       "b": "SCM and scalenes are neck muscles that don't directly control jaw movement or cause TMJ symptoms, though they may develop secondary tension from jaw dysfunction."
@@ -2533,7 +2533,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Which lymph node is positioned anterior to the ear?",
     "mnemonic": "PAROTID sits by your EAR - think 'PARROT' sitting on your ear, and parrots love to be near ears to whisper secrets!",
-    "topic_explanation": "The parotid lymph nodes are located anterior (in front of) and inferior (below) the ear, closely associated with the parotid salivary gland. These superficial lymph nodes drain lymphatic fluid from the temporal region, upper face, and parts of the external ear. They're part of the head and neck lymphatic system that massage therapists encounter when working on facial and cranial areas. The parotid nodes can become palpable when swollen due to infections or other conditions affecting the face and scalp regions.",
+    "topic_explanation": "🎯 **Key Concept**: The **parotid lymph nodes** are located anterior (in front of) and inferior (below) the ear, associated with the parotid salivary gland.\n\n💡 **Memory Tip**: PAROTID sits by your EAR - think 'PARROT' sitting on your ear! Parrots love to be near ears to whisper secrets!\n\n⚠️ **Exam Alert**: Not facial lymph nodes (along jawline) or occipital (back of head). Parotid = specifically in FRONT of ear!\n\n✅ **Why Correct**: Drains temporal region, upper face, external ear parts. Part of head/neck lymphatic system. Becomes palpable when swollen from infections affecting face/scalp.",
     "incorrect_explanations": {
       "a": "Facial lymph nodes are located along the facial artery and vein, running along the jawline and lower face, not specifically in front of the ear",
       "c": "Occipital lymph nodes are located at the back of the head near the base of the skull (occiput), posterior to the ears, not in front of them"
@@ -2555,7 +2555,7 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Into which vessel does the thoracic duct drain?",
     "mnemonic": "Thoracic duct LOVES the LEFT - it drains 3/4 of lymph into the LEFT subclavian vein! Think 'Three-quarters LEFT at the subclavian CLUB'",
-    "topic_explanation": "The thoracic duct is the largest lymphatic vessel in the body, collecting lymph from approximately three-quarters of the body (everything except the right upper quadrant). It travels up through the thorax and empties into the venous system at the junction of the left subclavian and left internal jugular veins. This is crucial for returning filtered lymphatic fluid back to the bloodstream. The right lymphatic duct handles the remaining quarter, draining into the right subclavian vein. This knowledge helps massage therapists understand lymphatic drainage patterns.",
+    "topic_explanation": "🎯 **Key Concept**: The **thoracic duct** is the largest lymphatic vessel, collecting lymph from **3/4 of the body** and emptying into the **left subclavian vein** (at junction with left internal jugular).\n\n💡 **Memory Tip**: Thoracic duct LOVES the LEFT - drains 3/4 of lymph into LEFT subclavian vein! Think 'Three-quarters LEFT at the subclavian CLUB'!\n\n⚠️ **Exam Alert**: Not axillary lymph nodes (filtering stations), not inferior vena cava (blood return), not hepatic duct (bile). Thoracic duct → LEFT subclavian vein!\n\n✅ **Why Correct**: Crucial for returning filtered lymphatic fluid to bloodstream. Right lymphatic duct handles remaining 1/4, draining to right subclavian. Essential for understanding lymphatic drainage patterns.",
     "incorrect_explanations": {
       "a": "Lymph nodes in the armpit (axillary nodes) are filtering stations that lymph passes through, but they don't receive the final drainage from the thoracic duct",
       "b": "The inferior vena cava is a major vein returning blood to the heart from the lower body, but lymph doesn't drain directly into it",
@@ -4456,7 +4456,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "A client reports knot-like sensations in their upper trapezius and shoulder area, accompanied by excessive muscle tension in the mid to upper thoracic spine. The most appropriate treatment approach would be:",
     "mnemonic": "KNOTS need TRIGGER point therapy - when client says 'KNOTS', think TRIGGER SPOTS! TRIGger point therapy TRIGgers relief!",
-    "topic_explanation": "Knotting sensations indicate trigger points - hyperirritable spots within taut muscle bands that refer pain and cause dysfunction. Trigger points develop from muscle overuse, stress, poor posture, creating localized ischemia and metabolic dysfunction. The upper traps and thoracic region are common trigger point locations due to postural strain. Trigger point therapy uses sustained pressure to deactivate these points, restore circulation, and release muscle tension. This technique specifically targets the pathophysiology of trigger points, unlike general techniques that don't address the specific neurological and metabolic dysfunction occurring in these areas.",
+    "topic_explanation": "🎯 **Key Concept**: Knotting sensations indicate trigger points - hyperirritable spots within taut muscle bands that refer pain and cause dysfunction.
+
+💡 **Memory Tip**: KNOTS need TRIGGER point therapy - when client says 'KNOTS', think TRIGGER SPOTS! TRIGger point therapy TRIGgers relief!
+
+⚠️ **Exam Alert**: Trigger points develop from muscle overuse, stress, poor posture, creating localized ischemia and metabolic dysfunction. The upper traps and thoracic region are common locations due to postural strain.
+
+✅ **Why Correct**: Trigger point therapy uses sustained pressure to deactivate these points, restore circulation, and release muscle tension - specifically targeting the neurological and metabolic dysfunction.",
     "incorrect_explanations": {
       "a": "Moxibustion is a Traditional Chinese Medicine technique involving burning herbs, not appropriate for Western massage therapy practice and doesn't address trigger point pathophysiology",
       "b": "Tapotement involves percussive striking movements that would likely aggravate hypertonicity and trigger points rather than providing the sustained pressure needed for deactivation",
@@ -4477,7 +4483,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "When performing massage on the Linea Alba seven days following abdominal surgical procedures, what approach should be taken?",
     "mnemonic": "Post-Surgery = PEACE: Proximal first, Easy touch, Avoid friction, Circulation gently, Emergency healing mode",
-    "topic_explanation": "The Linea Alba is the fibrous structure running down the center of the abdomen, often involved in surgical incisions. One week post-surgery, tissues are in acute healing phase with inflammation, fragile scar formation, and compromised circulation. Deep friction could disrupt healing tissue, cause pain, or damage delicate repair processes. Gentle relaxation massage promotes parasympathetic healing response, while proximal lymphatic drainage (working toward the heart from areas above the surgical site) helps reduce swelling without disturbing the surgical area directly. This approach supports natural healing while avoiding mechanical stress on vulnerable tissues.",
+    "topic_explanation": "🎯 **Key Concept**: One week post-surgery, tissues are in acute healing phase with inflammation, fragile scar formation, and compromised circulation.
+
+💡 **Memory Tip**: Post-Surgery = PEACE: Proximal first, Easy touch, Avoid friction, Circulation gently, Emergency healing mode.
+
+⚠️ **Exam Alert**: The Linea Alba is the fibrous structure running down the center of the abdomen, often involved in surgical incisions. Deep friction could disrupt healing tissue, cause pain, or damage delicate repair processes.
+
+✅ **Why Correct**: Gentle relaxation massage promotes parasympathetic healing response, while proximal lymphatic drainage helps reduce swelling without disturbing the surgical area directly.",
     "incorrect_explanations": {
       "a": "Friction is contraindicated immediately post-surgery as it creates mechanical stress, heat, and pressure that can disrupt healing tissues, cause pain, reopen incisions, or interfere with the delicate inflammatory healing process occurring in the first weeks after surgery."
     },
@@ -4498,7 +4510,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Which tissue type comprises the largest percentage of human body composition?",
     "mnemonic": "Connective tissue CONNECTS everything - tendons, ligaments, bones, cartilage, blood, fat - it's EVERYWHERE supporting all other tissues!",
-    "topic_explanation": "Connective tissue is the most abundant tissue type, making up roughly 45% of body weight. It includes diverse structures: bones, cartilage, tendons, ligaments, fascia, blood, lymph, and adipose tissue. Its primary function is structural support, protection, and connection between other tissue types. The extracellular matrix (collagen, elastin, ground substance) gives connective tissue its strength and flexibility. This abundance makes sense anatomically - every organ, muscle, and structure needs connective tissue framework for support, blood supply, and structural integrity. Understanding this helps therapists appreciate how massage affects the body's primary structural system.",
+    "topic_explanation": "🎯 **Key Concept**: Connective tissue is the most abundant tissue type, making up roughly 45% of body weight.
+
+💡 **Memory Tip**: Connective tissue CONNECTS everything - tendons, ligaments, bones, cartilage, blood, fat - it's EVERYWHERE supporting all other tissues!
+
+⚠️ **Exam Alert**: It includes diverse structures: bones, cartilage, tendons, ligaments, fascia, blood, lymph, and adipose tissue. Its primary function is structural support, protection, and connection between other tissue types.
+
+✅ **Why Correct**: Every organ, muscle, and structure needs connective tissue framework for support, blood supply, and structural integrity. Understanding this helps therapists appreciate how massage affects the body's primary structural system.",
     "incorrect_explanations": {
       "a": "Muscle tissue comprises only about 40% of body weight in average adults, making it substantial but not the most abundant tissue type overall",
       "c": "Nervous tissue, while crucial for function, represents a very small percentage of total body mass, consisting mainly of brain, spinal cord, and peripheral nerves",
@@ -4521,7 +4539,13 @@ export const questions: Question[] = [
     "correct_answer_text": "lymphatic and cardiovascular",
     "rewrite_question": "Which body systems receive the greatest enhancement and improvement benefits from massage therapy?",
     "mnemonic": "Massage = L♥️ (Love): Lymphatic drainage + Cardiovascular circulation = the heart of massage benefits!",
-    "topic_explanation": "Massage primarily enhances lymphatic and cardiovascular systems through mechanical and physiological mechanisms. Lymphatic benefits include improved drainage, reduced swelling, enhanced immune function, and toxin removal through manual manipulation of lymph vessels and nodes. Cardiovascular improvements include increased venous return, enhanced circulation, reduced blood pressure, improved tissue oxygenation, and better nutrient delivery. The pumping action of massage techniques directly moves lymph and blood, while relaxation response improves heart rate variability and vascular tone. These two systems work synergistically - better circulation supports lymphatic function, while lymphatic drainage reduces cardiovascular workload.",
+    "topic_explanation": "🎯 **Key Concept**: Massage primarily enhances lymphatic and cardiovascular systems through mechanical and physiological mechanisms.
+
+💡 **Memory Tip**: Massage = L♥️ (Love): Lymphatic drainage + Cardiovascular circulation = the heart of massage benefits!
+
+⚠️ **Exam Alert**: Lymphatic benefits include improved drainage, reduced swelling, enhanced immune function, and toxin removal. Cardiovascular improvements include increased venous return, enhanced circulation, reduced blood pressure, improved tissue oxygenation, and better nutrient delivery.
+
+✅ **Why Correct**: The pumping action of massage techniques directly moves lymph and blood. These two systems work synergistically - better circulation supports lymphatic function, while lymphatic drainage reduces cardiovascular workload.",
     "incorrect_explanations": {
       "a": "While massage may have some digestive benefits through relaxation response, neither digestive nor respiratory systems receive the direct, significant improvements that lymphatic and cardiovascular systems do from massage techniques",
       "b": "Respiratory benefits from massage are minimal and indirect compared to the significant cardiovascular improvements, making this combination less accurate than lymphatic and cardiovascular",
@@ -4542,7 +4566,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What directional sequence should be followed when performing massage to address edema in the lower extremities?",
     "mnemonic": "Edema direction = GPS: Go Proximal first (clear the highway), then Push fluid from distal, then Proximal finish (guide it home)",
-    "topic_explanation": "Treating edema requires understanding lymphatic drainage principles. The correct sequence is proximal-distal-proximal because lymphatic vessels have one-way valves directing fluid toward the heart. First, work proximally to 'clear the highway' - opening lymph nodes and vessels near the trunk to create space for fluid movement. Second, work distally to mobilize trapped fluid from swollen areas. Finally, work proximally again to guide the mobilized fluid toward the lymph nodes and venous return. This prevents 'traffic jams' where fluid has nowhere to go if you start distally first. The technique requires gentle pressure since lymphatic vessels are superficial and delicate.",
+    "topic_explanation": "🎯 **Key Concept**: Treating edema requires the correct sequence: proximal-distal-proximal because lymphatic vessels have one-way valves directing fluid toward the heart.
+
+💡 **Memory Tip**: Edema direction = GPS: Go Proximal first (clear the highway), then Push fluid from distal, then Proximal finish (guide it home).
+
+⚠️ **Exam Alert**: First, work proximally to 'clear the highway' - opening lymph nodes and vessels near the trunk. Second, work distally to mobilize trapped fluid. Finally, work proximally again to guide the mobilized fluid toward lymph nodes and venous return.
+
+✅ **Why Correct**: This prevents 'traffic jams' where fluid has nowhere to go if you start distally first. The technique requires gentle pressure since lymphatic vessels are superficial and delicate.",
     "incorrect_explanations": {
       "b": "Working distal-proximal-distal-proximal is inefficient and potentially counterproductive because it doesn't properly clear the proximal drainage pathways first, and ending distally leaves mobilized fluid without clear direction toward lymphatic return"
     },
@@ -4563,7 +4593,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "After blood exits the digestive organs, what is its immediate destination?",
     "mnemonic": "Digestive blood takes a LIVER detour - think 'food goes to stomach, blood goes to liver for processing' - hepatic portal system!",
-    "topic_explanation": "The hepatic portal system directs blood from digestive organs directly to the liver before returning to systemic circulation. This unique vascular arrangement allows the liver to process absorbed nutrients, detoxify substances, and regulate blood glucose before these materials enter general circulation. Blood from stomach, small intestine, large intestine, pancreas, and spleen drains into the hepatic portal vein, which carries it to liver sinusoids. Here, hepatocytes metabolize nutrients, neutralize toxins, and store/release glucose as needed. Only after hepatic processing does blood continue via hepatic veins to the inferior vena cava and heart. This 'first-pass' metabolism is crucial for protecting the body from potentially harmful absorbed substances.",
+    "topic_explanation": "🎯 **Key Concept**: The hepatic portal system directs blood from digestive organs directly to the liver before returning to systemic circulation.
+
+💡 **Memory Tip**: Digestive blood takes a LIVER detour - think 'food goes to stomach, blood goes to liver for processing' - hepatic portal system!
+
+⚠️ **Exam Alert**: Blood from stomach, small intestine, large intestine, pancreas, and spleen drains into the hepatic portal vein, which carries it to liver sinusoids. Here, hepatocytes metabolize nutrients, neutralize toxins, and store/release glucose.
+
+✅ **Why Correct**: Only after hepatic processing does blood continue to the heart. This 'first-pass' metabolism is crucial for protecting the body from potentially harmful absorbed substances.",
     "incorrect_explanations": {
       "b": "The spleen is part of the digestive portal system and drains INTO the hepatic portal circulation, but it's not the destination for blood from other digestive organs",
       "c": "The kidneys receive blood for filtration and waste removal, but digestive blood doesn't go there directly - it must first pass through the liver for nutrient processing and detoxification",
@@ -4586,7 +4622,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "Which anatomical structure belongs to the peripheral nervous system?",
     "mnemonic": "CNS is Central (brain & cord), PNS is Peripheral (nerves escape!). Think: Cranial nerves 'Creep' out of the skull into the PNS!",
-    "topic_explanation": "The nervous system divides into CNS (central) and PNS (peripheral). CNS includes brain, brainstem, spinal cord, and white/gray matter within them. PNS includes everything outside the brain and spinal cord: cranial nerves (12 pairs), spinal nerves, ganglia, and peripheral receptors. Cranial nerves emerge from the brain but extend into peripheral tissues, making them PNS structures. This distinction is crucial for understanding nerve pathology and massage contraindications.",
+    "topic_explanation": "🎯 **Key Concept**: The nervous system divides into CNS (central) and PNS (peripheral). Cranial nerves emerge from the brain but extend into peripheral tissues, making them PNS structures.
+
+💡 **Memory Tip**: CNS is Central (brain & cord), PNS is Peripheral (nerves escape!). Think: Cranial nerves 'Creep' out of the skull into the PNS!
+
+⚠️ **Exam Alert**: CNS includes brain, brainstem, spinal cord, and white/gray matter within them. PNS includes everything outside: cranial nerves (12 pairs), spinal nerves, ganglia, and peripheral receptors.
+
+✅ **Why Correct**: This distinction is crucial for understanding nerve pathology and massage contraindications.",
     "incorrect_explanations": {
       "b": "White matter consists of myelinated axon tracts within the brain and spinal cord, making it part of the central nervous system, not peripheral",
       "c": "The medulla is part of the brainstem, which is located within the skull and forms part of the central nervous system",
@@ -4609,7 +4651,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What is the crescent-shaped cartilage structure located on the fibular side of the knee joint?",
     "mnemonic": "Lateral = fibLar side! Both have 'L'! Picture a crescent moon on the 'L'ateral side - Lateral meniscus!",
-    "topic_explanation": "The knee has two C-shaped menisci: medial (tibial side) and lateral (fibular side). The lateral meniscus is more O-shaped and mobile, while the medial is more C-shaped and firmly attached. The fibular side refers to the outer/lateral aspect of the knee where the fibula is located. These cartilage discs act as shock absorbers and improve joint congruency. Lateral meniscus tears are common in sports injuries, making this knowledge clinically relevant for massage therapists.",
+    "topic_explanation": "🎯 **Key Concept**: The knee has two C-shaped menisci: medial (tibial side) and lateral (fibular side). The lateral meniscus is on the fibular (outer) side.
+
+💡 **Memory Tip**: Lateral = fibLar side! Both have 'L'! Picture a crescent moon on the 'L'ateral side - Lateral meniscus!
+
+⚠️ **Exam Alert**: The lateral meniscus is more O-shaped and mobile, while the medial is more C-shaped and firmly attached. These cartilage discs act as shock absorbers and improve joint congruency.
+
+✅ **Why Correct**: Lateral meniscus tears are common in sports injuries, making this knowledge clinically relevant for massage therapists.",
     "incorrect_explanations": {
       "a": "The medial meniscus is located on the tibial (inner) side of the knee, not the fibular (outer) side",
       "c": "ACL (anterior cruciate ligament) is a ligament, not cartilage, and runs through the center of the knee joint",
@@ -4631,7 +4679,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What massage technique is most appropriate to perform directly over the vertebral column?",
     "mnemonic": "Spine needs gentle 'SKIN rolling' - never 'SQUEEZE' (petrissage) or 'SCRAPE' (friction) the spine bones!",
-    "topic_explanation": "Direct pressure over bony prominences of the spine can cause injury. Skin rolling is ideal over the spine because it lifts skin and superficial fascia away from underlying bone, avoiding direct pressure on vertebrae. Petrissage involves compression and kneading that could compress vertebrae, while friction involves direct pressure and movement over structures. The spinous processes are subcutaneous and vulnerable to trauma. Skin rolling promotes circulation and fascial mobility without risk to vertebral structures.",
+    "topic_explanation": "🎯 **Key Concept**: Skin rolling is ideal over the spine because it lifts skin and superficial fascia away from underlying bone, avoiding direct pressure on vertebrae.
+
+💡 **Memory Tip**: Spine needs gentle 'SKIN rolling' - never 'SQUEEZE' (petrissage) or 'SCRAPE' (friction) the spine bones!
+
+⚠️ **Exam Alert**: Direct pressure over bony prominences of the spine can cause injury. Petrissage involves compression that could compress vertebrae, while friction involves direct pressure on structures.
+
+✅ **Why Correct**: The spinous processes are subcutaneous and vulnerable to trauma. Skin rolling promotes circulation and fascial mobility without risk to vertebral structures.",
     "incorrect_explanations": {
       "b": "Petrissage involves compression and kneading motions that would apply direct pressure to the vertebral spinous processes, potentially causing injury",
       "c": "Friction techniques apply direct pressure and rubbing motions over structures, which could traumatize the bony vertebral processes"
@@ -4648,7 +4702,13 @@ export const questions: Question[] = [
     "correct_answer_text": "The medial tip of the spine of the",
     "rewrite_question": "Which anatomical landmark helps locate the upper burner Shu points, specifically the lung Shu point (BL-13)?",
     "mnemonic": "Scapula Spine = Upper burner line! 'LUNG lives at scapuLa Line' - BL-13 at T3 level, scapular spine level!",
-    "topic_explanation": "In Traditional Chinese Medicine, Shu points are located on the bladder meridian and correspond to organ systems. The upper burner includes lung and heart systems. The medial tip of the scapular spine serves as a horizontal landmark at approximately T3 vertebral level, where BL-13 (Lung Shu) is located. This anatomical landmark helps practitioners locate the correct point for treatment. The scapular spine is easily palpable and provides a reliable reference for finding upper burner Shu points.",
+    "topic_explanation": "🎯 **Key Concept**: The medial tip of the scapular spine serves as a horizontal landmark at approximately T3 vertebral level, where BL-13 (Lung Shu) is located.
+
+💡 **Memory Tip**: Scapula Spine = Upper burner line! 'LUNG lives at scapuLa Line' - BL-13 at T3 level, scapular spine level!
+
+⚠️ **Exam Alert**: In Traditional Chinese Medicine, Shu points are located on the bladder meridian and correspond to organ systems. The upper burner includes lung and heart systems.
+
+✅ **Why Correct**: The scapular spine is easily palpable and provides a reliable reference for finding upper burner Shu points.",
     "incorrect_explanations": {},
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing posterior view of upper back with scapula highlighted, medial tip of scapular spine marked with bright red dot, horizontal line extending to spine showing BL-13 location, 'UPPER BURNER SHU POINTS' label, 'MEDIAL TIP SCAPULAR SPINE' clearly labeled with arrow",
     "category": "Eastern Medicine",
@@ -4666,7 +4726,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What is the most effective massage treatment approach for Dupuytren's Contracture?",
     "mnemonic": "Dupuytren's = 'Palmar fascia Problem' - needs 'Friction to Fascia' to break up the fibrous bands!",
-    "topic_explanation": "Dupuytren's Contracture involves progressive thickening and shortening of the palmar fascia, creating fibrous cords that pull fingers into flexion. The primary pathology is in the palmar fascia, not joints or general finger mobility. Cross-fiber friction specifically targets the thickened fascial bands, helping to break up adhesions and maintain tissue mobility. This technique addresses the root cause - the fascial contracture. Passive ROM to wrist doesn't target the palm pathology, and general finger ROM doesn't address the specific fascial restriction.",
+    "topic_explanation": "🎯 **Key Concept**: Dupuytren's Contracture involves progressive thickening and shortening of the palmar fascia, creating fibrous cords that pull fingers into flexion.
+
+💡 **Memory Tip**: Dupuytren's = 'Palmar fascia Problem' - needs 'Friction to Fascia' to break up the fibrous bands!
+
+⚠️ **Exam Alert**: The primary pathology is in the palmar fascia, not joints or general finger mobility. Cross-fiber friction specifically targets the thickened fascial bands, helping to break up adhesions and maintain tissue mobility.
+
+✅ **Why Correct**: This technique addresses the root cause - the fascial contracture. Passive ROM to wrist doesn't target the palm pathology, and general finger ROM doesn't address the specific fascial restriction.",
     "incorrect_explanations": {
       "b": "Passive ROM to the wrist does not address the primary pathology in the palmar fascia of the hand, which is where Dupuytren's contracture occurs",
       "c": "Active ROM of fingers, while beneficial, does not specifically target the thickened palmar fascial bands that are the root cause of the contracture"
@@ -4683,7 +4749,13 @@ export const questions: Question[] = [
     "correct_answer_text": "Liver, Kidney",
     "rewrite_question": "Which meridian pathways run along the adductor muscle group?",
     "mnemonic": "LAKE - Liver And Kidney Experience the adductors (both flow through the inner thigh where adductors live)",
-    "topic_explanation": "In Traditional Chinese Medicine, meridians are energy pathways that flow through the body. The Liver and Kidney meridians both travel along the medial (inner) thigh where the adductor muscle group is located. The Liver meridian runs along the medial leg and thigh, while the Kidney meridian also follows the inner leg pathway. The adductor muscles (adductor longus, brevis, magnus, gracilis, pectineus) are located on the medial thigh and work to pull the leg toward the body's midline. Understanding meridian pathways is essential for massage therapists practicing Eastern modalities or incorporating TCM principles into treatment.",
+    "topic_explanation": "🎯 **Key Concept**: The Liver and Kidney meridians both travel along the medial (inner) thigh where the adductor muscle group is located.
+
+💡 **Memory Tip**: LAKE - Liver And Kidney Experience the adductors (both flow through the inner thigh where adductors live).
+
+⚠️ **Exam Alert**: The Liver meridian runs along the medial leg and thigh, while the Kidney meridian also follows the inner leg pathway. The adductor muscles are located on the medial thigh.
+
+✅ **Why Correct**: Understanding meridian pathways is essential for massage therapists practicing Eastern modalities or incorporating TCM principles into treatment.",
     "incorrect_explanations": {},
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing anterior view of human leg with adductor muscles highlighted in blue and Liver/Kidney meridian pathways marked in red and green flowing along the inner thigh, clear arrows showing meridian direction, bold text labels for 'LIVER MERIDIAN', 'KIDNEY MERIDIAN', and 'ADDUCTOR MUSCLES'",
     "category": "Eastern Medicine",
@@ -4697,7 +4769,13 @@ export const questions: Question[] = [
     "correct_answer_text": "Triceps Brachii",
     "rewrite_question": "Which muscle is responsible for straightening the elbow joint?",
     "mnemonic": "TRI-ceps has THREE heads to EXTEND your reach (think of reaching out to extend your arm)",
-    "topic_explanation": "The triceps brachii is the primary muscle responsible for elbow extension (straightening). Located on the posterior arm, it has three heads: long head, lateral head, and medial head, all converging to insert on the olecranon process of the ulna. When contracted, the triceps pulls the forearm away from the upper arm, creating extension at the elbow joint. This is opposite to flexion (bending) performed by the biceps and brachialis. The triceps is crucial for pushing movements and activities requiring arm extension. Massage therapists frequently work on tight triceps, especially in clients who perform repetitive pushing motions or hold extended arm positions.",
+    "topic_explanation": "🎯 **Key Concept**: The triceps brachii is the primary muscle responsible for elbow extension (straightening).
+
+💡 **Memory Tip**: TRI-ceps has THREE heads to EXTEND your reach (think of reaching out to extend your arm).
+
+⚠️ **Exam Alert**: Located on the posterior arm, it has three heads: long head, lateral head, and medial head, all converging to insert on the olecranon process of the ulna. When contracted, the triceps pulls the forearm away from the upper arm.
+
+✅ **Why Correct**: The triceps is crucial for pushing movements. Massage therapists frequently work on tight triceps, especially in clients who perform repetitive pushing motions or hold extended arm positions.",
     "incorrect_explanations": {},
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing posterior view of arm with triceps brachii muscle highlighted in red, three heads clearly labeled, arrow showing extension movement at elbow joint, bold text 'TRICEPS BRACHII - ELBOW EXTENSION', simple stick figure showing extended arm position",
     "category": "Anatomy",
@@ -4714,7 +4792,13 @@ export const questions: Question[] = [
     "correct_answer_text": "veins",
     "rewrite_question": "Lymphatic vessels follow which type of blood vessels on their journey back to the heart?",
     "mnemonic": "Veins and lymph are VEIN-mates - they're both heading home to the heart together (low pressure buddies)",
-    "topic_explanation": "Lymphatic vessels travel alongside veins, not arteries, as they return lymph to the cardiovascular system. Both lymphatic vessels and veins are low-pressure systems carrying fluid back toward the heart, making them natural travel companions. Arteries carry high-pressure oxygenated blood away from the heart, while veins and lymphatics both use similar mechanisms (muscle contractions, one-way valves, breathing) to move their contents toward the heart against gravity. The lymphatic system ultimately drains into the venous system at the subclavian veins. This anatomical relationship is important for massage therapists when performing lymphatic drainage techniques.",
+    "topic_explanation": "🎯 **Key Concept**: Lymphatic vessels travel alongside veins, not arteries, as they return lymph to the cardiovascular system.
+
+💡 **Memory Tip**: Veins and lymph are VEIN-mates - they're both heading home to the heart together (low pressure buddies).
+
+⚠️ **Exam Alert**: Both lymphatic vessels and veins are low-pressure systems carrying fluid back toward the heart. They both use similar mechanisms: muscle contractions, one-way valves, and breathing to move their contents toward the heart against gravity.
+
+✅ **Why Correct**: The lymphatic system ultimately drains into the venous system at the subclavian veins. This anatomical relationship is important for massage therapists when performing lymphatic drainage techniques.",
     "incorrect_explanations": {
       "a": "Arteries carry high-pressure blood away from the heart, not toward it. Lymph vessels need to return fluid to the heart, so they follow the same pathway as veins, not arteries."
     },
@@ -4735,7 +4819,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What type of muscle action describes lifting a bone upward from its neutral anatomical position?",
     "mnemonic": "LEVATOR = ELEVATOR - lifts things UP! (Like an elevator in a building)",
-    "topic_explanation": "A levator muscle raises or lifts a body part from its neutral anatomical position. The term comes from Latin 'levare' meaning 'to lift.' Examples include the levator scapulae (lifts shoulder blade) and levator ani (lifts pelvic floor). This is opposite to a depressor which lowers body parts. Levator action is distinct from flexion (bending at a joint) or tension (creating stiffness). Understanding muscle action terminology helps massage therapists communicate professionally about movement patterns and muscular dysfunction. Levator muscles are often overworked in clients who hold elevated postures.",
+    "topic_explanation": "🎯 **Key Concept**: A levator muscle raises or lifts a body part from its neutral anatomical position. The term comes from Latin 'levare' meaning 'to lift.'
+
+💡 **Memory Tip**: LEVATOR = ELEVATOR - lifts things UP! (Like an elevator in a building)
+
+⚠️ **Exam Alert**: Examples include the levator scapulae (lifts shoulder blade) and levator ani (lifts pelvic floor). This is opposite to a depressor which lowers body parts. Levator action is distinct from flexion or tension.
+
+✅ **Why Correct**: Levator muscles are often overworked in clients who hold elevated postures. Understanding muscle action terminology helps massage therapists communicate professionally about movement patterns.",
     "incorrect_explanations": {
       "a": "A depressor muscle lowers or depresses a body part downward from neutral position - the opposite of raising",
       "b": "A flexor muscle bends or decreases the angle at a joint, which is different from simply raising a bone upward",
@@ -4756,7 +4846,13 @@ export const questions: Question[] = [
     "correct_answer_text": "b. slowly and rhythmical",
     "rewrite_question": "What is the proper technique for performing passive range of motion?",
     "mnemonic": "SLOW-MO with COMM-O - Slow Motion with Communication Only (never quick, always talk)",
-    "topic_explanation": "Passive ROM must be performed slowly and rhythmically with continuous client communication about comfort levels. The therapist moves the client's joint through its range while the client remains completely relaxed. Quick, vigorous movements can cause injury, muscle guarding, or joint trauma. Slow movements allow proper assessment of restrictions, prevent overstretching, and maintain client safety. Ongoing communication ensures the client can report pain, discomfort, or concerns immediately. This technique is used to assess joint mobility, maintain flexibility, and prevent stiffness in clients who cannot actively move joints due to injury, surgery, or neurological conditions.",
+    "topic_explanation": "🎯 **Key Concept**: Passive ROM must be performed slowly and rhythmically with continuous client communication about comfort levels.
+
+💡 **Memory Tip**: SLOW-MO with COMM-O - Slow Motion with Communication Only (never quick, always talk).
+
+⚠️ **Exam Alert**: Quick, vigorous movements can cause injury, muscle guarding, or joint trauma. Slow movements allow proper assessment of restrictions, prevent overstretching, and maintain client safety.
+
+✅ **Why Correct**: Ongoing communication ensures the client can report pain, discomfort, or concerns immediately. This technique is used to assess joint mobility and maintain flexibility in clients who cannot actively move joints.",
     "incorrect_explanations": {
       "a": "Quick and vigorous passive ROM is dangerous and can cause injury, muscle spasms, joint trauma, or tissue damage - movements must always be slow and controlled"
     },
@@ -4775,7 +4871,13 @@ export const questions: Question[] = [
     "correct_answer_text": "cancel appt, reschedule once you're well",
     "rewrite_question": "A client with compromised immunity has scheduled a session, but you develop throat pain upon awakening. What is the appropriate action?",
     "mnemonic": "SICK? SKIP! When you're unwell, protect the vulnerable - Cancel and Care for your client's health first!",
-    "topic_explanation": "Professional ethics and infection control require therapists to prioritize client safety, especially with immunocompromised individuals who have weakened immune systems and increased susceptibility to infections. Any signs of illness (sore throat, fever, cold symptoms) indicate potential contagion risk. The therapist's duty of care mandates canceling appointments when ill, as even minor infections can cause serious complications in immune-suppressed clients. This protects both client health and maintains professional standards. Supplements like vitamin C don't eliminate transmission risk or justify treating clients while symptomatic.",
+    "topic_explanation": "🎯 **Key Concept**: Professional ethics and infection control require therapists to prioritize client safety, especially with immunocompromised individuals who have weakened immune systems and increased susceptibility to infections.
+
+💡 **Memory Tip**: SICK? SKIP! When you're unwell, protect the vulnerable - Cancel and Care for your client's health first!
+
+⚠️ **Exam Alert**: Any signs of illness (sore throat, fever, cold symptoms) indicate potential contagion risk. Even minor infections can cause serious complications in immune-suppressed clients.
+
+✅ **Why Correct**: The therapist's duty of care mandates canceling appointments when ill. Supplements like vitamin C don't eliminate transmission risk or justify treating clients while symptomatic.",
     "incorrect_explanations": {
       "a": "This is dangerous and unethical. Taking vitamin C doesn't eliminate infection risk or prevent transmission to an immune-compromised client who could develop serious complications from even minor illnesses. Professional standards require canceling when symptomatic."
     },
@@ -4795,7 +4897,13 @@ export const questions: Question[] = [
     "correct_answer_text": "a properly-draped client",
     "rewrite_question": "Under New York State regulations, which advertising element is permissible among the following options?",
     "mnemonic": "NY Says NO to GUARANTEES! But YES to PROPER DRAPING - Show professionalism, not promises!",
-    "topic_explanation": "NY State massage therapy advertising laws prohibit making guarantees about treatment outcomes or specific results like weight loss, as these constitute false or misleading claims that massage therapy cannot reliably deliver. Such guarantees violate professional standards and consumer protection laws. However, showing properly-draped clients in advertisements is not only permitted but demonstrates professionalism and adherence to modesty standards. Proper draping images show ethical practice and help educate the public about professional massage therapy standards, making this the only acceptable advertising feature among the options.",
+    "topic_explanation": "🎯 **Key Concept**: NY State massage therapy advertising laws prohibit making guarantees about treatment outcomes or specific results like weight loss.
+
+💡 **Memory Tip**: NY Says NO to GUARANTEES! But YES to PROPER DRAPING - Show professionalism, not promises!
+
+⚠️ **Exam Alert**: Such guarantees constitute false or misleading claims that massage therapy cannot reliably deliver. They violate professional standards and consumer protection laws.
+
+✅ **Why Correct**: Showing properly-draped clients in advertisements is permitted and demonstrates professionalism and adherence to modesty standards, making this the only acceptable advertising feature.",
     "incorrect_explanations": {
       "a": "Guaranteeing results violates NY advertising laws because massage therapy outcomes vary significantly between individuals and conditions cannot be guaranteed to resolve",
       "b": "Guaranteeing weight loss is specifically prohibited as it makes unsubstantiated medical claims that massage therapy cannot reliably deliver"
@@ -4815,7 +4923,13 @@ export const questions: Question[] = [
     "correct_answer_text": "b. ulnar and median",
     "rewrite_question": "Which nerves provide innervation to the structures of the hand?",
     "mnemonic": "HUMAN hands need U&M: Ulnar and Median nerves! (Remember: U-M = yoU and Me use our hands!)",
-    "topic_explanation": "The hand receives primary innervation from the ulnar and median nerves, both arising from the brachial plexus. The median nerve innervates the lateral palm, thumb, index, middle, and lateral ring finger, controlling thenar muscles and providing sensation. The ulnar nerve innervates the medial hand, pinky, medial ring finger, and most intrinsic hand muscles including hypothenar muscles. Together, they enable fine motor control and sensation essential for hand function. The radial nerve also contributes to the dorsal hand but isn't listed in correct options. Understanding this innervation is crucial for identifying nerve compression syndromes and referral patterns.",
+    "topic_explanation": "🎯 **Key Concept**: The hand receives primary innervation from the ulnar and median nerves, both arising from the brachial plexus.
+
+💡 **Memory Tip**: HUMAN hands need U&M: Ulnar and Median nerves! (Remember: U-M = yoU and Me use our hands!)
+
+⚠️ **Exam Alert**: The median nerve innervates the lateral palm, thumb, index, middle, and lateral ring finger. The ulnar nerve innervates the medial hand, pinky, medial ring finger, and most intrinsic hand muscles.
+
+✅ **Why Correct**: Together, they enable fine motor control and sensation essential for hand function. Understanding this innervation is crucial for identifying nerve compression syndromes and referral patterns.",
     "incorrect_explanations": {
       "a": "The axillary nerve innervates the deltoid and skin over the shoulder, while the musculocutaneous nerve serves the anterior arm muscles and lateral forearm skin - neither directly innervates hand structures"
     },
@@ -4834,7 +4948,13 @@ export const questions: Question[] = [
     "correct_answer_text": "vibration and tapotement",
     "rewrite_question": "What massage techniques are utilized during postural drainage therapy?",
     "mnemonic": "VIBRATE and TAP to TRAP the crap! (Vibration + Tapotement = Loosens mucus for drainage!)",
-    "topic_explanation": "Postural drainage uses gravity positioning combined with specific massage techniques to mobilize and clear respiratory secretions. Vibration creates oscillating movements that help loosen thick mucus from bronchial walls, while tapotement (percussion) uses rhythmic striking motions like cupping and hacking to mechanically dislodge secretions and stimulate cough reflex. These techniques work synergistically - vibration loosens, tapotement mobilizes, and gravity assists drainage. This combination is essential for conditions like cystic fibrosis, pneumonia, or chronic bronchitis. Effleurage, while soothing, lacks the mechanical force needed to effectively mobilize thick secretions from respiratory passages.",
+    "topic_explanation": "🎯 **Key Concept**: Postural drainage uses gravity positioning combined with specific massage techniques to mobilize and clear respiratory secretions.
+
+💡 **Memory Tip**: VIBRATE and TAP to TRAP the crap! (Vibration + Tapotement = Loosens mucus for drainage!)
+
+⚠️ **Exam Alert**: Vibration creates oscillating movements that loosen thick mucus from bronchial walls, while tapotement uses rhythmic striking motions to mechanically dislodge secretions and stimulate cough reflex.
+
+✅ **Why Correct**: These techniques work synergistically - vibration loosens, tapotement mobilizes, and gravity assists drainage. This combination is essential for conditions like cystic fibrosis, pneumonia, or chronic bronchitis.",
     "incorrect_explanations": {
       "a": "While vibration is correct, effleurage (gentle stroking) doesn't provide sufficient mechanical force to effectively dislodge and mobilize thick respiratory secretions that need to be cleared during postural drainage"
     },
@@ -4850,7 +4970,13 @@ export const questions: Question[] = [
     "correct_answer_text": "Parotid",
     "rewrite_question": "What are the lymph nodes located in front of the ear's tragus called?",
     "mnemonic": "PAROTID by the ear's PART-OID! (Near the parotid gland, by the tragus part of your ear!)",
-    "topic_explanation": "The parotid lymph nodes are strategically positioned anterior (in front of) the tragus of the ear, closely associated with the parotid salivary gland. These nodes drain lymphatic fluid from the temporal region, upper face, eyelids, and parts of the external ear. Their location makes them easily palpable during facial massage and lymphatic drainage work. When swollen, they may indicate infections or conditions affecting the scalp, face, or salivary glands. Understanding parotid node location is essential for therapists performing facial treatments, as gentle massage can support lymphatic drainage and reduce facial puffiness or congestion.",
+    "topic_explanation": "🎯 **Key Concept**: The parotid lymph nodes are strategically positioned anterior (in front of) the tragus of the ear, closely associated with the parotid salivary gland.
+
+💡 **Memory Tip**: PAROTID by the ear's PART-OID! (Near the parotid gland, by the tragus part of your ear!)
+
+⚠️ **Exam Alert**: These nodes drain lymphatic fluid from the temporal region, upper face, eyelids, and parts of the external ear. Their location makes them easily palpable during facial massage and lymphatic drainage work.
+
+✅ **Why Correct**: When swollen, they may indicate infections or conditions affecting the scalp, face, or salivary glands. Understanding parotid node location is essential for therapists performing facial treatments.",
     "incorrect_explanations": {},
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing a side profile of a head with the ear prominently featured. The tragus is clearly labeled with an arrow, and the parotid lymph nodes are highlighted in blue circles positioned anterior to the tragus. Include the parotid gland outline and text 'PAROTID LYMPH NODES' with 'ANTERIOR TO TRAGUS' clearly marked.",
     "category": "Anatomy",
@@ -4868,7 +4994,13 @@ export const questions: Question[] = [
     "correct_answer_text": "refer her back to her MD",
     "rewrite_question": "A client arrives for her initial appointment months after receiving an MD referral, presenting with malodorous decubitus ulcers that are discharging purulent material. What is your appropriate course of action?",
     "mnemonic": "OOZING = OUT! When you see pus and smell, send them back to get well. Decubitus ulcers with discharge = immediate medical referral, no massage!",
-    "topic_explanation": "Decubitus ulcers (pressure sores) with purulent discharge indicate active infection and require immediate medical attention. These open wounds with foul-smelling pus suggest bacterial infection that could lead to sepsis if untreated. Massage is absolutely contraindicated as it could spread infection systemically or worsen tissue damage. The appropriate scope of practice response is immediate referral back to the physician without any massage treatment. This is a medical emergency, not a situation for consultation calls.",
+    "topic_explanation": "🎯 **Key Concept**: Decubitus ulcers (pressure sores) with purulent discharge indicate active infection and require immediate medical attention.
+
+💡 **Memory Tip**: OOZING = OUT! When you see pus and smell, send them back to get well. Decubitus ulcers with discharge = immediate medical referral, no massage!
+
+⚠️ **Exam Alert**: These open wounds with foul-smelling pus suggest bacterial infection that could lead to sepsis if untreated. Massage is absolutely contraindicated as it could spread infection systemically or worsen tissue damage.
+
+✅ **Why Correct**: The appropriate scope of practice response is immediate referral back to the physician without any massage treatment. This is a medical emergency, not a situation for consultation calls.",
     "incorrect_explanations": {
       "a": "Calling for consent wastes critical time when immediate medical attention is needed. Infected pressure sores require urgent treatment, not phone consultations.",
       "b": "Massaging infected, open wounds could spread bacteria systemically, worsen tissue damage, and potentially cause life-threatening sepsis. This violates basic infection control and scope of practice."
@@ -4890,7 +5022,13 @@ export const questions: Question[] = [
     "correct_answer_text": "lateral epicondylitis",
     "rewrite_question": "For which pathological condition would friction massage techniques be most therapeutically beneficial?",
     "mnemonic": "FRICTION for TENNIS elbow - Lateral Epicondylitis Loves Friction! Think 'Lateral = LATER I'll fix it with friction.' Chronic tendon issues need friction to break adhesions!",
-    "topic_explanation": "Friction is most indicated for lateral epicondylitis (tennis elbow) because it's a chronic tendinopathy involving adhesions and scar tissue formation. Deep transverse friction helps break down adhesions, realign collagen fibers, and promote healing in chronic tendon conditions. The lateral epicondyle area benefits from specific friction to address the chronic inflammatory changes and restore normal tissue function. This technique is contraindicated in acute conditions but excellent for chronic tendon problems.",
+    "topic_explanation": "🎯 **Key Concept**: Friction is most indicated for lateral epicondylitis (tennis elbow) because it's a chronic tendinopathy involving adhesions and scar tissue formation.
+
+💡 **Memory Tip**: FRICTION for TENNIS elbow - Lateral Epicondylitis Loves Friction! Think 'Lateral = LATER I'll fix it with friction.' Chronic tendon issues need friction to break adhesions!
+
+⚠️ **Exam Alert**: Deep transverse friction helps break down adhesions, realign collagen fibers, and promote healing in chronic tendon conditions. The lateral epicondyle area benefits from specific friction.
+
+✅ **Why Correct**: This technique is contraindicated in acute conditions but excellent for chronic tendon problems like lateral epicondylitis.",
     "incorrect_explanations": {
       "a": "Recent trauma requires rest and gentle techniques, not friction. Friction would increase inflammation and damage healing tissues in acute injuries.",
       "b": "Bursitis involves inflamed bursa sacs that would be irritated by friction. This condition needs gentle techniques and inflammation reduction, not deep friction.",
@@ -4912,7 +5050,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What is the optimal therapeutic approach when treating a client presenting with chronically contracted musculature?",
     "mnemonic": "CHRONIC Contract = TENDON Tract! 'When muscle won't let go, friction the tendon - that's where to go!' Chronic contractions need tendon friction to release the attachment points.",
-    "topic_explanation": "For chronically contracted muscles, friction to the tendon is most effective because chronic contractions create adhesions and restrictions at the tendon attachments (musculotendinous junctions). The tendon contains the proprioceptors and tension sensors that regulate muscle contraction. Deep friction at these attachment points helps break adhesions, reset proprioceptive feedback, and release chronic holding patterns. The belly of chronically contracted muscle is often too sensitive and reactive to respond well to direct friction work.",
+    "topic_explanation": "🎯 **Key Concept**: For chronically contracted muscles, friction to the tendon is most effective because chronic contractions create adhesions and restrictions at the tendon attachments (musculotendinous junctions).
+
+💡 **Memory Tip**: CHRONIC Contract = TENDON Tract! 'When muscle won't let go, friction the tendon - that's where to go!' Chronic contractions need tendon friction to release the attachment points.
+
+⚠️ **Exam Alert**: The tendon contains the proprioceptors and tension sensors that regulate muscle contraction. Deep friction at these attachment points helps break adhesions and reset proprioceptive feedback.
+
+✅ **Why Correct**: The belly of chronically contracted muscle is often too sensitive and reactive to respond well to direct friction work. Tendon friction releases chronic holding patterns.",
     "incorrect_explanations": {
       "b": "Kneading (petrissage) is too gentle for breaking down chronic adhesions in tendons. Chronic contractions require more specific, deeper friction techniques to address structural restrictions.",
       "c": "This option is confusing and anatomically unclear. Friction should target specific areas - either muscle belly OR tendon - not both simultaneously, which would be ineffective and unfocused."
@@ -4933,7 +5077,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "When performing massage techniques on the inner aspect of the thigh, which Traditional Chinese Medicine meridian pathways are being influenced?",
     "mnemonic": "MEDIAL thigh = 'KiSs SPeaR LoveR' = KI, SP, LR! Inner thigh has the 'internal organ' meridians - Kidney, Spleen, Liver all run on the medial side!",
-    "topic_explanation": "The medial thigh contains three yin meridians: Kidney (KI), Spleen (SP), and Liver (LR). These meridians run along the inner leg from foot to torso, following the medial aspect of the lower extremity. In TCM theory, yin meridians relate to organ systems and run on the inner/medial surfaces of limbs, while yang meridians run on outer/lateral surfaces. The medial thigh specifically houses these three meridians as they ascend toward their respective organs in the trunk.",
+    "topic_explanation": "🎯 **Key Concept**: The medial thigh contains three yin meridians: Kidney (KI), Spleen (SP), and Liver (LR).
+
+💡 **Memory Tip**: MEDIAL thigh = 'KiSs SPeaR LoveR' = KI, SP, LR! Inner thigh has the 'internal organ' meridians - Kidney, Spleen, Liver all run on the medial side!
+
+⚠️ **Exam Alert**: These meridians run along the inner leg from foot to torso. In TCM theory, yin meridians relate to organ systems and run on the inner/medial surfaces of limbs.
+
+✅ **Why Correct**: The medial thigh specifically houses these three meridians as they ascend toward their respective organs in the trunk. Yang meridians run on outer/lateral surfaces.",
     "incorrect_explanations": {
       "a": "BL (Bladder), ST (Stomach), and GB (Gallbladder) run on the lateral/posterior aspects of the leg, not the medial thigh. These are yang meridians that follow outer pathways.",
       "c": "LU (Lung) meridian runs on the arm, not the leg. While LR (Liver) is correct for medial thigh, ST (Stomach) runs on the anterior/lateral leg, not medial thigh."
@@ -4953,7 +5103,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "The axillary nerve provides motor innervation to which specific muscle group?",
     "mnemonic": "AXILLARY = 'Armpit eXits to DeLTa Teres' = Deltoid + Teres minor! The axillary nerve exits the armpit area to innervate the shoulder cap (deltoid) and small rotator (teres minor).",
-    "topic_explanation": "The axillary nerve (C5-C6) innervates the deltoid and teres minor muscles. This nerve travels through the quadrangular space in the posterior shoulder and wraps around the surgical neck of the humerus. The deltoid provides shoulder abduction, while teres minor is one of the four rotator cuff muscles providing external rotation and stability. Axillary nerve injury commonly occurs with shoulder dislocations or humeral fractures, resulting in deltoid weakness and loss of shoulder abduction ability.",
+    "topic_explanation": "🎯 **Key Concept**: The axillary nerve (C5-C6) innervates the deltoid and teres minor muscles.
+
+💡 **Memory Tip**: AXILLARY = 'Armpit eXits to DeLTa Teres' = Deltoid + Teres minor! The axillary nerve exits the armpit area to innervate the shoulder cap (deltoid) and small rotator (teres minor).
+
+⚠️ **Exam Alert**: This nerve travels through the quadrangular space in the posterior shoulder and wraps around the surgical neck of the humerus. The deltoid provides shoulder abduction, while teres minor is a rotator cuff muscle.
+
+✅ **Why Correct**: Axillary nerve injury commonly occurs with shoulder dislocations or humeral fractures, resulting in deltoid weakness and loss of shoulder abduction ability.",
     "incorrect_explanations": {
       "b": "Extensor digitorum longus is innervated by the deep peroneal nerve in the lower leg, not the axillary nerve. This muscle extends the toes and dorsiflexes the ankle, completely unrelated to axillary nerve distribution in the shoulder region."
     },
@@ -4973,7 +5129,13 @@ export const questions: Question[] = [
     "correct_answer_text": "c. you refuse or fail to furnish client",
     "rewrite_question": "Under New York State regulations, which action could result in professional misconduct charges for a massage therapist?",
     "mnemonic": "RECORD REFUSAL = REAL RISK! When clients cry 'Give me my files!' and you reply 'No!' - that's misconduct that makes lawyers smile!",
-    "topic_explanation": "NY State law requires massage therapists to provide client records upon request as part of professional conduct standards. This ensures transparency and client autonomy over their healthcare information. Personal activities like social drinking and mere criminal charges (without conviction) don't constitute professional misconduct. However, refusing to furnish records violates client rights and demonstrates unprofessional behavior that can result in disciplinary action including license suspension or revocation. Always maintain proper documentation and release records promptly when requested by clients.",
+    "topic_explanation": "🎯 **Key Concept**: NY State law requires massage therapists to provide client records upon request as part of professional conduct standards.
+
+💡 **Memory Tip**: RECORD REFUSAL = REAL RISK! When clients cry 'Give me my files!' and you reply 'No!' - that's misconduct that makes lawyers smile!
+
+⚠️ **Exam Alert**: Refusing to furnish records violates client rights and demonstrates unprofessional behavior that can result in disciplinary action including license suspension or revocation.
+
+✅ **Why Correct**: This ensures transparency and client autonomy over their healthcare information. Personal activities like social drinking and mere criminal charges don't constitute professional misconduct.",
     "incorrect_explanations": {
       "a": "Social drinking is a personal activity that doesn't violate professional conduct standards unless it directly affects professional practice or involves substance abuse",
       "b": "Being charged with a misdemeanor (not convicted) is not grounds for professional misconduct - charges alone don't establish wrongdoing or professional violations"
@@ -4995,7 +5157,13 @@ export const questions: Question[] = [
     "correct_answer_text": "friction the adhesions",
     "rewrite_question": "What is the most appropriate massage technique for treating tendonitis in a client?",
     "mnemonic": "ADHESIONS ARE THE ENEMY! Think 'Friction the Fibrosis' - target the sticky stuff (adhesions), not the inflamed tendon itself!",
-    "topic_explanation": "Tendonitis involves inflammation of tendons with formation of adhesions and scar tissue. The best treatment approach is friction massage applied to adhesions rather than the inflamed tendon directly. Frictioning adhesions helps break down fibrous restrictions, improves circulation, and restores normal tissue mobility. Direct friction on inflamed tendons can worsen inflammation. Complete avoidance provides no therapeutic benefit. Stripping away from tendons doesn't address the adhesions that limit function and cause pain.",
+    "topic_explanation": "🎯 **Key Concept**: Tendonitis involves inflammation of tendons with formation of adhesions and scar tissue. The best treatment approach is friction massage applied to adhesions.
+
+💡 **Memory Tip**: ADHESIONS ARE THE ENEMY! Think 'Friction the Fibrosis' - target the sticky stuff (adhesions), not the inflamed tendon itself!
+
+⚠️ **Exam Alert**: Frictioning adhesions helps break down fibrous restrictions, improves circulation, and restores normal tissue mobility. Direct friction on inflamed tendons can worsen inflammation.
+
+✅ **Why Correct**: Complete avoidance provides no therapeutic benefit. Stripping away from tendons doesn't address the adhesions that limit function and cause pain.",
     "incorrect_explanations": {
       "a": "Direct friction on an inflamed tendon can increase inflammation and pain rather than promoting healing",
       "c": "Complete avoidance of treatment provides no therapeutic benefit and doesn't address adhesions or promote healing",
@@ -5017,7 +5185,13 @@ export const questions: Question[] = [
     "correct_answer_text": null,
     "rewrite_question": "What is the appropriate massage approach for a court reporter diagnosed with adhesive capsulitis (frozen shoulder)?",
     "mnemonic": "FROZEN = GO DISTANT! Think 'Distal Before Local' - work the neighborhood muscles first, then gradually move toward the frozen zone as things improve!",
-    "topic_explanation": "Frozen shoulder (adhesive capsulitis) involves severe restriction and pain in the glenohumeral joint with capsular adhesions. The best approach is working distal to the affected area for multiple sessions, focusing on surrounding musculature. This improves circulation, reduces compensatory tension, and prepares tissues before addressing the shoulder directly. Working the acute area initially can increase inflammation and pain. The surrounding muscles (neck, upper back, arm) develop compensatory patterns that need addressing first before direct shoulder work becomes appropriate.",
+    "topic_explanation": "🎯 **Key Concept**: Frozen shoulder (adhesive capsulitis) involves severe restriction and pain in the glenohumeral joint with capsular adhesions.
+
+💡 **Memory Tip**: FROZEN = GO DISTANT! Think 'Distal Before Local' - work the neighborhood muscles first, then gradually move toward the frozen zone as things improve!
+
+⚠️ **Exam Alert**: The best approach is working distal to the affected area for multiple sessions, focusing on surrounding musculature. Working the acute area initially can increase inflammation and pain.
+
+✅ **Why Correct**: The surrounding muscles (neck, upper back, arm) develop compensatory patterns that need addressing first before direct shoulder work becomes appropriate.",
     "incorrect_explanations": {
       "a": "While avoiding acute inflammation is important, completely avoiding work provides no therapeutic benefit for the surrounding compensatory patterns",
       "c": "This option combines correct and incorrect approaches - friction and ROM on an acutely frozen shoulder can increase pain and inflammation initially"

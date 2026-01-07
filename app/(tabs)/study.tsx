@@ -20,7 +20,10 @@ import {
   toggleBookmark,
   CATEGORIES,
   StudyProgress,
+  isTrialQuestion,
+  TRIAL_QUESTION_IDS,
 } from "@/lib/study-store";
+import { useAuth } from "@/hooks/use-auth";
 
 // Enhanced markdown text renderer - renders bold, line breaks, and styled sections
 const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
@@ -103,6 +106,7 @@ export default function StudyScreen() {
   const colors = useColors();
   const isDesktop = useIsDesktop();
   const { width } = useWindowDimensions();
+  const { hasPurchased } = useAuth();
 
   const [viewMode, setViewMode] = useState<ViewMode>("categories");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -172,6 +176,17 @@ export default function StudyScreen() {
     }
   };
 
+  // Filter questions based on purchase status
+  const getAvailableQuestions = useCallback((category?: string) => {
+    let filtered = category ? questions.filter(q => q.category === category) : questions;
+    if (!hasPurchased) {
+      // Trial mode: only show trial questions
+      const trialIds = category ? (TRIAL_QUESTION_IDS[category] || []) : Object.values(TRIAL_QUESTION_IDS).flat();
+      filtered = filtered.filter(q => trialIds.includes(q.id));
+    }
+    return filtered;
+  }, [hasPurchased]);
+
   // DESKTOP LAYOUTS
   if (isDesktop) {
     // Desktop Categories View
@@ -210,9 +225,9 @@ export default function StudyScreen() {
                     </View>
                     <View>
                       <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>
-                        {questions.length}
+                        {getAvailableQuestions().length}
                       </Text>
-                      <Text style={{ fontSize: 14, color: colors.muted }}>Total Questions</Text>
+                      <Text style={{ fontSize: 14, color: colors.muted }}>{hasPurchased ? 'Total Questions' : 'Trial Questions'}</Text>
                     </View>
                   </View>
                 </Card>
@@ -312,7 +327,7 @@ export default function StudyScreen() {
               </Text>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
                 {CATEGORIES.map((category) => {
-                  const categoryQuestions = questions.filter(q => q.category === category);
+                  const categoryQuestions = getAvailableQuestions(category);
                   const masteredCount = progress ? categoryQuestions.filter(
                     q => progress.questionsProgress[q.id]?.correct
                   ).length : 0;
@@ -380,8 +395,8 @@ export default function StudyScreen() {
     // Desktop Questions List View
     if (viewMode === "questions") {
       const categoryQuestions = selectedCategory === "Bookmarks"
-        ? questions.filter(q => bookmarks.includes(q.id))
-        : questions.filter(q => q.category === selectedCategory);
+        ? questions.filter(q => bookmarks.includes(q.id) && (hasPurchased || isTrialQuestion(q.id)))
+        : getAvailableQuestions(selectedCategory || undefined);
 
       return (
         <AppShell>
@@ -866,7 +881,7 @@ export default function StudyScreen() {
           <View className="px-5 mt-6">
             <Text className="text-lg font-semibold text-foreground mb-3">Categories</Text>
             {CATEGORIES.map((category) => {
-              const categoryQuestions = questions.filter(q => q.category === category);
+              const categoryQuestions = getAvailableQuestions(category);
               const masteredCount = progress ? categoryQuestions.filter(
                 q => progress.questionsProgress[q.id]?.correct
               ).length : 0;
@@ -935,8 +950,8 @@ export default function StudyScreen() {
   // Mobile Questions List View
   if (viewMode === "questions") {
     const categoryQuestions = selectedCategory === "Bookmarks"
-      ? questions.filter(q => bookmarks.includes(q.id))
-      : questions.filter(q => q.category === selectedCategory);
+      ? questions.filter(q => bookmarks.includes(q.id) && (hasPurchased || isTrialQuestion(q.id)))
+      : getAvailableQuestions(selectedCategory || undefined);
 
     return (
       <ScreenContainer>

@@ -71,7 +71,7 @@ const EXAM_DATES = [
 ];
 
 const STATS = [
-  { value: "287", label: "Questions" },
+  { value: "250+", label: "Questions" },
   { value: "90%", label: "Our Pass Rate*" },
   { value: "100+", label: "Students" },
   { value: "4.9", label: "Rating" },
@@ -97,7 +97,7 @@ const COMPARISON_DATA = [
   { feature: "Spaced Repetition", us: true, them: "Limited" },
   { feature: "Wrong Answer Analysis", us: true, them: false },
   { feature: "Paper Exam Strategies", us: true, them: false },
-  { feature: "Money-Back Guarantee", us: true, them: false },
+  { feature: "Money-Back Guarantee", us: true, them: "🤷" },
 ];
 
 function LiveCountdown({ targetDate }: { targetDate: Date }) {
@@ -322,7 +322,7 @@ function ComparisonTable() {
             {row.us === true ? <MaterialIcons name="check-circle" size={22} color={colors.success} /> : <Text style={{ color: colors.foreground }}>{row.us}</Text>}
           </View>
           <View style={{ flex: 1, padding: 16, alignItems: "center" }}>
-            {row.them === false ? <MaterialIcons name="cancel" size={22} color={colors.error} /> : <Text style={{ color: colors.muted }}>{row.them}</Text>}
+            {row.them === false ? <MaterialIcons name="cancel" size={22} color={colors.error} /> : <Text style={{ color: colors.muted, fontSize: row.them === "🤷" ? 28 : 14 }}>{row.them}</Text>}
           </View>
         </View>
       ))}
@@ -455,7 +455,7 @@ export default function LandingScreen() {
             {/* Trust Badges */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 24, paddingVertical: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.border }}>
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>287</Text>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>250+</Text>
                 <Text style={{ fontSize: 11, color: colors.muted }}>Questions</Text>
               </View>
               <View style={{ alignItems: 'center' }}>
@@ -495,7 +495,7 @@ export default function LandingScreen() {
                 </View>
               </View>
               <Text style={{ fontSize: 13, color: colors.muted, marginTop: 12, lineHeight: 20 }}>
-                New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.
+                New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned licensed massage therapists who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the New York State Massage Therapy Licensing Exam.
               </Text>
             </View>
           </View>
@@ -526,7 +526,7 @@ export default function LandingScreen() {
                 "I failed the NYS exam twice using generic MBLEx prep. The Eastern Medicine section killed me. This app's mnemonics made all the difference. Passed on my third try!"
               </Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
-                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Sarah M.</Text>
+                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Sarah, Pacific College NYC</Text>
                 <Badge variant="success" size="sm">PASSED</Badge>
               </View>
             </View>
@@ -563,7 +563,7 @@ export default function LandingScreen() {
             <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 16 }}>What You Get</Text>
             <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
               {[
-                'All 287 NYS-specific exam questions',
+                'All 250+ NYS-specific exam questions',
                 'Memory mnemonic for every answer',
                 'Smart spaced repetition algorithm',
                 'Category-by-category progress tracking',
@@ -614,7 +614,7 @@ export default function LandingScreen() {
                 "Straight to the point, no fluff. Just the questions and mnemonics to remember them. Exactly what I needed with a full-time job and only 2 months to prep."
               </Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
-                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Jennifer L.</Text>
+                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Jenn, Swedish Inst NY</Text>
                 <Badge variant="success" size="sm">PASSED</Badge>
               </View>
             </View>
@@ -623,7 +623,7 @@ export default function LandingScreen() {
           {/* Final CTA Section */}
           <View style={{ paddingHorizontal: 20, marginTop: 32, marginBottom: 20 }}>
             <View style={{ backgroundColor: colors.errorMuted, borderRadius: 16, padding: 20, alignItems: 'center' }}>
-              <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, textAlign: 'center' }}>Don't Wait Another 6 Months</Text>
+              <Text style={{ fontSize: 40, fontWeight: '800', color: colors.error, textAlign: 'center' }}>Don't Wait Another 6 Months!</Text>
               <Text style={{ fontSize: 14, color: colors.muted, textAlign: 'center', marginTop: 8 }}>Join over 100 students who passed with confidence.</Text>
               <Pressable
                 onPress={handleGetFullAccess}
@@ -681,12 +681,7 @@ export default function LandingScreen() {
                   <Text style={{ fontSize: 12, color: colors.muted }}>The Only NYS-Specific Prep</Text>
                 </View>
               </View>
-              <View className="flex-row items-center" style={{ gap: 32 }}>
-                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Features</Text></Pressable>
-                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Pricing</Text></Pressable>
-                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>FAQ</Text></Pressable>
-              </View>
-              <View className="flex-row items-center" style={{ gap: 12 }}>
+                            <View className="flex-row items-center" style={{ gap: 12 }}>
                 <Button variant="ghost" size="md" onPress={handleLogin}>Sign In</Button>
                 <Button variant="primary" size="md" onPress={handleGetFullAccess}>Get Started</Button>
               </View>
@@ -714,7 +709,7 @@ export default function LandingScreen() {
                   Stop Wasting Time on{" "}Generic MBLEx Prep
                 </Text>
                 <Text style={{ fontSize: 20, color: colors.muted, marginTop: 20, lineHeight: 32, maxWidth: 520 }}>
-                  New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% (28) Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're simply the best study tool built specifically for the NYS exam.
+                  New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% (28) Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're simply the best study tool built specifically for the New York State Massage Therapy Licensing Exam.
                 </Text>
                 <View className="flex-row items-center" style={{ gap: 16, marginTop: 32 }}>
                   <Button variant="primary" size="lg" onPress={handleGetFullAccess}>Get Full Access - $37</Button>
@@ -759,7 +754,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 24, fontWeight: '800', color: colors.error }}>{NYS_PASS_RATE} Fail Rate Statewide</Text>
               </View>
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>The NYS Exam Is No Joke</Text>
-              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 700 }}>New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.</Text>
+              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 700 }}>New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned licensed massage therapists who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the New York State Massage Therapy Licensing Exam.</Text>
             </View>
             <View style={{ flexDirection: "row", gap: 24 }}>
               <Card className="p-6" style={{ flex: 1, borderLeftWidth: 4, borderLeftColor: colors.error }}>
@@ -869,9 +864,9 @@ export default function LandingScreen() {
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center" }}>What Our Students Say</Text>
             </View>
             <View style={{ flexDirection: "row", gap: 24 }}>
-              <TestimonialCard quote="I failed the NYS exam twice using generic MBLEx prep. The Eastern Medicine section killed me. This app's mnemonics made all the difference. Passed on my third try!" author="Sarah M." result="PASSED" />
+              <TestimonialCard quote="I failed the NYS exam twice using generic MBLEx prep. The Eastern Medicine section killed me. This app's mnemonics made all the difference. Passed on my third try!" author="Sarah, Pacific College NYC" result="PASSED" />
               <TestimonialCard quote="The spaced repetition is a game changer. I could see my weak spots and the app kept drilling me on them until I mastered them. Worth every penny." author="Michael T." result="PASSED" />
-              <TestimonialCard quote="Straight to the point, no fluff. Just the questions and mnemonics to remember them. Exactly what I needed with a full-time job and only 2 months to prep." author="Jennifer L." result="PASSED" />
+              <TestimonialCard quote="Straight to the point, no fluff. Just the questions and mnemonics to remember them. Exactly what I needed with a full-time job and only 2 months to prep." author="Jenn, Swedish Inst NY" result="PASSED" />
             </View>
           </Container>
         </View>
@@ -889,7 +884,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 56, fontWeight: "800", color: colors.foreground }}>$37</Text>
                 <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>One-time payment • Lifetime access</Text>
                 <View style={{ marginTop: 32, marginBottom: 32, gap: 14, width: "100%" }}>
-                  {["All 287 NYS-specific exam questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
+                  {["All 250+ NYS-specific exam questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
                     <View key={i} className="flex-row items-center" style={{ gap: 12 }}>
                       <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: colors.successMuted, alignItems: "center", justifyContent: "center" }}>
                         <MaterialIcons name="check" size={16} color={colors.success} />

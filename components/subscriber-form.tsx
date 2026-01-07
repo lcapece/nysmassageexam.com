@@ -383,7 +383,7 @@ export function SubscriberForm({
 
       {/* Divider */}
       <View className="border-t border-border my-4" />
-      <Text className="text-muted text-sm mb-4">Optional Information</Text>
+      <Text className="text-muted text-sm mb-4">Optional Information (that really helps us improve future app updates!)</Text>
 
       {/* Massage School - Optional */}
       {renderInput("massageSchool", "NARE Massage Therapy School", {

@@ -78,7 +78,7 @@ export function DesktopSidebar() {
       <View className="h-20 px-6 justify-center border-b border-border">
         <Image
           source={require('../../assets/images/logo.png')}
-          style={{ width: 150, height: 38 }}
+          style={{ width: '90%', height: 50 }}
           resizeMode="contain"
         />
         <Text className="text-xs text-muted mt-0.5">Study App</Text>

@@ -66,14 +66,14 @@ function StickyMobileCTA({ onPress, colors }: { onPress: () => void; colors: any
 }
 
 const EXAM_DATES = [
-  { date: new Date("2026-03-06"), label: "March 6, 2026", deadline: "Nov 1, 2025" },
-  { date: new Date("2026-09-18"), label: "September 18, 2026", deadline: "Jun 1, 2026" },
+  { date: new Date("2026-03-06"), label: "March 6, 2026", deadline: "Nov 1, 2025", deadlineDate: new Date("2025-11-01") },
+  { date: new Date("2026-09-18"), label: "September 18, 2026", deadline: "Jun 1, 2026", deadlineDate: new Date("2026-06-01") },
 ];
 
 const STATS = [
   { value: "287", label: "Questions" },
   { value: "90%", label: "Our Pass Rate*" },
-  { value: "500+", label: "Students" },
+  { value: "100+", label: "Students" },
   { value: "4.9", label: "Rating" },
 ];
 
@@ -364,7 +364,7 @@ export default function LandingScreen() {
   };
 
   const handleStartTrial = () => {
-    router.push("/(tabs)");
+    router.push("/(tabs)/study");
   };
 
   const handleGetFullAccess = () => {
@@ -448,7 +448,7 @@ export default function LandingScreen() {
                   opacity: pressed ? 0.8 : 1,
                 })}
               >
-                <Text style={{ color: colors.foreground, fontSize: 16, fontWeight: '600' }}>Try 3 Free Questions</Text>
+                <Text style={{ color: colors.foreground, fontSize: 16, fontWeight: '600' }}>Try 20 Free Questions</Text>
               </Pressable>
             </View>
 
@@ -463,7 +463,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 11, color: colors.muted }}>Pass Rate*</Text>
               </View>
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>500+</Text>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>100+</Text>
                 <Text style={{ fontSize: 11, color: colors.muted }}>Students</Text>
               </View>
               <View style={{ alignItems: 'center' }}>
@@ -495,7 +495,7 @@ export default function LandingScreen() {
                 </View>
               </View>
               <Text style={{ fontSize: 13, color: colors.muted, marginTop: 12, lineHeight: 20 }}>
-                New York State has its own exam with 20% Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.
+                New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.
               </Text>
             </View>
           </View>
@@ -624,7 +624,7 @@ export default function LandingScreen() {
           <View style={{ paddingHorizontal: 20, marginTop: 32, marginBottom: 20 }}>
             <View style={{ backgroundColor: colors.errorMuted, borderRadius: 16, padding: 20, alignItems: 'center' }}>
               <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, textAlign: 'center' }}>Don't Wait Another 6 Months</Text>
-              <Text style={{ fontSize: 14, color: colors.muted, textAlign: 'center', marginTop: 8 }}>Join 500+ students who passed with confidence.</Text>
+              <Text style={{ fontSize: 14, color: colors.muted, textAlign: 'center', marginTop: 8 }}>Join over 100 students who passed with confidence.</Text>
               <Pressable
                 onPress={handleGetFullAccess}
                 style={({ pressed }) => ({
@@ -714,11 +714,11 @@ export default function LandingScreen() {
                   Stop Wasting Time on{" "}Generic MBLEx Prep
                 </Text>
                 <Text style={{ fontSize: 20, color: colors.muted, marginTop: 20, lineHeight: 32, maxWidth: 520 }}>
-                  New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're the only study tool built specifically for the NYS exam.
+                  New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% (28) Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're simply the best study tool built specifically for the NYS exam.
                 </Text>
                 <View className="flex-row items-center" style={{ gap: 16, marginTop: 32 }}>
                   <Button variant="primary" size="lg" onPress={handleGetFullAccess}>Get Full Access - $37</Button>
-                  <Button variant="outline" size="lg" onPress={handleStartTrial}>Try 3 Free Questions</Button>
+                  <Button variant="outline" size="lg" onPress={handleStartTrial}>Try 20 Free Questions</Button>
                 </View>
                 <View className="flex-row" style={{ gap: 40, marginTop: 40 }}>
                   {STATS.map((stat, i) => (
@@ -737,8 +737,11 @@ export default function LandingScreen() {
                     </View>
                     <Text style={{ fontSize: 24, fontWeight: "700", color: colors.foreground, marginBottom: 20 }}>{nextExam.label}</Text>
                     <CountdownTimer targetDate={nextExam.date} />
-                    <View style={{ backgroundColor: colors.surfaceHover, padding: 12, borderRadius: 12, marginTop: 20, width: "100%" }}>
-                      <Text style={{ color: colors.muted, textAlign: "center", fontSize: 13 }}>Application deadline: <Text style={{ color: colors.foreground, fontWeight: "600" }}>{nextExam.deadline}</Text></Text>
+                    <View style={{ backgroundColor: nextExam.deadlineDate < new Date() ? colors.errorMuted : colors.surfaceHover, padding: 12, borderRadius: 12, marginTop: 20, width: "100%" }}>
+                      <Text style={{ color: colors.muted, textAlign: "center", fontSize: 13 }}>
+                        Application deadline: <Text style={{ color: nextExam.deadlineDate < new Date() ? colors.error : colors.foreground, fontWeight: "600" }}>{nextExam.deadline}</Text>
+                        {nextExam.deadlineDate < new Date() && <Text style={{ color: colors.error, fontWeight: "700" }}> — EXPIRED!</Text>}
+                      </Text>
                     </View>
                   </View>
                 </Card>
@@ -756,7 +759,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 24, fontWeight: '800', color: colors.error }}>{NYS_PASS_RATE} Fail Rate Statewide</Text>
               </View>
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>The NYS Exam Is No Joke</Text>
-              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 700 }}>New York State has its own exam with 20% Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.</Text>
+              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 700 }}>New York State has its own exam with 20% (28) Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.</Text>
             </View>
             <View style={{ flexDirection: "row", gap: 24 }}>
               <Card className="p-6" style={{ flex: 1, borderLeftWidth: 4, borderLeftColor: colors.error }}>
@@ -916,7 +919,7 @@ export default function LandingScreen() {
           <Container>
             <View className="items-center">
               <Text style={{ fontSize: 32, fontWeight: "700", color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>Your Career Is Waiting</Text>
-              <Text style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", textAlign: "center", marginBottom: 24, maxWidth: 500 }}>Join 500+ students who passed the NYS exam with confidence. Don't wait another 6 months.</Text>
+              <Text style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", textAlign: "center", marginBottom: 24, maxWidth: 500 }}>Join over 100 students who passed the NYS exam with confidence. Don't wait another 6 months.</Text>
               <Button variant="secondary" size="lg" onPress={handleGetFullAccess} style={{ backgroundColor: "#FFFFFF" }}>
                 <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 16 }}>Get Started for $37</Text>
               </Button>

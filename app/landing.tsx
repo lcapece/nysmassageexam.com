@@ -23,6 +23,48 @@ import { SEOHead, SEO_CONFIG } from "@/components/seo-head";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
+// Sticky CTA Bar for Mobile
+function StickyMobileCTA({ onPress, colors }: { onPress: () => void; colors: any }) {
+  return (
+    <View
+      style={{
+        position: Platform.OS === 'web' ? 'fixed' : 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: colors.background,
+        borderTopWidth: 1,
+        borderTopColor: colors.border,
+        paddingHorizontal: 20,
+        paddingVertical: 12,
+        paddingBottom: Platform.OS === 'web' ? 12 : 28,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        zIndex: 1000,
+        ...(Platform.OS === 'web' ? { boxShadow: '0 -4px 20px rgba(0,0,0,0.1)' } : {}),
+      }}
+    >
+      <View>
+        <Text style={{ fontSize: 18, fontWeight: '800', color: colors.foreground }}>$37</Text>
+        <Text style={{ fontSize: 12, color: colors.muted }}>Lifetime access</Text>
+      </View>
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) => ({
+          backgroundColor: colors.primary,
+          paddingHorizontal: 28,
+          paddingVertical: 14,
+          borderRadius: 12,
+          opacity: pressed ? 0.9 : 1,
+        })}
+      >
+        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Full Access</Text>
+      </Pressable>
+    </View>
+  );
+}
+
 const EXAM_DATES = [
   { date: new Date("2026-03-06"), label: "March 6, 2026", deadline: "Nov 1, 2025" },
   { date: new Date("2026-09-18"), label: "September 18, 2026", deadline: "Jun 1, 2026" },
@@ -30,12 +72,15 @@ const EXAM_DATES = [
 
 const STATS = [
   { value: "287", label: "Questions" },
-  { value: "90%", label: "Pass Rate*" },
+  { value: "90%", label: "Our Pass Rate*" },
   { value: "500+", label: "Students" },
   { value: "4.9", label: "Rating" },
 ];
 
-const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
+// NYS official pass rate for contrast
+const NYS_PASS_RATE = "69%";
+
+const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide vs. the NYS statewide average of 69%. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
 
 const EXAM_CATEGORIES = [
   { name: "Anatomy", percentage: 28, color: "#2A9D8F", questions: 80 },
@@ -326,6 +371,293 @@ export default function LandingScreen() {
     router.push("/upgrade" as any);
   };
 
+  // MOBILE LAYOUT
+  if (!isDesktop) {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <SEOHead
+          title={SEO_CONFIG.landing.title}
+          description={SEO_CONFIG.landing.description}
+          keywords={SEO_CONFIG.landing.keywords}
+          canonicalPath="/landing"
+        />
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Mobile Header - Minimal */}
+          <View style={{ paddingHorizontal: 20, paddingTop: 12, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Image source={{ uri: LOGO_URL }} style={{ width: 36, height: 36, borderRadius: 8 }} resizeMode="contain" />
+              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>NYS Massage Exam</Text>
+            </View>
+            <Pressable onPress={handleLogin}>
+              <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 14 }}>Sign In</Text>
+            </Pressable>
+          </View>
+
+          {/* Mobile Hero - Clear Purpose */}
+          <View style={{ paddingHorizontal: 20, paddingTop: 24 }}>
+            <Badge variant="primary" size="sm">The Only NYS-Specific Prep</Badge>
+
+            <Text style={{
+              fontSize: 32,
+              fontWeight: '800',
+              color: colors.foreground,
+              marginTop: 16,
+              lineHeight: 38,
+              letterSpacing: -0.5
+            }}>
+              Pass the NYS{'\n'}Massage Therapy{'\n'}Exam
+            </Text>
+
+            <Text style={{
+              fontSize: 16,
+              color: colors.muted,
+              marginTop: 12,
+              lineHeight: 24
+            }}>
+              The only study tool built for New York's unique exam — including the <Text style={{ fontWeight: '700', color: colors.warning }}>20% Eastern Medicine</Text> questions that generic prep ignores.
+            </Text>
+
+            {/* Primary CTA */}
+            <View style={{ marginTop: 24, gap: 12 }}>
+              <Pressable
+                onPress={handleGetFullAccess}
+                style={({ pressed }) => ({
+                  backgroundColor: colors.primary,
+                  paddingVertical: 18,
+                  borderRadius: 14,
+                  alignItems: 'center',
+                  opacity: pressed ? 0.9 : 1,
+                })}
+              >
+                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '700' }}>Get Full Access - $37</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 }}>Lifetime access • Money-back guarantee</Text>
+              </Pressable>
+
+              <Pressable
+                onPress={handleStartTrial}
+                style={({ pressed }) => ({
+                  borderWidth: 2,
+                  borderColor: colors.border,
+                  paddingVertical: 14,
+                  borderRadius: 14,
+                  alignItems: 'center',
+                  opacity: pressed ? 0.8 : 1,
+                })}
+              >
+                <Text style={{ color: colors.foreground, fontSize: 16, fontWeight: '600' }}>Try 3 Free Questions</Text>
+              </Pressable>
+            </View>
+
+            {/* Trust Badges */}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 24, paddingVertical: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.border }}>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>287</Text>
+                <Text style={{ fontSize: 11, color: colors.muted }}>Questions</Text>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.success }}>90%</Text>
+                <Text style={{ fontSize: 11, color: colors.muted }}>Pass Rate*</Text>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>500+</Text>
+                <Text style={{ fontSize: 11, color: colors.muted }}>Students</Text>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <MaterialIcons name="verified" size={20} color={colors.primary} />
+                <Text style={{ fontSize: 11, color: colors.muted }}>Guarantee</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Scary Stats Card */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <View style={{ backgroundColor: colors.errorMuted, borderRadius: 16, padding: 20, borderWidth: 1, borderColor: colors.error + '30' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <MaterialIcons name="warning" size={24} color={colors.error} />
+                <Text style={{ fontSize: 18, fontWeight: '700', color: colors.error }}>The NYS Exam is No Joke</Text>
+              </View>
+              <View style={{ gap: 8 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Text style={{ fontSize: 28, fontWeight: '800', color: colors.error }}>{NYS_PASS_RATE}</Text>
+                  <Text style={{ fontSize: 14, color: colors.foreground, flex: 1 }}>of test-takers fail the NYS exam statewide</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <MaterialIcons name="event-busy" size={20} color={colors.warning} />
+                  <Text style={{ fontSize: 14, color: colors.foreground }}>Only <Text style={{ fontWeight: '700' }}>2 exam dates per year</Text> — fail and wait 6 months</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <MaterialIcons name="cancel" size={20} color={colors.error} />
+                  <Text style={{ fontSize: 14, color: colors.foreground }}>Generic MBLEx prep misses <Text style={{ fontWeight: '700' }}>20%</Text> of NYS content</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          {/* Countdown Card - Compact */}
+          <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
+            <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <View>
+                  <Text style={{ fontSize: 12, color: colors.muted, textTransform: 'uppercase', letterSpacing: 1 }}>Next Exam</Text>
+                  <Text style={{ fontSize: 16, fontWeight: '600', color: colors.foreground, marginTop: 2 }}>{nextExam.label}</Text>
+                </View>
+                <View style={{ alignItems: 'flex-end' }}>
+                  <CountdownTimer targetDate={nextExam.date} />
+                </View>
+              </View>
+            </View>
+          </View>
+
+          {/* Social Proof - Testimonial */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 12 }}>What Students Say</Text>
+            <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
+              <View style={{ flexDirection: 'row', marginBottom: 8 }}>
+                {[1,2,3,4,5].map(i => <MaterialIcons key={i} name="star" size={16} color={colors.warning} />)}
+              </View>
+              <Text style={{ fontSize: 15, color: colors.foreground, lineHeight: 22, fontStyle: 'italic' }}>
+                "I failed the NYS exam twice using generic MBLEx prep. The Eastern Medicine section killed me. This app's mnemonics made all the difference. Passed on my third try!"
+              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
+                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Sarah M.</Text>
+                <Badge variant="success" size="sm">PASSED</Badge>
+              </View>
+            </View>
+          </View>
+
+          {/* Why NYS is Different - Simple List */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 16 }}>Why NYS Is Different</Text>
+            <View style={{ gap: 12 }}>
+              {[
+                { icon: 'spa', text: '20% Eastern Medicine (58 questions on meridians & Yin/Yang)', color: colors.warning },
+                { icon: 'description', text: 'Paper-based test — no going back to change answers', color: colors.secondary },
+                { icon: 'event-busy', text: 'Only 2 exam dates per year — high stakes', color: colors.error },
+                { icon: 'school', text: 'NYS-specific content not covered by MBLEx prep', color: colors.primary },
+              ].map((item, i) => (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.surface, padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.border }}>
+                  <View style={{ width: 40, height: 40, borderRadius: 10, backgroundColor: item.color + '20', alignItems: 'center', justifyContent: 'center' }}>
+                    <MaterialIcons name={item.icon as any} size={22} color={item.color} />
+                  </View>
+                  <Text style={{ flex: 1, fontSize: 14, color: colors.foreground, lineHeight: 20 }}>{item.text}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Mnemonic Preview - Keep Interactive Demo */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 12 }}>Memory Mnemonics That Stick</Text>
+            <MnemonicPreview />
+          </View>
+
+          {/* What You Get - Simple List */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 16 }}>What You Get</Text>
+            <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
+              {[
+                'All 287 NYS-specific exam questions',
+                'Memory mnemonic for every answer',
+                'Smart spaced repetition algorithm',
+                'Category-by-category progress tracking',
+                'Paper test simulation mode',
+                'Works on any device',
+                '30-day money-back guarantee',
+              ].map((item, i) => (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 8, borderBottomWidth: i < 6 ? 1 : 0, borderBottomColor: colors.border }}>
+                  <MaterialIcons name="check-circle" size={20} color={colors.success} />
+                  <Text style={{ fontSize: 14, color: colors.foreground }}>{item}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Pricing Card */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <View style={{ backgroundColor: colors.primary, borderRadius: 20, padding: 24, alignItems: 'center' }}>
+              <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, textTransform: 'uppercase', letterSpacing: 1 }}>One-Time Purchase</Text>
+              <Text style={{ color: '#FFFFFF', fontSize: 56, fontWeight: '800', marginTop: 8 }}>$37</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 15, marginTop: 4 }}>Lifetime access • No subscription</Text>
+              <Pressable
+                onPress={handleGetFullAccess}
+                style={({ pressed }) => ({
+                  backgroundColor: '#FFFFFF',
+                  paddingHorizontal: 32,
+                  paddingVertical: 16,
+                  borderRadius: 12,
+                  marginTop: 20,
+                  width: '100%',
+                  alignItems: 'center',
+                  opacity: pressed ? 0.9 : 1,
+                })}
+              >
+                <Text style={{ color: colors.primary, fontSize: 18, fontWeight: '700' }}>Get Full Access Now</Text>
+              </Pressable>
+              <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 12, textAlign: 'center' }}>Secure payment • 30-day money-back guarantee</Text>
+            </View>
+          </View>
+
+          {/* More Testimonials */}
+          <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
+              <View style={{ flexDirection: 'row', marginBottom: 8 }}>
+                {[1,2,3,4,5].map(i => <MaterialIcons key={i} name="star" size={16} color={colors.warning} />)}
+              </View>
+              <Text style={{ fontSize: 15, color: colors.foreground, lineHeight: 22, fontStyle: 'italic' }}>
+                "Straight to the point, no fluff. Just the questions and mnemonics to remember them. Exactly what I needed with a full-time job and only 2 months to prep."
+              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
+                <Text style={{ fontSize: 13, color: colors.muted, fontWeight: '600' }}>— Jennifer L.</Text>
+                <Badge variant="success" size="sm">PASSED</Badge>
+              </View>
+            </View>
+          </View>
+
+          {/* Final CTA Section */}
+          <View style={{ paddingHorizontal: 20, marginTop: 32, marginBottom: 20 }}>
+            <View style={{ backgroundColor: colors.errorMuted, borderRadius: 16, padding: 20, alignItems: 'center' }}>
+              <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground, textAlign: 'center' }}>Don't Wait Another 6 Months</Text>
+              <Text style={{ fontSize: 14, color: colors.muted, textAlign: 'center', marginTop: 8 }}>Join 500+ students who passed with confidence.</Text>
+              <Pressable
+                onPress={handleGetFullAccess}
+                style={({ pressed }) => ({
+                  backgroundColor: colors.primary,
+                  paddingHorizontal: 32,
+                  paddingVertical: 14,
+                  borderRadius: 12,
+                  marginTop: 16,
+                  opacity: pressed ? 0.9 : 1,
+                })}
+              >
+                <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Started for $37</Text>
+              </Pressable>
+            </View>
+          </View>
+
+          {/* Footer */}
+          <View style={{ paddingHorizontal: 20, paddingVertical: 24, borderTopWidth: 1, borderTopColor: colors.border }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+              <Image source={{ uri: LOGO_URL }} style={{ width: 24, height: 24, borderRadius: 6 }} resizeMode="contain" />
+              <Text style={{ fontWeight: '600', color: colors.foreground, fontSize: 14 }}>NYSMassageExam.com</Text>
+            </View>
+            <Text style={{ color: colors.muted, fontSize: 11, lineHeight: 16 }}>
+              © 2025 NYSMassageExam.com. All rights reserved. Not affiliated with the NYS Education Department.
+            </Text>
+            <Text style={{ color: colors.muted, fontSize: 10, marginTop: 8, lineHeight: 14 }}>{PASS_RATE_DISCLAIMER}</Text>
+          </View>
+        </ScrollView>
+
+        {/* Sticky Bottom CTA */}
+        <StickyMobileCTA onPress={handleGetFullAccess} colors={colors} />
+      </View>
+    );
+  }
+
+  // DESKTOP LAYOUT
   return (
     <View className="flex-1 bg-background">
       <SEOHead
@@ -338,23 +670,21 @@ export default function LandingScreen() {
         {/* Navigation Bar */}
         <View style={{ backgroundColor: colors.background, borderBottomWidth: 1, borderBottomColor: colors.border }}>
           <Container>
-            <View className="flex-row items-center justify-between" style={{ height: isDesktop ? 72 : 60 }}>
+            <View className="flex-row items-center justify-between" style={{ height: 72 }}>
               <View className="flex-row items-center" style={{ gap: 12 }}>
                 <Image source={{ uri: LOGO_URL }} style={{ width: 44, height: 44, borderRadius: 10 }} resizeMode="contain" />
                 <View>
                   <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground }}>NYS Massage Exam</Text>
-                  {isDesktop && <Text style={{ fontSize: 12, color: colors.muted }}>The Only NYS-Specific Prep</Text>}
+                  <Text style={{ fontSize: 12, color: colors.muted }}>The Only NYS-Specific Prep</Text>
                 </View>
               </View>
-              {isDesktop && (
-                <View className="flex-row items-center" style={{ gap: 32 }}>
-                  <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Features</Text></Pressable>
-                  <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Pricing</Text></Pressable>
-                  <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>FAQ</Text></Pressable>
-                </View>
-              )}
+              <View className="flex-row items-center" style={{ gap: 32 }}>
+                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Features</Text></Pressable>
+                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>Pricing</Text></Pressable>
+                <Pressable onPress={() => {}}><Text style={{ color: colors.muted, fontWeight: "500" }}>FAQ</Text></Pressable>
+              </View>
               <View className="flex-row items-center" style={{ gap: 12 }}>
-                {isDesktop && <Button variant="ghost" size="md" onPress={handleLogin}>Sign In</Button>}
+                <Button variant="ghost" size="md" onPress={handleLogin}>Sign In</Button>
                 <Button variant="primary" size="md" onPress={handleGetFullAccess}>Get Started</Button>
               </View>
             </View>
@@ -369,34 +699,34 @@ export default function LandingScreen() {
         </View>
 
         {/* Hero Section */}
-        <View style={{ paddingTop: isDesktop ? 64 : 40, paddingBottom: isDesktop ? 64 : 40 }}>
+        <View style={{ paddingTop: 64, paddingBottom: 64 }}>
           <Container>
-            <View style={{ flexDirection: isDesktop ? "row" : "column", alignItems: isDesktop ? "center" : "stretch", gap: isDesktop ? 64 : 40 }}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 64 }}>
               <View style={{ flex: 1 }}>
                 <View className="flex-row items-center mb-4" style={{ gap: 8 }}>
                   <Badge variant="warning">Only 2 Exams/Year</Badge>
-                  <Badge variant="error">Don't Miss It</Badge>
+                  <Badge variant="error">{NYS_PASS_RATE} Fail Rate</Badge>
                 </View>
-                <Text style={{ fontSize: isDesktop ? 52 : 34, fontWeight: "800", color: colors.foreground, lineHeight: isDesktop ? 60 : 40, letterSpacing: -1 }}>
+                <Text style={{ fontSize: 52, fontWeight: "800", color: colors.foreground, lineHeight: 60, letterSpacing: -1 }}>
                   Stop Wasting Time on{" "}Generic MBLEx Prep
                 </Text>
-                <Text style={{ fontSize: isDesktop ? 20 : 17, color: colors.muted, marginTop: 20, lineHeight: isDesktop ? 32 : 26, maxWidth: 520 }}>
+                <Text style={{ fontSize: 20, color: colors.muted, marginTop: 20, lineHeight: 32, maxWidth: 520 }}>
                   New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're the only study tool built specifically for the NYS exam.
                 </Text>
                 <View className="flex-row items-center" style={{ gap: 16, marginTop: 32 }}>
                   <Button variant="primary" size="lg" onPress={handleGetFullAccess}>Get Full Access - $37</Button>
                   <Button variant="outline" size="lg" onPress={handleStartTrial}>Try 3 Free Questions</Button>
                 </View>
-                <View className="flex-row" style={{ gap: isDesktop ? 40 : 24, marginTop: 40 }}>
+                <View className="flex-row" style={{ gap: 40, marginTop: 40 }}>
                   {STATS.map((stat, i) => (
                     <View key={i}>
-                      <Text style={{ fontSize: isDesktop ? 32 : 24, fontWeight: "700", color: colors.foreground }}>{stat.value}</Text>
+                      <Text style={{ fontSize: 32, fontWeight: "700", color: colors.foreground }}>{stat.value}</Text>
                       <Text style={{ fontSize: 13, color: colors.muted, marginTop: 2 }}>{stat.label}</Text>
                     </View>
                   ))}
                 </View>
               </View>
-              <View style={{ width: isDesktop ? 380 : "100%" }}>
+              <View style={{ width: 380 }}>
                 <Card variant="elevated" className="p-8">
                   <View className="items-center">
                     <View style={{ backgroundColor: colors.errorMuted, paddingHorizontal: 16, paddingVertical: 6, borderRadius: 999, marginBottom: 16 }}>
@@ -415,13 +745,17 @@ export default function LandingScreen() {
         </View>
 
         {/* Brutal Facts Section */}
-        <View style={{ backgroundColor: colors.surface, paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ backgroundColor: colors.surface, paddingVertical: 64 }}>
           <Container>
             <View className="items-center mb-12">
-              <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>The Brutal Truth About NYS</Text>
+              <View style={{ backgroundColor: colors.errorMuted, paddingHorizontal: 20, paddingVertical: 10, borderRadius: 12, marginBottom: 16, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <MaterialIcons name="warning" size={24} color={colors.error} />
+                <Text style={{ fontSize: 24, fontWeight: '800', color: colors.error }}>{NYS_PASS_RATE} Fail Rate Statewide</Text>
+              </View>
+              <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>The NYS Exam Is No Joke</Text>
               <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 600 }}>New York is the only state with its own massage therapy licensing exam. Here's why that matters:</Text>
             </View>
-            <View style={{ flexDirection: isDesktop ? "row" : "column", gap: 24 }}>
+            <View style={{ flexDirection: "row", gap: 24 }}>
               <Card className="p-6" style={{ flex: 1, borderLeftWidth: 4, borderLeftColor: colors.error }}>
                 <MaterialIcons name="event-busy" size={32} color={colors.error} />
                 <Text style={{ fontSize: 20, fontWeight: "700", color: colors.foreground, marginTop: 12, marginBottom: 8 }}>Only 2 Chances Per Year</Text>
@@ -442,14 +776,14 @@ export default function LandingScreen() {
         </View>
 
         {/* Data Visualizations Section */}
-        <View style={{ paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ paddingVertical: 64 }}>
           <Container>
             <View className="items-center mb-12">
               <Badge variant="primary" size="md">Data-Driven Prep</Badge>
-              <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginTop: 16, marginBottom: 12 }}>Know Exactly Where You Stand</Text>
+              <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginTop: 16, marginBottom: 12 }}>Know Exactly Where You Stand</Text>
               <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 600 }}>Our intelligent tracking system analyzes your performance and tells you exactly what to study next.</Text>
             </View>
-            <View style={{ flexDirection: isDesktop ? "row" : "column", gap: 24 }}>
+            <View style={{ flexDirection: "row", gap: 24 }}>
               <View style={{ flex: 1 }}><AnalyticsPreview /></View>
               <View style={{ flex: 1 }}><MemoryAnalysisPreview /></View>
             </View>
@@ -457,21 +791,65 @@ export default function LandingScreen() {
         </View>
 
         {/* Mnemonic Preview Section */}
-        <View style={{ backgroundColor: colors.surface, paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ backgroundColor: colors.surface, paddingVertical: 64 }}>
           <Container size="md">
             <View className="items-center mb-12">
-              <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>No BS. Just Memory Hacks.</Text>
+              <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>No BS. Just Memory Hacks.</Text>
               <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 500 }}>Every single question comes with a mnemonic designed to make the answer unforgettable.</Text>
             </View>
             <MnemonicPreview />
           </Container>
         </View>
 
+        {/* Reinforced Learning Section */}
+        <View style={{ paddingVertical: 64 }}>
+          <Container>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 48 }}>
+              <View style={{ flex: 1, alignItems: "center" }}>
+                <Image
+                  source={require("@/assets/images/p901.png")}
+                  style={{ width: 400, height: 400 }}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={{ flex: 1, alignItems: "flex-start" }}>
+                <Badge variant="primary" size="md">Reinforced Learning</Badge>
+                <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, marginTop: 16, marginBottom: 16, textAlign: "left" }}>Master Content Through Repetition</Text>
+                <Text style={{ fontSize: 17, color: colors.muted, lineHeight: 28, textAlign: "left" }}>
+                  Our reinforced learning system guides you through a proven cycle: study with mnemonics, test your recall, review mistakes, and repeat. Each practice session strengthens neural pathways, transforming short-term memorization into lasting exam-ready knowledge.
+                </Text>
+              </View>
+            </View>
+          </Container>
+        </View>
+
+        {/* CRISP Principle Section */}
+        <View style={{ backgroundColor: colors.surface, paddingVertical: 64 }}>
+          <Container>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 48 }}>
+              <View style={{ flex: 1, alignItems: "flex-start" }}>
+                <Badge variant="success" size="md">Science-Backed Method</Badge>
+                <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, marginTop: 16, marginBottom: 16, textAlign: "left" }}>Built on CRISP Principles</Text>
+                <Text style={{ fontSize: 17, color: colors.muted, lineHeight: 28, textAlign: "left" }}>
+                  Every mnemonic in our study guide follows the CRISP framework: Concise content stripped to essentials, Relatable connections to what you know, vivid Imagery that sticks, Structured patterns for clarity, and Personal meaning that makes learning memorable.
+                </Text>
+              </View>
+              <View style={{ flex: 1, alignItems: "center" }}>
+                <Image
+                  source={require("@/assets/images/p910.png")}
+                  style={{ width: 480, height: 320 }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Container>
+        </View>
+
         {/* Comparison Section */}
-        <View style={{ paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ paddingVertical: 64 }}>
           <Container size="md">
             <View className="items-center mb-12">
-              <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>Us vs. Generic MBLEx Prep</Text>
+              <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>Us vs. Generic MBLEx Prep</Text>
               <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 500 }}>There's a reason 90%* of our students pass on their first try.</Text>
             </View>
             <ComparisonTable />
@@ -479,12 +857,12 @@ export default function LandingScreen() {
         </View>
 
         {/* Testimonials */}
-        <View style={{ backgroundColor: colors.surface, paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ backgroundColor: colors.surface, paddingVertical: 64 }}>
           <Container>
             <View className="items-center mb-12">
-              <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center" }}>What Our Students Say</Text>
+              <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center" }}>What Our Students Say</Text>
             </View>
-            <View style={{ flexDirection: isDesktop ? "row" : "column", gap: 24 }}>
+            <View style={{ flexDirection: "row", gap: 24 }}>
               <TestimonialCard quote="I failed the NYS exam twice using generic MBLEx prep. The Eastern Medicine section killed me. This app's mnemonics made all the difference. Passed on my third try!" author="Sarah M." result="PASSED" />
               <TestimonialCard quote="The spaced repetition is a game changer. I could see my weak spots and the app kept drilling me on them until I mastered them. Worth every penny." author="Michael T." result="PASSED" />
               <TestimonialCard quote="Straight to the point, no fluff. Just the questions and mnemonics to remember them. Exactly what I needed with a full-time job and only 2 months to prep." author="Jennifer L." result="PASSED" />
@@ -493,9 +871,9 @@ export default function LandingScreen() {
         </View>
 
         {/* Pricing Section */}
-        <View style={{ paddingVertical: isDesktop ? 64 : 40 }}>
+        <View style={{ paddingVertical: 64 }}>
           <Container size="md">
-            <Text style={{ fontSize: isDesktop ? 36 : 28, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>One Price. Lifetime Access.</Text>
+            <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>One Price. Lifetime Access.</Text>
             <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", marginBottom: 40 }}>No subscriptions. No hidden fees. No upsells.</Text>
             <Card variant="elevated" className="p-8 overflow-hidden" style={{ borderWidth: 2, borderColor: colors.primary }}>
               <View style={{ position: "absolute", top: 0, right: 0, backgroundColor: colors.primary, paddingHorizontal: 20, paddingVertical: 8, borderBottomLeftRadius: 16 }}>
@@ -519,7 +897,7 @@ export default function LandingScreen() {
               </View>
             </Card>
             <Card className="p-6 mt-6">
-              <View style={{ flexDirection: isDesktop ? "row" : "column", alignItems: isDesktop ? "center" : "stretch", justifyContent: "space-between", gap: 16 }}>
+              <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontSize: 18, fontWeight: "600", color: colors.foreground }}>Not sure yet? Try before you buy.</Text>
                   <Text style={{ color: colors.muted, marginTop: 4 }}>Get 3 sample questions from each category completely free.</Text>
@@ -531,10 +909,10 @@ export default function LandingScreen() {
         </View>
 
         {/* Final CTA */}
-        <View style={{ backgroundColor: colors.primary, paddingVertical: isDesktop ? 64 : 48 }}>
+        <View style={{ backgroundColor: colors.primary, paddingVertical: 64 }}>
           <Container>
             <View className="items-center">
-              <Text style={{ fontSize: isDesktop ? 32 : 24, fontWeight: "700", color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>Your Career Is Waiting</Text>
+              <Text style={{ fontSize: 32, fontWeight: "700", color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>Your Career Is Waiting</Text>
               <Text style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", textAlign: "center", marginBottom: 24, maxWidth: 500 }}>Join 500+ students who passed the NYS exam with confidence. Don't wait another 6 months.</Text>
               <Button variant="secondary" size="lg" onPress={handleGetFullAccess} style={{ backgroundColor: "#FFFFFF" }}>
                 <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 16 }}>Get Started for $37</Text>
@@ -546,7 +924,7 @@ export default function LandingScreen() {
         {/* Footer */}
         <View style={{ borderTopWidth: 1, borderTopColor: colors.border, paddingVertical: 32 }}>
           <Container>
-            <View style={{ flexDirection: isDesktop ? "row" : "column", justifyContent: "space-between", alignItems: isDesktop ? "center" : "flex-start", gap: 16 }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
               <View className="flex-row items-center" style={{ gap: 8 }}>
                 <Image source={{ uri: LOGO_URL }} style={{ width: 24, height: 24, borderRadius: 6 }} resizeMode="contain" />
                 <Text style={{ fontWeight: "600", color: colors.foreground }}>NYSMassageExam.com</Text>

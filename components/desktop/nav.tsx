@@ -77,7 +77,7 @@ export function DesktopSidebar() {
       {/* Logo */}
       <View className="h-20 px-6 justify-center border-b border-border">
         <Image
-          source={require('../assets/images/logo.png')}
+          source={require('../../assets/images/logo.png')}
           style={{ width: 150, height: 38 }}
           resizeMode="contain"
         />

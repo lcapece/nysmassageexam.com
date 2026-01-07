@@ -11,6 +11,7 @@ type Period = 'weekly' | 'monthly' | 'alltime';
 interface LeaderboardEntry {
   rank: number;
   displayName: string;
+  location?: string;
   score: number;
   questionsAttempted: number;
   accuracyPercent: number;
@@ -229,6 +230,17 @@ export function Leaderboard({ currentUserEmail, compact = false }: LeaderboardPr
                       <Text style={{ color: colors.primary }}> (You)</Text>
                     )}
                   </Text>
+                  {entry.location && (
+                    <Text
+                      style={{
+                        fontSize: 8,
+                        color: colors.muted,
+                        marginTop: 1,
+                      }}
+                    >
+                      {entry.location}
+                    </Text>
+                  )}
                   <View style={{ flexDirection: 'row', gap: 12, marginTop: 4 }}>
                     <Text style={{ fontSize: 12, color: colors.muted }}>
                       {entry.accuracyPercent.toFixed(0)}% accuracy
@@ -317,6 +329,17 @@ export function Leaderboard({ currentUserEmail, compact = false }: LeaderboardPr
                       {data.currentUserEntry.displayName}
                       <Text style={{ color: colors.primary }}> (You)</Text>
                     </Text>
+                    {data.currentUserEntry.location && (
+                      <Text
+                        style={{
+                          fontSize: 8,
+                          color: colors.muted,
+                          marginTop: 1,
+                        }}
+                      >
+                        {data.currentUserEntry.location}
+                      </Text>
+                    )}
                     <View style={{ flexDirection: 'row', gap: 12, marginTop: 4 }}>
                       <Text style={{ fontSize: 12, color: colors.muted }}>
                         {data.currentUserEntry.accuracyPercent.toFixed(0)}% accuracy

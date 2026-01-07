@@ -411,8 +411,18 @@ export async function updateLeaderboardVisibility(
   }
 }
 
-export const ADMIN_EMAIL = 'lcapece@optonline.net';
+// Admin users configuration
+export const ADMIN_USERS = [
+  { email: 'lcapece@optonline.net', nickname: 'Louis C (admin)', role: 'super_admin' },
+] as const;
+
+export const ADMIN_EMAIL = 'lcapece@optonline.net'; // Primary admin for backwards compatibility
 
 export function isAdmin(email: string): boolean {
-  return email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  return ADMIN_USERS.some(admin => admin.email.toLowerCase() === email.toLowerCase());
+}
+
+export function getAdminNickname(email: string): string | null {
+  const admin = ADMIN_USERS.find(a => a.email.toLowerCase() === email.toLowerCase());
+  return admin?.nickname || null;
 }

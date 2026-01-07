@@ -4,7 +4,7 @@ import { useColors } from '@/hooks/use-colors';
 interface BadgeProps {
   children: React.ReactNode;
   variant?: 'default' | 'primary' | 'success' | 'warning' | 'error';
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export function Badge({ children, variant = 'default', size = 'sm' }: BadgeProps) {
@@ -21,6 +21,7 @@ export function Badge({ children, variant = 'default', size = 'sm' }: BadgeProps
   const sizeStyles = {
     sm: { px: 8, py: 4, fontSize: 11 },
     md: { px: 12, py: 6, fontSize: 13 },
+    lg: { px: 32, py: 16, fontSize: 36 },
   };
 
   const style = variantStyles[variant];

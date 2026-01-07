@@ -78,9 +78,9 @@ const STATS = [
 ];
 
 // NYS official pass rate for contrast
-const NYS_PASS_RATE = "69%";
+const NYS_PASS_RATE = "31%";
 
-const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide vs. the NYS statewide average of 69%. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
+const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide vs. the NYS statewide average of 31%. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
 
 const EXAM_CATEGORIES = [
   { name: "Anatomy", percentage: 28, color: "#2A9D8F", questions: 80 },
@@ -214,7 +214,7 @@ function AnalyticsPreview() {
   const leftPadding = 110;
 
   return (
-    <Card className="p-6" variant="elevated">
+    <Card className="p-6" variant="elevated" style={{ flex: 1 }}>
       <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground, marginBottom: 20 }}>Exam Category Breakdown</Text>
       <Svg width={chartWidth} height={chartHeight}>
         {EXAM_CATEGORIES.map((cat, i) => {
@@ -245,7 +245,7 @@ function MemoryAnalysisPreview() {
   ];
 
   return (
-    <Card className="p-6" variant="elevated">
+    <Card className="p-6" variant="elevated" style={{ flex: 1 }}>
       <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground, marginBottom: 4 }}>Smart Memory Tracking</Text>
       <Text style={{ fontSize: 14, color: colors.muted, marginBottom: 20 }}>Know exactly what you know - and what you don't</Text>
       <View className="flex-row justify-around items-center" style={{ marginBottom: 20 }}>
@@ -290,7 +290,7 @@ function MnemonicPreview() {
         <View style={{ backgroundColor: revealed ? colors.successMuted : colors.primaryMuted, padding: 16, borderRadius: 12, borderWidth: 2, borderColor: revealed ? colors.success : colors.primary, borderStyle: "dashed" }}>
           {revealed ? (
             <>
-              <Text style={{ color: colors.success, fontWeight: "700", marginBottom: 8 }}>"Wise Fire Wizards Melt Everything"</Text>
+              <Text style={{ color: colors.success, fontWeight: "700", marginBottom: 8 }}>"Wild Fires Easily Melt Wax"</Text>
               <Text style={{ color: colors.foreground, lineHeight: 22 }}><Text style={{ fontWeight: "600" }}>W</Text>ood, <Text style={{ fontWeight: "600" }}>F</Text>ire, <Text style={{ fontWeight: "600" }}>E</Text>arth, <Text style={{ fontWeight: "600" }}>M</Text>etal, <Text style={{ fontWeight: "600" }}>W</Text>ater</Text>
             </>
           ) : (
@@ -494,6 +494,9 @@ export default function LandingScreen() {
                   <Text style={{ fontSize: 14, color: colors.foreground }}>Generic MBLEx prep misses <Text style={{ fontWeight: '700' }}>20%</Text> of NYS content</Text>
                 </View>
               </View>
+              <Text style={{ fontSize: 13, color: colors.muted, marginTop: 12, lineHeight: 20 }}>
+                New York State has its own exam with 20% Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.
+              </Text>
             </View>
           </View>
 
@@ -753,7 +756,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 24, fontWeight: '800', color: colors.error }}>{NYS_PASS_RATE} Fail Rate Statewide</Text>
               </View>
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>The NYS Exam Is No Joke</Text>
-              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 600 }}>New York is the only state with its own massage therapy licensing exam. Here's why that matters:</Text>
+              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 700 }}>New York State has its own exam with 20% Eastern Medicine questions that generic MBLEx prep doesn't cover. Even seasoned pros who passed the MBLEx 20 years ago get tripped up here. We're the BEST study tool built specifically for the NYS exam.</Text>
             </View>
             <View style={{ flexDirection: "row", gap: 24 }}>
               <Card className="p-6" style={{ flex: 1, borderLeftWidth: 4, borderLeftColor: colors.error }}>
@@ -779,11 +782,11 @@ export default function LandingScreen() {
         <View style={{ paddingVertical: 64 }}>
           <Container>
             <View className="items-center mb-12">
-              <Badge variant="primary" size="md">Data-Driven Prep</Badge>
+              <Badge variant="primary" size="lg">Data-Driven Prep</Badge>
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginTop: 16, marginBottom: 12 }}>Know Exactly Where You Stand</Text>
               <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 600 }}>Our intelligent tracking system analyzes your performance and tells you exactly what to study next.</Text>
             </View>
-            <View style={{ flexDirection: "row", gap: 24 }}>
+            <View style={{ flexDirection: "row", gap: 24, alignItems: 'stretch' }}>
               <View style={{ flex: 1 }}><AnalyticsPreview /></View>
               <View style={{ flex: 1 }}><MemoryAnalysisPreview /></View>
             </View>
@@ -795,7 +798,7 @@ export default function LandingScreen() {
           <Container size="md">
             <View className="items-center mb-12">
               <Text style={{ fontSize: 36, fontWeight: "700", color: colors.foreground, textAlign: "center", marginBottom: 12 }}>No BS. Just Memory Hacks.</Text>
-              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 500 }}>Every single question comes with a mnemonic designed to make the answer unforgettable.</Text>
+              <Text style={{ fontSize: 17, color: colors.muted, textAlign: "center", maxWidth: 600 }}>Every single question comes with a mnemonic memory aid designed to make the answer unforgettable. Truth is, you don't need to relearn extremely tough topics — you just need to PASS!</Text>
             </View>
             <MnemonicPreview />
           </Container>

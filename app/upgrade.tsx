@@ -23,9 +23,10 @@ const SQUARE_PAYMENT_URL = "https://square.link/u/hJT8Zc0x";
 // Supabase Edge Function URL (for restore purchases)
 const SUPABASE_URL = "https://ekklokrukxmqlahtonnc.supabase.co";
 
-// Valid promo codes - LNC3690 gives $37 off (100% discount = free)
+// Valid promo codes
 const PROMO_CODES: Record<string, { discount: number; description: string }> = {
   "LNC3690": { discount: 37, description: "Full discount - FREE access!" },
+  "TESTCONDITION": { discount: 36, description: "$36 off - Only $1!" },
 };
 
 const FEATURES = [

@@ -118,7 +118,6 @@ export default function QuizScreen() {
   const [showIncorrectExplanations, setShowIncorrectExplanations] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
   const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
-  const [explanationPanelOpen, setExplanationPanelOpen] = useState(false);
 
   useEffect(() => {
     loadBookmarks();
@@ -724,10 +723,10 @@ export default function QuizScreen() {
                 </ScrollView>
                 </View>
 
-                                {/* Side Panel - Shows during feedback */}
+                                {/* Side Panel - Shows during feedback - 525px width with inline explanation */}
                 {quizState === "feedback" && (
-                  <View style={{ flex: 2, position: 'relative' }}>
-                    {/* Compact Result + Next Button */}
+                  <View style={{ width: 525, flexShrink: 0 }}>
+                    {/* Compact Result Header */}
                     <Card
                       style={{
                         padding: 12,
@@ -736,41 +735,23 @@ export default function QuizScreen() {
                         borderWidth: 0,
                       }}
                     >
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                          <MaterialIcons
-                            name={isCorrect ? "check-circle" : "cancel"}
-                            size={20}
-                            color={isCorrect ? colors.success : colors.error}
-                          />
-                          <Text style={{
-                            fontSize: 13,
-                            fontWeight: '600',
-                            color: isCorrect ? colors.success : colors.error,
-                          }}>
-                            {isCorrect ? "Correct!" : `Incorrect - Answer: ${question.correct_option?.toUpperCase() || ''}`}
-                          </Text>
-                        </View>
-                        <Pressable
-                          onPress={() => setExplanationPanelOpen(!explanationPanelOpen)}
-                          style={({ hovered }: any) => ({
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 4,
-                            padding: 6,
-                            borderRadius: 6,
-                            backgroundColor: hovered ? colors.primary : colors.primaryMuted,
-                          })}
-                        >
-                          <MaterialIcons name={explanationPanelOpen ? "close" : "info"} size={16} color={explanationPanelOpen ? '#FFF' : colors.primary} />
-                          <Text style={{ fontSize: 11, fontWeight: '600', color: explanationPanelOpen ? '#FFF' : colors.primary }}>
-                            {explanationPanelOpen ? 'Close' : 'Explain'}
-                          </Text>
-                        </Pressable>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        <MaterialIcons
+                          name={isCorrect ? "check-circle" : "cancel"}
+                          size={20}
+                          color={isCorrect ? colors.success : colors.error}
+                        />
+                        <Text style={{
+                          fontSize: 13,
+                          fontWeight: '600',
+                          color: isCorrect ? colors.success : colors.error,
+                        }}>
+                          {isCorrect ? "Correct!" : `Incorrect - Answer: ${question.correct_option?.toUpperCase() || ''}`}
+                        </Text>
                       </View>
                     </Card>
 
-                    {/* Next Button - Always visible */}
+                    {/* Next Button */}
                     <Button
                       variant="primary"
                       size="md"
@@ -778,143 +759,124 @@ export default function QuizScreen() {
                       icon={<MaterialIcons name="arrow-forward" size={16} color="#FFFFFF" />}
                       iconPosition="right"
                       onPress={nextQuestion}
+                      style={{ marginBottom: 12 }}
                     >
                       {currentIndex < quizQuestions.length - 1 ? "Next" : "Results"}
                     </Button>
 
-                    {/* Horizontal Fly-out Explanation Panel */}
-                    {explanationPanelOpen && (
-                      <View
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          right: '100%',
-                          marginRight: 12,
-                          width: 420,
-                          maxHeight: 420,
-                          backgroundColor: colors.elevated,
-                          borderRadius: 12,
-                          borderWidth: 1,
-                          borderColor: colors.border,
-                          shadowColor: '#000',
-                          shadowOffset: { width: -4, height: 4 },
-                          shadowOpacity: 0.15,
-                          shadowRadius: 12,
-                          zIndex: 100,
-                        }}
+                    {/* Explanation Content - Inline in side panel */}
+                    <Card style={{ flex: 1, padding: 0, overflow: 'hidden' }}>
+                      <ScrollView
+                        style={{ flex: 1 }}
+                        contentContainerStyle={{ padding: 16 }}
+                        showsVerticalScrollIndicator={true}
                       >
-                        <ScrollView
-                          style={{ flex: 1, maxHeight: 420 }}
-                          contentContainerStyle={{ padding: 14 }}
-                          showsVerticalScrollIndicator={true}
-                        >
-                          {/* Explanation - 25% smaller font */}
-                          <View style={{ marginBottom: 10 }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-                              <MaterialIcons name="info" size={14} color={colors.primary} />
-                              <Text style={{ fontSize: 12, fontWeight: '600', color: colors.foreground }}>
-                                Explanation
-                              </Text>
-                            </View>
-                            <MarkdownText
-                              text={question.topic_explanation}
-                              style={{ fontSize: 11, color: colors.muted, lineHeight: 16 }}
-                              colors={colors}
-                            />
-                          </View>
-
-                          {/* Mnemonic - 25% smaller font */}
-                          <View style={{
-                            padding: 10,
-                            backgroundColor: colors.warningMuted,
-                            borderRadius: 8,
-                            borderLeftWidth: 3,
-                            borderLeftColor: colors.warning,
-                            marginBottom: 10,
-                          }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                              <MaterialIcons name="lightbulb" size={14} color={colors.warning} />
-                              <Text style={{ fontSize: 11, fontWeight: '600', color: colors.foreground }}>
-                                Memory Tip
-                              </Text>
-                            </View>
-                            <Text style={{ fontSize: 10, color: colors.foreground, fontStyle: 'italic', lineHeight: 14 }}>
-                              {question.mnemonic}
+                        {/* Explanation */}
+                        <View style={{ marginBottom: 16 }}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                            <MaterialIcons name="info" size={18} color={colors.primary} />
+                            <Text style={{ fontSize: 15, fontWeight: '600', color: colors.foreground }}>
+                              Explanation
                             </Text>
                           </View>
+                          <MarkdownText
+                            text={question.topic_explanation}
+                            style={{ fontSize: 14, color: colors.muted, lineHeight: 22 }}
+                            colors={colors}
+                          />
+                        </View>
 
-                          {/* Incorrect Explanations Toggle - 25% smaller */}
-                          {question.incorrect_explanations && (
-                            <View style={{ marginBottom: 10 }}>
-                              <Pressable
-                                onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
-                                style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}
-                              >
-                                <View style={{
-                                  width: 14,
-                                  height: 14,
-                                  borderRadius: 3,
-                                  borderWidth: 1.5,
-                                  borderColor: colors.primary,
-                                  backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                }}>
-                                  {showIncorrectExplanations && (
-                                    <MaterialIcons name="check" size={10} color="#FFFFFF" />
-                                  )}
-                                </View>
-                                <Text style={{ fontSize: 10, fontWeight: '600', color: colors.foreground }}>
-                                  Why other answers are wrong
-                                </Text>
-                              </Pressable>
+                        {/* Mnemonic / Memory Tip */}
+                        <View style={{
+                          padding: 14,
+                          backgroundColor: colors.warningMuted,
+                          borderRadius: 10,
+                          borderLeftWidth: 4,
+                          borderLeftColor: colors.warning,
+                          marginBottom: 16,
+                        }}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                            <MaterialIcons name="lightbulb" size={18} color={colors.warning} />
+                            <Text style={{ fontSize: 14, fontWeight: '600', color: colors.foreground }}>
+                              Memory Tip
+                            </Text>
+                          </View>
+                          <Text style={{ fontSize: 13, color: colors.foreground, fontStyle: 'italic', lineHeight: 20 }}>
+                            {question.mnemonic}
+                          </Text>
+                        </View>
 
-                              {showIncorrectExplanations && (
-                                <View style={{ gap: 6 }}>
-                                  {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
-                                    <View
-                                      key={option}
-                                      style={{
-                                        padding: 8,
-                                        backgroundColor: colors.errorMuted,
-                                        borderRadius: 6,
-                                        borderLeftWidth: 2,
-                                        borderLeftColor: colors.error,
-                                      }}
-                                    >
-                                      <Text style={{ fontSize: 10, fontWeight: '600', color: colors.error, marginBottom: 2 }}>
-                                        {option.toUpperCase()}:
-                                      </Text>
-                                      <Text style={{ fontSize: 9, color: colors.foreground, lineHeight: 13 }}>
-                                        {explanation}
-                                      </Text>
-                                    </View>
-                                  ))}
-                                </View>
-                              )}
-                            </View>
-                          )}
-
-                          {/* Visual Diagram - smaller */}
-                          {question.image_url && (
-                            <Pressable onPress={() => setZoomedImageUrl(question.image_url)}>
+                        {/* Incorrect Explanations Toggle */}
+                        {question.incorrect_explanations && (
+                          <View style={{ marginBottom: 16 }}>
+                            <Pressable
+                              onPress={() => setShowIncorrectExplanations(!showIncorrectExplanations)}
+                              style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}
+                            >
                               <View style={{
-                                borderRadius: 8,
-                                overflow: 'hidden',
-                                borderWidth: 1,
-                                borderColor: colors.border,
+                                width: 20,
+                                height: 20,
+                                borderRadius: 4,
+                                borderWidth: 2,
+                                borderColor: colors.primary,
+                                backgroundColor: showIncorrectExplanations ? colors.primary : 'transparent',
+                                alignItems: 'center',
+                                justifyContent: 'center',
                               }}>
-                                <Image
-                                  source={{ uri: question.image_url }}
-                                  style={{ width: '100%', height: 120 }}
-                                  resizeMode="cover"
-                                />
+                                {showIncorrectExplanations && (
+                                  <MaterialIcons name="check" size={14} color="#FFFFFF" />
+                                )}
                               </View>
+                              <Text style={{ fontSize: 13, fontWeight: '600', color: colors.foreground }}>
+                                Why other answers are wrong
+                              </Text>
                             </Pressable>
-                          )}
-                        </ScrollView>
-                      </View>
-                    )}
+
+                            {showIncorrectExplanations && (
+                              <View style={{ gap: 10 }}>
+                                {Object.entries(question.incorrect_explanations).map(([option, explanation]) => (
+                                  <View
+                                    key={option}
+                                    style={{
+                                      padding: 12,
+                                      backgroundColor: colors.errorMuted,
+                                      borderRadius: 8,
+                                      borderLeftWidth: 3,
+                                      borderLeftColor: colors.error,
+                                    }}
+                                  >
+                                    <Text style={{ fontSize: 13, fontWeight: '600', color: colors.error, marginBottom: 4 }}>
+                                      {option.toUpperCase()}:
+                                    </Text>
+                                    <Text style={{ fontSize: 12, color: colors.foreground, lineHeight: 18 }}>
+                                      {explanation}
+                                    </Text>
+                                  </View>
+                                ))}
+                              </View>
+                            )}
+                          </View>
+                        )}
+
+                        {/* Visual Diagram */}
+                        {question.image_url && (
+                          <Pressable onPress={() => setZoomedImageUrl(question.image_url)}>
+                            <View style={{
+                              borderRadius: 10,
+                              overflow: 'hidden',
+                              borderWidth: 1,
+                              borderColor: colors.border,
+                            }}>
+                              <Image
+                                source={{ uri: question.image_url }}
+                                style={{ width: '100%', height: 150 }}
+                                resizeMode="cover"
+                              />
+                            </View>
+                          </Pressable>
+                        )}
+                      </ScrollView>
+                    </Card>
                   </View>
                 )}
               </View>

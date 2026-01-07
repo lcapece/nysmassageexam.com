@@ -75,13 +75,12 @@ export function DesktopSidebar() {
       style={{ backgroundColor: colors.surface }}
     >
       {/* Logo */}
-      <View className="h-20 px-6 justify-center border-b border-border">
+      <View className="px-3 py-4 justify-center border-b border-border">
         <Image
           source={require('../../assets/images/logo.png')}
-          style={{ width: '90%', height: 50 }}
+          style={{ width: '100%', height: 200 }}
           resizeMode="contain"
         />
-        <Text className="text-xs text-muted mt-0.5">Study App</Text>
       </View>
 
       {/* Navigation */}

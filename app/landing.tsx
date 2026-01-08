@@ -29,7 +29,7 @@ import { hasStartedQuiz, setQuizStarted } from "@/lib/study-store";
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
 // Sticky CTA Bar for Mobile
-function StickyMobileCTA({ onPress, colors, price }: { onPress: () => void; colors: any; price: string }) {
+function StickyMobileCTA({ onPress, onTrial, colors, price }: { onPress: () => void; onTrial: () => void; colors: any; price: string }) {
   return (
     <View
       style={{
@@ -40,32 +40,45 @@ function StickyMobileCTA({ onPress, colors, price }: { onPress: () => void; colo
         backgroundColor: colors.background,
         borderTopWidth: 1,
         borderTopColor: colors.border,
-        paddingHorizontal: 20,
-        paddingVertical: 12,
-        paddingBottom: Platform.OS === 'web' ? 12 : 28,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        paddingBottom: Platform.OS === 'web' ? 10 : 24,
         zIndex: 1000,
-        ...(Platform.OS === 'web' ? { boxShadow: '0 -4px 20px rgba(0,0,0,0.1)' } : {}),
+        ...(Platform.OS === 'web' ? { boxShadow: '0 -4px 20px rgba(0,0,0,0.15)' } : {}),
       }}
     >
-      <View>
-        <Text style={{ fontSize: 18, fontWeight: '800', color: colors.foreground }}>{price}</Text>
-        <Text style={{ fontSize: 12, color: colors.muted }}>Lifetime access</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        {/* Free Trial Button */}
+        <Pressable
+          onPress={onTrial}
+          style={({ pressed }) => ({
+            flex: 1,
+            backgroundColor: colors.successMuted,
+            paddingVertical: 14,
+            borderRadius: 12,
+            alignItems: 'center',
+            borderWidth: 2,
+            borderColor: colors.success,
+            opacity: pressed ? 0.9 : 1,
+          })}
+        >
+          <Text style={{ color: colors.success, fontSize: 15, fontWeight: '700' }}>Try Free</Text>
+        </Pressable>
+        {/* Full Access Button */}
+        <Pressable
+          onPress={onPress}
+          style={({ pressed }) => ({
+            flex: 2,
+            backgroundColor: colors.primary,
+            paddingVertical: 14,
+            borderRadius: 12,
+            alignItems: 'center',
+            opacity: pressed ? 0.9 : 1,
+          })}
+        >
+          <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Full Access - {price}</Text>
+        </Pressable>
       </View>
-      <Pressable
-        onPress={onPress}
-        style={({ pressed }) => ({
-          backgroundColor: colors.primary,
-          paddingHorizontal: 28,
-          paddingVertical: 14,
-          borderRadius: 12,
-          opacity: pressed ? 0.9 : 1,
-        })}
-      >
-        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Full Access</Text>
-      </Pressable>
     </View>
   );
 }
@@ -511,34 +524,36 @@ export default function LandingScreen() {
               The only study tool built for New York's unique exam — including the <Text style={{ fontWeight: '700', color: colors.warning }}>20% Eastern Medicine</Text> questions that generic prep ignores.
             </Text>
 
-            {/* Primary CTA */}
+            {/* Primary CTA - Trial First! */}
             <View style={{ marginTop: 24, gap: 12 }}>
+              {/* FREE TRIAL - Most Prominent */}
               <Pressable
-                onPress={handleGetFullAccess}
+                onPress={handleStartTrial}
                 style={({ pressed }) => ({
-                  backgroundColor: colors.primary,
+                  backgroundColor: colors.success,
                   paddingVertical: 18,
                   borderRadius: 14,
                   alignItems: 'center',
                   opacity: pressed ? 0.9 : 1,
                 })}
               >
-                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '700' }}>Get Full Access - {price}</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 }}>Lifetime access • Money-back guarantee</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '700' }}>Start Free Trial</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 13, marginTop: 2 }}>20 questions • No signup required</Text>
               </Pressable>
 
+              {/* Full Access - Secondary */}
               <Pressable
-                onPress={handleStartTrial}
+                onPress={handleGetFullAccess}
                 style={({ pressed }) => ({
-                  borderWidth: 2,
-                  borderColor: colors.border,
-                  paddingVertical: 14,
+                  backgroundColor: colors.primary,
+                  paddingVertical: 16,
                   borderRadius: 14,
                   alignItems: 'center',
-                  opacity: pressed ? 0.8 : 1,
+                  opacity: pressed ? 0.9 : 1,
                 })}
               >
-                <Text style={{ color: colors.foreground, fontSize: 16, fontWeight: '600' }}>Try 20 Free Questions</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Full Access - {price}</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, marginTop: 2 }}>250+ questions • Lifetime access</Text>
               </Pressable>
             </View>
 
@@ -669,8 +684,31 @@ export default function LandingScreen() {
             </View>
           </View>
 
-          {/* Pricing Card */}
+          {/* Try Before You Buy Card */}
           <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
+            <Pressable
+              onPress={handleStartTrial}
+              style={({ pressed }) => ({
+                backgroundColor: colors.successMuted,
+                borderRadius: 16,
+                padding: 20,
+                borderWidth: 2,
+                borderColor: colors.success,
+                opacity: pressed ? 0.95 : 1,
+              })}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontSize: 18, fontWeight: '700', color: colors.success }}>Not sure yet? Try it free!</Text>
+                  <Text style={{ fontSize: 14, color: colors.foreground, marginTop: 4 }}>20 sample questions from all categories. No signup, no credit card.</Text>
+                </View>
+                <MaterialIcons name="arrow-forward" size={28} color={colors.success} />
+              </View>
+            </Pressable>
+          </View>
+
+          {/* Pricing Card */}
+          <View style={{ paddingHorizontal: 20, marginTop: 16 }}>
             <View style={{ backgroundColor: colors.primary, borderRadius: 20, padding: 24, alignItems: 'center' }}>
               <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, textTransform: 'uppercase', letterSpacing: 1 }}>One-Time Purchase</Text>
               <Text style={{ color: '#FFFFFF', fontSize: 56, fontWeight: '800', marginTop: 8 }}>{price}</Text>
@@ -713,21 +751,34 @@ export default function LandingScreen() {
           {/* Final CTA Section */}
           <View style={{ paddingHorizontal: 20, marginTop: 32, marginBottom: 20 }}>
             <View style={{ backgroundColor: colors.errorMuted, borderRadius: 16, padding: 20, alignItems: 'center' }}>
-              <Text style={{ fontSize: 40, fontWeight: '800', color: colors.error, textAlign: 'center' }}>Don't Wait Another 6 Months!</Text>
+              <Text style={{ fontSize: 28, fontWeight: '800', color: colors.error, textAlign: 'center', lineHeight: 34 }}>Don't Wait Another 6 Months!</Text>
               <Text style={{ fontSize: 14, color: colors.muted, textAlign: 'center', marginTop: 8 }}>Join over 100 students who passed with confidence.</Text>
-              <Pressable
-                onPress={handleGetFullAccess}
-                style={({ pressed }) => ({
-                  backgroundColor: colors.primary,
-                  paddingHorizontal: 32,
-                  paddingVertical: 14,
-                  borderRadius: 12,
-                  marginTop: 16,
-                  opacity: pressed ? 0.9 : 1,
-                })}
-              >
-                <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Started for {price}</Text>
-              </Pressable>
+              <View style={{ width: '100%', gap: 10, marginTop: 16 }}>
+                <Pressable
+                  onPress={handleStartTrial}
+                  style={({ pressed }) => ({
+                    backgroundColor: colors.success,
+                    paddingVertical: 14,
+                    borderRadius: 12,
+                    alignItems: 'center',
+                    opacity: pressed ? 0.9 : 1,
+                  })}
+                >
+                  <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Try 20 Free Questions</Text>
+                </Pressable>
+                <Pressable
+                  onPress={handleGetFullAccess}
+                  style={({ pressed }) => ({
+                    backgroundColor: colors.primary,
+                    paddingVertical: 14,
+                    borderRadius: 12,
+                    alignItems: 'center',
+                    opacity: pressed ? 0.9 : 1,
+                  })}
+                >
+                  <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Full Access - {price}</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
 
@@ -746,7 +797,7 @@ export default function LandingScreen() {
         </ScrollView>
 
         {/* Sticky Bottom CTA */}
-        <StickyMobileCTA onPress={handleGetFullAccess} colors={colors} price={price} />
+        <StickyMobileCTA onPress={handleGetFullAccess} onTrial={handleStartTrial} colors={colors} price={price} />
       </View>
     );
   }

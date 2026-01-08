@@ -379,6 +379,7 @@ export default function QuizScreen() {
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
                 {CATEGORIES.map((category) => {
                   const count = questions.filter(q => q.category === category).length;
+                  const demoCount = (TRIAL_QUESTION_IDS[category] || []).length;
                   const icon = getCategoryIcon(category);
                   return (
                     <Pressable
@@ -409,7 +410,7 @@ export default function QuizScreen() {
                             {category}
                           </Text>
                           <Text style={{ fontSize: 13, color: colors.muted, marginTop: 6 }}>
-                            {count} questions
+                            {count} questions ({demoCount} in demo)
                           </Text>
                         </Card>
                       )}
@@ -985,6 +986,7 @@ export default function QuizScreen() {
             <Text className="text-lg font-semibold text-foreground mb-3">By Category</Text>
             {CATEGORIES.map((category) => {
               const count = questions.filter(q => q.category === category).length;
+              const demoCount = (TRIAL_QUESTION_IDS[category] || []).length;
               return (
                 <Pressable
                   key={category}
@@ -1004,7 +1006,7 @@ export default function QuizScreen() {
                     <Text className="text-base text-foreground ml-3">{category}</Text>
                   </View>
                   <View className="flex-row items-center">
-                    <Text className="text-sm text-muted mr-2">{count} Q</Text>
+                    <Text className="text-sm text-muted mr-2">{count} Q ({demoCount} demo)</Text>
                     <MaterialIcons name="chevron-right" size={20} color={colors.muted} />
                   </View>
                 </Pressable>

@@ -101,7 +101,7 @@ Thank you.`
             </View>
             <View className="flex-row items-center">
               <MaterialIcons name="check-circle" size={24} color={colors.success} />
-              <Text className="text-base font-semibold text-foreground ml-3">Just send an email</Text>
+              <Text className="text-base font-semibold text-foreground ml-3">Just send an email to louis@dataautomation.ai. Although you don't have to give a reason, we would appreciate it in order to make a better product in future versions. Thank you for supporting DataAutomation.ai, we are a Father and Daughter business-led team on a mission to get New York state some more Licensed Massage Therapists 😊</Text>
             </View>
           </View>
         </View>

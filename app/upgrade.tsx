@@ -32,7 +32,7 @@ const getBaseUrl = () => {
 // Valid promo codes
 const PROMO_CODES: Record<string, { discount: number; description: string }> = {
   "LNC3690": { discount: 37, description: "Full discount - FREE access!" },
-  "TESTCONDITION": { discount: 36, description: "$36 off - Only $1!" },
+  "TESTCONDITION": { discount: 36.01, description: "$36.01 off - Only $0.99!" },
 };
 
 const FEATURES = [
@@ -146,6 +146,16 @@ export default function UpgradeScreen() {
     setLoading(true);
     try {
       const baseUrl = getBaseUrl();
+
+      // Debug: log promo code state
+      console.log("Checkout debug:", {
+        promoCode,
+        promoApplied,
+        basePrice,
+        finalPrice,
+        isFree
+      });
+
       const response = await fetch(SQUARE_CHECKOUT_URL, {
         method: "POST",
         headers: {

@@ -6,6 +6,7 @@ import {
   Pressable,
   Platform,
   useWindowDimensions,
+  Modal,
 } from "react-native";
 import { useRouter } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -402,6 +403,7 @@ export default function PaperTestScreen() {
   const [showPaceTimer, setShowPaceTimer] = useState(true);
   const [paceSecondsRemaining, setPaceSecondsRemaining] = useState(0);
   const [paceSecondsTotal, setPaceSecondsTotal] = useState(0);
+  const [showResetDialog, setShowResetDialog] = useState(false);
 
   // Use auth context for authoritative purchase status
   const { hasPurchased: isPurchased } = useAuthContext();
@@ -495,6 +497,15 @@ export default function PaperTestScreen() {
   const handleSubmit = () => {
     setShowResults(true);
     setIsTimerRunning(false);
+  };
+
+  const handleResetAllAnswers = () => {
+    setAnswers({});
+    setPaceSecondsRemaining(paceSecondsTotal);
+    setShowResetDialog(false);
+    if (Platform.OS !== "web") {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    }
   };
 
   const getScore = () => {
@@ -955,28 +966,60 @@ export default function PaperTestScreen() {
                   </Pressable>
                 </View>
               ) : (
-                <Pressable
-                  onPress={handleSubmit}
-                  style={({ pressed }) => ({
-                    backgroundColor: answeredCount === testQuestions.length ? "#1a5f2a" : "#6B7280",
-                    paddingHorizontal: 32,
-                    paddingVertical: 14,
-                    borderRadius: 8,
-                    opacity: pressed ? 0.9 : 1,
-                    ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
-                  })}
-                >
-                  <Text
-                    style={{
-                      color: "#fff",
-                      fontSize: 16,
-                      fontWeight: "700",
-                      fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
-                    }}
+                <View style={{ flexDirection: "row", gap: 12, alignItems: "center" }}>
+                  {/* Reset All Answers button */}
+                  <Pressable
+                    onPress={() => setShowResetDialog(true)}
+                    disabled={answeredCount === 0}
+                    style={({ pressed }) => ({
+                      backgroundColor: answeredCount === 0 ? "#9CA3AF" : "#DC2626",
+                      paddingHorizontal: 20,
+                      paddingVertical: 14,
+                      borderRadius: 8,
+                      opacity: pressed ? 0.9 : answeredCount === 0 ? 0.5 : 1,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 8,
+                      ...(Platform.OS === 'web' ? { cursor: answeredCount === 0 ? 'not-allowed' : PENCIL_CURSOR } as any : {}),
+                    })}
                   >
-                    SUBMIT TEST
-                  </Text>
-                </Pressable>
+                    <MaterialIcons name="refresh" size={18} color="#fff" />
+                    <Text
+                      style={{
+                        color: "#fff",
+                        fontSize: 14,
+                        fontWeight: "700",
+                        fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                      }}
+                    >
+                      RESET ALL
+                    </Text>
+                  </Pressable>
+
+                  {/* Submit Test button */}
+                  <Pressable
+                    onPress={handleSubmit}
+                    style={({ pressed }) => ({
+                      backgroundColor: answeredCount === testQuestions.length ? "#1a5f2a" : "#6B7280",
+                      paddingHorizontal: 32,
+                      paddingVertical: 14,
+                      borderRadius: 8,
+                      opacity: pressed ? 0.9 : 1,
+                      ...(Platform.OS === 'web' ? { cursor: PENCIL_CURSOR } as any : {}),
+                    })}
+                  >
+                    <Text
+                      style={{
+                        color: "#fff",
+                        fontSize: 16,
+                        fontWeight: "700",
+                        fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                      }}
+                    >
+                      SUBMIT TEST
+                    </Text>
+                  </Pressable>
+                </View>
               )}
             </View>
           </View>
@@ -1122,6 +1165,140 @@ export default function PaperTestScreen() {
             </View>
           )}
         </ScrollView>
+
+        {/* Reset Confirmation Dialog */}
+        <Modal
+          visible={showResetDialog}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setShowResetDialog(false)}
+        >
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "rgba(0,0,0,0.6)",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 20,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "#f5f5dc",
+                borderRadius: 8,
+                padding: 24,
+                maxWidth: 400,
+                width: "100%",
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.3,
+                shadowRadius: 8,
+                elevation: 8,
+                borderWidth: 2,
+                borderColor: "#1a5f2a",
+              }}
+            >
+              {/* Dialog Header */}
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginBottom: 16,
+                }}
+              >
+                <MaterialIcons name="warning" size={28} color="#DC2626" />
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: "700",
+                    color: "#374151",
+                    marginLeft: 12,
+                    fontFamily: Platform.OS === "web" ? "Courier New, monospace" : "monospace",
+                  }}
+                >
+                  Reset All Answers?
+                </Text>
+              </View>
+
+              {/* Dialog Message */}
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: "#6B7280",
+                  marginBottom: 8,
+                  lineHeight: 20,
+                }}
+              >
+                Are you sure you want to erase all {answeredCount} of your answers?
+              </Text>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: "#DC2626",
+                  marginBottom: 24,
+                  fontWeight: "600",
+                }}
+              >
+                This action cannot be undone.
+              </Text>
+
+              {/* Dialog Buttons */}
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                  gap: 12,
+                }}
+              >
+                <Pressable
+                  onPress={() => setShowResetDialog(false)}
+                  style={({ pressed }) => ({
+                    paddingHorizontal: 20,
+                    paddingVertical: 12,
+                    borderRadius: 6,
+                    backgroundColor: pressed ? "#E5E7EB" : "#F3F4F6",
+                    borderWidth: 1,
+                    borderColor: "#D1D5DB",
+                  })}
+                >
+                  <Text
+                    style={{
+                      color: "#374151",
+                      fontWeight: "600",
+                      fontSize: 14,
+                    }}
+                  >
+                    Cancel
+                  </Text>
+                </Pressable>
+
+                <Pressable
+                  onPress={handleResetAllAnswers}
+                  style={({ pressed }) => ({
+                    paddingHorizontal: 20,
+                    paddingVertical: 12,
+                    borderRadius: 6,
+                    backgroundColor: pressed ? "#B91C1C" : "#DC2626",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 8,
+                  })}
+                >
+                  <MaterialIcons name="delete-outline" size={18} color="#fff" />
+                  <Text
+                    style={{
+                      color: "#fff",
+                      fontWeight: "700",
+                      fontSize: 14,
+                    }}
+                  >
+                    Yes, Reset All
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     </ScreenContainer>
   );

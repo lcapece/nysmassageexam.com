@@ -6284,5 +6284,97 @@ export const questions: Question[] = [
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing two circles - 'MASSAGE THERAPY SCOPE' containing 'assess, treat soft tissue, refer' and 'MEDICAL SCOPE' containing 'diagnose, prescribe, treat disease'. Clear boundary line between them.",
     "category": "Ethics & Law",
     "image_url": ""
+  },
+  {
+    "id": 304,
+    "question": "Which muscle is primarily responsible for hip flexion and is often tight in people who sit for long periods?",
+    "options": {
+      "a": "Gluteus maximus",
+      "b": "Iliopsoas",
+      "c": "Quadratus lumborum",
+      "d": "Piriformis"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "Iliopsoas",
+    "rewrite_question": "What is the primary hip flexor muscle that commonly becomes shortened in sedentary individuals?",
+    "mnemonic": "PSOAS the SITTING muscle! 'People Sitting On A Seat' = PSOAS gets tight! The iliopsoas is the MAJOR hip flexor that shortens when you sit all day.",
+    "topic_explanation": "🎯 **Important point** - The iliopsoas (combination of psoas major and iliacus) is the most powerful hip flexor. It connects the lumbar spine to the femur. When sitting, this muscle is in a shortened position for extended periods, leading to chronic tightness. This can cause lower back pain and anterior pelvic tilt. Massage therapists commonly address iliopsoas tension in clients with desk jobs.",
+    "incorrect_explanations": {
+      "a": "Gluteus maximus is a hip EXTENSOR, not flexor - it does the opposite action",
+      "c": "Quadratus lumborum is primarily a lateral flexor and stabilizer of the lumbar spine",
+      "d": "Piriformis is a hip external rotator and abductor, not a primary hip flexor"
+    },
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing the iliopsoas muscle connecting from the lumbar spine to the femur, highlighting its role as the primary hip flexor. Show a seated figure with the muscle in shortened position.",
+    "category": "Anatomy",
+    "image_url": ""
+  },
+  {
+    "id": 305,
+    "question": "In Traditional Chinese Medicine, which element is associated with the Kidney and Bladder meridians?",
+    "options": {
+      "a": "Fire",
+      "b": "Earth",
+      "c": "Water",
+      "d": "Metal"
+    },
+    "correct_option": "c",
+    "correct_answer_text": "Water",
+    "rewrite_question": "What element in TCM's Five Element theory corresponds to the Kidney and Bladder organ systems?",
+    "mnemonic": "WATER flows to the KIDNEYS! Think of kidneys filtering water in your body - they're the Water element organs! 'Kidneys CLEAN the water, Bladder STORES the water' = WATER element!",
+    "topic_explanation": "🎯 **Important point** - In Traditional Chinese Medicine's Five Element theory, Water is associated with the Kidney and Bladder meridians. The Water element represents winter, the emotion of fear, the color black/blue, and governs bones, teeth, and head hair. The Kidneys are considered the root of life in TCM, storing Jing (essence) and governing growth, development, and reproduction.",
+    "incorrect_explanations": {
+      "a": "Fire is associated with the Heart and Small Intestine meridians",
+      "b": "Earth is associated with the Spleen and Stomach meridians",
+      "d": "Metal is associated with the Lung and Large Intestine meridians"
+    },
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing the Five Elements cycle with Water highlighted, connected to Kidney and Bladder organ icons. Include water-related imagery like waves or droplets.",
+    "category": "Eastern Medicine",
+    "image_url": ""
+  },
+  {
+    "id": 306,
+    "question": "What massage technique involves lifting, squeezing, and rolling the muscle tissue between the hands?",
+    "options": {
+      "a": "Effleurage",
+      "b": "Petrissage",
+      "c": "Tapotement",
+      "d": "Friction"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "Petrissage",
+    "rewrite_question": "Which Swedish massage stroke is characterized by kneading, lifting, and squeezing soft tissue?",
+    "mnemonic": "PETRISSAGE = PIZZA DOUGH! Think of kneading pizza dough - lifting, squeezing, rolling. That's exactly what petrissage does to muscles! 'PETRIssage = kneading like making PIZza!'",
+    "topic_explanation": "🎯 **Important point** - Petrissage is a Swedish massage technique that involves kneading, lifting, squeezing, and rolling the soft tissue. It increases circulation, helps remove metabolic waste, and stretches muscle fibers. Types include kneading, wringing, skin rolling, and picking up. Petrissage is typically performed after effleurage has warmed up the tissue.",
+    "incorrect_explanations": {
+      "a": "Effleurage is gliding strokes used to spread lubricant and warm tissue - no lifting or squeezing",
+      "c": "Tapotement is rhythmic percussion/tapping movements like hacking and cupping",
+      "d": "Friction involves deep, focused pressure applied in circular or cross-fiber movements without lifting"
+    },
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing hands performing petrissage technique on muscle tissue - demonstrating the lifting, squeezing, and rolling motion. Include arrows showing the kneading movement.",
+    "category": "Massage Techniques",
+    "image_url": ""
+  },
+  {
+    "id": 307,
+    "question": "Which condition is characterized by chronic widespread musculoskeletal pain, fatigue, and tender points throughout the body?",
+    "options": {
+      "a": "Osteoarthritis",
+      "b": "Fibromyalgia",
+      "c": "Rheumatoid arthritis",
+      "d": "Multiple sclerosis"
+    },
+    "correct_option": "b",
+    "correct_answer_text": "Fibromyalgia",
+    "rewrite_question": "What syndrome involves generalized body pain, chronic fatigue, and multiple tender points as primary symptoms?",
+    "mnemonic": "FIBRO = FIBER pain everywhere! 'Fibromyalgia = FULL-body FIBROUS muscle ACHE!' Remember: widespread pain + fatigue + tender points = Fibromyalgia. It's like the muscles are crying out everywhere!",
+    "topic_explanation": "🎯 **Important point** - Fibromyalgia is a chronic condition characterized by widespread musculoskeletal pain, fatigue, sleep disturbances, and cognitive difficulties ('fibro fog'). It involves tender points at specific locations. While massage is generally beneficial, therapists must use lighter pressure and monitor client response carefully. It's not inflammatory like arthritis - it's a central sensitization syndrome.",
+    "incorrect_explanations": {
+      "a": "Osteoarthritis is joint degeneration affecting specific joints, not widespread muscle pain with tender points",
+      "c": "Rheumatoid arthritis is an autoimmune inflammatory condition primarily affecting joints symmetrically",
+      "d": "Multiple sclerosis is a neurological condition affecting the central nervous system, causing nerve-related symptoms"
+    },
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing a human body outline with common fibromyalgia tender points marked. Include labels for key symptoms: widespread pain, fatigue, tender points.",
+    "category": "Pathology",
+    "image_url": ""
   }
 ];

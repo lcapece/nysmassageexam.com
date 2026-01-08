@@ -215,7 +215,7 @@ function AnalyticsPreview() {
 
   return (
     <Card className="p-6" variant="elevated" style={{ flex: 1 }}>
-      <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground, marginBottom: 20 }}>Exam Category Breakdown</Text>
+      <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground, marginBottom: 20 }}>Exam Category Breakdown (Practice Content)</Text>
       <Svg width={chartWidth} height={chartHeight}>
         {EXAM_CATEGORIES.map((cat, i) => {
           const y = i * (barHeight + barGap);
@@ -246,7 +246,7 @@ function MemoryAnalysisPreview() {
 
   return (
     <Card className="p-6" variant="elevated" style={{ flex: 1 }}>
-      <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground, marginBottom: 4 }}>Smart Memory Tracking</Text>
+      <Text style={{ fontSize: 22, fontWeight: "700", color: colors.foreground, marginBottom: 4 }}>Smart Memory Tracking</Text>
       <Text style={{ fontSize: 14, color: colors.muted, marginBottom: 20 }}>Know exactly what you know - and what you don't</Text>
       <View className="flex-row justify-around items-center" style={{ marginBottom: 20 }}>
         <Svg width={120} height={120}>

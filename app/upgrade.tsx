@@ -17,11 +17,17 @@ import { setPurchased } from "@/lib/study-store";
 import { SubscriberForm, SubscriberFormData, saveSubscriber } from "@/components/subscriber-form";
 import { useAuthContext } from "@/lib/auth-context";
 
-// Square Payment Link
-const SQUARE_PAYMENT_URL = "https://square.link/u/hJT8Zc0x";
-
-// Supabase Edge Function URL (for restore purchases)
+// Supabase Edge Function URLs
 const SUPABASE_URL = "https://ekklokrukxmqlahtonnc.supabase.co";
+const SQUARE_CHECKOUT_URL = `${SUPABASE_URL}/functions/v1/nys-massage-square-checkout`;
+
+// Get the base URL for success/cancel redirects
+const getBaseUrl = () => {
+  if (Platform.OS === 'web' && typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  return "https://nysmassageexam.com"; // Fallback for native
+};
 
 // Valid promo codes
 const PROMO_CODES: Record<string, { discount: number; description: string }> = {
@@ -136,40 +142,63 @@ export default function UpgradeScreen() {
       return;
     }
 
-    // Save subscriber info (without purchase yet - they'll complete payment on Square)
-    // Include user ID if logged in for easier linking later
+    // Create Square checkout session via Edge Function
+    setLoading(true);
     try {
-      const result = await saveSubscriber(data, {
-        userId: user?.id,
+      const baseUrl = getBaseUrl();
+      const response = await fetch(SQUARE_CHECKOUT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email.trim().toLowerCase(),
+          amount: finalPrice,
+          promoCode: promoCode.trim().toUpperCase() || null,
+          subscriberData: {
+            mobilePhone: data.mobilePhone,
+            smsOptIn: data.smsOptIn,
+            address: data.address,
+            city: data.city,
+            state: data.state,
+            zip: data.zip,
+            massageSchool: data.massageSchool,
+            hasTakenExamBefore: data.hasTakenExamBefore,
+          },
+          successUrl: `${baseUrl}/payment-success`,
+          cancelUrl: `${baseUrl}/upgrade`,
+        }),
       });
-      if (!result.success) {
-        console.error("Failed to save subscriber:", result.error);
-        // Continue anyway - we don't want to block the payment
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to create checkout session");
       }
-    } catch (error) {
-      console.error("Error saving subscriber:", error);
-    }
 
-    // Open Square payment link
-    if (Platform.OS === 'web') {
-      window.open(SQUARE_PAYMENT_URL, '_blank');
-    } else {
-      await Linking.openURL(SQUARE_PAYMENT_URL);
+      // Open Square checkout URL
+      if (Platform.OS === 'web') {
+        window.location.href = result.checkoutUrl;
+      } else {
+        await Linking.openURL(result.checkoutUrl);
+        // Show message for native users
+        Alert.alert(
+          "Complete Payment",
+          "Complete your payment in the browser. Once done, return here and restore your purchase using your email address.",
+          [{ text: "OK" }]
+        );
+        setScreenState("info");
+      }
+    } catch (error: any) {
+      console.error("Checkout error:", error);
+      if (Platform.OS === 'web') {
+        window.alert(error.message || "Failed to start checkout. Please try again.");
+      } else {
+        Alert.alert("Error", error.message || "Failed to start checkout. Please try again.");
+      }
+    } finally {
+      setLoading(false);
     }
-
-    // Show success message
-    if (Platform.OS === 'web') {
-      window.alert("Complete your payment in the new window. Once done, you can restore your purchase using your email address.");
-    } else {
-      Alert.alert(
-        "Complete Payment",
-        "Complete your payment in the browser. Once done, return here and restore your purchase using your email address.",
-        [{ text: "OK" }]
-      );
-    }
-
-    // Go back to info screen so they can restore after payment
-    setScreenState("info");
   };
 
   const handleRestore = async () => {

@@ -119,13 +119,32 @@ export function SubscriberForm({
 
   const validatePhone = (phone: string) => {
     if (!phone) return true; // Optional
-    const phoneRegex = /^[\d\s\-\(\)\+]{10,}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ""));
+    // Match 000-000-0000 format (12 chars with dashes)
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+    return phoneRegex.test(phone);
   };
 
   const validateZip = (zip: string) => {
     const zipRegex = /^\d{5}(-\d{4})?$/;
     return zipRegex.test(zip);
+  };
+
+  // Format phone number as 000-000-0000
+  const formatPhoneNumber = (text: string): string => {
+    // Remove all non-digits
+    const digits = text.replace(/\D/g, "");
+
+    // Limit to 10 digits
+    const limited = digits.slice(0, 10);
+
+    // Format as 000-000-0000
+    if (limited.length <= 3) {
+      return limited;
+    } else if (limited.length <= 6) {
+      return `${limited.slice(0, 3)}-${limited.slice(3)}`;
+    } else {
+      return `${limited.slice(0, 3)}-${limited.slice(3, 6)}-${limited.slice(6)}`;
+    }
   };
 
   const validate = (): boolean => {
@@ -256,8 +275,8 @@ export function SubscriberForm({
         </Text>
         <TextInput
           value={formData.mobilePhone}
-          onChangeText={(text) => updateField("mobilePhone", text)}
-          placeholder="(555) 123-4567"
+          onChangeText={(text) => updateField("mobilePhone", formatPhoneNumber(text))}
+          placeholder="000-000-0000"
           placeholderTextColor={colors.muted}
           keyboardType="phone-pad"
           autoComplete="tel"
@@ -386,7 +405,7 @@ export function SubscriberForm({
       <Text className="text-muted text-sm mb-4">Optional Information (that really helps us improve future app updates!)</Text>
 
       {/* Massage School - Optional */}
-      {renderInput("massageSchool", "NARE Massage Therapy School", {
+      {renderInput("massageSchool", "Massage Therapy School", {
         placeholder: "e.g., Swedish Institute",
       })}
 

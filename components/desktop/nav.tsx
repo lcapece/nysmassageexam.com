@@ -2,6 +2,7 @@ import { View, Text, Pressable, Platform, useWindowDimensions, ScrollView, Linki
 import { useRouter, usePathname } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useColors } from '@/hooks/use-colors';
+import { useAuthContext } from '@/lib/auth-context';
 
 interface NavItem {
   label: string;
@@ -217,6 +218,13 @@ export function DesktopSidebar() {
 
 export function DesktopHeader({ title, subtitle }: { title?: string; subtitle?: string }) {
   const colors = useColors();
+  const { user, signOut } = useAuthContext();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.replace('/landing' as any);
+  };
 
   return (
     <View
@@ -227,6 +235,23 @@ export function DesktopHeader({ title, subtitle }: { title?: string; subtitle?: 
         {title && <Text className="text-xl font-semibold text-foreground">{title}</Text>}
         {subtitle && <Text className="text-sm text-muted">{subtitle}</Text>}
       </View>
+      <View className="flex-row items-center">
+        {user && (
+          <Pressable onPress={handleSignOut}>
+            {({ hovered }: any) => (
+              <View
+                className="flex-row items-center px-4 py-2 rounded-lg"
+                style={{ backgroundColor: hovered ? colors.surfaceHover : 'transparent' }}
+              >
+                <MaterialIcons name="logout" size={18} color={colors.muted} />
+                <Text className="ml-2 text-sm font-medium" style={{ color: colors.muted }}>
+                  Sign Out
+                </Text>
+              </View>
+            )}
+          </Pressable>
+        )}
+      </View>
     </View>
   );
 }
@@ -234,9 +259,11 @@ export function DesktopHeader({ title, subtitle }: { title?: string; subtitle?: 
 interface AppShellProps {
   children: React.ReactNode;
   showSidebar?: boolean;
+  title?: string;
+  subtitle?: string;
 }
 
-export function AppShell({ children, showSidebar = true }: AppShellProps) {
+export function AppShell({ children, showSidebar = true, title, subtitle }: AppShellProps) {
   const { width } = useWindowDimensions();
   const isDesktop = Platform.OS === 'web' && width >= 1024;
 
@@ -247,7 +274,10 @@ export function AppShell({ children, showSidebar = true }: AppShellProps) {
   return (
     <View className="flex-row flex-1 bg-background">
       <DesktopSidebar />
-      <View className="flex-1">{children}</View>
+      <View className="flex-1">
+        <DesktopHeader title={title} subtitle={subtitle} />
+        {children}
+      </View>
     </View>
   );
 }

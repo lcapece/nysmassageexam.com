@@ -1,7 +1,11 @@
-import { View, type ViewProps } from "react-native";
+import { View, Text, Pressable, type ViewProps } from "react-native";
 import { SafeAreaView, type Edge } from "react-native-safe-area-context";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useRouter } from "expo-router";
 
 import { cn } from "@/lib/utils";
+import { useAuthContext } from "@/lib/auth-context";
+import { useColors } from "@/hooks/use-colors";
 
 export interface ScreenContainerProps extends ViewProps {
   /**
@@ -21,6 +25,10 @@ export interface ScreenContainerProps extends ViewProps {
    * Additional className for the SafeAreaView (content layer).
    */
   safeAreaClassName?: string;
+  /**
+   * Whether to show the global header with Sign Out button. Defaults to true.
+   */
+  showHeader?: boolean;
 }
 
 /**
@@ -44,9 +52,19 @@ export function ScreenContainer({
   className,
   containerClassName,
   safeAreaClassName,
+  showHeader = true,
   style,
   ...props
 }: ScreenContainerProps) {
+  const { user, signOut } = useAuthContext();
+  const colors = useColors();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.replace('/landing' as any);
+  };
+
   return (
     <View
       className={cn(
@@ -61,6 +79,39 @@ export function ScreenContainer({
         className={cn("flex-1", safeAreaClassName)}
         style={style}
       >
+        {/* Global Sign Out Header - Mobile only, when user is logged in */}
+        {showHeader && user && (
+          <View
+            style={{
+              position: 'absolute',
+              top: 8,
+              right: 16,
+              zIndex: 100,
+            }}
+          >
+            <Pressable onPress={handleSignOut}>
+              {({ pressed }) => (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                    paddingVertical: 6,
+                    borderRadius: 16,
+                    backgroundColor: pressed ? colors.surfaceHover : colors.surface,
+                    borderWidth: 1,
+                    borderColor: colors.border,
+                  }}
+                >
+                  <MaterialIcons name="logout" size={14} color={colors.muted} />
+                  <Text style={{ marginLeft: 4, fontSize: 12, color: colors.muted }}>
+                    Sign Out
+                  </Text>
+                </View>
+              )}
+            </Pressable>
+          </View>
+        )}
         <View className={cn("flex-1", className)}>{children}</View>
       </SafeAreaView>
     </View>

@@ -40,8 +40,8 @@ export default function HomeScreen() {
   const [isBannerExpanded, setIsBannerExpanded] = useState(false); // Collapsed by default
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
 
-  // Use auth context for authoritative purchase status
-  const { hasPurchased: isPurchased, purchaseLoading } = useAuthContext();
+  // Use auth context for authoritative purchase status and sign out
+  const { hasPurchased: isPurchased, purchaseLoading, user, signOut } = useAuthContext();
 
   const toggleTheme = () => {
     const newTheme = colorScheme === "dark" ? "light" : "dark";
@@ -285,8 +285,13 @@ export default function HomeScreen() {
   }
 
   // Mobile Layout
+  const handleSignOut = async () => {
+    await signOut();
+    router.replace('/landing' as any);
+  };
+
   return (
-    <ScreenContainer>
+    <ScreenContainer showHeader={false}>
       <ScrollView
         className="flex-1"
         contentContainerStyle={{ paddingBottom: 100 }}
@@ -303,26 +308,50 @@ export default function HomeScreen() {
               />
               <Text className="text-base text-muted mt-1">Study Dashboard</Text>
             </View>
-            {/* Theme Toggle */}
-            <Pressable
-              onPress={toggleTheme}
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 22,
-                backgroundColor: colors.surface,
-                borderWidth: 1,
-                borderColor: colors.border,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <MaterialIcons
-                name={colorScheme === 'dark' ? 'light-mode' : 'dark-mode'}
-                size={22}
-                color={colors.foreground}
-              />
-            </Pressable>
+            {/* Header Actions */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              {/* Sign Out */}
+              {user && (
+                <Pressable
+                  onPress={handleSignOut}
+                  style={{
+                    paddingHorizontal: 12,
+                    paddingVertical: 10,
+                    borderRadius: 22,
+                    backgroundColor: colors.surface,
+                    borderWidth: 1,
+                    borderColor: colors.border,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <MaterialIcons name="logout" size={16} color={colors.muted} />
+                  <Text style={{ marginLeft: 4, fontSize: 12, color: colors.muted }}>
+                    Sign Out
+                  </Text>
+                </Pressable>
+              )}
+              {/* Theme Toggle */}
+              <Pressable
+                onPress={toggleTheme}
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 22,
+                  backgroundColor: colors.surface,
+                  borderWidth: 1,
+                  borderColor: colors.border,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <MaterialIcons
+                  name={colorScheme === 'dark' ? 'light-mode' : 'dark-mode'}
+                  size={22}
+                  color={colors.foreground}
+                />
+              </Pressable>
+            </View>
           </View>
         </View>
 

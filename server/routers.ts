@@ -3,6 +3,12 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 
+// App configuration - prices and settings
+const APP_CONFIG = {
+  price: 37, // Main product price in dollars
+  currency: "USD",
+};
+
 export const appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -15,6 +21,14 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+  }),
+
+  config: router({
+    getPrice: publicProcedure.query(() => ({
+      price: APP_CONFIG.price,
+      currency: APP_CONFIG.currency,
+      formatted: `$${APP_CONFIG.price}`,
+    })),
   }),
 
   // TODO: add feature routers here, e.g.

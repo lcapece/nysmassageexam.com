@@ -20,11 +20,14 @@ import { Card } from "@/components/desktop/card";
 import { Badge } from "@/components/desktop/badge";
 import Svg, { Rect, Text as SvgText, Circle, G } from "react-native-svg";
 import { SEOHead, SEO_CONFIG } from "@/components/seo-head";
+import { trpc } from "@/lib/trpc";
+import { useAuthContext } from "@/lib/auth-context";
+import { supabase } from "@/lib/supabase";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
 // Sticky CTA Bar for Mobile
-function StickyMobileCTA({ onPress, colors }: { onPress: () => void; colors: any }) {
+function StickyMobileCTA({ onPress, colors, price }: { onPress: () => void; colors: any; price: string }) {
   return (
     <View
       style={{
@@ -46,7 +49,7 @@ function StickyMobileCTA({ onPress, colors }: { onPress: () => void; colors: any
       }}
     >
       <View>
-        <Text style={{ fontSize: 18, fontWeight: '800', color: colors.foreground }}>$37</Text>
+        <Text style={{ fontSize: 18, fontWeight: '800', color: colors.foreground }}>{price}</Text>
         <Text style={{ fontSize: 12, color: colors.muted }}>Lifetime access</Text>
       </View>
       <Pressable
@@ -80,7 +83,7 @@ const STATS = [
 // NYS official pass rate for contrast
 const NYS_PASS_RATE = "31%";
 
-const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide vs. the NYS statewide average of 31%. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
+const PASS_RATE_DISCLAIMER = "*90% pass rate is based on self-reported results from users of this study guide vs. the NYS statewide average of approximately 70%. This figure has not been independently verified and should not be considered a guarantee of individual outcomes.";
 
 const EXAM_CATEGORIES = [
   { name: "Anatomy", percentage: 28, color: "#2A9D8F", questions: 80 },
@@ -350,6 +353,12 @@ export default function LandingScreen() {
   const isDesktop = useIsDesktop();
   const { width } = useWindowDimensions();
   const { isAuthenticated, loading } = useAuth();
+  const { user, hasPurchased, signInWithGoogle } = useAuthContext();
+  const [checkingPurchase, setCheckingPurchase] = useState(false);
+
+  // Fetch price from backend
+  const { data: priceData } = trpc.config.getPrice.useQuery();
+  const price = priceData?.formatted || "$37";
 
   const now = new Date();
   const nextExam = EXAM_DATES.find((exam) => exam.date > now) || EXAM_DATES[0];
@@ -367,8 +376,58 @@ export default function LandingScreen() {
     router.push("/(tabs)/study");
   };
 
-  const handleGetFullAccess = () => {
-    router.push("/upgrade" as any);
+  const handleGetFullAccess = async () => {
+    // If user is not logged in, prompt for Google sign-in first
+    if (!user) {
+      try {
+        await signInWithGoogle();
+        // After OAuth redirect, this component will re-render with user data
+        // The auth callback will handle checking purchase status
+        return;
+      } catch (error) {
+        console.error("Sign in error:", error);
+        // If sign-in fails or is cancelled, still allow them to proceed to upgrade
+        router.push("/upgrade" as any);
+        return;
+      }
+    }
+
+    // User is logged in, check if they already purchased
+    setCheckingPurchase(true);
+    try {
+      // Query the database for purchase info
+      const { data, error } = await supabase
+        .from('nys_massage_subscribers')
+        .select('purchased_at, email')
+        .or(`user_id.eq.${user.id},email.ilike.${user.email}`)
+        .not('purchased_at', 'is', null)
+        .limit(1);
+
+      if (!error && data && data.length > 0 && data[0].purchased_at) {
+        // User has already purchased - show message with date
+        const purchaseDate = new Date(data[0].purchased_at);
+        const formattedDate = purchaseDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+        if (Platform.OS === 'web') {
+          window.alert(`You already have full access! You purchased on ${formattedDate}. Redirecting to study area...`);
+        }
+        router.push("/(tabs)/study");
+        return;
+      }
+
+      // User hasn't purchased, proceed to upgrade
+      router.push("/upgrade" as any);
+    } catch (error) {
+      console.error("Error checking purchase:", error);
+      // On error, still allow them to proceed to upgrade
+      router.push("/upgrade" as any);
+    } finally {
+      setCheckingPurchase(false);
+    }
   };
 
   // MOBILE LAYOUT
@@ -433,7 +492,7 @@ export default function LandingScreen() {
                   opacity: pressed ? 0.9 : 1,
                 })}
               >
-                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '700' }}>Get Full Access - $37</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '700' }}>Get Full Access - {price}</Text>
                 <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 }}>Lifetime access • Money-back guarantee</Text>
               </Pressable>
 
@@ -563,7 +622,7 @@ export default function LandingScreen() {
             <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 16 }}>What You Get</Text>
             <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
               {[
-                'All 250+ NYS-specific exam questions',
+                '250+ practice questions',
                 'Memory mnemonic for every answer',
                 'Smart spaced repetition algorithm',
                 'Category-by-category progress tracking',
@@ -583,7 +642,7 @@ export default function LandingScreen() {
           <View style={{ paddingHorizontal: 20, marginTop: 24 }}>
             <View style={{ backgroundColor: colors.primary, borderRadius: 20, padding: 24, alignItems: 'center' }}>
               <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, textTransform: 'uppercase', letterSpacing: 1 }}>One-Time Purchase</Text>
-              <Text style={{ color: '#FFFFFF', fontSize: 56, fontWeight: '800', marginTop: 8 }}>$37</Text>
+              <Text style={{ color: '#FFFFFF', fontSize: 56, fontWeight: '800', marginTop: 8 }}>{price}</Text>
               <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 15, marginTop: 4 }}>Lifetime access • No subscription</Text>
               <Pressable
                 onPress={handleGetFullAccess}
@@ -636,7 +695,7 @@ export default function LandingScreen() {
                   opacity: pressed ? 0.9 : 1,
                 })}
               >
-                <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Started for $37</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Started for {price}</Text>
               </Pressable>
             </View>
           </View>
@@ -655,7 +714,7 @@ export default function LandingScreen() {
         </ScrollView>
 
         {/* Sticky Bottom CTA */}
-        <StickyMobileCTA onPress={handleGetFullAccess} colors={colors} />
+        <StickyMobileCTA onPress={handleGetFullAccess} colors={colors} price={price} />
       </View>
     );
   }
@@ -712,7 +771,7 @@ export default function LandingScreen() {
                   New York State has its <Text style={{ fontWeight: "700", color: colors.foreground }}>own exam</Text> with <Text style={{ fontWeight: "700", color: colors.warning }}>20% (28) Eastern Medicine questions</Text> that generic MBLEx prep doesn't cover. We're simply the best study tool built specifically for the New York State Massage Therapy Licensing Exam.
                 </Text>
                 <View className="flex-row items-center" style={{ gap: 16, marginTop: 32 }}>
-                  <Button variant="primary" size="lg" onPress={handleGetFullAccess}>Get Full Access - $37</Button>
+                  <Button variant="primary" size="lg" onPress={handleGetFullAccess}>Get Full Access - {price}</Button>
                   <Button variant="outline" size="lg" onPress={handleStartTrial}>Try 20 Free Questions</Button>
                 </View>
                 <View className="flex-row" style={{ gap: 40, marginTop: 40 }}>
@@ -881,10 +940,10 @@ export default function LandingScreen() {
                 <Text style={{ color: "#FFFFFF", fontWeight: "600", fontSize: 13 }}>90% Pass Rate*</Text>
               </View>
               <View className="items-center">
-                <Text style={{ fontSize: 56, fontWeight: "800", color: colors.foreground }}>$37</Text>
+                <Text style={{ fontSize: 112, fontWeight: "800", color: colors.foreground }}>{price}</Text>
                 <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>One-time payment • Lifetime access</Text>
                 <View style={{ marginTop: 32, marginBottom: 32, gap: 14, width: "100%" }}>
-                  {["All 250+ NYS-specific exam questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
+                  {["250+ practice questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
                     <View key={i} className="flex-row items-center" style={{ gap: 12 }}>
                       <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: colors.successMuted, alignItems: "center", justifyContent: "center" }}>
                         <MaterialIcons name="check" size={16} color={colors.success} />
@@ -916,7 +975,7 @@ export default function LandingScreen() {
               <Text style={{ fontSize: 32, fontWeight: "700", color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>Your Career Is Waiting</Text>
               <Text style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", textAlign: "center", marginBottom: 24, maxWidth: 500 }}>Join over 100 students who passed the NYS exam with confidence. Don't wait another 6 months.</Text>
               <Button variant="secondary" size="lg" onPress={handleGetFullAccess} style={{ backgroundColor: "#FFFFFF" }}>
-                <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 16 }}>Get Started for $37</Text>
+                <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 16 }}>Get Started for {price}</Text>
               </Button>
             </View>
           </Container>

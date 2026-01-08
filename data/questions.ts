@@ -6037,5 +6037,252 @@ export const questions: Question[] = [
     "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing a front-view torso and arms with three colored arrows: blue (LU), green (PC), and red (HT) flowing from chest area down the inner arms to the hands. Large text 'YIN ARM MERIDIANS' at top, 'CHEST → HANDS' at bottom. Simple anatomical outline with clear directional arrows and meridian labels.",
     "category": "Eastern Medicine",
     "image_url": "https://nysmassageexam-images.s3.amazonaws.com/diagrams/question-290.png"
+  },
+  {
+    "id": 291,
+    "question": "What is the primary physiological effect of cold water application in hydrotherapy?",
+    "options": {
+      "a": "Vasoconstriction",
+      "b": "Vasodilation",
+      "c": "Increased heart rate",
+      "d": "Muscle relaxation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Vasoconstriction",
+    "rewrite_question": "When cold water is applied during hydrotherapy treatments, what is the primary effect on blood vessels?",
+    "mnemonic": "COLD = CLOSE! Cold water makes vessels CLOSE down (constrict). Think: Cold makes you want to curl up and close in!",
+    "topic_explanation": "🎯 **This is exam gold!** When you see COLD in hydrotherapy questions, your brain should instantly think VASOCONSTRICTION! ⚠️ **Don't overthink** it - cold makes blood vessels narrow (constrict) to conserve heat. This is the body's natural response to preserve core temperature. The opposite happens with heat - warm water causes vasodilation (vessels open up). Remember: COLD = CLOSE, HOT = OPEN. This basic principle shows up ALL the time on the exam, so drill it into your memory!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing two blood vessel cross-sections side by side: left showing 'COLD APPLICATION' with narrowed vessel labeled 'VASOCONSTRICTION', right showing 'HEAT APPLICATION' with widened vessel labeled 'VASODILATION'. Blue coloring for cold side, red for heat side.",
+    "category": "Hydrotherapy",
+    "image_url": ""
+  },
+  {
+    "id": 292,
+    "question": "How long should a cold pack typically be applied during hydrotherapy?",
+    "options": {
+      "a": "10-20 minutes",
+      "b": "1-2 minutes",
+      "c": "45-60 minutes",
+      "d": "5-8 hours"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "10-20 minutes",
+    "rewrite_question": "What is the recommended duration for cold pack application in standard hydrotherapy treatments?",
+    "mnemonic": "Cold pack = TEN to TWENTY! Think '10-20 is plenty' for cold therapy!",
+    "topic_explanation": "🎯 **Memorize this timing!** Cold packs should be applied for 10-20 minutes - this is the sweet spot for therapeutic benefit without tissue damage! ⚠️ **Don't overthink** durations - too short (1-2 min) won't have full effect, too long (45+ min) risks frostbite and tissue damage. The body needs about 10 minutes to respond to cold therapy, and 20 minutes is the max before you risk harm. When the exam asks about cold application timing, '10-20 minutes' is your go-to answer!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing a timer/clock face with the 10-20 minute range highlighted in blue, ice pack icon, and text 'COLD PACK DURATION: 10-20 MINUTES'. Include warning symbol near longer times.",
+    "category": "Hydrotherapy",
+    "image_url": ""
+  },
+  {
+    "id": 293,
+    "question": "What is the typical temperature ratio used in contrast bath hydrotherapy?",
+    "options": {
+      "a": "Hot water 100-110°F, Cold water 55-65°F",
+      "b": "Hot water 80-90°F, Cold water 70-75°F",
+      "c": "Hot water 120-130°F, Cold water 40-45°F",
+      "d": "Both waters at body temperature"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Hot water 100-110°F, Cold water 55-65°F",
+    "rewrite_question": "In contrast bath therapy, what are the appropriate temperature ranges for the hot and cold water?",
+    "mnemonic": "Contrast baths: Hot is HUNDRED-TEN (100-110°F), Cold is FIFTY-SIXTY (55-65°F). Remember: '100 hot, 60 cold' for contrast gold!",
+    "topic_explanation": "🎯 **Know your temperatures!** Contrast baths alternate between hot (100-110°F) and cold (55-65°F) water. ⚠️ **Don't overthink** - the hot water should be comfortably hot (not scalding), and cold should be brisk but tolerable. This creates the 'vascular pump' effect that improves circulation. The exam loves testing these specific ranges, so memorize: hot around 100-110, cold around 55-65. Too extreme in either direction is dangerous!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing two tubs side by side - red tub labeled 'HOT 100-110°F' with thermometer, blue tub labeled 'COLD 55-65°F' with thermometer. Arrows showing alternating pattern between tubs.",
+    "category": "Hydrotherapy",
+    "image_url": ""
+  },
+  {
+    "id": 294,
+    "question": "What is considered a neutral temperature bath in hydrotherapy?",
+    "options": {
+      "a": "94-97°F (near body temperature)",
+      "b": "70-75°F (room temperature)",
+      "c": "110-115°F (hot)",
+      "d": "50-55°F (cold)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "94-97°F (near body temperature)",
+    "rewrite_question": "In hydrotherapy, what temperature range defines a neutral bath?",
+    "mnemonic": "NEUTRAL = NATURAL body temp! 94-97°F is just below 98.6°F - your natural temperature!",
+    "topic_explanation": "🎯 **Simple but tested!** A neutral bath is right at body temperature (94-97°F) - it doesn't stimulate hot OR cold responses! ⚠️ **Don't overthink** this - neutral means the water feels like nothing, neither warm nor cool. This is used for calming, sedative effects and to reduce muscle tension without stimulation. The exam will try to trick you with 'room temperature' - that's NOT neutral! Neutral = body temp, period!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing thermometer with highlighted range at 94-97°F labeled 'NEUTRAL BATH ZONE', human body silhouette with '98.6°F' core temp marked, bathtub icon with calm water.",
+    "category": "Hydrotherapy",
+    "image_url": ""
+  },
+  {
+    "id": 295,
+    "question": "Which muscle is the primary hip flexor?",
+    "options": {
+      "a": "Iliopsoas",
+      "b": "Gluteus maximus",
+      "c": "Quadriceps",
+      "d": "Hamstrings"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Iliopsoas",
+    "rewrite_question": "What is the name of the primary muscle responsible for hip flexion?",
+    "mnemonic": "ILIO-PSOAS = I LIFT my THIGH! The iliopsoas is your #1 hip flexor - it LIFTS your leg forward!",
+    "topic_explanation": "🎯 **Exam favorite!** When you see 'primary hip flexor,' think ILIOPSOAS immediately! ⚠️ **Don't overthink** - yes, other muscles help flex the hip (rectus femoris, sartorius), but iliopsoas is THE primary one. It connects your spine/pelvis to your femur and is super powerful. The exam loves testing this because students often guess quadriceps - but quads primarily extend the KNEE, not flex the hip! Remember: ILIOPSOAS = primary hip flexor, period!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing anterior view of pelvis and upper thigh with iliopsoas muscle highlighted in bright red, arrow showing hip flexion movement, label 'ILIOPSOAS - PRIMARY HIP FLEXOR'.",
+    "category": "Kinesiology",
+    "image_url": ""
+  },
+  {
+    "id": 296,
+    "question": "Which type of joint allows movement in all planes and rotation?",
+    "options": {
+      "a": "Ball and socket joint",
+      "b": "Hinge joint",
+      "c": "Pivot joint",
+      "d": "Gliding joint"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Ball and socket joint",
+    "rewrite_question": "Which joint classification permits multiaxial movement including flexion, extension, abduction, adduction, and rotation?",
+    "mnemonic": "BALL can ROLL in ALL directions! Ball and socket = ALL planes of movement. Hip and shoulder are your examples!",
+    "topic_explanation": "🎯 **Classic exam question!** Ball and socket joints (hip and shoulder) allow movement in ALL directions - flexion, extension, abduction, adduction, rotation, and circumduction! ⚠️ **Don't overthink** the joint types: Hinge = one plane (elbow, knee), Pivot = rotation only (atlas/axis), Gliding = small sliding movements. Ball and socket is your MOST mobile joint type. When you see 'all planes' or 'multiaxial,' think ball and socket!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing ball and socket joint with arrows pointing in all directions (up, down, left, right, rotation), examples showing shoulder and hip joints, label 'BALL & SOCKET = ALL DIRECTIONS'.",
+    "category": "Kinesiology",
+    "image_url": ""
+  },
+  {
+    "id": 297,
+    "question": "What is the primary action of the rhomboid muscles?",
+    "options": {
+      "a": "Scapular retraction (pulling shoulder blades together)",
+      "b": "Scapular protraction (pushing shoulder blades apart)",
+      "c": "Arm abduction",
+      "d": "Neck rotation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Scapular retraction (pulling shoulder blades together)",
+    "rewrite_question": "What movement do the rhomboid major and minor muscles primarily perform?",
+    "mnemonic": "RHOMBOIDS RETRACT! Think: 'Row your Boat' - rhomboids pull your shoulder blades BACK like rowing!",
+    "topic_explanation": "🎯 **High-yield question!** Rhomboids (major and minor) RETRACT the scapula - they pull your shoulder blades together toward the spine! ⚠️ **Don't overthink** - just picture doing a rowing motion. When you squeeze your shoulder blades together, that's your rhomboids working. They're between the spine and medial border of the scapula. Opposite muscles: serratus anterior does PROTRACTION (pushing shoulders forward). Remember: Rhomboids RETRACT!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing posterior view of upper back with rhomboid major and minor highlighted, arrows showing scapulae moving toward spine, label 'RHOMBOIDS = RETRACTION'.",
+    "category": "Kinesiology",
+    "image_url": ""
+  },
+  {
+    "id": 298,
+    "question": "What is the average resting heart rate for a healthy adult?",
+    "options": {
+      "a": "60-100 beats per minute",
+      "b": "40-50 beats per minute",
+      "c": "120-140 beats per minute",
+      "d": "20-30 beats per minute"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "60-100 beats per minute",
+    "rewrite_question": "What is considered the normal resting heart rate range for an adult?",
+    "mnemonic": "SIXTY to a HUNDRED is the sweet spot! 60-100 BPM = healthy heart at rest!",
+    "topic_explanation": "🎯 **Basic but tested!** Normal resting heart rate is 60-100 BPM. ⚠️ **Don't overthink** - athletes might be lower (40-60) due to conditioning, but the NORMAL range is 60-100. Below 60 = bradycardia, above 100 = tachycardia. This is foundational physiology that shows up on the exam. When taking vitals on a client, you need to know what's normal!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing heart icon with pulse line, scale showing 60-100 BPM highlighted as 'NORMAL RANGE', areas below 60 labeled 'bradycardia' and above 100 labeled 'tachycardia'.",
+    "category": "Physiology",
+    "image_url": ""
+  },
+  {
+    "id": 299,
+    "question": "Which blood vessels carry deoxygenated blood?",
+    "options": {
+      "a": "Veins (except pulmonary veins)",
+      "b": "Arteries (except pulmonary arteries)",
+      "c": "Capillaries only",
+      "d": "Lymphatic vessels"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Veins (except pulmonary veins)",
+    "rewrite_question": "Which type of blood vessels typically carry blood low in oxygen content?",
+    "mnemonic": "VEINS carry VENOUS (used-up, deoxygenated) blood BACK to the heart! Exception: pulmonary veins carry oxygen-rich blood!",
+    "topic_explanation": "🎯 **Tricky but essential!** Veins carry deoxygenated blood BACK to the heart, EXCEPT pulmonary veins which carry oxygenated blood from lungs to heart. ⚠️ **Don't overthink** - arteries generally carry oxygenated blood AWAY from heart, EXCEPT pulmonary arteries. The exam loves testing these exceptions! Remember: systemic veins = deoxygenated, pulmonary veins = oxygenated (opposite of what you'd expect)!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing heart with pulmonary and systemic circulation, blue veins labeled 'DEOXYGENATED (except pulmonary veins)', red arteries labeled 'OXYGENATED (except pulmonary arteries)'.",
+    "category": "Physiology",
+    "image_url": ""
+  },
+  {
+    "id": 300,
+    "question": "What is the primary function of red blood cells?",
+    "options": {
+      "a": "Transport oxygen throughout the body",
+      "b": "Fight infection",
+      "c": "Blood clotting",
+      "d": "Transport nutrients"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Transport oxygen throughout the body",
+    "rewrite_question": "What is the main physiological role of erythrocytes (red blood cells)?",
+    "mnemonic": "RED = RESPIRATION delivery! Red blood cells carry O2 (oxygen) - they're your oxygen UBER!",
+    "topic_explanation": "🎯 **Foundational knowledge!** Red blood cells (erythrocytes) carry OXYGEN via hemoglobin! ⚠️ **Don't overthink** - white blood cells fight infection, platelets clot blood, plasma carries nutrients. RBCs are specifically designed for oxygen transport with their unique biconcave shape and hemoglobin content. This is basic physiology that shows up repeatedly!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing red blood cell with biconcave shape, hemoglobin molecules highlighted, O2 molecules attached, label 'RED BLOOD CELLS = OXYGEN TRANSPORT'.",
+    "category": "Physiology",
+    "image_url": ""
+  },
+  {
+    "id": 301,
+    "question": "Under NY State law, can a massage therapist treat a minor without parental consent?",
+    "options": {
+      "a": "No, parental or guardian consent is required for minors",
+      "b": "Yes, if the minor is over 16",
+      "c": "Yes, if the minor requests treatment",
+      "d": "Only in emergency situations"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "No, parental or guardian consent is required for minors",
+    "rewrite_question": "According to New York State regulations, is parental consent required before providing massage therapy to a minor?",
+    "mnemonic": "MINORS need MOM (or guardian)! No parental consent = No treatment for minors!",
+    "topic_explanation": "🎯 **Legal requirement!** In NY, you MUST have parental/guardian consent to treat minors (under 18). ⚠️ **Don't overthink** - this protects both the minor and the therapist. No exceptions for age 16 or 17 - still need consent! Document the consent in writing. This is a legal and ethical obligation that shows up on the exam regularly. When in doubt: get parental consent for anyone under 18!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing consent form with parent signature line, minor patient icon, text 'MINORS REQUIRE PARENTAL CONSENT' with NY State seal.",
+    "category": "Ethics & Law",
+    "image_url": ""
+  },
+  {
+    "id": 302,
+    "question": "What is the primary purpose of maintaining client confidentiality?",
+    "options": {
+      "a": "To protect the client's privacy and build trust",
+      "b": "To avoid paperwork",
+      "c": "To increase business profits",
+      "d": "To comply with insurance requirements only"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "To protect the client's privacy and build trust",
+    "rewrite_question": "Why is maintaining client confidentiality considered essential in massage therapy practice?",
+    "mnemonic": "CONFIDENTIAL = CLIENT TRUST! Privacy protection builds the therapeutic relationship!",
+    "topic_explanation": "🎯 **Core ethical principle!** Confidentiality protects client privacy AND builds the trust necessary for therapeutic relationships! ⚠️ **Don't overthink** - yes, there are legal requirements, but the PRIMARY purpose is ethical: protecting your client and building trust. Information shared during intake and sessions stays private unless the client gives permission or there's a legal obligation (like reporting abuse). This is fundamental to professional practice!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing lock icon over client file, handshake symbol representing trust, text 'CONFIDENTIALITY = PRIVACY + TRUST'.",
+    "category": "Ethics & Law",
+    "image_url": ""
+  },
+  {
+    "id": 303,
+    "question": "Why can't massage therapists diagnose medical conditions?",
+    "options": {
+      "a": "It is outside the scope of practice for massage therapy",
+      "b": "They don't have time",
+      "c": "Clients don't want diagnosis",
+      "d": "Insurance won't cover it"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "It is outside the scope of practice for massage therapy",
+    "rewrite_question": "What is the legal reason massage therapists cannot provide medical diagnoses?",
+    "mnemonic": "SCOPE says NO to diagnosis! Massage therapists ASSESS, not DIAGNOSE - that's doctor territory!",
+    "topic_explanation": "🎯 **Know your scope!** Diagnosis is OUTSIDE the scope of practice for massage therapists - it's reserved for licensed physicians and certain other healthcare providers! ⚠️ **Don't overthink** - you CAN assess muscle tension, ROM, and soft tissue conditions. You CANNOT diagnose diseases, conditions, or prescribe treatments. If a client asks 'what's wrong with me?' - refer them to their doctor. Staying in scope protects you legally and protects your clients' health!",
+    "incorrect_explanations": {},
+    "visual_aid_prompt": "Clean medical illustration, white background, bold labels, mobile-optimized, educational diagram showing two circles - 'MASSAGE THERAPY SCOPE' containing 'assess, treat soft tissue, refer' and 'MEDICAL SCOPE' containing 'diagnose, prescribe, treat disease'. Clear boundary line between them.",
+    "category": "Ethics & Law",
+    "image_url": ""
   }
 ];

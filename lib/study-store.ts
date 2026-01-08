@@ -11,6 +11,7 @@ const STORAGE_KEYS = {
   EXAM_DATE: 'selected_exam_date',
   STUDY_START_DATE: 'study_start_date',
   HAS_PURCHASED: 'has_purchased',
+  HAS_STARTED_QUIZ: 'has_started_quiz',
 };
 
 // Types
@@ -317,6 +318,20 @@ export async function hasPurchased(): Promise<boolean> {
 
 export async function setPurchased(purchased: boolean): Promise<void> {
   await AsyncStorage.setItem(STORAGE_KEYS.HAS_PURCHASED, purchased ? 'true' : 'false');
+}
+
+// Quiz started tracking - to skip landing page for returning users
+export async function hasStartedQuiz(): Promise<boolean> {
+  try {
+    const data = await AsyncStorage.getItem(STORAGE_KEYS.HAS_STARTED_QUIZ);
+    return data === 'true';
+  } catch {
+    return false;
+  }
+}
+
+export async function setQuizStarted(): Promise<void> {
+  await AsyncStorage.setItem(STORAGE_KEYS.HAS_STARTED_QUIZ, 'true');
 }
 
 // Get questions available to the user based on purchase status

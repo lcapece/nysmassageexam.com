@@ -23,6 +23,7 @@ import {
   CATEGORIES,
   isTrialQuestion,
   TRIAL_QUESTION_IDS,
+  setQuizStarted,
 } from "@/lib/study-store";
 import {
   startStudySession,
@@ -131,7 +132,10 @@ export default function QuizScreen() {
     setBookmarks(bm);
   };
 
-  const startQuiz = (category: string | null, count: number = 10) => {
+  const startQuiz = async (category: string | null, count: number = 10) => {
+    // Mark that user has started a quiz (for landing page redirect)
+    await setQuizStarted();
+
     let availableQuestions: Question[];
 
     if (isPurchased) {

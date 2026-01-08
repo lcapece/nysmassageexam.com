@@ -23,6 +23,7 @@ import {
   StudyProgress,
   isTrialQuestion,
   TRIAL_QUESTION_IDS,
+  setQuizStarted,
 } from "@/lib/study-store";
 import { useAuth } from "@/hooks/use-auth";
 import { VERSION } from "@/shared/const";
@@ -156,7 +157,9 @@ export default function StudyScreen() {
     }
   };
 
-  const selectQuestion = (question: Question) => {
+  const selectQuestion = async (question: Question) => {
+    // Mark that user has started studying (for landing page redirect)
+    await setQuizStarted();
     setSelectedQuestion(question);
     setViewMode("detail");
   };

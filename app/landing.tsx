@@ -24,6 +24,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuthContext } from "@/lib/auth-context";
 import { supabase } from "@/lib/supabase";
 import { VERSION } from "@/shared/const";
+import { hasStartedQuiz, setQuizStarted } from "@/lib/study-store";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
@@ -356,6 +357,25 @@ export default function LandingScreen() {
   const { isAuthenticated, loading } = useAuth();
   const { user, hasPurchased, signInWithGoogle } = useAuthContext();
   const [checkingPurchase, setCheckingPurchase] = useState(false);
+  const [checkingReturningUser, setCheckingReturningUser] = useState(true);
+
+  // Check if user has previously started a quiz - redirect to study area
+  useEffect(() => {
+    const checkReturningUser = async () => {
+      try {
+        const started = await hasStartedQuiz();
+        if (started) {
+          router.replace("/(tabs)/study");
+          return;
+        }
+      } catch (error) {
+        console.error("Error checking returning user:", error);
+      } finally {
+        setCheckingReturningUser(false);
+      }
+    };
+    checkReturningUser();
+  }, [router]);
 
   // Fetch price from backend
   const { data: priceData } = trpc.config.getPrice.useQuery();
@@ -373,9 +393,19 @@ export default function LandingScreen() {
     }
   };
 
-  const handleStartTrial = () => {
+  const handleStartTrial = async () => {
+    await setQuizStarted();
     router.push("/(tabs)/study");
   };
+
+  // Show nothing while checking if user is returning (prevents flash)
+  if (checkingReturningUser) {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ color: colors.muted }}>Loading...</Text>
+      </View>
+    );
+  }
 
   const handleGetFullAccess = async () => {
     // If user is not logged in, prompt for Google sign-in first

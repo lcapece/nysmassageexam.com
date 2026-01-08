@@ -5,6 +5,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { VERSION } from "@/shared/const";
 
 type Section = {
   id: string;
@@ -514,6 +515,7 @@ export default function ExamInfoScreen() {
           <Text className="text-xs text-muted text-center mt-1">
             © 2026 All Rights Reserved
           </Text>
+          <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 12 }}>{VERSION}</Text>
         </View>
       </ScrollView>
     </ScreenContainer>

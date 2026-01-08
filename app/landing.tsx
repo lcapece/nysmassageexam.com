@@ -23,6 +23,7 @@ import { SEOHead, SEO_CONFIG } from "@/components/seo-head";
 import { trpc } from "@/lib/trpc";
 import { useAuthContext } from "@/lib/auth-context";
 import { supabase } from "@/lib/supabase";
+import { VERSION } from "@/shared/const";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663030336692/NfIEaabGwmxOivXu.png";
 
@@ -710,6 +711,7 @@ export default function LandingScreen() {
               © 2025 NYSMassageExam.com. All rights reserved. Not affiliated with the NYS Education Department.
             </Text>
             <Text style={{ color: colors.muted, fontSize: 10, marginTop: 8, lineHeight: 14 }}>{PASS_RATE_DISCLAIMER}</Text>
+            <Text style={{ color: colors.border, fontSize: 9, marginTop: 12, textAlign: 'center' }}>{VERSION}</Text>
           </View>
         </ScrollView>
 
@@ -994,6 +996,7 @@ export default function LandingScreen() {
               <Text style={{ color: colors.muted, fontSize: 11, marginTop: 8 }}>{PASS_RATE_DISCLAIMER}</Text>
             </View>
             </View>
+            <Text style={{ color: colors.border, fontSize: 10, marginTop: 16, textAlign: 'center' }}>{VERSION}</Text>
           </Container>
         </View>
       </ScrollView>

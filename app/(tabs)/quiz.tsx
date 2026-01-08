@@ -30,6 +30,7 @@ import {
   syncProgressToServer,
 } from "@/lib/leaderboard-service";
 import { useAuthContext } from "@/lib/auth-context";
+import { VERSION } from "@/shared/const";
 
 // Enhanced markdown text renderer - renders bold, line breaks, and styled sections
 const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
@@ -419,6 +420,9 @@ export default function QuizScreen() {
                 })}
               </View>
             </View>
+
+            {/* Version Footer */}
+            <Text style={{ color: colors.border, fontSize: 10, textAlign: 'center', marginTop: 32, paddingBottom: 16 }}>{VERSION}</Text>
           </Container>
         </ScrollView>
       </AppShell>
@@ -517,6 +521,8 @@ export default function QuizScreen() {
               </Button>
             </View>
           </Card>
+          {/* Version Footer */}
+          <Text style={{ color: colors.border, fontSize: 10, textAlign: 'center', marginTop: 24 }}>{VERSION}</Text>
         </View>
       </AppShell>
     );
@@ -1013,6 +1019,9 @@ export default function QuizScreen() {
               );
             })}
           </View>
+
+          {/* Version Footer */}
+          <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 24, marginBottom: 8 }}>{VERSION}</Text>
         </ScrollView>
       </ScreenContainer>
     );
@@ -1072,6 +1081,8 @@ export default function QuizScreen() {
               <Text className="text-base text-foreground">View Progress</Text>
             </Pressable>
           </View>
+          {/* Version Footer */}
+          <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 24 }}>{VERSION}</Text>
         </View>
       </ScreenContainer>
     );

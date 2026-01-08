@@ -17,6 +17,7 @@ import {
   EXAM_DATES,
   questions,
 } from "@/lib/study-store";
+import { VERSION } from "@/shared/const";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -293,6 +294,9 @@ export default function ProgressScreen() {
             })}
           </View>
         )}
+
+        {/* Version Footer */}
+        <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 24, marginBottom: 8 }}>{VERSION}</Text>
       </ScrollView>
     </ScreenContainer>
   );

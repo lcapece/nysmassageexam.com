@@ -13,6 +13,7 @@ import {
 import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { VERSION } from "@/shared/const";
 import { setPurchased } from "@/lib/study-store";
 import { SubscriberForm, SubscriberFormData, saveSubscriber } from "@/components/subscriber-form";
 import { useAuthContext } from "@/lib/auth-context";
@@ -589,6 +590,7 @@ export default function UpgradeScreen() {
           <Text className="text-muted text-xs text-center mt-1">
             © 2026 All Rights Reserved
           </Text>
+          <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 12 }}>{VERSION}</Text>
         </View>
       </ScrollView>
     </ScreenContainer>

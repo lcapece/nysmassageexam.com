@@ -25,6 +25,7 @@ import {
   TRIAL_QUESTION_IDS,
 } from "@/lib/study-store";
 import { useAuth } from "@/hooks/use-auth";
+import { VERSION } from "@/shared/const";
 
 // Enhanced markdown text renderer - renders bold, line breaks, and styled sections
 const MarkdownText = ({ text, style, colors }: { text: string; style?: any; colors?: any }) => {
@@ -431,6 +432,9 @@ export default function StudyScreen() {
                   );
                 })}
               </View>
+
+              {/* Version Footer */}
+              <Text style={{ color: colors.border, fontSize: 10, textAlign: 'center', marginTop: 32, paddingBottom: 16 }}>{VERSION}</Text>
             </Container>
           </ScrollView>
         </AppShell>
@@ -1021,6 +1025,9 @@ export default function StudyScreen() {
               );
             })}
           </View>
+
+          {/* Version Footer */}
+          <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 24, marginBottom: 8 }}>{VERSION}</Text>
         </ScrollView>
       </ScreenContainer>
     );

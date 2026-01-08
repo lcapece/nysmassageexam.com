@@ -16,6 +16,7 @@ import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { questions } from "@/lib/study-store";
 import { useAuthContext } from "@/lib/auth-context";
+import { VERSION } from "@/shared/const";
 
 // Photorealistic pencil cursor (SVG data URI) - 96x96 (3x larger)
 // Hotspot at (78, 78) = pencil tip after -45deg rotation
@@ -1299,6 +1300,9 @@ export default function PaperTestScreen() {
             </View>
           </View>
         </Modal>
+
+        {/* Version Footer */}
+        <Text style={{ color: '#9CA3AF', fontSize: 9, textAlign: 'center', marginTop: 16, marginBottom: 8 }}>{VERSION}</Text>
       </View>
     </ScreenContainer>
   );

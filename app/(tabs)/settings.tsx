@@ -21,6 +21,7 @@ import {
 import { getUserProfile, saveUserProfile, isAdmin, ADMIN_EMAIL, UserProfile } from "@/lib/leaderboard-service";
 import { ProfileSettings } from "@/components/profile-settings";
 import { AdminPanel } from "@/components/admin-panel";
+import { VERSION } from "@/shared/const";
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -757,6 +758,7 @@ onPress={() => setShowSubscription(true)}
           <Text className="text-xs text-muted mt-1">Version 1.0.0</Text>
           <Text className="text-xs text-muted mt-4">Created by DataAutomation.ai</Text>
           <Text className="text-xs text-muted mt-1">© 2026 All Rights Reserved</Text>
+          <Text style={{ color: colors.border, fontSize: 9, marginTop: 16 }}>{VERSION}</Text>
         </View>
       </ScrollView>
     </ScreenContainer>

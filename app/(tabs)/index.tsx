@@ -26,6 +26,7 @@ import {
 import { Leaderboard } from "@/components/leaderboard";
 import { getUserProfile, isAdmin } from "@/lib/leaderboard-service";
 import { useAuthContext } from "@/lib/auth-context";
+import { VERSION } from "@/shared/const";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -279,6 +280,8 @@ export default function HomeScreen() {
               <Leaderboard currentUserEmail={userEmail} compact />
             </View>
           </View>
+          {/* Version Footer */}
+          <Text style={{ color: colors.border, fontSize: 10, textAlign: 'center', marginTop: 24, paddingBottom: 16 }}>{VERSION}</Text>
         </View>
       </AppShell>
     );
@@ -566,6 +569,9 @@ export default function HomeScreen() {
         <View className="mx-5 mt-6">
           <Leaderboard currentUserEmail={userEmail} />
         </View>
+
+        {/* Version Footer */}
+        <Text style={{ color: colors.border, fontSize: 9, textAlign: 'center', marginTop: 24, marginBottom: 8 }}>{VERSION}</Text>
       </ScrollView>
     </ScreenContainer>
   );

@@ -1218,10 +1218,15 @@ export const questions: Question[] = [
   },
   {
     "id": 59,
-    "question": "What are the four types of tissue? Connective, Epithelial, Muscle and Nerve",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "-",
+    "question": "What are the four fundamental types of tissue in the human body?",
+    "options": {
+      "a": "Connective, Epithelial, Muscle, Nerve",
+      "b": "Bone, Blood, Skin, Fat",
+      "c": "Cardiac, Smooth, Skeletal, Adipose",
+      "d": "Dermal, Vascular, Neural, Osseous"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Connective, Epithelial, Muscle, Nerve",
     "rewrite_question": "Name the four fundamental tissue types found in the human body.",
     "mnemonic": "CEMN - 'See 'Em Now!' Connective, Epithelial, Muscle, Nerve - the four tissue types you need to learn!",
     "topic_explanation": "🎯 **Important point** - you **NEED** to nail this on the exam! The four tissue types show up constantly, so memorize \"See 'Em Now!\" (CEMN) RIGHT NOW. ⚠️ **Don't overthink** what each tissue does in detail - just lock in Connective, Epithelial, Muscle, Nerve as your four answers. When you see this question, immediately think of your mnemonic and boom - easy points! Here's your quick memory trick: Connective holds stuff together (bones, blood), Epithelial covers things (skin), Muscle moves things, and Nerve sends signals. The exam loves testing these basics, so drill this mnemonic until it's automatic. You'll see tissue questions pop up in different ways, but it's always these same four types. Don't second-guess yourself - stick with CEMN and move on to the next question!",
@@ -1801,10 +1806,15 @@ export const questions: Question[] = [
   },
   {
     "id": 87,
-    "question": "Where would you find the Small Intestine meridian? epicondyle of the humerus",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Medial",
+    "question": "At which epicondyle of the humerus would you find the Small Intestine meridian?",
+    "options": {
+      "a": "Medial epicondyle",
+      "b": "Lateral epicondyle",
+      "c": "Both epicondyles",
+      "d": "Neither epicondyle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Medial epicondyle",
     "rewrite_question": "At which anatomical landmark on the humerus would you locate the Small Intestine acupuncture meridian pathway?",
     "mnemonic": "Small Intestine stays MEDIAL - remember 'SI Meets Medially' - the small intestine meridian hugs the inside (medial) edge of your elbow!",
     "topic_explanation": "🎯 **Real talk** - ! The Small Intestine meridian **ALWAYS** runs on the MEDIAL (inside) part of your arm - this is a gimme question if you remember the pathway! Picture this: it starts at your pinky, travels up the pinky side of your arm, and hits that medial epicondyle at your elbow before continuing up. DON'T overthink this one - if you see Small Intestine meridian + epicondyle, just think \"inside of the elbow\" and pick MEDIAL every time! The test loves asking about SI-8 point location too, so burn this into your brain: Small Intestine = medial epicondyle area. You'll see this type of meridian pathway question multiple times on the exam, so nail down that the SI meridian hugs the inner arm from pinky to ear!",
@@ -1899,10 +1909,15 @@ export const questions: Question[] = [
   },
   {
     "id": 92,
-    "question": "Which muscle, when in spasm, will raise the iliac crest? Lumborun (hip hiker)",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Quadratus",
+    "question": "Which muscle, when in spasm, will raise the iliac crest (hip hiker)?",
+    "options": {
+      "a": "Quadratus Lumborum",
+      "b": "Psoas Major",
+      "c": "Erector Spinae",
+      "d": "Gluteus Medius"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Quadratus Lumborum",
     "rewrite_question": "When experiencing spasms, which muscle causes elevation of the iliac crest, creating a 'hip hiker' appearance?",
     "mnemonic": "Queen Quadratus Quarters the hip - she's the royal Hip Hiker who lifts the iliac crest like a crown!",
     "topic_explanation": "🎯 **Pay attention** - when you see \"hip hiker\" on the exam, you **NEED** to immediately think Quadratus Lumborum! This is a gimme question if you remember that the Quadratus is literally THE hip hiking muscle. ⚠️ **Don't overthink** it! The test loves asking about this muscle because when it goes into spasm, it yanks that iliac crest UP like it's trying to hike your hip to your shoulder. Here's your money tip: Quadratus = Queen of hip hiking - she LIFTS that iliac crest **every single time**! If you see any question about raising the iliac crest or uneven hips, slam that Quadratus answer down fast. The examiners throw this at you because it's such a classic presentation - spasmed Quadratus equals hiked hip, period. \n\n💡 **Remember:** Quadratus quarters the hip and lifts it like royalty!",
@@ -1934,10 +1949,15 @@ export const questions: Question[] = [
   },
   {
     "id": 94,
-    "question": "Which muscles make up the Pes Anserine? Gracilis, Semitendinosis",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Sartorius,",
+    "question": "Which three muscles make up the Pes Anserine (goose foot)?",
+    "options": {
+      "a": "Sartorius, Gracilis, Semitendinosus",
+      "b": "Rectus Femoris, Vastus Medialis, Vastus Lateralis",
+      "c": "Biceps Femoris, Semimembranosus, Semitendinosus",
+      "d": "Adductor Magnus, Adductor Longus, Gracilis"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Sartorius, Gracilis, Semitendinosus",
     "rewrite_question": "What three muscles combine to form the Pes Anserine insertion at the medial tibia?",
     "mnemonic": "SGS - Sartorius, Gracilis, Semitendinosus make a 'Goose Foot' that Says 'Go Swim!' at the knee",
     "topic_explanation": "Real talk, you **NEED** to nail this Pes Anserine question - it's a total gimme if you know the trick! The test will try to trick you by only giving you two of the three muscles, but don't fall for it! All three muscles make the \"goose foot\": **Sartorius, Gracilis, AND Semitendinosus** - remember \"SGS\" or \"Says Go Swim!\" The name literally means goose foot because these three tendons look like webbed feet when they insert together below the knee. DON'T overthink the anatomy details - just memorize that it's ALL THREE muscles, not just two! When you see Pes Anserine on the exam, immediately think \"goose foot = three toes = SGS\" and you'll crush it every time!",
@@ -4195,8 +4215,13 @@ export const questions: Question[] = [
   {
     "id": 199,
     "question": "Which organ/meridian would be indicated with Eczema and Asthma?",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Lung",
+      "b": "Liver",
+      "c": "Spleen",
+      "d": "Kidney"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Lung",
     "rewrite_question": "In Traditional Chinese Medicine, which organ meridian system is most commonly associated with treating both eczema and asthma?",
     "mnemonic": "LUNG-zema: Both eczema and asthma affect breathing - eczema makes skin breathe poorly, asthma makes lungs breathe poorly!",
@@ -4642,10 +4667,15 @@ export const questions: Question[] = [
   },
   {
     "id": 221,
-    "question": "Which bony landmark can be used to find the upper burner Shu points? The medial tip of the spine of the scapula (upper burner is LU, so scapula (upper burner is LU, so BL-13)",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "The medial tip of the spine of the",
+    "question": "Which bony landmark can be used to find the upper burner Shu points (BL-13)?",
+    "options": {
+      "a": "Medial tip of the spine of the scapula",
+      "b": "Inferior angle of the scapula",
+      "c": "Acromion process",
+      "d": "Coracoid process"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Medial tip of the spine of the scapula",
     "rewrite_question": "Which anatomical landmark helps locate the upper burner Shu points, specifically the lung Shu point (BL-13)?",
     "mnemonic": "Scapula Spine = Upper burner line! 'LUNG lives at scapuLa Line' - BL-13 at T3 level, scapular spine level!",
     "topic_explanation": "🎯 **Listen up** - this is a MUST-KNOW for the exam! When you see \"upper burner Shu points,\" immediately think LUNG system and scapular spine. ⚠️ **Don't overthink** it! The test makers love this connection because it's super practical. Here's your money move: the medial tip of the scapular spine sits right at T3 level, which is exactly where BL-13 (Lung Shu) hangs out. You **NEED** to nail this landmark because it's your go-to reference point on the exam! The scapular spine is easy to feel, so practitioners use it all the time - and the test knows you should know this too. \n\n💡 **Remember:** upper burner = lungs, lungs = scapular spine level. Boom, easy points!",
@@ -4678,9 +4708,14 @@ export const questions: Question[] = [
   {
     "id": 223,
     "question": "The meridians along the Adductor muscles are:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Liver, Kidney",
+    "options": {
+      "a": "Liver and Kidney",
+      "b": "Spleen and Stomach",
+      "c": "Gallbladder and Bladder",
+      "d": "Heart and Small Intestine"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Liver and Kidney",
     "rewrite_question": "Which meridian pathways run along the adductor muscle group?",
     "mnemonic": "LAKE - Liver And Kidney Experience the adductors (both flow through the inner thigh where adductors live)",
     "topic_explanation": "🎯 **Listen up** - you **NEED** to nail this meridian question because it shows up **ALL the time**! ⚠️ **⚠️ **⚠️ **Don't overthink****** it - just remember LAKE (Liver And Kidney Experience the adductors) and you're golden! The exam loves testing which meridians run through specific muscle groups, so burn this into your brain: adductors live on the INNER thigh, and guess what? Both Liver and Kidney meridians flow right through that inner thigh area! When you see \"adductor muscles\" on your test, immediately think \"inner thigh\" then think \"LAKE\" - boom, you've got Liver and Kidney locked in. This is pure memorization, so don't waste time trying to logic it out during the exam. The test writers WILL try to trick you with other meridian options, but stay strong with your LAKE mnemonic and you'll crush this question **every single time**!",
@@ -4692,8 +4727,13 @@ export const questions: Question[] = [
   {
     "id": 224,
     "question": "The muscle that extends the elbow is:",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Triceps Brachii",
+      "b": "Biceps Brachii",
+      "c": "Brachialis",
+      "d": "Brachioradialis"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Triceps Brachii",
     "rewrite_question": "Which muscle is responsible for straightening the elbow joint?",
     "mnemonic": "TRI-ceps has THREE heads to EXTEND your reach (think of reaching out to extend your arm)",
@@ -4844,10 +4884,15 @@ export const questions: Question[] = [
   },
   {
     "id": 232,
-    "question": "The lymph nodes that are found anterior to the tragus of the joint of the ear are:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Parotid",
+    "question": "The lymph nodes that are found anterior to the tragus of the ear are:",
+    "options": {
+      "a": "Parotid lymph nodes",
+      "b": "Cervical lymph nodes",
+      "c": "Submandibular lymph nodes",
+      "d": "Occipital lymph nodes"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Parotid lymph nodes",
     "rewrite_question": "What are the lymph nodes located in front of the ear's tragus called?",
     "mnemonic": "PAROTID by the ear's PART-OID! (Near the parotid gland, by the tragus part of your ear!)",
     "topic_explanation": "Hey, you **NEED** to nail this one! When the exam asks about lymph nodes \"anterior to the tragus,\" they're testing if you know it's the PAROTID nodes - don't overthink it! Picture this: your finger right in front of that little ear flap (tragus) - boom, that's where parotid nodes live. The test writers love this spot because it's super specific and easy to locate. \n\n💡 **Remember:** PAROTID = PART of your ear + OID! These bad boys are right by the parotid gland, so the name totally makes sense. You'll see this question or something similar on your exam, so memorize this location NOW! \n\n💡 **Pro tip:** if you see \"anterior to tragus\" in any question, your brain should immediately scream \"PAROTID!\" This is free points if you know it cold!",
@@ -5110,10 +5155,15 @@ export const questions: Question[] = [
   },
   {
     "id": 246,
-    "question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side as the Mastectomy. This is probably due to what? Surgical removal of Axillary Lymph Nodes",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "",
+    "question": "A client has had a Mastectomy and has Edema on the upper extremity on the same side. This is probably due to:",
+    "options": {
+      "a": "Surgical removal of axillary lymph nodes",
+      "b": "Muscle atrophy from disuse",
+      "c": "Nerve damage during surgery",
+      "d": "Scar tissue formation"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Surgical removal of axillary lymph nodes",
     "rewrite_question": "When a client presents with upper extremity swelling on the same side as a previous breast removal surgery, what is the most likely underlying cause?",
     "mnemonic": "LYMPH NODES REMOVED = DRAINAGE BLOCKED: Think of lymph nodes as highway toll booths - remove the toll booths (lymph nodes) and traffic backs up (lymphedema)! Mastectomy often includes axillary lymph node removal.",
     "topic_explanation": "🎯 **Listen up** - you **NEED** to nail this connection on the exam! When you see \"mastectomy + arm swelling,\" your brain should immediately scream \"LYMPH NODES REMOVED!\" Here's the deal: during mastectomy, surgeons often yank out those axillary lymph nodes in the armpit, and boom - no more drainage highway for that arm! Think of it like removing all the storm drains on your street - where's that water gonna go? It backs up and floods, just like lymph fluid backs up in the arm. This is HUGE for massage therapists because deep pressure on that swollen limb is a major no-no! The exam loves testing this scenario, so memorize it: mastectomy side + upper extremity edema = axillary lymph node removal caused the drainage blockage. ⚠️ **Don't overthink** it - this is basic cause and effect that you'll see on test day!",
@@ -5169,9 +5219,14 @@ export const questions: Question[] = [
   {
     "id": 249,
     "question": "Massage can best duplicate the effects of:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Regular excercise",
+    "options": {
+      "a": "Regular exercise",
+      "b": "Medication",
+      "c": "Surgery",
+      "d": "Bed rest"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Regular exercise",
     "rewrite_question": "The physiological benefits of massage therapy most closely mirror those achieved through:",
     "mnemonic": "Massage Makes Exercise Easier - both boost circulation, muscle tone, and overall wellness without the sweat!",
     "topic_explanation": "🎯 **Listen up** - this is a HUGE exam concept you absolutely **NEED** to nail! When you see \"massage duplicates the effects of,\" immediately think EXERCISE and here's why it'll save you points: both massage and exercise pump up circulation, drain that lymphatic system, boost muscle tone, and release those feel-good endorphins. The test makers LOVE this connection because massage basically gives you all the good stuff from working out - better blood flow, waste removal, stress relief - just without actually moving your body! ⚠️ **Don't overthink** it - if someone can't hit the gym due to injury or illness, massage steps in as the perfect substitute. \n\n💡 **Remember:** \"Massage Makes Exercise Easier\" because they're doing the same job for your body's systems. This answer choice will pop up again, so lock this in your brain NOW!",
@@ -5182,10 +5237,15 @@ export const questions: Question[] = [
   },
   {
     "id": 250,
-    "question": "Pre-event tapotement is done to: Contract muscles, stimulate nerves and increase local blood and increase local blood supply",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Contract muscles, stimulate nerves",
+    "question": "Pre-event tapotement is performed primarily to:",
+    "options": {
+      "a": "Contract muscles and stimulate nerves",
+      "b": "Relax muscles and reduce tension",
+      "c": "Break up adhesions and scar tissue",
+      "d": "Sedate the nervous system"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Contract muscles and stimulate nerves",
     "rewrite_question": "The primary purpose of performing tapotement before athletic events is to:",
     "mnemonic": "Tap Contracts and Sparks - tapotement makes muscles contract and nerves spark before competition!",
     "topic_explanation": "🎯 **Listen up** - this is a CLASSIC trap question that trips up tons of students! The exam loves to throw \"increase blood supply\" in there because tapotement DOES boost circulation, but that's NOT the main goal pre-event. You **NEED** to focus on what's happening RIGHT before competition - you're trying to wake up those muscles and get the nervous system fired up! Think of it like revving an engine before a race - you want those motor nerves buzzing and muscles contracting to prep for action. Don't get distracted by the blood flow stuff - save that for recovery massage questions. The test writers want you to know the PRIMARY purposes: muscle contraction and nerve stimulation. Remember your mnemonic \"Tap Contracts and Sparks\" and you'll nail this every time! Post-event is when circulation becomes the star player, but pre-event is all about activation, activation, activation!",
@@ -5196,9 +5256,14 @@ export const questions: Question[] = [
   },
   {
     "id": 251,
-    "question": "Client has Neuralgia and can't tolerate effleurage: and vibration",
-    "options": {},
-    "correct_option": null,
+    "question": "For a client with Neuralgia who can't tolerate effleurage or vibration, which technique is recommended?",
+    "options": {
+      "a": "Nerve tapping",
+      "b": "Deep friction",
+      "c": "Petrissage",
+      "d": "Compression"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Nerve tapping",
     "rewrite_question": "For a client with neuralgia who cannot tolerate effleurage or vibration, the recommended technique is:",
     "mnemonic": "Nerve pain needs Gentle Tapping - when nerves are angry, light tapping soothes while sliding strokes aggravate!",
@@ -5211,8 +5276,13 @@ export const questions: Question[] = [
   {
     "id": 252,
     "question": "The ability to know where your body is in space is called:",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Proprioception",
+      "b": "Kinesthesia",
+      "c": "Equilibrium",
+      "d": "Nociception"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Proprioception",
     "rewrite_question": "The sensory ability that allows awareness of body position and spatial orientation is termed:",
     "mnemonic": "ProPrio = Pro Position - your body's internal GPS that knows where you are without looking!",
@@ -5224,10 +5294,15 @@ export const questions: Question[] = [
   },
   {
     "id": 253,
-    "question": "Which is the \"Sea of Qi?\"",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "CV-6",
+    "question": "In Traditional Chinese Medicine, which point is known as the 'Sea of Qi'?",
+    "options": {
+      "a": "CV-6 (Qihai)",
+      "b": "CV-4 (Guanyuan)",
+      "c": "ST-36 (Zusanli)",
+      "d": "GV-20 (Baihui)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "CV-6 (Qihai)",
     "rewrite_question": "In Traditional Chinese Medicine, which acupoint is known as the 'Sea of Qi':",
     "mnemonic": "CV-6 is the Sea - Conception Vessel 6 holds the ocean of life energy below the belly!",
     "topic_explanation": "🎯 **Here's the deal** - you **NEED** to nail this one! When you see \"Sea of Qi\" on your exam, immediately think CV-6 and don't second-guess yourself! This is a straight memorization question that shows up regularly, so lock it in now. CV-6 literally translates to \"Sea of Qi\" (Qihai) - the test makers love this direct translation connection! Remember it's about 1.5 inches below your belly button on the front midline, and it's basically the body's gas tank for vital energy. ⚠️ **Don't overthink** the fancy TCM theory stuff - just remember CV-6 = Sea of Qi = energy reservoir = below the navel. This point pops up in questions about fatigue, digestion, and overall vitality, so knowing it cold will score you easy points! \n\n💡 **Pro tip:** visualize an ocean of energy swirling below your belly button - **that's your** CV-6 \"Sea of Qi\" right there!",
@@ -5238,9 +5313,14 @@ export const questions: Question[] = [
   },
   {
     "id": 254,
-    "question": "How many points are there on the LU meridian?",
-    "options": {},
-    "correct_option": null,
+    "question": "How many points are there on the Lung (LU) meridian?",
+    "options": {
+      "a": "11",
+      "b": "9",
+      "c": "14",
+      "d": "20"
+    },
+    "correct_option": "a",
     "correct_answer_text": "11",
     "rewrite_question": "What is the total number of acupoints located along the Lung meridian pathway?",
     "mnemonic": "LU-nch at ELEVEN - The Lung meridian has 11 points, just like taking an 11 o'clock lunch break to breathe fresh air!",
@@ -5274,8 +5354,13 @@ export const questions: Question[] = [
   {
     "id": 256,
     "question": "Lateral movement of the wrist when standing in anatomical position is called:",
-    "options": {},
-    "correct_option": null,
+    "options": {
+      "a": "Radial deviation",
+      "b": "Ulnar deviation",
+      "c": "Flexion",
+      "d": "Extension"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Radial deviation",
     "rewrite_question": "What term describes sideways wrist movement toward the thumb side while in standard anatomical position?",
     "mnemonic": "RADIAL = RADIUS bone = THUMB side! When you deviate toward your radius bone, you're doing RADIAL deviation!",
@@ -5287,10 +5372,15 @@ export const questions: Question[] = [
   },
   {
     "id": 257,
-    "question": "Which meridians are most involved in immunodeficiency disorders? energizer",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Lung and Triple",
+    "question": "Which meridians are most involved in immunodeficiency disorders?",
+    "options": {
+      "a": "Lung and Triple Energizer",
+      "b": "Liver and Gallbladder",
+      "c": "Heart and Small Intestine",
+      "d": "Kidney and Bladder"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Lung and Triple Energizer",
     "rewrite_question": "Which meridian pair is primarily associated with treating immune system deficiency conditions?",
     "mnemonic": "LUNG Triple Threat: LUngs filter air, Triple Energizer regulates immunity - together they're your immune system's dynamic duo!",
     "topic_explanation": "🎯 **Here's what matters** - you **NEED** to nail this combo for the exam! When you see \"immunodeficiency disorders,\" your brain should instantly scream \"LUNG and TRIPLE ENERGIZER!\" ⚠️ **Don't overthink** it - just remember that your lungs are literally your first defense against germs (hello, breathing in pathogens!), so of course the Lung meridian handles immunity. The Triple Energizer is your body's energy coordinator, making sure everything flows properly to keep your defenses strong. Here's your exam hack: think \"breathe and flow\" = immune protection. These two meridians team up to run your entire defensive system - Lung disperses that protective Wei Qi everywhere, while Triple Energizer keeps all your body systems coordinated and functioning. If you see chronic fatigue, recurring infections, or autoimmune stuff on the test, pick these two meridians every time. This is a guaranteed point-scorer, so lock it in now!",
@@ -5301,10 +5391,15 @@ export const questions: Question[] = [
   },
   {
     "id": 258,
-    "question": "Myelinated fibers conduct impulses in which way? Salutatory (as opposed to continuos)",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "",
+    "question": "Myelinated nerve fibers conduct impulses in which way?",
+    "options": {
+      "a": "Saltatory conduction",
+      "b": "Continuous conduction",
+      "c": "Retrograde conduction",
+      "d": "Anterograde conduction"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Saltatory conduction",
     "rewrite_question": "What type of conduction pattern do myelinated nerve fibers utilize for impulse transmission?",
     "mnemonic": "SALTATORY = SALT jumping! Like a grasshopper SALTing from lily pad to lily pad - myelinated nerves jump from node to node!",
     "topic_explanation": "🎯 **Quick tip** - ! The exam LOVES testing saltatory vs. continuous conduction, so you **NEED** this locked down! Myelinated nerves do saltatory conduction - think SALT jumping like a grasshopper hopping from lily pad to lily pad! The electrical signal literally JUMPS from node to node (Nodes of Ranvier) instead of crawling along the whole nerve like a slug. Why? Because myelin acts like insulation, forcing the signal to leap over the covered parts! Here's your exam hack: \"SALT-atory = SALTing/jumping\" - if you see myelinated fibers, pick saltatory EVERY TIME! Don't second-guess yourself on this one! The test makers love this question because students overthink it, but it's actually super straightforward. Myelinated = jumping = saltatory. Unmyelinated = continuous crawling. Boom, easy points!",
@@ -5316,9 +5411,14 @@ export const questions: Question[] = [
   {
     "id": 259,
     "question": "A term for one motor neuron and all the muscle fibers it innervates is:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "A motor unit",
+    "options": {
+      "a": "Motor unit",
+      "b": "Neuromuscular junction",
+      "c": "Sarcomere",
+      "d": "Muscle fiber bundle"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Motor unit",
     "rewrite_question": "What term describes a single motor neuron together with all the muscle fibers that it controls?",
     "mnemonic": "Motor Unit = Motor + Unit of muscle fibers. Think 'MU' = 'My Unit' - one nerve boss controlling its team of muscle workers!",
     "topic_explanation": "Hey, you **NEED** to nail this concept because it shows up everywhere on the exam! A motor unit is literally just ONE motor neuron being the boss of ALL its muscle fibers - when that nerve fires, every single fiber it controls contracts at once, no exceptions! ⚠️ **⚠️ **⚠️ **Don't overthink****** the fancy details - just remember it's always ALL-OR-NOTHING activation. The exam loves testing that small motor units (like in your eyes) give you precise control, while big motor units (like in your calves) give you serious power. Here's your money trick: small units recruit FIRST for gentle movements, then bigger units jump in when you need more force - this size principle is exam gold! Think of it like calling in backup - you start with your precision team, then bring in the heavy hitters when things get intense. Lock this in because motor unit questions are practically guaranteed!",
@@ -5329,10 +5429,15 @@ export const questions: Question[] = [
   },
   {
     "id": 260,
-    "question": "Which are Adductors of the humerus?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Pec Major and Lats",
+    "question": "Which muscles are Adductors of the humerus?",
+    "options": {
+      "a": "Pectoralis Major and Latissimus Dorsi",
+      "b": "Deltoid and Supraspinatus",
+      "c": "Biceps Brachii and Triceps Brachii",
+      "d": "Trapezius and Rhomboids"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Pectoralis Major and Latissimus Dorsi",
     "rewrite_question": "Which muscles function as adductors of the humerus (arm bone)?",
     "mnemonic": "PecS and LatS ATTRACT the arm! 'PLAT' = Pec major + Lats Adduct Toward body. Think of hugging yourself - Pecs in front, Lats from behind!",
     "topic_explanation": "🎯 **The key here** - you **NEED** to nail this adduction question! When you see \"adductors of the humerus\" on your exam, immediately think PEC MAJOR and LATS - these are your money answers! Don't get confused by other shoulder muscles - stick to the big guns that pull that arm INTO the body. Here's your lifesaver: remember \"PLAT\" (Pec major + Lats Adduct Toward body) and visualize giving yourself a big bear hug - your pecs are squeezing from the front, your lats are pulling from behind! Both muscles attach to that bicipital groove and work as a power team to yank the arm toward your midline. The test loves asking about these because they're the PRIMARY adductors - not just helpers! Memorize this combo NOW because it's exam gold, and don't second-guess yourself when you see this question pop up!",
@@ -5343,10 +5448,15 @@ export const questions: Question[] = [
   },
   {
     "id": 261,
-    "question": "Flaccidity or flaccid muscle is due to which? Pathology or damage to anterior horn motor neuron (lower motor",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "...",
+    "question": "Flaccidity or flaccid muscle tone is due to pathology or damage to which structure?",
+    "options": {
+      "a": "Anterior horn motor neuron (lower motor neuron)",
+      "b": "Upper motor neuron",
+      "c": "Cerebellum",
+      "d": "Basal ganglia"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Anterior horn motor neuron (lower motor neuron)",
     "rewrite_question": "Flaccid muscle tone results from pathology or damage to which neural structure?",
     "mnemonic": "FLACCID = Floppy Lower motor Alerts (anterior horn) Create Complete Inability to Deliver signals. Anterior horn damage = floppy muscles!",
     "topic_explanation": "🎯 **Focus on this** - you **NEED** to nail this concept for the exam! When you see \"flaccid muscle\" on your test, immediately think LOWER motor neuron damage, specifically those anterior horn cells in the spinal cord. ⚠️ **Don't overthink** it! Here's your exam strategy: flaccid = floppy = LOWER motor neurons are broken. The muscle goes completely limp because it's literally unplugged from its power source - zero neural signals getting through! Key exam clues to watch for: absent reflexes, muscle wasting, little twitches, and total weakness. DO NOT confuse this with upper motor neuron damage - that causes SPASTIC muscles with crazy-strong reflexes. \n\n💡 **Remember:** Lower = Loose and floppy, Upper = Uptight and spastic. When you see conditions like polio or ALS mentioned, **that's your** cue for flaccid paralysis. Master this distinction and you'll crush these questions every time!",
@@ -5357,10 +5467,15 @@ export const questions: Question[] = [
   },
   {
     "id": 262,
-    "question": "What is the location of Ankylosing Spondylitis",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Vertebral column",
+    "question": "What is the primary location of Ankylosing Spondylitis?",
+    "options": {
+      "a": "Vertebral column (spine)",
+      "b": "Hip joints",
+      "c": "Shoulder joints",
+      "d": "Knee joints"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Vertebral column (spine)",
     "rewrite_question": "Where in the body does Ankylosing Spondylitis primarily occur?",
     "mnemonic": "ANKYLOSING = spine LINKING together! 'SPONDYL' = spine. Think 'ANKLE-osing' but it's the spine joints that get stiff like ankles in a cast!",
     "topic_explanation": "🎯 **Important point** - you **NEED** to nail this one! Ankylosing Spondylitis is ALL about the spine, so when you see this term on the exam, immediately think \"vertebral column\" and you're golden! Don't get distracted by other joints - yes, it hits the sacroiliac joints too, but the PRIMARY location they're testing you on is the spine. Here's your money tip: remember \"SPONDYL\" literally means spine, and \"ankylosing\" means fusing together - so it's the spine that's fusing like a bamboo stick! The exam loves to throw in details about lower back pain and morning stiffness, but stay focused on LOCATION - vertebral column **every single time**. Quick memory trick: think of your spine turning into a rigid bamboo pole, and you'll never miss this question! ⚠️ **Don't overthink** the genetics or gender stuff - just remember spine = vertebral column = correct answer!",
@@ -5372,9 +5487,14 @@ export const questions: Question[] = [
   {
     "id": 263,
     "question": "The origin of Rectus Femoris is:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "AIIS",
+    "options": {
+      "a": "AIIS (Anterior Inferior Iliac Spine)",
+      "b": "ASIS (Anterior Superior Iliac Spine)",
+      "c": "Ischial tuberosity",
+      "d": "Greater trochanter"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "AIIS (Anterior Inferior Iliac Spine)",
     "rewrite_question": "Where does the Rectus Femoris muscle originate?",
     "mnemonic": "Rectus Femoris = 'RF' = 'Really Front' of quad group, so it needs AIIS = 'A Really Important Iliac Spot!' AIIS = Anterior Inferior Iliac Spine!",
     "topic_explanation": "🎯 **Don't miss this** - you **NEED** to nail this one because it's a classic exam trap! The rectus femoris origin is AIIS, and here's your cheat code: it's the ONLY quad muscle that does double duty at both hip AND knee! While the other three quads are lazy single-joint muscles, rectus femoris is the overachiever crossing both joints. Remember \"RF = Really Front\" - it sits right in front of your thigh and needs that AIIS origin to pull off its hip flexion party trick. Don't get confused by all the other quad origins - they're different! The examiners LOVE testing this because students mix up the quad origins constantly. Just think: if you're kicking a ball, rectus femoris is doing ALL the work - flexing your hip AND extending your knee from that AIIS starting point. Lock this in: Rectus Femoris = AIIS = the hip-flexing quad superstar!",
@@ -5385,9 +5505,14 @@ export const questions: Question[] = [
   },
   {
     "id": 264,
-    "question": "Sweat is the fluid secretion for which element?",
-    "options": {},
-    "correct_option": null,
+    "question": "In Five Element theory, sweat is the fluid secretion for which element?",
+    "options": {
+      "a": "Fire",
+      "b": "Water",
+      "c": "Earth",
+      "d": "Metal"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Fire",
     "rewrite_question": "In traditional five-element theory, which element corresponds to the body's fluid secretion of perspiration?",
     "mnemonic": "Fire makes you SWEAT - think of sitting by a hot campfire and perspiring. Fire = Heat = Sweat!",
@@ -5422,10 +5547,15 @@ export const questions: Question[] = [
   },
   {
     "id": 266,
-    "question": "The three major nerves of the Lumbosacral Plexus are: Obturator and Sciatic",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Femoral,",
+    "question": "What are the three major nerves of the Lumbosacral Plexus?",
+    "options": {
+      "a": "Femoral, Obturator, and Sciatic",
+      "b": "Tibial, Peroneal, and Sciatic",
+      "c": "Femoral, Saphenous, and Sural",
+      "d": "Obturator, Pudendal, and Gluteal"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Femoral, Obturator, and Sciatic",
     "rewrite_question": "Complete this statement: The three primary nerves of the Lumbosacral Plexus are the Obturator, Sciatic, and _____ nerves.",
     "mnemonic": "FOScial media - Femoral, Obturator, Sciatic are the three big nerves that keep your legs 'socially active'!",
     "topic_explanation": "🎯 **Real talk** - you **NEED** to nail this lumbosacral plexus question because it's a guaranteed test topic! The exam loves testing the big three: Femoral, Obturator, and Sciatic nerves. ⚠️ **⚠️ **⚠️ **Don't overthink****** the technical stuff - just memorize \"FOScial media\" and you're golden! The test will try to trick you by only giving you two of the three, so when you see \"Obturator and Sciatic,\" immediately think \"Where's my Femoral?!\" **that's your** missing piece. Here's what matters for the exam: Femoral hits your quads, Obturator works your inner thigh adductors, and Sciatic is that massive nerve running down the back of your leg. The test might throw in piriformis syndrome scenarios, so connect these nerves to real massage situations. Forget the nerve root numbers for now - focus on the names and basic locations. This question format shows up repeatedly, so master \"FOScial media\" and you'll crush it every time!",
@@ -5436,10 +5566,15 @@ export const questions: Question[] = [
   },
   {
     "id": 267,
-    "question": "Fibrosis and contracture of muscle tissue is usually caused by: Loss of muscle balance between antagonistic muscles - Loss of muscle balance between antagonistic muscles",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": null,
+    "question": "Fibrosis and contracture of muscle tissue is usually caused by:",
+    "options": {
+      "a": "Loss of muscle balance between antagonistic muscles",
+      "b": "Excessive stretching",
+      "c": "Increased blood flow",
+      "d": "Overhydration of tissue"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Loss of muscle balance between antagonistic muscles",
     "rewrite_question": "What typically causes fibrosis and contracture in muscle tissue?",
     "mnemonic": "Muscle imbalance = Fibrosis Formation. When antagonists aren't balanced, one side gets tight and fibrous - like a rope that's always pulled from one side!",
     "topic_explanation": "🎯 **Let's break this down** - ! When you see \"fibrosis and contracture\" on the exam, immediately think MUSCLE IMBALANCE between antagonistic pairs - this is a guaranteed test topic! Picture it like this: when biceps are always tight and triceps are weak, the biceps get all fibrous and contracted from doing ALL the work. You **NEED** to memorize common imbalance pairs they love testing: tight hip flexors/weak glutes, tight chest/weak rhomboids! ⚠️ **Don't overthink** the fancy pathology - just remember that one muscle doing too much work while its opposite slacks off = fibrosis formation. The overworked muscle literally turns into tough, shortened tissue! On exam day, if you see antagonistic muscle imbalance as an answer choice with fibrosis/contracture, pick it instantly - it's textbook cause and effect they test religiously!",
@@ -5511,9 +5646,14 @@ export const questions: Question[] = [
   },
   {
     "id": 271,
-    "question": "When palmar kneading posterior thigh while client prone, what is best position for knee?",
-    "options": {},
-    "correct_option": null,
+    "question": "When palmar kneading posterior thigh while client is prone, what is the best position for the knee?",
+    "options": {
+      "a": "Slightly flexed",
+      "b": "Fully extended",
+      "c": "Fully flexed at 90 degrees",
+      "d": "Hyperextended"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Slightly flexed",
     "rewrite_question": "What knee position is optimal when performing palmar kneading techniques on the posterior thigh with the client in prone position?",
     "mnemonic": "SLIGHT SIGHT - Slightly flexed knee gives you better Sight and access to posterior thigh muscles for effective kneading",
@@ -5613,10 +5753,15 @@ export const questions: Question[] = [
   },
   {
     "id": 276,
-    "question": "What is the end point on the bladder channel? lateral pinky toe",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "BL-67 on the",
+    "question": "What is the end point on the Bladder channel?",
+    "options": {
+      "a": "BL-67 on the lateral pinky toe",
+      "b": "BL-60 behind the ankle",
+      "c": "BL-40 behind the knee",
+      "d": "BL-1 at the inner eye corner"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "BL-67 on the lateral pinky toe",
     "rewrite_question": "Where is the terminal point located for the bladder meridian?",
     "mnemonic": "BL-67 is where the Bladder 'LEAKS' out - at the Little toe! Bladder empties at the END (67 is the last point) on the lateral pinky toe. Think: 'Bladder Leaks at Little toe, point 67!'",
     "topic_explanation": "Hey, listen up - you **NEED** to nail this one! The Bladder meridian always ends at BL-67 on the lateral pinky toe, and here's how to never forget it: it's the LONGEST meridian (67 points total), so of course it ends at point 67! ⚠️ **⚠️ **⚠️ **Don't overthink****** where it goes - it starts at your inner eye, travels ALL the way down your back and leg, then BAM - ends at that little toe. The test loves asking about endpoints, so memorize this: BL-67 = lateral nail bed of the 5th toe. Quick trick: \"Bladder has 67 points, so 67 is where it STOPS!\" They might throw in fancy details about turning breech babies, but for the exam, just remember - longest meridian, ends at the farthest point (little toe), point number 67. This is a gimme question if you know your endpoints!",
@@ -5627,10 +5772,15 @@ export const questions: Question[] = [
   },
   {
     "id": 277,
-    "question": "What is the beginning point for the meridian dealing with elimination? index finger (LI-1)",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Radial side of",
+    "question": "What is the beginning point for the Large Intestine meridian (dealing with elimination)?",
+    "options": {
+      "a": "Radial side of index finger (LI-1)",
+      "b": "Tip of thumb (LU-11)",
+      "c": "Ulnar side of pinky finger (SI-1)",
+      "d": "Palm of hand (PC-8)"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Radial side of index finger (LI-1)",
     "rewrite_question": "What is the starting point location for the large intestine meridian?",
     "mnemonic": "Large Intestine starts where you 'POINT' to eliminate waste - at the INDEX finger! LI-1 is on the Radial side (thumb side) of the index finger. Think: 'Point at waste, Large Intestine starts!'",
     "topic_explanation": "🎯 **Here's the deal** - you **NEED** to nail this meridian location! The Large Intestine meridian starts at LI-1 on the RADIAL SIDE of your index finger (that's the thumb side, don't get confused!). Here's your exam hack: remember \"Point at waste, Large Intestine starts!\" - you literally point with your index finger when showing someone where to go eliminate waste! The radial side is KEY here - if you see \"ulnar side\" as an answer choice, it's a trap! This meridian deals with elimination, so connect that finger-pointing action to bathroom directions and you've got it locked in. ⚠️ **Don't overthink** the whole emotional release stuff - just focus on RADIAL SIDE of INDEX FINGER for LI-1 and you're golden! This type of meridian location question shows up **ALL the time**, so drill this connection until it's automatic!",
@@ -5681,9 +5831,14 @@ export const questions: Question[] = [
   },
   {
     "id": 280,
-    "question": "Which muscle laterally rotates and abducts?",
-    "options": {},
-    "correct_option": null,
+    "question": "Which muscle laterally rotates AND abducts the hip?",
+    "options": {
+      "a": "Piriformis",
+      "b": "Gluteus Maximus",
+      "c": "Psoas Major",
+      "d": "Adductor Magnus"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Piriformis",
     "rewrite_question": "Which muscle performs both lateral rotation and abduction movements?",
     "mnemonic": "Piriformis is a 'PEAR-shaped' muscle that 'PAIRS' lateral rotation with abduction - it does both!",
@@ -5695,9 +5850,14 @@ export const questions: Question[] = [
   },
   {
     "id": 281,
-    "question": "Client is a right Hemiplegic and right foot is inverted. What condition is the client's foot in?",
-    "options": {},
-    "correct_option": null,
+    "question": "A client is a right Hemiplegic and their right foot is inverted. What condition is the client's foot in?",
+    "options": {
+      "a": "Spasticity",
+      "b": "Flaccidity",
+      "c": "Atrophy",
+      "d": "Contracture"
+    },
+    "correct_option": "a",
     "correct_answer_text": "Spasticity",
     "rewrite_question": "A client with right-sided hemiplegia presents with an inverted right foot. What neurological condition is affecting the foot?",
     "mnemonic": "Spastic = 'STUCK' - muscles are STuck in Uncontrolled Contraction after stroke!",
@@ -5709,10 +5869,15 @@ export const questions: Question[] = [
   },
   {
     "id": 282,
-    "question": "What is the best position for the client with Bronchiectasis? Prone, feet elevated, head lower than chest (for drainage) - (for drainage)",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": null,
+    "question": "What is the best position for a client with Bronchiectasis?",
+    "options": {
+      "a": "Prone, feet elevated, head lower than chest (for drainage)",
+      "b": "Supine, flat on back",
+      "c": "Semi-Fowler's position, head elevated",
+      "d": "Side-lying with affected side up"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Prone, feet elevated, head lower than chest (for drainage)",
     "rewrite_question": "What is the optimal positioning for a client diagnosed with bronchiectasis to promote drainage?",
     "mnemonic": "Bronchiectasis = 'DRAIN the TRAIN' - Position head DOWN like a train going downhill to drain secretions!",
     "topic_explanation": "🎯 **Pay attention** - you **NEED** to nail this bronchiectasis positioning question! The test loves asking about postural drainage, so remember: those damaged airways are STUFFED with thick, nasty secretions that need to get OUT! When you see bronchiectasis on the exam, immediately think \"DRAIN the TRAIN\" - head goes DOWN like a train going downhill! That prone position with feet up and head lower than chest uses gravity as your best friend to pull those secretions toward the bigger airways where the client can actually cough them up. ⚠️ **Don't overthink** this one - gravity does the work, you just position them right! The examiners want to see you understand that positioning is KEY for drainage, not comfort. Quick tip: if you see any lung condition with \"thick secretions\" in the question, always pick the position that gets the head LOWER than the chest!",
@@ -5724,9 +5889,14 @@ export const questions: Question[] = [
   {
     "id": 283,
     "question": "A cyclist's foot is dorsiflexed and inverted. Which muscle is contracted?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Tibialis anterior",
+    "options": {
+      "a": "Tibialis Anterior",
+      "b": "Tibialis Posterior",
+      "c": "Gastrocnemius",
+      "d": "Peroneus Longus"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Tibialis Anterior",
     "rewrite_question": "When a cyclist's foot is positioned in dorsiflexion and inversion, which muscle is actively contracting?",
     "mnemonic": "Tibialis Anterior = 'TAXI' - it Takes you ANteriorly (dorsiflexion) and Inward (inversion)!",
     "topic_explanation": "🎯 **Here's what matters** - this is a GUARANTEED point on your exam if you nail this pattern! When you see \"dorsiflexed AND inverted\" together, your brain should scream TIBIALIS ANTERIOR **every single time**. ⚠️ **Don't overthink** it! The test loves throwing cycling scenarios at you, but here's the key: tibialis anterior does BOTH actions simultaneously - it pulls the foot up (dorsiflexion) AND inward (inversion). Use the TAXI trick - it Takes you ANteriorly and Inward! You'll see this exact combo on test day, probably in different scenarios like \"runner's foot\" or \"walking uphill.\" The examiners want to see if you know which muscle can handle both movements at once. Memorize this NOW: dorsiflexion + inversion = tibialis anterior, period! It's sitting right there on the front of your shin doing double duty. This question format shows up repeatedly, so lock this pattern into your brain and grab those easy points!",
@@ -5737,10 +5907,15 @@ export const questions: Question[] = [
   },
   {
     "id": 284,
-    "question": "Which techniques are under the category of: tapotement? drumming and pounding",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Clapping,",
+    "question": "Which techniques are under the category of tapotement?",
+    "options": {
+      "a": "Clapping, drumming, and pounding",
+      "b": "Effleurage, petrissage, and friction",
+      "c": "Kneading, wringing, and rolling",
+      "d": "Gliding, stroking, and compression"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Clapping, drumming, and pounding",
     "rewrite_question": "Which massage techniques belong to the tapotement classification alongside drumming and pounding movements?",
     "mnemonic": "TAP dancers CLAP while they perform - Tapotement includes Clapping, Along with Pounding!",
     "topic_explanation": "Look, you **NEED** to nail tapotement questions - they love testing this on the NYS exam! Here's your cheat sheet: tapotement = percussion = rhythmic hitting movements, and there are 5 main ones you MUST memorize. Clapping uses cupped hands (think applause but on skin), drumming is rapid fingertip tapping, pounding uses loose fists, hacking is chopping with hand edges, and beating uses flat palms. ⚠️ **⚠️ **⚠️ **Don't overthink****** the physiology - just remember these stimulate circulation and wake up the client! Quick exam tip: if you see \"rhythmic striking\" or \"percussion\" in a question, think tapotement immediately. The key detail they test is that your hands stay RELAXED and bouncy, never harsh or rigid. And here's a gimme point - tapotement typically comes at the END of sessions to energize clients, not the beginning when they're trying to relax!",
@@ -5752,9 +5927,14 @@ export const questions: Question[] = [
   {
     "id": 285,
     "question": "Hemophilia is a genetic deficiency causing problems with:",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Clotting",
+    "options": {
+      "a": "Blood clotting",
+      "b": "Red blood cell production",
+      "c": "White blood cell production",
+      "d": "Oxygen transport"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Blood clotting",
     "rewrite_question": "Hemophilia is an inherited genetic disorder that primarily affects which bodily function?",
     "mnemonic": "HEMOphilia affects HEMO (blood) - Can't CLOT properly, blood won't STOP!",
     "topic_explanation": "🎯 **Quick tip** - when you see \"hemophilia\" on the exam, your brain should INSTANTLY think \"CLOTTING PROBLEMS!\" Don't get lost in all the technical stuff about Factor VIII or IX - that's not what they're testing! The key word here is BLEEDING that won't stop because the blood can't clot properly. You **NEED** to remember this simple connection: hemophilia = broken clotting = blood keeps flowing! For the massage therapy angle, just know this is typically a no-go because any pressure could cause internal bleeding or bruising. The test loves asking about bleeding disorders, so drill this into your head: hemophilia always equals clotting issues, period! ⚠️ **Don't overthink** the science - just remember that HEMOphilia messes with HEMO (blood) and it won't CLOT or STOP bleeding. **that's your** winning answer **every single time**!",
@@ -5765,10 +5945,15 @@ export const questions: Question[] = [
   },
   {
     "id": 286,
-    "question": "What direction is appropriate when working on a client with Venostasis with no obstruction? (really a disguised edema question) Proximal to affected area and distal to affected area - Proximal to affected area and distal to affected area",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": null,
+    "question": "What direction is appropriate when working on a client with Venostasis with no obstruction?",
+    "options": {
+      "a": "Proximal to affected area first, then distal to affected area",
+      "b": "Distal to proximal only",
+      "c": "Lateral to medial",
+      "d": "Random directions are fine"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Proximal to affected area first, then distal to affected area",
     "rewrite_question": "What is the proper direction for massage strokes when treating a client with venous stasis (venostasis) without obstruction?",
     "mnemonic": "Venus STASIS needs help going UP - massage TOWARD the heart, PROXIMAL direction UP!",
     "topic_explanation": "Hey, this one's HUGE on the exam - you **NEED** to nail this! When you see \"venostasis\" (sluggish blood flow), think \"help it get back UP to the heart!\" The test wants you to know: always massage FROM the farthest point (distal) TOWARD the heart (proximal). Picture pushing that pooled blood uphill - you start at the bottom and push UP! ⚠️ **Don't overthink** the fancy medical terms - just remember \"Venus going UP\" from your mnemonic. The exam loves testing this concept, so burn this into your brain: distal TO proximal, always toward the heart! Use light pressure (don't crush those weak vessels), and follow the natural flow. If you see venostasis, edema, or lymphatic drainage questions, this direction rule is your lifeline!",
@@ -5780,9 +5965,14 @@ export const questions: Question[] = [
   {
     "id": 287,
     "question": "When standing in anatomical position, which direction do Yang meridians flow?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Downward",
+    "options": {
+      "a": "Downward (from head toward hands and feet)",
+      "b": "Upward (from feet toward head)",
+      "c": "Horizontally across the body",
+      "d": "In circular patterns"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Downward (from head toward hands and feet)",
     "rewrite_question": "In anatomical position, what is the directional flow of Yang meridians in Traditional Chinese Medicine?",
     "mnemonic": "YANG is like the SUN going DOWN - Yang meridians flow DOWNWARD from heaven to earth!",
     "topic_explanation": "🎯 **The key here** - ! You **NEED** to memorize this RIGHT NOW - Yang meridians **ALWAYS** flow DOWNWARD! ⚠️ **⚠️ **⚠️ **Don't overthink****** it on the exam - just remember Yang = Sun = Goes DOWN! The test loves asking this, so drill it into your brain: Yang energy flows from heaven to earth, which means downward from head to hands and feet. Here's your cheat: Yang sounds like \"hang\" - energy hangs down! Yin goes UP, Yang goes DOWN - that's literally all you need to know to nail this question. The six Yang meridians (don't worry about naming them all) flow downward while Yin flows upward. Boom, easy points if you just remember the direction!",
@@ -5794,9 +5984,14 @@ export const questions: Question[] = [
   {
     "id": 288,
     "question": "Which points are good for general tonification?",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "ST-36, SP-6 and LI-4",
+    "options": {
+      "a": "ST-36, SP-6, and LI-4",
+      "b": "GB-20, BL-10, and GV-20",
+      "c": "LU-7, KI-6, and PC-6",
+      "d": "HT-7, LI-11, and ST-25"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "ST-36, SP-6, and LI-4",
     "rewrite_question": "Which acupoint combination is most effective for general tonification and strengthening in Traditional Chinese Medicine?",
     "mnemonic": "Strong body needs: STomach 36 for energy, SPleen 6 for blood, Large Intestine 4 for Qi - ST-36, SP-6, LI-4!",
     "topic_explanation": "🎯 **Listen up** - ! You **NEED** to memorize this power trio for any tonification question - ST-36, SP-6, and LI-4! Think of them as the \"Big Three\" for building someone back up when they're run down. ⚠️ **Don't overthink** the fancy TCM theory - just remember what each one does: ST-36 on the leg = energy boost (think stomach energy!), SP-6 at the ankle = blood builder, and LI-4 between thumb and finger = gets everything flowing. When you see \"general tonification\" on the exam, your brain should automatically go to these three points! \n\n💡 **Pro tip:** They work as a team - energy + blood + circulation = total body tune-up. If you're stuck between answer choices, pick the one with all three of these points together. This combo shows up **ALL the time** for weakness, fatigue, and \"building people up\" scenarios, so drill this into your head now!",
@@ -5807,10 +6002,15 @@ export const questions: Question[] = [
   },
   {
     "id": 289,
-    "question": "According to NY State law, an individual is considered disabled with HIV+ or AIDS at what point? When they are diagnosed with either one",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "",
+    "question": "According to NY State law, at what point is an individual considered disabled with HIV+ or AIDS?",
+    "options": {
+      "a": "When they are diagnosed with either one",
+      "b": "Only when symptoms appear",
+      "c": "When hospitalization is required",
+      "d": "When they can no longer work"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "When they are diagnosed with either one",
     "rewrite_question": "Under New York State regulations, at what stage is a person legally classified as disabled due to HIV-positive status or AIDS?",
     "mnemonic": "D-Day = Diagnosis Day! In NY, HIV/AIDS disability status starts the moment you get the Dx (diagnosis). Remember: Diagnosis = Disability begins.",
     "topic_explanation": "🎯 **Listen up** - ! You **NEED** to know this for the exam - NY State considers someone disabled with HIV/AIDS the SECOND they get diagnosed, not when they start showing symptoms! ⚠️ **⚠️ **⚠️ **Don't overthink****** this one - it's all about the diagnosis moment. The exam loves testing this because students often think disability kicks in when someone gets \"sick enough,\" but that's WRONG in NY! Remember my mnemonic: D-Day = Diagnosis Day! The law protects people immediately so they can get workplace accommodations and healthcare without waiting around. As a massage therapist, this means you've got to respect client confidentiality and provide services without discrimination from day one of their diagnosis. The test will try to trip you up with answer choices about \"when symptoms worsen\" or \"when hospitalized\" - ignore those! Stick with diagnosis = disability status begins, and you'll nail this question every time!",
@@ -5821,10 +6021,15 @@ export const questions: Question[] = [
   },
   {
     "id": 290,
-    "question": "Which meridians begin at the chest and end on the hand? meridians: LU, PC and HT",
-    "options": {},
-    "correct_option": null,
-    "correct_answer_text": "Yin arm",
+    "question": "Which meridians begin at the chest and end on the hand (LU, PC, and HT)?",
+    "options": {
+      "a": "Yin arm meridians",
+      "b": "Yang arm meridians",
+      "c": "Yin leg meridians",
+      "d": "Yang leg meridians"
+    },
+    "correct_option": "a",
+    "correct_answer_text": "Yin arm meridians",
     "rewrite_question": "Which category of meridians originates from the thoracic region and terminates at the hands, specifically including Lung (LU), Pericardium (PC), and Heart (HT) pathways?",
     "mnemonic": "YAH! Yin Arm Hands! Think 'YAH' - Yin Arms go from chest to Hands. LU-PC-HT are the 'Love Puts Care into Hearts' - all Yin arm meridians flowing downward from chest organs to fingertips.",
     "topic_explanation": "🎯 **Listen up** - you **NEED** to nail this pattern for the exam! When you see \"chest to hand,\" immediately think YIN ARM MERIDIANS! ⚠️ **Don't overthink** it - just remember your mnemonic \"YAH! Yin Arm Hands!\" The test loves asking about LU, PC, and HT (Love Puts Care into Hearts), and they ALL flow downward from chest organs to your fingertips along the inner arm. This is CLASSIC exam material - they're testing if you know the basic flow direction! Here's your exam hack: Yin always flows DOWN and OUT from organs to extremities, while Yang flows UP and BACK from hands to head. Picture energy pouring out of your chest organs and flowing down your inner arms to your fingertips - **that's your** yin arm meridians doing their thing! Master this chest-to-hand = yin arm connection and you'll crush these meridian questions every time!",

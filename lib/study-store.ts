@@ -70,17 +70,18 @@ export const EXAM_DATES = [
   { date: '2026-09-18', label: 'September 18, 2026', applicationDeadline: '2026-06-01' },
 ];
 
-// Trial mode - 5 fixed questions per category for free users (40 total)
+// Trial mode - 5 fixed questions per category for free users
 // These IDs are deterministic so all trial users see the same questions
+// IDs verified to match actual question categories in data/questions.ts
 export const TRIAL_QUESTION_IDS: Record<string, number[]> = {
-  'Massage Techniques': [1, 6, 11, 16, 21],
-  'Anatomy': [2, 4, 7, 10, 13],
-  'Physiology': [9, 14, 17, 20, 23],
-  'Pathology': [22, 28, 35, 40, 46],
-  'Eastern Medicine': [264, 199, 76, 82, 88],
-  'Ethics & Law': [45, 52, 58, 63, 69],
-  'Kinesiology': [3, 12, 19, 25, 31],
-  'Hydrotherapy': [67, 73, 81, 86, 91],
+  'Massage Techniques': [1, 27, 43, 53, 58],
+  'Anatomy': [2, 4, 13, 18, 22],
+  'Physiology': [8, 9, 10, 24, 67],
+  'Pathology': [5, 6, 26, 47, 56],
+  'Eastern Medicine': [14, 15, 16, 17, 19],
+  'Ethics & Law': [11, 12, 52, 70, 72],
+  'Kinesiology': [3, 7, 20, 21, 23],
+  'Hydrotherapy': [30, 83, 114],  // Only 3 Hydrotherapy questions exist
 };
 
 // Get all trial question IDs as a flat array

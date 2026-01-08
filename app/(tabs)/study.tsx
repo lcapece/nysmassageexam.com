@@ -5,6 +5,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as Haptics from "expo-haptics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
 import { Container, useIsDesktop } from "@/components/desktop/container";
@@ -107,6 +108,7 @@ export default function StudyScreen() {
   const isDesktop = useIsDesktop();
   const { width } = useWindowDimensions();
   const { hasPurchased } = useAuth();
+  const router = useRouter();
 
   const [viewMode, setViewMode] = useState<ViewMode>("categories");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -274,6 +276,49 @@ export default function StudyScreen() {
                   </View>
                 </Card>
               </View>
+
+              {/* Trial Quiz CTA - Only show for non-purchased users */}
+              {!hasPurchased && (
+                <Pressable
+                  onPress={() => router.push('/(tabs)/quiz' as any)}
+                  style={{ marginBottom: 16 }}
+                >
+                  {({ hovered }: any) => (
+                    <Card
+                      style={{
+                        padding: 16,
+                        borderWidth: 2,
+                        borderColor: colors.primary,
+                        backgroundColor: hovered ? colors.primaryMuted : colors.surface,
+                      }}
+                    >
+                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                          <View style={{
+                            width: 56,
+                            height: 56,
+                            borderRadius: 14,
+                            backgroundColor: colors.primaryMuted,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}>
+                            <MaterialIcons name="play-circle-filled" size={32} color={colors.primary} />
+                          </View>
+                          <View>
+                            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground }}>
+                              Start Trial Quiz
+                            </Text>
+                            <Text style={{ fontSize: 14, color: colors.muted }}>
+                              Test your knowledge with {getAvailableQuestions().length} free questions
+                            </Text>
+                          </View>
+                        </View>
+                        <MaterialIcons name="arrow-forward" size={28} color={colors.primary} />
+                      </View>
+                    </Card>
+                  )}
+                </Pressable>
+              )}
 
               {/* Bookmarked Section */}
               {bookmarks.length > 0 && (
@@ -850,6 +895,40 @@ export default function StudyScreen() {
             <Text className="text-3xl font-bold text-foreground">Study Mode</Text>
             <Text className="text-base text-muted mt-1">Browse by category</Text>
           </View>
+
+          {/* Trial Quiz CTA - Mobile */}
+          {!hasPurchased && (
+            <Pressable
+              onPress={() => router.push('/(tabs)/quiz' as any)}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: colors.primaryMuted,
+                  borderWidth: 2,
+                  borderColor: colors.primary,
+                  opacity: pressed ? 0.8 : 1,
+                },
+              ]}
+              className="mx-5 mt-4 rounded-xl p-4"
+            >
+              <View className="flex-row items-center justify-between">
+                <View className="flex-row items-center flex-1">
+                  <View
+                    className="w-12 h-12 rounded-full items-center justify-center"
+                    style={{ backgroundColor: colors.primary + '20' }}
+                  >
+                    <MaterialIcons name="play-circle-filled" size={28} color={colors.primary} />
+                  </View>
+                  <View className="ml-3 flex-1">
+                    <Text className="text-lg font-bold text-foreground">Start Trial Quiz</Text>
+                    <Text className="text-sm text-muted">
+                      {getAvailableQuestions().length} free questions available
+                    </Text>
+                  </View>
+                </View>
+                <MaterialIcons name="arrow-forward" size={24} color={colors.primary} />
+              </View>
+            </Pressable>
+          )}
 
           {bookmarks.length > 0 && (
             <Pressable

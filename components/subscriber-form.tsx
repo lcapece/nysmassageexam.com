@@ -280,7 +280,7 @@ export function SubscriberForm({
               thumbColor={formData.smsOptIn ? "#fff" : "#f4f3f4"}
             />
             <Text className="text-muted text-sm ml-2 flex-1">
-              Send me updates and study tips via SMS
+              Send me updates and study tips via SMS (No ads, just exam prep hacks)
             </Text>
           </View>
         )}

@@ -89,7 +89,7 @@ const EXAM_DATES = [
 ];
 
 const STATS = [
-  { value: "250+", label: "Questions" },
+  { value: "302", label: "Questions" },
   { value: "90%", label: "Our Pass Rate*" },
   { value: "100+", label: "Students" },
   { value: "4.9", label: "Rating" },

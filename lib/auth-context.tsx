@@ -86,15 +86,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [user, checkPurchaseStatus]);
 
   // Link existing purchase to newly logged-in user
-  const linkPurchaseToUser = useCallback(async (): Promise<boolean> => {
-    if (!user?.email || !user?.id) return false;
+  // Accepts optional authUser param to avoid race condition with state updates
+  const linkPurchaseToUser = useCallback(async (authUser?: AuthUser | null): Promise<boolean> => {
+    const targetUser = authUser ?? user;
+    if (!targetUser?.email || !targetUser?.id) return false;
 
     try {
       // Find any existing purchase by email and link it to this user
       const { error } = await supabase
         .from('nys_massage_subscribers')
-        .update({ user_id: user.id })
-        .ilike('email', user.email)
+        .update({ user_id: targetUser.id })
+        .ilike('email', targetUser.email)
         .is('user_id', null);
 
       if (error) {
@@ -102,13 +104,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return false;
       }
 
-      // Refresh purchase status
-      return await refreshPurchaseStatus();
+      // Refresh purchase status using the passed user data
+      const purchased = await checkPurchaseStatus(targetUser.email, targetUser.id);
+      setHasPurchased(purchased);
+      return purchased;
     } catch (err) {
       console.error('[AuthContext] Error linking purchase:', err);
       return false;
     }
-  }, [user, refreshPurchaseStatus]);
+  }, [user, checkPurchaseStatus]);
 
   // Convert Supabase user to AuthUser
   const convertUser = (supabaseUser: User | null): AuthUser | null => {
@@ -135,8 +139,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setPurchaseLoading(false);
 
       // If user just logged in, try to link any existing purchase
+      // Pass authUser directly to avoid race condition with state
       if (authUser?.email) {
-        await linkPurchaseToUser();
+        await linkPurchaseToUser(authUser);
       }
     });
 
@@ -153,8 +158,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setPurchaseLoading(false);
 
       // If user just logged in, try to link any existing purchase
+      // Pass authUser directly to avoid race condition with state
       if (_event === 'SIGNED_IN' && authUser?.email) {
-        await linkPurchaseToUser();
+        await linkPurchaseToUser(authUser);
       }
     });
 

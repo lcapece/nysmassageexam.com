@@ -284,7 +284,7 @@ export default function QuizScreen() {
                         You're in trial mode
                       </Text>
                       <Text style={{ fontSize: 14, color: colors.muted, marginTop: 2 }}>
-                        3 questions per category • Unlock all 287 for just $37
+                        3 questions per category • Unlock all 302 for just $37
                       </Text>
                     </View>
                     <MaterialIcons name="lock-open" size={32} color={colors.warning} />
@@ -940,7 +940,7 @@ export default function QuizScreen() {
               <View className="flex-row items-center justify-between">
                 <View className="flex-1">
                   <Text className="text-foreground font-semibold">Free Trial Mode</Text>
-                  <Text className="text-muted text-sm">3 questions per category • Tap to unlock all 287</Text>
+                  <Text className="text-muted text-sm">3 questions per category • Tap to unlock all 302</Text>
                 </View>
                 <MaterialIcons name="lock-open" size={24} color={colors.warning} />
               </View>

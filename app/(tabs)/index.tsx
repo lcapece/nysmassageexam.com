@@ -303,13 +303,13 @@ export default function HomeScreen() {
         {/* Header */}
         <View className="px-5 pt-4 pb-2">
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <Image
                 source={require('../../assets/images/logo.png')}
-                style={{ width: 180, height: 45 }}
+                style={{ width: 64, height: 64, borderRadius: 14 }}
                 resizeMode="contain"
               />
-              <Text className="text-base text-muted mt-1">Study Dashboard</Text>
+              <Text style={{ fontSize: 24, fontWeight: '700', color: colors.foreground }}>Study Dashboard</Text>
             </View>
             {/* Header Actions */}
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
@@ -416,7 +416,9 @@ export default function HomeScreen() {
             colors={colors}
           />
           <Text className="text-base text-muted mt-3">
-            {masteredQuestions} of {totalQuestions} questions mastered
+            {attemptedQuestions > 0
+              ? `${masteredQuestions} of ${totalQuestions} questions mastered`
+              : 'Start practicing to track your progress'}
           </Text>
         </View>
 

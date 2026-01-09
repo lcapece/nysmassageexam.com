@@ -489,15 +489,14 @@ export default function LandingScreen() {
           contentContainerStyle={{ paddingBottom: 100 }}
           showsVerticalScrollIndicator={false}
         >
-          {/* Mobile Header - Minimal */}
-          <View style={{ paddingHorizontal: 20, paddingTop: 12, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Image source={{ uri: LOGO_URL }} style={{ width: 36, height: 36, borderRadius: 8 }} resizeMode="contain" />
-              <Text style={{ fontSize: 16, fontWeight: '700', color: colors.foreground }}>NYS Massage Exam</Text>
+          {/* Mobile Header */}
+          <View style={{ paddingHorizontal: 20, paddingTop: 16, paddingBottom: 8 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <Image source={{ uri: LOGO_URL }} style={{ width: 120, height: 120, borderRadius: 20 }} resizeMode="contain" />
+              <Pressable onPress={handleLogin}>
+                <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 14 }}>Sign In</Text>
+              </Pressable>
             </View>
-            <Pressable onPress={handleLogin}>
-              <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 14 }}>Sign In</Text>
-            </Pressable>
           </View>
 
           {/* Mobile Hero - Clear Purpose */}

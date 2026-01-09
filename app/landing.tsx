@@ -501,7 +501,7 @@ export default function LandingScreen() {
 
           {/* Mobile Hero - Clear Purpose */}
           <View style={{ paddingHorizontal: 20, paddingTop: 24 }}>
-            <Badge variant="primary" size="sm">The Only NYS-Specific Prep</Badge>
+            <Badge variant="primary" size="sm">Simply the Best NYS Prep</Badge>
 
             <Text style={{
               fontSize: 32,
@@ -819,7 +819,7 @@ export default function LandingScreen() {
                 <Image source={{ uri: LOGO_URL }} style={{ width: 44, height: 44, borderRadius: 10 }} resizeMode="contain" />
                 <View>
                   <Text style={{ fontSize: 18, fontWeight: "700", color: colors.foreground }}>NYS Massage Exam</Text>
-                  <Text style={{ fontSize: 12, color: colors.muted }}>The Only NYS-Specific Prep</Text>
+                  <Text style={{ fontSize: 12, color: colors.muted }}>Simply the Best NYS Prep</Text>
                 </View>
               </View>
                             <View className="flex-row items-center" style={{ gap: 12 }}>

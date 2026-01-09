@@ -529,7 +529,7 @@ export default function LandingScreen() {
               <Pressable
                 onPress={handleStartTrial}
                 style={({ pressed }) => ({
-                  backgroundColor: colors.success,
+                  backgroundColor: '#1E3A5F',
                   paddingVertical: 18,
                   borderRadius: 14,
                   alignItems: 'center',

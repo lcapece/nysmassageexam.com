@@ -37,7 +37,7 @@ const PROMO_CODES: Record<string, { discount: number; description: string }> = {
 };
 
 const FEATURES = [
-  { icon: "✅", text: "All 287 exam questions", link: null },
+  { icon: "✅", text: "All 302 exam questions", link: null },
   { icon: "🧠", text: "Mnemonics for every question", link: null },
   { icon: "📚", text: "Detailed explanations", link: null },
   { icon: "📊", text: "Progress tracking", link: null },
@@ -556,7 +556,7 @@ export default function UpgradeScreen() {
 
             {/* Rows */}
             {[
-              { feature: "Questions", free: "25", full: "287" },
+              { feature: "Questions", free: "25", full: "302" },
               { feature: "Categories", free: "All", full: "All" },
               { feature: "Mnemonics", free: "✓", full: "✓" },
               { feature: "Explanations", free: "✓", full: "✓" },

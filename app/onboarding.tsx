@@ -44,7 +44,7 @@ export default function OnboardingScreen() {
     {
       id: "features",
       title: "Smart Study Features",
-      description: "287 practice questions with clever mnemonics, detailed explanations, progress tracking, and an exam countdown to keep you on schedule.",
+      description: "302 practice questions with clever mnemonics, detailed explanations, progress tracking, and an exam countdown to keep you on schedule.",
       icon: "psychology",
       color: colors.success,
     },

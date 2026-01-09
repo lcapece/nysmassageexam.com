@@ -553,14 +553,14 @@ export default function LandingScreen() {
                 })}
               >
                 <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Get Full Access - {price}</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, marginTop: 2 }}>250+ questions • Lifetime access</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, marginTop: 2 }}>302 questions • Lifetime access</Text>
               </Pressable>
             </View>
 
             {/* Trust Badges */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 24, paddingVertical: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.border }}>
               <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>250+</Text>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: colors.foreground }}>302</Text>
                 <Text style={{ fontSize: 11, color: colors.muted }}>Questions</Text>
               </View>
               <View style={{ alignItems: 'center' }}>
@@ -668,7 +668,7 @@ export default function LandingScreen() {
             <Text style={{ fontSize: 18, fontWeight: '700', color: colors.foreground, marginBottom: 16 }}>What You Get</Text>
             <View style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, borderWidth: 1, borderColor: colors.border }}>
               {[
-                '250+ practice questions',
+                '302 practice questions',
                 'Memory mnemonic for every answer',
                 'Smart spaced repetition algorithm',
                 'Category-by-category progress tracking',
@@ -1026,7 +1026,7 @@ export default function LandingScreen() {
                 <Text style={{ fontSize: 112, fontWeight: "800", color: colors.foreground }}>{price}</Text>
                 <Text style={{ fontSize: 16, color: colors.muted, marginTop: 4 }}>One-time payment • Lifetime access</Text>
                 <View style={{ marginTop: 32, marginBottom: 32, gap: 14, width: "100%" }}>
-                  {["250+ practice questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
+                  {["302 practice questions", "Memory mnemonic for every answer", "Smart spaced repetition algorithm", "Category-by-category progress tracking", "Wrong answer analysis & review", "Works on any device", "Lifetime updates as exam changes", "30-day money-back guarantee"].map((item, i) => (
                     <View key={i} className="flex-row items-center" style={{ gap: 12 }}>
                       <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: colors.successMuted, alignItems: "center", justifyContent: "center" }}>
                         <MaterialIcons name="check" size={16} color={colors.success} />

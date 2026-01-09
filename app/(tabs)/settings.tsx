@@ -210,7 +210,7 @@ export default function SettingsScreen() {
             <Text className="text-lg font-semibold text-foreground mb-4">What's Included</Text>
             
             {[
-              { icon: "check-circle", text: "All 287 exam questions" },
+              { icon: "check-circle", text: "All 302 exam questions" },
               { icon: "lightbulb", text: "Clever mnemonics for every question" },
               { icon: "school", text: "Detailed explanations" },
               { icon: "bar-chart", text: "Progress tracking & analytics" },
@@ -261,7 +261,7 @@ export default function SettingsScreen() {
             </View>
             
             {[
-              { feature: "Sample Questions", free: "20", pro: "287" },
+              { feature: "Sample Questions", free: "20", pro: "302" },
               { feature: "Mnemonics", free: false, pro: true },
               { feature: "Explanations", free: false, pro: true },
               { feature: "Progress Tracking", free: "Basic", pro: "Full" },

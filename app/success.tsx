@@ -51,7 +51,7 @@ export default function SuccessScreen() {
         if (data.success || data.paid) {
           await setPurchased(true);
           setStatus("success");
-          setMessage("Payment confirmed! You now have full access to all 287 questions.");
+          setMessage("Payment confirmed! You now have full access to all 302 questions.");
 
           setTimeout(() => {
             router.replace("/(tabs)");

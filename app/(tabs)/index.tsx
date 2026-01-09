@@ -177,7 +177,7 @@ export default function HomeScreen() {
               <View style={{ backgroundColor: colors.primary, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                   <Badge variant="warning" size="sm">TRIAL</Badge>
-                  <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '600' }}>Unlock All 287 Questions</Text>
+                  <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '600' }}>Unlock All 302 Questions</Text>
                 </View>
                 <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '800' }}>$37</Text>
               </View>
@@ -368,7 +368,7 @@ export default function HomeScreen() {
             <View className="flex-row items-center justify-between">
               <View className="flex-1">
                 <Text className="text-white font-bold text-lg">Unlock Full Access</Text>
-                <Text className="text-white/80 text-sm">Get all 287 questions for only $37</Text>
+                <Text className="text-white/80 text-sm">Get all 302 questions for only $37</Text>
               </View>
               <View className="bg-white/20 rounded-full px-3 py-1">
                 <Text className="text-white font-semibold">$37</Text>

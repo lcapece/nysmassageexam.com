@@ -117,7 +117,7 @@ export default function PaymentSuccessScreen() {
               Payment Successful!
             </Text>
             <Text className="text-muted text-center mb-8">
-              Thank you for your purchase. You now have full access to all 287 exam questions,
+              Thank you for your purchase. You now have full access to all 302 exam questions,
               mnemonics, and study materials.
             </Text>
             <TouchableOpacity

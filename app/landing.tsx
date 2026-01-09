@@ -520,7 +520,7 @@ export default function LandingScreen() {
               marginTop: 12,
               lineHeight: 24
             }}>
-              The only study tool built for New York's unique exam — including the <Text style={{ fontWeight: '700', color: colors.warning }}>20% Eastern Medicine</Text> questions that generic prep ignores.
+              Simply the best study tool built for New York's unique exam — including the <Text style={{ fontWeight: '700', color: colors.warning }}>20% Eastern Medicine</Text> questions that generic prep ignores.
             </Text>
 
             {/* Primary CTA - Trial First! */}
